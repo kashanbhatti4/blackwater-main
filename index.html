@@ -464,6 +464,16 @@
                     font-size: 1.25rem;
                 }
             }
+
+            @media screen and (min-width: 1041px) {
+                .capabilities_wrap {
+                    top: 0 !important;
+                }
+                .home_hero_title_new_heading {
+                    width: auto !important;
+                    max-width: 50% !important;
+                }
+            }
         </style>
         <div class="simple-navbar__container">
             <!-- Logo Box -->
@@ -5155,8 +5165,8 @@
                             </div>
 
                             <div class="u-button-wrapper">
-                                <a href="marketing-diagnostic.html"
-                                    onclick="window.location.href='marketing-diagnostic.html'; return false;"
+                                <a href="javascript:void(0);"
+                                    onclick="startCardDiagnostic(); return false;"
                                     data-barba-prevent="all" data-theme="dark" data-btn-hover=""
                                     class="btn w-inline-block no-barba">
                                     <div class="btn__bg"></div>
@@ -5172,8 +5182,451 @@
                             </div>
                         </div>
 
-                        <!-- Card 2 -->
-                        <div class="content_wrap entry_card" style="grid-column: span 6;">
+                        <!-- Interactive Diagnostic Experience Card (Opposite Calculate Budget) -->
+                        <div id="card-diagnostic-container" class="content_wrap entry_card" style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                            <!-- Top ~40%: Visual Dynamic SVG Line Graph & Readiness Metrics -->
+                            <div id="card-diag-top" style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">READINESS DIAGNOSTIC GRAPH</span>
+                                    <span id="diag-score-badge" style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">INITIAL</span>
+                                </div>
+                                
+                                <!-- SVG Line Graph -->
+                                <div style="position: relative; width: 100%; height: 110px; margin-top: 0.5rem;">
+                                    <svg id="diag-svg-graph" width="100%" height="100%" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">
+                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        
+                                        <path id="diag-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z" fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;"/>
+                                        <path id="diag-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transition: d 0.4s ease;"/>
+                                        <circle id="diag-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A" stroke="#0E100F" stroke-width="2" style="transition: cx 0.4s ease, cy 0.4s ease;"/>
+                                    </svg>
+                                </div>
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
+                                    <span id="diag-progress-label">PROGRESS: 0 / 12</span>
+                                    <span id="diag-score-value" style="color: #FFFCE1; font-weight: 700;">SCORE: --</span>
+                                </div>
+                            </div>
+
+                            <!-- Bottom ~60%: Interactive Questions & Step Flow -->
+                            <div id="card-diag-bottom" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
+                            </div>
+                        </div>
+
+                        <script>
+                        (function() {
+                            const DIAG_QUESTIONS = [
+                                {
+                                    id: "stage", num: "Question 01", title: "Where is the business right now?",
+                                    help: "This sets how much you need proof versus how much you need reach.",
+                                    options: [
+                                        { v: "prelaunch", label: "Pre-launch or first year", sub: "Need early validation before spending big", weight: 40 },
+                                        { v: "growing", label: "1-3 years, growing", sub: "Predictable revenue, ready to scale core channels", weight: 70 },
+                                        { v: "established", label: "3+ years, established", sub: "Multi-channel presence, optimizing payback", weight: 85 }
+                                    ]
+                                },
+                                {
+                                    id: "goal", num: "Question 02", title: "Primary goal for the next 6-12 months?",
+                                    help: "Budget allocation depends directly on growth velocity.",
+                                    options: [
+                                        { v: "validate", label: "Validate demand & test messaging", weight: 50 },
+                                        { v: "leads", label: "Scale lead flow and customer volume", weight: 80 },
+                                        { v: "market_share", label: "Establish market dominance & brand authority", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "model", num: "Question 03", title: "What is your primary sales model?",
+                                    help: "Inbound vs outbound dictates ad platform selection.",
+                                    options: [
+                                        { v: "inbound", label: "Inbound lead gen (forms / bookings)", weight: 75 },
+                                        { v: "hightouch", label: "High-touch consultative sales cycle", weight: 70 },
+                                        { v: "ecom", label: "Direct-to-consumer e-commerce checkout", weight: 85 }
+                                    ]
+                                },
+                                {
+                                    id: "history", num: "Question 04", title: "Previous paid ad campaign history?",
+                                    help: "Historical data dramatically lowers initial testing cost.",
+                                    options: [
+                                        { v: "never", label: "Never run paid ads systematically", weight: 50 },
+                                        { v: "tried_inhouse", label: "Tried in-house with mixed performance", weight: 60 },
+                                        { v: "worked_agency", label: "Worked with agencies in the past", weight: 75 },
+                                        { v: "active_scaling", label: "Currently running active ad campaigns", weight: 85 }
+                                    ]
+                                },
+                                {
+                                    id: "acv", num: "Question 05", title: "Average Customer Value (ACV / LTV)?",
+                                    help: "Higher ACV permits aggressive acquisition spend.",
+                                    options: [
+                                        { v: "low", label: "Under €500 per customer", weight: 50 },
+                                        { v: "mid", label: "€500 - €2,500 per customer", weight: 70 },
+                                        { v: "high", label: "€2,500 - €10,000 per customer", weight: 85 },
+                                        { v: "enterprise", label: "€10,000+ enterprise deals", weight: 95 }
+                                    ]
+                                },
+                                {
+                                    id: "tracking", num: "Question 06", title: "Current conversion tracking setup?",
+                                    help: "You cannot scale what you cannot measure.",
+                                    options: [
+                                        { v: "none", label: "No formal conversion tracking active", weight: 30 },
+                                        { v: "basic", label: "Basic GA4 / Google Tag Manager installed", weight: 60 },
+                                        { v: "advanced", label: "Advanced CAPI + Offline Conversion Import", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "site", num: "Question 07", title: "Website & landing page conversion state?",
+                                    help: "Driving traffic to a weak site burns money.",
+                                    options: [
+                                        { v: "overhaul", label: "Needs complete redesign / overhaul", weight: 40 },
+                                        { v: "moderate", label: "Functional but needs optimization", weight: 70 },
+                                        { v: "high_converting", label: "High-converting dedicated landing pages", weight: 95 }
+                                    ]
+                                },
+                                {
+                                    id: "crm", num: "Question 08", title: "Lead processing & CRM follow-up speed?",
+                                    help: "Speed-to-lead dictates real ROI.",
+                                    options: [
+                                        { v: "manual", label: "Manual email replies (24h+ delay)", weight: 40 },
+                                        { v: "basic_crm", label: "Basic CRM setup (replies within 2-4h)", weight: 70 },
+                                        { v: "automated", label: "Automated instant routing (<15m SLA)", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "capacity", num: "Question 09", title: "Sales team fulfillment capacity?",
+                                    help: "Ad spend must align with operational capacity.",
+                                    options: [
+                                        { v: "founder", label: "Founder / solo handling sales calls", weight: 50 },
+                                        { v: "small_team", label: "Small dedicated sales team (1-3 reps)", weight: 75 },
+                                        { v: "full_team", label: "Established sales org ready for volume", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "timeline", num: "Question 10", title: "Expected payback & return timeline?",
+                                    help: "Realistic expectations prevent premature ad shutdowns.",
+                                    options: [
+                                        { v: "instant", label: "Needs profitable payback <30 days", weight: 40 },
+                                        { v: "standard", label: "30 - 90 days payback window", weight: 75 },
+                                        { v: "longterm", label: "90+ days (long LTV focused growth)", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "content", num: "Question 11", title: "Creative & content production assets?",
+                                    help: "High-performing ads need strong video & static creative.",
+                                    options: [
+                                        { v: "minimal", label: "Minimal raw photos / no video assets", weight: 40 },
+                                        { v: "moderate_creative", label: "Good product photos & basic case studies", weight: 70 },
+                                        { v: "rich_media", label: "Rich video library, testimonials & assets", weight: 90 }
+                                    ]
+                                },
+                                {
+                                    id: "budget", num: "Question 12", title: "Target monthly ad spend commitment?",
+                                    help: "Ensures recommended media channels fit liquidity.",
+                                    options: [
+                                        { v: "under2k", label: "Under €2,000 / month", weight: 50 },
+                                        { v: "2k_5k", label: "€2,000 - €5,000 / month", weight: 75 },
+                                        { v: "5k_15k", label: "€5,000 - €15,000 / month", weight: 90 },
+                                        { v: "15k_plus", label: "€15,000+ / month", weight: 95 }
+                                    ]
+                                }
+                            ];
+
+                            let cardIdx = -2; // -2 = initial no button, -1 = show Start Diagnostic button, 0..11 = questions, 12 = results
+                            let cardAnswers = {};
+                            let scoreHistory = [];
+
+                            window.startCardDiagnostic = function() {
+                                const container = document.getElementById("card-diagnostic-container");
+                                if (container) {
+                                    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                                if (cardIdx === -2) {
+                                    cardIdx = -1; // Reveal the "Start Diagnostic" button
+                                    renderCardStep();
+                                }
+                            };
+
+                            window.beginMCQFlow = function() {
+                                cardIdx = 0;
+                                cardAnswers = {};
+                                scoreHistory = [];
+                                renderCardStep();
+                            };
+
+                            function updateGraph() {
+                                const path = document.getElementById("diag-graph-path");
+                                const area = document.getElementById("diag-graph-area");
+                                const dot = document.getElementById("diag-graph-dot");
+                                const badge = document.getElementById("diag-score-badge");
+                                const progressLbl = document.getElementById("diag-progress-label");
+                                const scoreVal = document.getElementById("diag-score-value");
+
+                                const totalQ = DIAG_QUESTIONS.length;
+                                const answeredCount = scoreHistory.length;
+
+                                if (progressLbl) {
+                                    progressLbl.textContent = `PROGRESS: ${answeredCount} / ${totalQ}`;
+                                }
+
+                                const points = [];
+                                points.push({ x: 0, y: 95 }); // Initial point at 0%
+
+                                let runningSum = 0;
+                                for (let i = 0; i < scoreHistory.length; i++) {
+                                    runningSum += scoreHistory[i];
+                                    const avg = runningSum / (i + 1);
+                                    const x = ((i + 1) / totalQ) * 400;
+                                    const y = 95 - (avg / 100) * 75; // y ranges from 95 (0%) down to 20 (100%)
+                                    points.push({ x, y, avg });
+                                }
+
+                                if (points.length === 1) {
+                                    // Default flat line
+                                    for (let i = 1; i <= totalQ; i++) {
+                                        points.push({ x: (i / totalQ) * 400, y: 95, avg: 0 });
+                                    }
+                                } else {
+                                    const lastPt = points[points.length - 1];
+                                    for (let i = answeredCount + 1; i <= totalQ; i++) {
+                                        points.push({ x: (i / totalQ) * 400, y: lastPt.y, avg: lastPt.avg });
+                                    }
+                                }
+
+                                const pathD = points.reduce((acc, p, idx) => {
+                                    return acc + (idx === 0 ? `M ${p.x.toFixed(1)} ${p.y.toFixed(1)}` : ` L ${p.x.toFixed(1)} ${p.y.toFixed(1)}`);
+                                }, "");
+
+                                const areaD = `${pathD} L 400 100 L 0 100 Z`;
+
+                                if (path) path.setAttribute("d", pathD);
+                                if (area) area.setAttribute("d", areaD);
+
+                                const activePt = points[answeredCount];
+                                if (dot) {
+                                    dot.setAttribute("cx", activePt.x.toFixed(1));
+                                    dot.setAttribute("cy", activePt.y.toFixed(1));
+                                }
+
+                                const currentAvg = answeredCount > 0 ? points[answeredCount].avg : 0;
+                                if (scoreVal) {
+                                    scoreVal.textContent = answeredCount > 0 ? `SCORE: ${Math.round(currentAvg)}%` : "SCORE: --";
+                                }
+
+                                if (badge) {
+                                    if (cardIdx <= -1) {
+                                        badge.textContent = "INITIAL";
+                                        badge.style.color = "#FFFCE1";
+                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                    } else if (answeredCount === totalQ) {
+                                        if (currentAvg >= 70) {
+                                            badge.textContent = "HIGH READINESS";
+                                            badge.style.color = "#FFE32A";
+                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                        } else {
+                                            badge.textContent = "LOW READINESS";
+                                            badge.style.color = "#FFE32A";
+                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                        }
+                                    } else if (answeredCount > 0) {
+                                        if (currentAvg >= 70) {
+                                            badge.textContent = "TRENDING HIGH";
+                                            badge.style.color = "#FFE32A";
+                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                        } else {
+                                            badge.textContent = "TRENDING MODERATE";
+                                            badge.style.color = "#FFE32A";
+                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                        }
+                                    } else {
+                                        badge.textContent = "DIAGNOSTIC ACTIVE";
+                                        badge.style.color = "#FFFCE1";
+                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                    }
+                                }
+                            }
+
+                            function renderCardStep() {
+                                updateGraph();
+                                const bottom = document.getElementById("card-diag-bottom");
+                                if (!bottom) return;
+
+                                if (cardIdx === -2) {
+                                    // Initial state: Title and subheading only, NO button
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div class="entry_meta" style="margin-bottom: 1rem;">
+                                                <span>TOOL 01</span>
+                                                <span>12 QUESTIONS &middot; 90 SEC</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Marketing Budget & Readiness Diagnostic</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                Discover optimal budget allocation across Search & Social channels, track your score dynamically, and get actionable recommendations.
+                                            </p>
+                                        </div>
+                                        <div style="min-height: 50px;"></div>
+                                    `;
+                                    return;
+                                }
+
+                                if (cardIdx === -1) {
+                                    // Triggered state: Title, subheading, AND Start Diagnostic button
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div class="entry_meta" style="margin-bottom: 1rem;">
+                                                <span>TOOL 01</span>
+                                                <span>12 QUESTIONS &middot; 90 SEC</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Marketing Budget & Readiness Diagnostic</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                Discover optimal budget allocation across Search & Social channels, track your score dynamically, and get actionable recommendations.
+                                            </p>
+                                        </div>
+                                        <div class="u-button-wrapper" style="margin-top: 1.5rem;">
+                                            <a href="javascript:void(0);" onclick="beginMCQFlow(); return false;" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                <div class="btn__bg"></div>
+                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Start Diagnostic</p></div>
+                                            </a>
+                                        </div>
+                                    `;
+                                    return;
+                                }
+
+                                if (cardIdx >= DIAG_QUESTIONS.length) {
+                                    // Results View
+                                    const finalScore = scoreHistory.length > 0 ? Math.round(scoreHistory.reduce((a,b)=>a+b,0) / scoreHistory.length) : 70;
+                                    const isHigh = finalScore >= 70;
+
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-center; margin-bottom: 1rem;">
+                                                <span style="font-family: monospace; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em;">DIAGNOSTIC COMPLETE</span>
+                                                <span style="font-size: 0.85rem; font-weight: 700; color: ${isHigh ? '#FFE32A' : '#FFE32A'};">${isHigh ? 'HIGH READINESS' : 'LOW READINESS'}</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 0.75rem;">Score: ${finalScore}%</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">
+                                                ${isHigh 
+                                                    ? 'Your infrastructure is well-positioned for scale. Focus media spend on Google Search intent capture (60%) paired with Meta Retargeting (40%).' 
+                                                    : 'Your infrastructure requires quick optimization in conversion tracking or landing pages prior to scaling ad spend.'}
+                                            </p>
+                                            
+                                            <div style="background: rgba(255, 252, 225, 0.03); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 0.5rem; text-transform: uppercase;">Recommended Media Allocation</div>
+                                                <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: #FFFCE1;">
+                                                    <div><strong>Search Ads:</strong> ${isHigh ? '60%' : '75%'}</div>
+                                                    <div><strong>Social Ads:</strong> ${isHigh ? '30%' : '20%'}</div>
+                                                    <div><strong>Retargeting:</strong> ${isHigh ? '10%' : '5%'}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+                                            <button type="button" id="card-restart-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 10px 18px; border-radius: 6px; font-size: 0.85rem; cursor: pointer;">Retake Diagnostic</button>
+                                            <div class="u-button-wrapper" style="margin-top: 0;">
+                                                <a href="/contact.html" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                    <div class="btn__bg"></div>
+                                                    <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                    <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Discuss Strategy</p></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    const restartBtn = document.getElementById("card-restart-btn");
+                                    if (restartBtn) {
+                                        restartBtn.onclick = () => {
+                                            cardIdx = -1;
+                                            cardAnswers = {};
+                                            scoreHistory = [];
+                                            renderCardStep();
+                                        };
+                                    }
+                                    return;
+                                }
+
+                                const q = DIAG_QUESTIONS[cardIdx];
+                                const curAns = cardAnswers[q.id];
+
+                                const optsHtml = q.options.map((opt, i) => {
+                                    const isSelected = q.multi ? (curAns && curAns.includes(opt.v)) : (curAns === opt.v);
+                                    return `
+                                        <button type="button" class="entry_option ${isSelected ? 'sel' : ''}" data-v="${opt.v}" style="width: 100%; border: 1px solid ${isSelected ? '#FFFCE1' : '#2A2B25'}; background-color: ${isSelected ? 'rgba(255, 252, 225, 0.06)' : 'transparent'}; border-radius: 8px; text-align: left; margin-bottom: 0.5rem; transition: border-color 0.2s ease, background-color 0.2s ease;">
+                                            <span class="entry_option_num" style="color: ${isSelected ? '#FFFCE1' : '#7C7C70'}; border-color: ${isSelected ? '#FFFCE1' : '#2A2B25'};">${i + 1}</span>
+                                            <div style="display: flex; flex-direction: column; text-align: left; padding: 2px 0;">
+                                                <span class="u-text-style-small-medium" style="color: #FFFCE1;">${opt.label}</span>
+                                                ${opt.sub ? `<span style="font-size: 0.78rem; color: #7C7C70; margin-top: 3px;">${opt.sub}</span>` : ''}
+                                            </div>
+                                        </button>
+                                    `;
+                                }).join('');
+
+                                bottom.innerHTML = `
+                                    <div>
+                                        <div class="entry_meta" style="margin-bottom: 0.75rem;">
+                                            <span>${q.num.toUpperCase()} OF ${DIAG_QUESTIONS.length}</span>
+                                        </div>
+                                        <h4 class="u-text-style-main-medium" style="margin-bottom: 0.5rem; color: #FFFCE1;">${q.title}</h4>
+                                        ${q.help ? `<p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.25rem;">${q.help}</p>` : `<div style="margin-bottom: 1rem;"></div>`}
+                                        <div class="entry_options" style="margin-bottom: 1.5rem;">
+                                            ${optsHtml}
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #2A2B25; padding-top: 1rem;">
+                                        <button type="button" id="card-back-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; ${cardIdx === 0 ? 'visibility: hidden;' : ''}">Back</button>
+                                        <div class="u-button-wrapper" style="margin-top: 0; ${!curAns ? 'opacity: 0.5; pointer-events: none;' : ''}">
+                                            <a id="card-next-btn" href="javascript:void(0);" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                <div class="btn__bg"></div>
+                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">${cardIdx === DIAG_QUESTIONS.length - 1 ? 'Process Final Score' : 'Next Question'}</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                `;
+
+                                bottom.querySelectorAll(".entry_option").forEach(btn => {
+                                    btn.onclick = () => {
+                                        cardAnswers[q.id] = btn.dataset.v;
+                                        renderCardStep();
+                                    };
+                                });
+
+                                const backBtn = document.getElementById("card-back-btn");
+                                if (backBtn) {
+                                    backBtn.onclick = () => {
+                                        if (cardIdx > 0) {
+                                            cardIdx--;
+                                            scoreHistory.pop();
+                                            renderCardStep();
+                                        }
+                                    };
+                                }
+
+                                const nextBtn = document.getElementById("card-next-btn");
+                                if (nextBtn) {
+                                    nextBtn.onclick = () => {
+                                        let stepWeight = 60;
+                                        const chosenVal = cardAnswers[q.id];
+                                        if (chosenVal) {
+                                            const selOpt = q.options.find(o => o.v === chosenVal);
+                                            if (selOpt && selOpt.weight !== undefined) {
+                                                stepWeight = selOpt.weight;
+                                            }
+                                        }
+                                        scoreHistory.push(stepWeight);
+                                        cardIdx++;
+                                        renderCardStep();
+                                    };
+                                }
+                            }
+
+                            document.addEventListener("DOMContentLoaded", () => {
+                                renderCardStep();
+                            });
+                        })();
+                        </script>
+
+                        <!-- Card 2 (Find Platform Trigger Card) -->
+                        <div class="content_wrap entry_card" style="grid-column: span 6; margin-top: 2rem;">
                             <div class="entry_meta">
                                 <span>TOOL 02</span>
                                 <span>10 QUESTIONS &middot; 2 MIN</span>
@@ -5209,8 +5662,8 @@
                             </div>
 
                             <div class="u-button-wrapper">
-                                <a href="platform-finder.html"
-                                    onclick="window.location.href='platform-finder.html'; return false;"
+                                <a href="javascript:void(0);"
+                                    onclick="startPlatformDiagnostic(); return false;"
                                     data-barba-prevent="all" data-theme="dark" data-btn-hover=""
                                     class="btn w-inline-block no-barba">
                                     <div class="btn__bg"></div>
@@ -5225,6 +5678,364 @@
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Interactive Platform Finder Card (Opposite Find Platform) -->
+                        <div id="card-platform-container" class="content_wrap entry_card" style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                            <!-- Top ~40%: Visual Dynamic SVG Line Graph & Platform Fit Metrics -->
+                            <div id="platform-diag-top" style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">PLATFORM FIT DIAGNOSTIC GRAPH</span>
+                                    <span id="platform-score-badge" style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">INITIAL</span>
+                                </div>
+                                
+                                <!-- SVG Line Graph -->
+                                <div style="position: relative; width: 100%; height: 110px; margin-top: 0.5rem;">
+                                    <svg id="platform-svg-graph" width="100%" height="100%" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">
+                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
+                                        
+                                        <path id="platform-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z" fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;"/>
+                                        <path id="platform-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transition: d 0.4s ease;"/>
+                                        <circle id="platform-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A" stroke="#0E100F" stroke-width="2" style="transition: cx 0.4s ease, cy 0.4s ease;"/>
+                                    </svg>
+                                </div>
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
+                                    <span id="platform-progress-label">PROGRESS: 0 / 2</span>
+                                    <span id="platform-score-value" style="color: #FFFCE1; font-weight: 700;">SCORE: --</span>
+                                </div>
+                            </div>
+
+                            <!-- Bottom ~60%: Interactive Questions & Step Flow -->
+                            <div id="card-platform-bottom" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
+                            </div>
+                        </div>
+
+                        <script>
+                        (function() {
+                            const PLATFORM_QUESTIONS = [
+                                {
+                                    id: "kind", num: "Question 01", title: "What is the site actually for?",
+                                    help: "Pick the job it has to do first. Everything else is secondary.",
+                                    options: [
+                                        { v: "brochure", label: "Winning enquiries", sub: "People find you, read, and get in touch", weight: 75 },
+                                        { v: "shop", label: "Selling products", sub: "Stock, checkout, shipping, returns", weight: 85 },
+                                        { v: "booking", label: "Taking bookings", sub: "Appointments, rooms, tables, classes", weight: 70 },
+                                        { v: "portal", label: "Logins and accounts", sub: "A members area, client portal or dashboard", weight: 80 },
+                                        { v: "content", label: "Publishing at volume", sub: "Listings, guides, a real content operation", weight: 75 }
+                                    ]
+                                },
+                                {
+                                    id: "budget", num: "Question 02", title: "What's the budget to get it built?",
+                                    help: "One-off build cost, not the monthly running of it.",
+                                    options: [
+                                        { v: "b1", label: "Under €1,500", sub: "Template, done quickly", weight: 50 },
+                                        { v: "b2", label: "€1,500 – €5,000", sub: "The range most SME sites land in", weight: 70 },
+                                        { v: "b3", label: "€5,000 – €15,000", sub: "Custom design, real functionality", weight: 85 },
+                                        { v: "b4", label: "€15,000+", sub: "Bespoke, or genuinely complex", weight: 95 }
+                                    ]
+                                }
+                            ];
+
+                            let platformCardIdx = -2; // -2 = initial no button, -1 = show Start Diagnostic button, 0..1 = questions, 2 = results
+                            let platformAnswers = {};
+                            let platformScoreHistory = [];
+
+                            window.startPlatformDiagnostic = function() {
+                                const container = document.getElementById("card-platform-container");
+                                if (container) {
+                                    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                                if (platformCardIdx === -2) {
+                                    platformCardIdx = -1; // Reveal the "Start Diagnostic" button
+                                    renderPlatformStep();
+                                }
+                            };
+
+                            window.beginPlatformMCQFlow = function() {
+                                platformCardIdx = 0;
+                                platformAnswers = {};
+                                platformScoreHistory = [];
+                                renderPlatformStep();
+                            };
+
+                            function calculatePlatformResult(kind, budget) {
+                                // Sourced directly from PLATFORMS and raw scoring in platform-finder.html
+                                if (kind === 'shop') {
+                                    if (budget === 'b1') return { name: "Shopify", blurb: "Hosted commerce. Fastest route to selling properly, at the cost of portability.", est3Yr: "€2,400", fit: "HIGH FIT" };
+                                    if (budget === 'b2') return { name: "Shopify", blurb: "Hosted commerce. Fastest route to selling properly, at the cost of portability.", est3Yr: "€4,800", fit: "HIGH FIT" };
+                                    if (budget === 'b3') return { name: "Shopify / WooCommerce", blurb: "Hosted commerce or custom WooCommerce tailored for high order volume.", est3Yr: "€12,000", fit: "OPTIMAL FIT" };
+                                    return { name: "Shopify Plus / Custom", blurb: "Bespoke e-commerce architecture engineered for scale.", est3Yr: "€24,000+", fit: "ENTERPRISE FIT" };
+                                } else if (kind === 'brochure' || kind === 'booking') {
+                                    if (budget === 'b1') return { name: "Squarespace", blurb: "Hosted builder. Excellent templates, lowest ceiling.", est3Yr: "€1,800", fit: "HIGH FIT" };
+                                    if (budget === 'b2') return { name: "WordPress", blurb: "Open source. You own the files and the database, and you can move both.", est3Yr: "€4,200", fit: "OPTIMAL FIT" };
+                                    if (budget === 'b3') return { name: "Webflow", blurb: "Hosted visual development. A designer's tool with layered pricing.", est3Yr: "€8,500", fit: "OPTIMAL FIT" };
+                                    return { name: "Webflow / Custom", blurb: "Bespoke CMS built from scratch. Total control, and total responsibility.", est3Yr: "€18,000+", fit: "ENTERPRISE FIT" };
+                                } else { // portal or content
+                                    if (budget === 'b1' || budget === 'b2') return { name: "WordPress", blurb: "Open source. You own the files and the database, and you can move both.", est3Yr: "€3,800", fit: "HIGH FIT" };
+                                    if (budget === 'b3') return { name: "WordPress / Webflow", blurb: "Custom database structure built for high volume content and member routing.", est3Yr: "€9,500", fit: "OPTIMAL FIT" };
+                                    return { name: "Custom build", blurb: "Bespoke CMS built from scratch. Total control, and total responsibility.", est3Yr: "€28,000+", fit: "ENTERPRISE FIT" };
+                                }
+                            }
+
+                            function updatePlatformGraph() {
+                                const path = document.getElementById("platform-graph-path");
+                                const area = document.getElementById("platform-graph-area");
+                                const dot = document.getElementById("platform-graph-dot");
+                                const badge = document.getElementById("platform-score-badge");
+                                const progressLbl = document.getElementById("platform-progress-label");
+                                const scoreVal = document.getElementById("platform-score-value");
+
+                                const totalQ = PLATFORM_QUESTIONS.length;
+                                const answeredCount = platformScoreHistory.length;
+
+                                if (progressLbl) {
+                                    progressLbl.textContent = `PROGRESS: ${answeredCount} / ${totalQ}`;
+                                }
+
+                                const points = [];
+                                points.push({ x: 0, y: 95 }); // Initial point at 0%
+
+                                let runningSum = 0;
+                                for (let i = 0; i < platformScoreHistory.length; i++) {
+                                    runningSum += platformScoreHistory[i];
+                                    const avg = runningSum / (i + 1);
+                                    const x = ((i + 1) / totalQ) * 400;
+                                    const y = 95 - (avg / 100) * 75;
+                                    points.push({ x, y, avg });
+                                }
+
+                                if (points.length === 1) {
+                                    for (let i = 1; i <= totalQ; i++) {
+                                        points.push({ x: (i / totalQ) * 400, y: 95, avg: 0 });
+                                    }
+                                } else {
+                                    const lastPt = points[points.length - 1];
+                                    for (let i = answeredCount + 1; i <= totalQ; i++) {
+                                        points.push({ x: (i / totalQ) * 400, y: lastPt.y, avg: lastPt.avg });
+                                    }
+                                }
+
+                                const pathD = points.reduce((acc, p, idx) => {
+                                    return acc + (idx === 0 ? `M ${p.x.toFixed(1)} ${p.y.toFixed(1)}` : ` L ${p.x.toFixed(1)} ${p.y.toFixed(1)}`);
+                                }, "");
+
+                                const areaD = `${pathD} L 400 100 L 0 100 Z`;
+
+                                if (path) path.setAttribute("d", pathD);
+                                if (area) area.setAttribute("d", areaD);
+
+                                const activePt = points[answeredCount];
+                                if (dot) {
+                                    dot.setAttribute("cx", activePt.x.toFixed(1));
+                                    dot.setAttribute("cy", activePt.y.toFixed(1));
+                                }
+
+                                const currentAvg = answeredCount > 0 ? points[answeredCount].avg : 0;
+                                if (scoreVal) {
+                                    scoreVal.textContent = answeredCount > 0 ? `SCORE: ${Math.round(currentAvg)}%` : "SCORE: --";
+                                }
+
+                                if (badge) {
+                                    if (platformCardIdx <= -1) {
+                                        badge.textContent = "INITIAL";
+                                        badge.style.color = "#FFFCE1";
+                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                    } else if (answeredCount === totalQ) {
+                                        badge.textContent = "RECOMMENDED FIT";
+                                        badge.style.color = "#FFE32A";
+                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                    } else if (answeredCount > 0) {
+                                        badge.textContent = "DIAGNOSTIC ACTIVE";
+                                        badge.style.color = "#FFE32A";
+                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                    } else {
+                                        badge.textContent = "DIAGNOSTIC ACTIVE";
+                                        badge.style.color = "#FFFCE1";
+                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                    }
+                                }
+                            }
+
+                            function renderPlatformStep() {
+                                updatePlatformGraph();
+                                const bottom = document.getElementById("card-platform-bottom");
+                                if (!bottom) return;
+
+                                if (platformCardIdx === -2) {
+                                    // Initial state: Title and subheading only, NO button
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div class="entry_meta" style="margin-bottom: 1rem;">
+                                                <span>TOOL 02</span>
+                                                <span>2 QUESTIONS &middot; 30 SEC</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Platform Finder & 3-Year Cost Diagnostic</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
+                                            </p>
+                                        </div>
+                                        <div style="min-height: 50px;"></div>
+                                    `;
+                                    return;
+                                }
+
+                                if (platformCardIdx === -1) {
+                                    // Triggered state: Title, subheading, AND Start Diagnostic button
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div class="entry_meta" style="margin-bottom: 1rem;">
+                                                <span>TOOL 02</span>
+                                                <span>2 QUESTIONS &middot; 30 SEC</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Platform Finder & 3-Year Cost Diagnostic</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
+                                            </p>
+                                        </div>
+                                        <div class="u-button-wrapper" style="margin-top: 1.5rem;">
+                                            <a href="javascript:void(0);" onclick="beginPlatformMCQFlow(); return false;" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                <div class="btn__bg"></div>
+                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Start Diagnostic</p></div>
+                                            </a>
+                                        </div>
+                                    `;
+                                    return;
+                                }
+
+                                if (platformCardIdx >= PLATFORM_QUESTIONS.length) {
+                                    // Dynamic Results View based on BOTH selected answers
+                                    const kindAns = platformAnswers["kind"] || "brochure";
+                                    const budgetAns = platformAnswers["budget"] || "b2";
+                                    const res = calculatePlatformResult(kindAns, budgetAns);
+                                    const finalScore = platformScoreHistory.length > 0 ? Math.round(platformScoreHistory.reduce((a,b)=>a+b,0) / platformScoreHistory.length) : 75;
+
+                                    bottom.innerHTML = `
+                                        <div>
+                                            <div style="display: flex; justify-content: space-between; align-items: flex-center; margin-bottom: 1rem;">
+                                                <span style="font-family: monospace; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em;">RECOMMENDED PLATFORM</span>
+                                                <span style="font-size: 0.85rem; font-weight: 700; color: #FFE32A;">${res.fit}</span>
+                                            </div>
+                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 0.75rem;">${res.name}</h3>
+                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">
+                                                ${res.blurb}
+                                            </p>
+                                            
+                                            <div style="background: rgba(255, 252, 225, 0.03); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 0.5rem; text-transform: uppercase;">Platform Cost Projection</div>
+                                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #FFFCE1;">
+                                                    <div><strong>Estimated 3-Yr Total:</strong> ${res.est3Yr}</div>
+                                                    <div><strong>Fit Score:</strong> ${finalScore}%</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+                                            <button type="button" id="platform-restart-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 10px 18px; border-radius: 6px; font-size: 0.85rem; cursor: pointer;">Retake Diagnostic</button>
+                                            <div class="u-button-wrapper" style="margin-top: 0;">
+                                                <a href="/contact.html" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                    <div class="btn__bg"></div>
+                                                    <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                    <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Discuss Strategy</p></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `;
+
+                                    const restartBtn = document.getElementById("platform-restart-btn");
+                                    if (restartBtn) {
+                                        restartBtn.onclick = () => {
+                                            platformCardIdx = -1;
+                                            platformAnswers = {};
+                                            platformScoreHistory = [];
+                                            renderPlatformStep();
+                                        };
+                                    }
+                                    return;
+                                }
+
+                                const q = PLATFORM_QUESTIONS[platformCardIdx];
+                                const curAns = platformAnswers[q.id];
+
+                                const optsHtml = q.options.map((opt, i) => {
+                                    const isSelected = curAns === opt.v;
+                                    return `
+                                        <button type="button" class="entry_option ${isSelected ? 'sel' : ''}" data-v="${opt.v}" style="width: 100%; border: 1px solid ${isSelected ? '#FFFCE1' : '#2A2B25'}; background-color: ${isSelected ? 'rgba(255, 252, 225, 0.06)' : 'transparent'}; border-radius: 8px; text-align: left; margin-bottom: 0.5rem; transition: border-color 0.2s ease, background-color 0.2s ease;">
+                                            <span class="entry_option_num" style="color: ${isSelected ? '#FFFCE1' : '#7C7C70'}; border-color: ${isSelected ? '#FFFCE1' : '#2A2B25'};">${i + 1}</span>
+                                            <div style="display: flex; flex-direction: column; text-align: left; padding: 2px 0;">
+                                                <span class="u-text-style-small-medium" style="color: #FFFCE1;">${opt.label}</span>
+                                                ${opt.sub ? `<span style="font-size: 0.78rem; color: #7C7C70; margin-top: 3px;">${opt.sub}</span>` : ''}
+                                            </div>
+                                        </button>
+                                    `;
+                                }).join('');
+
+                                bottom.innerHTML = `
+                                    <div>
+                                        <div class="entry_meta" style="margin-bottom: 0.75rem;">
+                                            <span>${q.num.toUpperCase()} OF ${PLATFORM_QUESTIONS.length}</span>
+                                        </div>
+                                        <h4 class="u-text-style-main-medium" style="margin-bottom: 0.5rem; color: #FFFCE1;">${q.title}</h4>
+                                        ${q.help ? `<p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.25rem;">${q.help}</p>` : `<div style="margin-bottom: 1rem;"></div>`}
+                                        <div class="entry_options" style="margin-bottom: 1.5rem;">
+                                            ${optsHtml}
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #2A2B25; padding-top: 1rem;">
+                                        <button type="button" id="platform-back-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; ${platformCardIdx === 0 ? 'visibility: hidden;' : ''}">Back</button>
+                                        <div class="u-button-wrapper" style="margin-top: 0; ${!curAns ? 'opacity: 0.5; pointer-events: none;' : ''}">
+                                            <a id="platform-next-btn" href="javascript:void(0);" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
+                                                <div class="btn__bg"></div>
+                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
+                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">${platformCardIdx === PLATFORM_QUESTIONS.length - 1 ? 'Process Final Score' : 'Next Question'}</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                `;
+
+                                bottom.querySelectorAll(".entry_option").forEach(btn => {
+                                    btn.onclick = () => {
+                                        platformAnswers[q.id] = btn.dataset.v;
+                                        renderPlatformStep();
+                                    };
+                                });
+
+                                const backBtn = document.getElementById("platform-back-btn");
+                                if (backBtn) {
+                                    backBtn.onclick = () => {
+                                        if (platformCardIdx > 0) {
+                                            platformCardIdx--;
+                                            platformScoreHistory.pop();
+                                            renderPlatformStep();
+                                        }
+                                    };
+                                }
+
+                                const nextBtn = document.getElementById("platform-next-btn");
+                                if (nextBtn) {
+                                    nextBtn.onclick = () => {
+                                        let stepWeight = 70;
+                                        const chosenVal = platformAnswers[q.id];
+                                        if (chosenVal) {
+                                            const selOpt = q.options.find(o => o.v === chosenVal);
+                                            if (selOpt && selOpt.weight !== undefined) {
+                                                stepWeight = selOpt.weight;
+                                            }
+                                        }
+                                        platformScoreHistory.push(stepWeight);
+                                        platformCardIdx++;
+                                        renderPlatformStep();
+                                    };
+                                }
+                            }
+
+                            document.addEventListener("DOMContentLoaded", () => {
+                                renderPlatformStep();
+                            });
+                        })();
+                        </script>
                     </div>
                 </div>
                 <div data-wf--spacer--variant="small"
