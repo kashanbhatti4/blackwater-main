@@ -1,0 +1,11 @@
+{
+  "name": "blackwater-website",
+  "version": "1.0.0",
+  "description": "Blackwater Digital Marketing Website",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
