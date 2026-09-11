@@ -79,6 +79,7 @@ function initAfterEnterFunctions(next) {
   if (has('.hb-p-67a28ee5727d8900071953b9-3')) initHoneyBookEmbed();
   if (has('#article-content') && typeof renderJournalArticle === 'function') renderJournalArticle(nextPage);
   if (has('#all-articles-content') && typeof renderAllArticles === 'function') renderAllArticles(nextPage);
+  if (typeof window.initDiagnostics === 'function') window.initDiagnostics();
   updateActiveNavLink();
 
   if (hasLenis) {

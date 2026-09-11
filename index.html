@@ -67,7 +67,7 @@
                 "addressCountry": "US"
             },
             "telephone": "+1-551-215-0978",
-            "priceRange": "$$",
+            "priceRange": "$",
             "subOrganization": [{
                     "@type": "Organization",
                     "name": "Adamit Productions",
@@ -469,6 +469,7 @@
                 .capabilities_wrap {
                     top: 0 !important;
                 }
+
                 .home_hero_title_new_heading {
                     width: auto !important;
                     max-width: 50% !important;
@@ -4485,6 +4486,7 @@
                                 width: 100% !important;
                                 max-width: 100% !important;
                                 height: auto !important;
+                                max-height: 230px !important;
                                 aspect-ratio: 16 / 9 !important;
                                 margin-top: 1.75rem !important;
                                 margin-bottom: 1.75rem !important;
@@ -4875,7 +4877,7 @@
             </div>
 
 
-            <!--$we're more than a marketing agency-->
+            <!--$We've already made the mistake-->
             <style>
                 .about_heading_custom {
 
@@ -4897,6 +4899,20 @@
                 }
 
                 @media screen and (max-width: 991px) {
+                    .home_about_content {
+                        display: flex !important;
+                        flex-direction: column !important;
+                    }
+
+                    .home_about_content .service_intro_text_group {
+                        order: 1 !important;
+                    }
+
+                    .home_about_content .u-button-wrapper {
+                        order: 2 !important;
+                        margin-top: 1.5rem !important;
+                    }
+
                     .about_paragraph_custom {
                         max-width: 100% !important;
                     }
@@ -5129,912 +5145,1230 @@
                     </div>
 
                     <div class="content_layout u-grid-custom">
-                        <!-- Card 1 -->
-                        <div class="content_wrap entry_card" style="grid-column: span 6;">
-                            <div class="entry_meta">
-                                <span>TOOL 01</span>
-                                <span>12 QUESTIONS &middot; 90 SEC</span>
-                            </div>
-                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Where should
-                                your<br>marketing budget go?</h3>
-                            <p class="u-text-style-small"
-                                style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
-                                Search or social, and roughly how to split it. Ends with a readiness score and the fixes
-                                to make before you spend.</p>
-
-                            <div class="entry_meta" style="margin-bottom: 1rem;">QUESTION 01 OF 12</div>
-                            <h4 class="u-text-style-main-medium" style="margin-bottom: 1.5rem; color: #FFFCE1;">Where is
-                                the business right now?</h4>
-
-                            <div class="entry_options" style="margin-bottom: 2.5rem;">
-                                <div class="entry_option">
-                                    <span class="entry_option_num">1</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">Pre-launch or first
-                                        year</span>
-                                </div>
-                                <div class="entry_option">
-                                    <span class="entry_option_num">2</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">1-3 years,
-                                        growing</span>
-                                </div>
-                                <div class="entry_option">
-                                    <span class="entry_option_num">3</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">3+ years,
-                                        established</span>
-                                </div>
-                            </div>
-
-                            <div class="u-button-wrapper">
-                                <a href="javascript:void(0);"
-                                    onclick="startCardDiagnostic(); return false;"
-                                    data-barba-prevent="all" data-theme="dark" data-btn-hover=""
-                                    class="btn w-inline-block no-barba">
-                                    <div class="btn__bg"></div>
-                                    <div class="btn__circle-wrap">
-                                        <div class="btn__circle">
-                                            <div class="before__100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="btn__text u-text-style-main-medium">
-                                        <p class="btn-text-p">Calculate Budget</p>
-                                    </div>
-                                </a>
-                            </div>
+                        <!-- Card 1 (Calculate Budget Trigger Card) -->
+                        <div id="card-tool01-left" class="content_wrap entry_card"
+                            style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                         </div>
 
-                        <!-- Interactive Diagnostic Experience Card (Opposite Calculate Budget) -->
-                        <div id="card-diagnostic-container" class="content_wrap entry_card" style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                        <!-- Interactive Marketing Budget Diagnostic Card 2 -->
+                        <div id="card-budget-container" class="content_wrap entry_card"
+                            style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                             <!-- Top ~40%: Visual Dynamic SVG Line Graph & Readiness Metrics -->
-                            <div id="card-diag-top" style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                    <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">READINESS DIAGNOSTIC GRAPH</span>
-                                    <span id="diag-score-badge" style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">INITIAL</span>
+                            <div id="budget-diag-top"
+                                style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span
+                                        style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">MARKETING
+                                        READINESS DIAGNOSTIC GRAPH</span>
+                                    <span id="budget-score-badge"
+                                        style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">BENCHMARK</span>
                                 </div>
-                                
+
                                 <!-- SVG Line Graph -->
                                 <div style="position: relative; width: 100%; height: 110px; margin-top: 0.5rem;">
-                                    <svg id="diag-svg-graph" width="100%" height="100%" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">
-                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        
-                                        <path id="diag-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z" fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;"/>
-                                        <path id="diag-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transition: d 0.4s ease;"/>
-                                        <circle id="diag-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A" stroke="#0E100F" stroke-width="2" style="transition: cx 0.4s ease, cy 0.4s ease;"/>
+                                    <svg id="budget-svg-graph" width="100%" height="100%" viewBox="0 0 400 110"
+                                        preserveAspectRatio="none" style="overflow: visible;">
+                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+
+                                        <path id="budget-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z"
+                                            fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;" />
+                                        <path id="budget-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1"
+                                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                                            style="transition: d 0.4s ease;" />
+                                        <circle id="budget-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A"
+                                            stroke="#0E100F" stroke-width="2"
+                                            style="transition: cx 0.4s ease, cy 0.4s ease;" />
                                     </svg>
                                 </div>
-                                
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
-                                    <span id="diag-progress-label">PROGRESS: 0 / 12</span>
-                                    <span id="diag-score-value" style="color: #FFFCE1; font-weight: 700;">SCORE: --</span>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
+                                    <span id="budget-progress-label">PROGRESS: 0 / 12</span>
+                                    <span id="budget-score-value" style="color: #FFFCE1; font-weight: 700;">READINESS
+                                        SCORE: --</span>
                                 </div>
                             </div>
 
-                            <!-- Bottom ~60%: Interactive Questions & Step Flow -->
-                            <div id="card-diag-bottom" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
+                            <!-- Bottom ~60%: Dynamic Results ONLY (No Questions) -->
+                            <div id="card-budget-bottom"
+                                style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
                             </div>
                         </div>
 
                         <script>
-                        (function() {
-                            const DIAG_QUESTIONS = [
-                                {
-                                    id: "stage", num: "Question 01", title: "Where is the business right now?",
-                                    help: "This sets how much you need proof versus how much you need reach.",
-                                    options: [
-                                        { v: "prelaunch", label: "Pre-launch or first year", sub: "Need early validation before spending big", weight: 40 },
-                                        { v: "growing", label: "1-3 years, growing", sub: "Predictable revenue, ready to scale core channels", weight: 70 },
-                                        { v: "established", label: "3+ years, established", sub: "Multi-channel presence, optimizing payback", weight: 85 }
-                                    ]
-                                },
-                                {
-                                    id: "goal", num: "Question 02", title: "Primary goal for the next 6-12 months?",
-                                    help: "Budget allocation depends directly on growth velocity.",
-                                    options: [
-                                        { v: "validate", label: "Validate demand & test messaging", weight: 50 },
-                                        { v: "leads", label: "Scale lead flow and customer volume", weight: 80 },
-                                        { v: "market_share", label: "Establish market dominance & brand authority", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "model", num: "Question 03", title: "What is your primary sales model?",
-                                    help: "Inbound vs outbound dictates ad platform selection.",
-                                    options: [
-                                        { v: "inbound", label: "Inbound lead gen (forms / bookings)", weight: 75 },
-                                        { v: "hightouch", label: "High-touch consultative sales cycle", weight: 70 },
-                                        { v: "ecom", label: "Direct-to-consumer e-commerce checkout", weight: 85 }
-                                    ]
-                                },
-                                {
-                                    id: "history", num: "Question 04", title: "Previous paid ad campaign history?",
-                                    help: "Historical data dramatically lowers initial testing cost.",
-                                    options: [
-                                        { v: "never", label: "Never run paid ads systematically", weight: 50 },
-                                        { v: "tried_inhouse", label: "Tried in-house with mixed performance", weight: 60 },
-                                        { v: "worked_agency", label: "Worked with agencies in the past", weight: 75 },
-                                        { v: "active_scaling", label: "Currently running active ad campaigns", weight: 85 }
-                                    ]
-                                },
-                                {
-                                    id: "acv", num: "Question 05", title: "Average Customer Value (ACV / LTV)?",
-                                    help: "Higher ACV permits aggressive acquisition spend.",
-                                    options: [
-                                        { v: "low", label: "Under €500 per customer", weight: 50 },
-                                        { v: "mid", label: "€500 - €2,500 per customer", weight: 70 },
-                                        { v: "high", label: "€2,500 - €10,000 per customer", weight: 85 },
-                                        { v: "enterprise", label: "€10,000+ enterprise deals", weight: 95 }
-                                    ]
-                                },
-                                {
-                                    id: "tracking", num: "Question 06", title: "Current conversion tracking setup?",
-                                    help: "You cannot scale what you cannot measure.",
-                                    options: [
-                                        { v: "none", label: "No formal conversion tracking active", weight: 30 },
-                                        { v: "basic", label: "Basic GA4 / Google Tag Manager installed", weight: 60 },
-                                        { v: "advanced", label: "Advanced CAPI + Offline Conversion Import", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "site", num: "Question 07", title: "Website & landing page conversion state?",
-                                    help: "Driving traffic to a weak site burns money.",
-                                    options: [
-                                        { v: "overhaul", label: "Needs complete redesign / overhaul", weight: 40 },
-                                        { v: "moderate", label: "Functional but needs optimization", weight: 70 },
-                                        { v: "high_converting", label: "High-converting dedicated landing pages", weight: 95 }
-                                    ]
-                                },
-                                {
-                                    id: "crm", num: "Question 08", title: "Lead processing & CRM follow-up speed?",
-                                    help: "Speed-to-lead dictates real ROI.",
-                                    options: [
-                                        { v: "manual", label: "Manual email replies (24h+ delay)", weight: 40 },
-                                        { v: "basic_crm", label: "Basic CRM setup (replies within 2-4h)", weight: 70 },
-                                        { v: "automated", label: "Automated instant routing (<15m SLA)", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "capacity", num: "Question 09", title: "Sales team fulfillment capacity?",
-                                    help: "Ad spend must align with operational capacity.",
-                                    options: [
-                                        { v: "founder", label: "Founder / solo handling sales calls", weight: 50 },
-                                        { v: "small_team", label: "Small dedicated sales team (1-3 reps)", weight: 75 },
-                                        { v: "full_team", label: "Established sales org ready for volume", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "timeline", num: "Question 10", title: "Expected payback & return timeline?",
-                                    help: "Realistic expectations prevent premature ad shutdowns.",
-                                    options: [
-                                        { v: "instant", label: "Needs profitable payback <30 days", weight: 40 },
-                                        { v: "standard", label: "30 - 90 days payback window", weight: 75 },
-                                        { v: "longterm", label: "90+ days (long LTV focused growth)", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "content", num: "Question 11", title: "Creative & content production assets?",
-                                    help: "High-performing ads need strong video & static creative.",
-                                    options: [
-                                        { v: "minimal", label: "Minimal raw photos / no video assets", weight: 40 },
-                                        { v: "moderate_creative", label: "Good product photos & basic case studies", weight: 70 },
-                                        { v: "rich_media", label: "Rich video library, testimonials & assets", weight: 90 }
-                                    ]
-                                },
-                                {
-                                    id: "budget", num: "Question 12", title: "Target monthly ad spend commitment?",
-                                    help: "Ensures recommended media channels fit liquidity.",
-                                    options: [
-                                        { v: "under2k", label: "Under €2,000 / month", weight: 50 },
-                                        { v: "2k_5k", label: "€2,000 - €5,000 / month", weight: 75 },
-                                        { v: "5k_15k", label: "€5,000 - €15,000 / month", weight: 90 },
-                                        { v: "15k_plus", label: "€15,000+ / month", weight: 95 }
-                                    ]
-                                }
-                            ];
-
-                            let cardIdx = -2; // -2 = initial no button, -1 = show Start Diagnostic button, 0..11 = questions, 12 = results
-                            let cardAnswers = {};
-                            let scoreHistory = [];
-
-                            window.startCardDiagnostic = function() {
-                                const container = document.getElementById("card-diagnostic-container");
-                                if (container) {
-                                    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                                if (cardIdx === -2) {
-                                    cardIdx = -1; // Reveal the "Start Diagnostic" button
-                                    renderCardStep();
-                                }
-                            };
-
-                            window.beginMCQFlow = function() {
-                                cardIdx = 0;
-                                cardAnswers = {};
-                                scoreHistory = [];
-                                renderCardStep();
-                            };
-
-                            function updateGraph() {
-                                const path = document.getElementById("diag-graph-path");
-                                const area = document.getElementById("diag-graph-area");
-                                const dot = document.getElementById("diag-graph-dot");
-                                const badge = document.getElementById("diag-score-badge");
-                                const progressLbl = document.getElementById("diag-progress-label");
-                                const scoreVal = document.getElementById("diag-score-value");
-
-                                const totalQ = DIAG_QUESTIONS.length;
-                                const answeredCount = scoreHistory.length;
-
-                                if (progressLbl) {
-                                    progressLbl.textContent = `PROGRESS: ${answeredCount} / ${totalQ}`;
-                                }
-
-                                const points = [];
-                                points.push({ x: 0, y: 95 }); // Initial point at 0%
-
-                                let runningSum = 0;
-                                for (let i = 0; i < scoreHistory.length; i++) {
-                                    runningSum += scoreHistory[i];
-                                    const avg = runningSum / (i + 1);
-                                    const x = ((i + 1) / totalQ) * 400;
-                                    const y = 95 - (avg / 100) * 75; // y ranges from 95 (0%) down to 20 (100%)
-                                    points.push({ x, y, avg });
-                                }
-
-                                if (points.length === 1) {
-                                    // Default flat line
-                                    for (let i = 1; i <= totalQ; i++) {
-                                        points.push({ x: (i / totalQ) * 400, y: 95, avg: 0 });
+                            (function () {
+                                const BUDGET_QUESTIONS = [
+                                    {
+                                        id: "stage", num: "Question 01", title: "Where is the business right now?",
+                                        help: "This sets how much you need proof versus how much you need reach.",
+                                        options: [
+                                            { v: "startup", label: "Pre-launch or first year", sub: "Still proving the offer works", w: { ga: 2, seo: 1, ps: 3, os: 2, vid: 1 } },
+                                            { v: "growing", label: "1–3 years, growing", sub: "Some customers, want more predictably", w: { ga: 3, seo: 3, ps: 2, os: 1, vid: 1 } },
+                                            { v: "establish", label: "3+ years, established", sub: "Steady, looking to scale or defend position", w: { ga: 3, seo: 4, ps: 1, os: 2, vid: 1 } },
+                                            { v: "newline", label: "Established, launching something new", sub: "New product or service into an existing business", w: { ga: 2, seo: 2, ps: 3, os: 2, vid: 2 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "demand", num: "Question 02", title: "Does anyone already search for what you sell?",
+                                        help: "The single biggest factor. You cannot buy ads against a search nobody types.",
+                                        options: [
+                                            { v: "new", label: "No — it's genuinely new", sub: "People don't know this category exists yet", w: { ga: 0, seo: 1, ps: 5, os: 3, vid: 3 }, flag: "newCategory" },
+                                            { v: "hybrid", label: "Sort of — new angle on a known problem", sub: "They search for the problem, not for us", w: { ga: 2, seo: 3, ps: 3, os: 2, vid: 2 } },
+                                            { v: "exists", label: "Yes — people search for this daily", sub: "Established category with real competitors", w: { ga: 5, seo: 5, ps: 1, os: 1, vid: 1 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "driver", num: "Question 03", title: "Is buying it a need or a want?",
+                                        help: "Needs get typed into Google. Wants get discovered on a feed.",
+                                        options: [
+                                            { v: "urgent", label: "Urgent need", sub: "Something's broken, or a deadline is looming", w: { ga: 5, seo: 3, ps: 1, os: 0, vid: 0, lsa: 4 }, flag: "urgent" },
+                                            { v: "planned", label: "Planned purchase", sub: "Researched over days or weeks before deciding", w: { ga: 3, seo: 4, ps: 2, os: 2, vid: 2 } },
+                                            { v: "want", label: "A want", sub: "Nice to have — driven by desire, timing or mood", w: { ga: 1, seo: 1, ps: 6, os: 4, vid: 4 }, flag: "want" }
+                                        ]
+                                    },
+                                    {
+                                        id: "visual", num: "Question 04", title: "Can someone see the value in a photo or video?",
+                                        help: "Visual results earn attention cheaply. Invisible expertise does not.",
+                                        options: [
+                                            { v: "high", label: "Very visual", sub: "Before and after, finished work, food, property, design", w: { ga: 1, seo: 1, ps: 5, os: 3, vid: 4 }, flag: "visual" },
+                                            { v: "mid", label: "Somewhat", sub: "Visuals help but don't tell the whole story", w: { ga: 2, seo: 2, ps: 2, os: 1, vid: 1 } },
+                                            { v: "low", label: "Not really", sub: "It's advice, expertise or a technical service", w: { ga: 3, seo: 3, ps: 1, os: 1, vid: 1 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "audience", num: "Question 05", title: "Who actually signs off on the purchase?",
+                                        options: [
+                                            { v: "b2c", label: "Consumers", sub: "Individuals or households", w: { ga: 2, seo: 1, ps: 3, os: 2, vid: 1 } },
+                                            { v: "b2b", label: "Businesses", sub: "Owners, managers, finance or HR", w: { ga: 3, seo: 3, ps: 2, os: 1, vid: 1 }, flag: "b2b" },
+                                            { v: "both", label: "Both", sub: "Split roughly down the middle", w: { ga: 2, seo: 2, ps: 2, os: 1, vid: 1 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "geo", num: "Question 06", title: "How far will you travel for a customer?",
+                                        options: [
+                                            { v: "local", label: "Local", sub: "Cork, or one city or county", w: { ga: 3, seo: 3, ps: 1, os: 1, lsa: 3 }, flag: "local" },
+                                            { v: "nat", label: "All-Ireland", sub: "Anywhere on the island", w: { ga: 2, seo: 3, ps: 2, os: 1, vid: 1 } },
+                                            { v: "intl", label: "International", sub: "UK, EU or further", w: { ga: 2, seo: 4, ps: 2, os: 2, vid: 1 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "value", num: "Question 07", title: "What's an average customer worth to you?",
+                                        help: "First order or first year — whichever you think in.",
+                                        options: [
+                                            { v: "low", label: "Under €250", sub: "Volume business", w: { ga: 1, seo: 2, ps: 3, os: 2, vid: 1 } },
+                                            { v: "mid", label: "€250 – €2,500", sub: "", w: { ga: 3, seo: 3, ps: 2, os: 1, vid: 1 } },
+                                            { v: "high", label: "€2,500 – €15,000", sub: "", w: { ga: 4, seo: 4, ps: 1, os: 1, vid: 2 }, flag: "highValue" },
+                                            { v: "vhigh", label: "€15,000+", sub: "Or a long-running retainer", w: { ga: 3, seo: 4, ps: 1, os: 2, vid: 2 }, flag: "highValue" }
+                                        ]
+                                    },
+                                    {
+                                        id: "cycle", num: "Question 08", title: "How long from first contact to signed?",
+                                        options: [
+                                            { v: "fast", label: "Same day or a few days", sub: "They want it sorted now", w: { ga: 4, seo: 2, ps: 1, lsa: 2 } },
+                                            { v: "weeks", label: "One to four weeks", sub: "A quote, a comparison, a decision", w: { ga: 3, seo: 3, ps: 2, os: 1, vid: 1 } },
+                                            { v: "slow", label: "One to six months", sub: "Multiple conversations, maybe a committee", w: { ga: 2, seo: 4, ps: 2, os: 3, vid: 2 }, flag: "longCycle" }
+                                        ]
+                                    },
+                                    {
+                                        id: "doing", num: "Question 09", title: "What are you running at the moment?",
+                                        help: "Select everything that applies.",
+                                        multi: true,
+                                        options: [
+                                            { v: "none", label: "Nothing consistent", sub: "Word of mouth and referrals", w: {} },
+                                            { v: "ga", label: "Google Ads", sub: "", w: {} },
+                                            { v: "seo", label: "SEO or a blog", sub: "", w: {} },
+                                            { v: "os", label: "Organic social", sub: "Posting regularly, not paying", w: {} },
+                                            { v: "ps", label: "Paid social", sub: "Meta, LinkedIn or TikTok ads", w: {} },
+                                            { v: "email", label: "Email marketing", sub: "", w: {} }
+                                        ]
+                                    },
+                                    {
+                                        id: "site", num: "Question 10", title: "Honestly — how good is the website?",
+                                        help: "Ad money lands on your site. A weak site wastes every euro upstream of it.",
+                                        options: [
+                                            { v: "none", label: "No site, or a social page only", sub: "", w: {}, flag: "noSite" },
+                                            { v: "basic", label: "Basic site, rarely touched", sub: "A few pages, built once and left", w: {}, flag: "weakSite" },
+                                            { v: "good", label: "Decent site, kept up to date", sub: "Real content, loads fast, works on mobile", w: {} },
+                                            { v: "conv", label: "Built to convert", sub: "Online booking, checkout or a proper enquiry flow", w: {} }
+                                        ]
+                                    },
+                                    {
+                                        id: "track", num: "Question 11", title: "Do you know where your enquiries come from?",
+                                        help: "Without this, every recommendation below is a guess — including mine.",
+                                        options: [
+                                            { v: "no", label: "No idea", sub: "Enquiries arrive, source unknown", w: {}, flag: "noTracking" },
+                                            { v: "some", label: "Roughly", sub: "We ask people, or we can half-guess", w: {}, flag: "weakTracking" },
+                                            { v: "full", label: "Fully tracked", sub: "I could tell you cost per lead by channel", w: {} }
+                                        ]
+                                    },
+                                    {
+                                        id: "budget", num: "Question 12", title: "What can you commit monthly?",
+                                        help: "Media spend plus management. Be realistic — a thin budget spread across four channels beats nothing, badly.",
+                                        options: [
+                                            { v: "b1", label: "Under €500", sub: "", w: {}, spend: 400, band: 1 },
+                                            { v: "b2", label: "€500 – €1,500", sub: "", w: {}, spend: 1000, band: 2 },
+                                            { v: "b3", label: "€1,500 – €5,000", sub: "", w: {}, spend: 3000, band: 3 },
+                                            { v: "b4", label: "€5,000+", sub: "", w: {}, spend: 6500, band: 4 }
+                                        ]
                                     }
-                                } else {
-                                    const lastPt = points[points.length - 1];
-                                    for (let i = answeredCount + 1; i <= totalQ; i++) {
-                                        points.push({ x: (i / totalQ) * 400, y: lastPt.y, avg: lastPt.avg });
-                                    }
+                                ];
+
+                                const CHANNELS = {
+                                    ga: { name: "Google Ads — Search", pole: "capture", why: "Buys you the top of the page the moment somebody types the problem." },
+                                    seo: { name: "SEO & Google Business Profile", pole: "capture", why: "Slower to start, but it compounds and the clicks stop costing you money." },
+                                    ps: { name: "Paid social", pole: "create", why: "Puts you in front of people who weren't looking yet. Meta for consumers, LinkedIn for business buyers." },
+                                    os: { name: "Organic social & content", pole: "create", why: "Builds the familiarity that makes every paid channel cheaper." },
+                                    vid: { name: "Video production", pole: "create", why: "The asset everything else runs on — ads, site, socials, sales calls." },
+                                    lsa: { name: "Local Services Ads", pole: "capture", why: "Sits above Search results and charges per lead, not per click. Eligibility varies by trade." }
+                                };
+
+                                let budgetCardIdx = -1; // -1 = Initial view
+                                const budgetAnswers = {};
+                                const budgetScoreHistory = [];
+
+                                function startBudgetDiagnostic() {
+                                    budgetCardIdx = 0;
+                                    renderBudgetAll();
                                 }
+                                window.startBudgetDiagnostic = startBudgetDiagnostic;
 
-                                const pathD = points.reduce((acc, p, idx) => {
-                                    return acc + (idx === 0 ? `M ${p.x.toFixed(1)} ${p.y.toFixed(1)}` : ` L ${p.x.toFixed(1)} ${p.y.toFixed(1)}`);
-                                }, "");
-
-                                const areaD = `${pathD} L 400 100 L 0 100 Z`;
-
-                                if (path) path.setAttribute("d", pathD);
-                                if (area) area.setAttribute("d", areaD);
-
-                                const activePt = points[answeredCount];
-                                if (dot) {
-                                    dot.setAttribute("cx", activePt.x.toFixed(1));
-                                    dot.setAttribute("cy", activePt.y.toFixed(1));
+                                function restartBudgetDiagnostic() {
+                                    Object.keys(budgetAnswers).forEach(k => delete budgetAnswers[k]);
+                                    budgetScoreHistory.length = 0;
+                                    budgetCardIdx = -1;
+                                    renderBudgetAll();
                                 }
+                                window.restartBudgetDiagnostic = restartBudgetDiagnostic;
 
-                                const currentAvg = answeredCount > 0 ? points[answeredCount].avg : 0;
-                                if (scoreVal) {
-                                    scoreVal.textContent = answeredCount > 0 ? `SCORE: ${Math.round(currentAvg)}%` : "SCORE: --";
+                                function selectBudgetOption(qId, val) {
+                                    budgetAnswers[qId] = val;
+                                    budgetScoreHistory.push(val);
+                                    budgetCardIdx++;
+                                    renderBudgetAll();
                                 }
+                                window.selectBudgetOption = selectBudgetOption;
 
-                                if (badge) {
-                                    if (cardIdx <= -1) {
-                                        badge.textContent = "INITIAL";
-                                        badge.style.color = "#FFFCE1";
-                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
-                                    } else if (answeredCount === totalQ) {
-                                        if (currentAvg >= 70) {
-                                            badge.textContent = "HIGH READINESS";
-                                            badge.style.color = "#FFE32A";
-                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
-                                        } else {
-                                            badge.textContent = "LOW READINESS";
-                                            badge.style.color = "#FFE32A";
-                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
-                                        }
-                                    } else if (answeredCount > 0) {
-                                        if (currentAvg >= 70) {
-                                            badge.textContent = "TRENDING HIGH";
-                                            badge.style.color = "#FFE32A";
-                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
-                                        } else {
-                                            badge.textContent = "TRENDING MODERATE";
-                                            badge.style.color = "#FFE32A";
-                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
-                                        }
+                                function toggleBudgetMultiOption(qId, val) {
+                                    let arr = budgetAnswers[qId] ? [...budgetAnswers[qId]] : [];
+                                    if (val === "none") {
+                                        arr = arr.includes("none") ? [] : ["none"];
                                     } else {
-                                        badge.textContent = "DIAGNOSTIC ACTIVE";
-                                        badge.style.color = "#FFFCE1";
-                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                        arr = arr.filter(x => x !== "none");
+                                        arr = arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
+                                    }
+                                    budgetAnswers[qId] = arr;
+                                    renderBudgetCard1();
+                                }
+                                window.toggleBudgetMultiOption = toggleBudgetMultiOption;
+
+                                function nextBudgetCardStep() {
+                                    budgetCardIdx++;
+                                    renderBudgetAll();
+                                }
+                                window.nextBudgetCardStep = nextBudgetCardStep;
+
+                                function prevBudgetCardStep() {
+                                    if (budgetCardIdx > 0) {
+                                        budgetCardIdx--;
+                                        budgetScoreHistory.pop();
+                                        renderBudgetAll();
+                                    } else if (budgetCardIdx === 0) {
+                                        budgetCardIdx = -1;
+                                        renderBudgetAll();
                                     }
                                 }
-                            }
+                                window.prevBudgetCardStep = prevBudgetCardStep;
 
-                            function renderCardStep() {
-                                updateGraph();
-                                const bottom = document.getElementById("card-diag-bottom");
-                                if (!bottom) return;
-
-                                if (cardIdx === -2) {
-                                    // Initial state: Title and subheading only, NO button
-                                    bottom.innerHTML = `
-                                        <div>
-                                            <div class="entry_meta" style="margin-bottom: 1rem;">
-                                                <span>TOOL 01</span>
-                                                <span>12 QUESTIONS &middot; 90 SEC</span>
-                                            </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Marketing Budget & Readiness Diagnostic</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
-                                                Discover optimal budget allocation across Search & Social channels, track your score dynamically, and get actionable recommendations.
-                                            </p>
-                                        </div>
-                                        <div style="min-height: 50px;"></div>
-                                    `;
-                                    return;
+                                function calculateBudgetScores() {
+                                    const s = { ga: 0, seo: 0, ps: 0, os: 0, vid: 0, lsa: 0 };
+                                    const flags = new Set();
+                                    BUDGET_QUESTIONS.forEach(q => {
+                                        const a = budgetAnswers[q.id];
+                                        if (a === undefined) return;
+                                        const chosen = q.multi ? q.options.filter(o => (a || []).includes(o.v)) : q.options.filter(o => o.v === a);
+                                        chosen.forEach(o => {
+                                            Object.entries(o.w || {}).forEach(([k, v]) => { s[k] = (s[k] || 0) + v; });
+                                            if (o.flag) flags.add(o.flag);
+                                        });
+                                    });
+                                    if (flags.has("local") && flags.has("urgent") && budgetAnswers.audience !== "b2b") s.lsa = Math.round(s.lsa * 1.6);
+                                    else s.lsa = 0;
+                                    if (flags.has("newCategory")) { s.ga = Math.round(s.ga * 0.35); s.seo = Math.round(s.seo * 0.6); }
+                                    return { s, flags };
                                 }
 
-                                if (cardIdx === -1) {
-                                    // Triggered state: Title, subheading, AND Start Diagnostic button
-                                    bottom.innerHTML = `
-                                        <div>
-                                            <div class="entry_meta" style="margin-bottom: 1rem;">
-                                                <span>TOOL 01</span>
-                                                <span>12 QUESTIONS &middot; 90 SEC</span>
-                                            </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Marketing Budget & Readiness Diagnostic</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
-                                                Discover optimal budget allocation across Search & Social channels, track your score dynamically, and get actionable recommendations.
-                                            </p>
-                                        </div>
-                                        <div class="u-button-wrapper" style="margin-top: 1.5rem;">
-                                            <a href="javascript:void(0);" onclick="beginMCQFlow(); return false;" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Start Diagnostic</p></div>
-                                            </a>
-                                        </div>
-                                    `;
-                                    return;
+                                function calculateBudgetMix() {
+                                    const { s, flags } = calculateBudgetScores();
+                                    const budgetOpt = (BUDGET_QUESTIONS.find(q => q.id === "budget") || {}).options.find(o => o.v === budgetAnswers.budget) || { spend: 1000, band: 2 };
+                                    const maxChannels = { 1: 2, 2: 3, 3: 4, 4: 5 }[budgetOpt.band] || 3;
+
+                                    let entries = Object.entries(s).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, maxChannels);
+                                    const total = entries.reduce((t, [, v]) => t + v, 0) || 1;
+                                    let pct = entries.map(([k, v]) => [k, (v / total) * 100]);
+
+                                    pct = pct.filter(([, p]) => p >= 9);
+                                    const t2 = pct.reduce((t, [, p]) => t + p, 0) || 1;
+                                    pct = pct.map(([k, p]) => [k, Math.round((p / t2) * 100 / 5) * 5]);
+
+                                    let sum = pct.reduce((t, [, p]) => t + p, 0);
+                                    if (sum !== 100 && pct.length) pct[0][1] += (100 - sum);
+
+                                    const capture = pct.filter(([k]) => (CHANNELS[k] || {}).pole === "capture").reduce((t, [, p]) => t + p, 0);
+                                    return { pct, capture, create: 100 - capture, flags, spend: budgetOpt.spend, band: budgetOpt.band };
                                 }
 
-                                if (cardIdx >= DIAG_QUESTIONS.length) {
-                                    // Results View
-                                    const finalScore = scoreHistory.length > 0 ? Math.round(scoreHistory.reduce((a,b)=>a+b,0) / scoreHistory.length) : 70;
-                                    const isHigh = finalScore >= 70;
+                                function calculateBudgetReadiness() {
+                                    const siteScore = { none: 0, basic: 9, good: 19, conv: 25 }[budgetAnswers.site] ?? 0;
+                                    const trackScore = { no: 0, some: 9, full: 20 }[budgetAnswers.track] ?? 0;
+                                    const doing = budgetAnswers.doing || [];
+                                    const activeScore = Math.min(20, doing.filter(d => d !== "none").length * 5);
+                                    const budgetScore = { b1: 5, b2: 11, b3: 17, b4: 20 }[budgetAnswers.budget] ?? 0;
+                                    const top2 = calculateBudgetMix().pct.slice(0, 2).map(([k]) => k);
+                                    const overlap = top2.filter(k => doing.includes(k)).length;
+                                    const alignScore = [0, 8, 15][overlap] ?? 0;
+                                    const total = siteScore + trackScore + activeScore + budgetScore + alignScore;
+                                    return {
+                                        total,
+                                        parts: [
+                                            ["Website", siteScore, 25],
+                                            ["Measurement", trackScore, 20],
+                                            ["Activity", activeScore, 20],
+                                            ["Budget", budgetScore, 20],
+                                            ["Alignment", alignScore, 15]
+                                        ]
+                                    };
+                                }
+
+                                function calculateBudgetBand(total) {
+                                    if (total < 35) return { label: "Foundations first", note: "Spending on ads right now would mostly buy you an expensive lesson. Two or three fixes change that." };
+                                    if (total < 60) return { label: "Nearly ready", note: "The pieces are there. Close the gaps below and the budget starts working properly." };
+                                    if (total < 80) return { label: "Ready to scale", note: "Solid base. The gain now comes from concentration, not from adding more channels." };
+                                    return { label: "Optimise and compound", note: "You're past the setup stage. Test, cut what's flat, and reinvest into what already returns." };
+                                }
+
+                                function calculateBudgetHeadline(m) {
+                                    if (m.capture >= 70) return { h: "Capture the demand that already exists", p: "People are actively searching for what you sell. The fastest money here is in front of that search — not in interrupting people who weren't looking. Social plays a supporting role." };
+                                    if (m.create >= 70) return { h: "Create the demand first", p: "Not enough people are searching for this yet, so search ads have little to catch. Budget belongs in front of the right audience with creative that explains why they should care." };
+                                    return { h: "Run both, with different jobs", p: "You sit in the middle: there's real search demand, but not enough of it to grow on alone. Social creates the demand and search catches it." };
+                                }
+
+                                function renderBudgetCard1() {
+                                    const card1 = document.getElementById("card-tool01-left") || document.getElementById("card-1-container");
+                                    if (!card1) return;
+
+                                    if (budgetCardIdx === -1) {
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta" style="margin-bottom: 1.25rem;">
+                                                        <span>TOOL 01</span>
+                                                        <span>12 QUESTIONS &middot; 90 SEC</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Where should your<br>marketing budget go?</h3>
+                                                    <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
+                                                        Most marketing money is wasted on the right channel at the wrong time. This asks twelve questions about your business and gives you a budget split, a readiness score, and the fixes to make first.
+                                                    </p>
+                                                </div>
+
+                                                <div class="u-button-wrapper">
+                                                    <a href="javascript:void(0);" onclick="startBudgetDiagnostic(); return false;"
+                                                        data-barba-prevent="all" data-theme="dark" data-btn-hover=""
+                                                        class="btn w-inline-block no-barba">
+                                                        <div class="btn__bg"></div>
+                                                        <div class="btn__circle-wrap">
+                                                            <div class="btn__circle">
+                                                                <div class="before__100"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn__text u-text-style-main-medium">
+                                                            <p class="btn-text-p">Calculate Budget</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `;
+                                        return;
+                                    }
+
+                                    if (budgetCardIdx >= 0 && budgetCardIdx < BUDGET_QUESTIONS.length) {
+                                        const q = BUDGET_QUESTIONS[budgetCardIdx];
+                                        const currentAns = budgetAnswers[q.id];
+
+                                        const optionsHtml = q.options.map((opt, oIdx) => {
+                                            const isSelected = q.multi
+                                                ? (Array.isArray(currentAns) && currentAns.includes(opt.v))
+                                                : (currentAns === opt.v);
+
+                                            const bgStyle = isSelected
+                                                ? 'background: rgba(255, 252, 225, 0.07); border: 1px solid rgba(255, 252, 225, 0.5);'
+                                                : 'background: rgba(255, 255, 255, 0.02); border: 1px solid #2A2B25;';
+
+                                            const numColor = isSelected ? 'background: rgba(255, 252, 225, 0.18); color: #FFFCE1; border: 1px solid rgba(255, 252, 225, 0.4);' : 'background: rgba(255, 255, 255, 0.05); color: #8C8C7E; border: 1px solid transparent;';
+
+                                            const clickHandler = q.multi
+                                                ? `toggleBudgetMultiOption('${q.id}', '${opt.v}')`
+                                                : `selectBudgetOption('${q.id}', '${opt.v}')`;
+
+                                            return `
+                                                <div onclick="${clickHandler}" class="entry_option" style="${bgStyle} cursor: pointer; border-radius: 8px; padding: 1.1rem 1.35rem; transition: all 0.2s ease; display: flex; align-items: center; gap: 1rem; margin-bottom: 0.85rem; border-radius: 10px;">
+                                                    <span class="entry_option_num" style="${numColor} min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">${oIdx + 1}</span>
+                                                    <div style="display: flex; flex-direction: column;">
+                                                        <span class="u-text-style-small-medium" style="color: #FFFCE1; font-weight: 600; font-size: 1rem; line-height: 1.4;">${opt.label}</span>
+                                                        ${opt.sub ? `<span style="font-size: 0.85rem; color: #8C8C7E; margin-top: 2px; line-height: 1.4;">${opt.sub}</span>` : ''}
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }).join("");
+
+                                        const isMulti = q.multi;
+
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta" style="margin-bottom: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+                                                        <span style="color: #FFE32A; font-weight: 700;">QUESTION ${String(budgetCardIdx + 1).padStart(2, '0')} OF ${BUDGET_QUESTIONS.length}</span>
+                                                        <span style="color: #7C7C70; font-size: 0.8rem;">TOOL 01</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; font-size: 1.8rem; font-weight: 600; line-height: 1.3; margin-bottom: 1.1rem;">${q.title}</h3>
+                                                    ${q.help ? `<p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 1.5rem; line-height: 1.5; font-size: 0.95rem;">${q.help}</p>` : '<div style="margin-bottom: 1rem;"></div>'}
+                                                    
+                                                    <div class="entry_options" style="margin-bottom: 1.5rem;">
+                                                        ${optionsHtml}
+                                                    </div>
+                                                </div>
+
+                                                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.25rem; border-top: 1px solid #2A2B25;">
+                                                    <button onclick="prevBudgetCardStep()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.65rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.25s ease;">
+                                                        &larr; Back
+                                                    </button>
+
+                                                    ${isMulti ? `
+                                                        <button onclick="nextBudgetCardStep()" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='none';" style="background: #FFE32A; color: #0E100F; border: none; padding: 0.65rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.2s ease;">
+                                                            Next Question &rarr;
+                                                        </button>
+                                                    ` : `
+                                                        <span style="font-size: 0.8rem; font-weight: 600; color: #7C7C70;">${budgetCardIdx + 1} / ${BUDGET_QUESTIONS.length}</span>
+                                                    `}
+                                                </div>
+                                            </div>
+                                        `;
+                                        return;
+                                    }
+
+                                    if (budgetCardIdx >= BUDGET_QUESTIONS.length) {
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta" style="margin-bottom: 1.25rem;">
+                                                        <span style="color: #FFE32A; font-weight: 700;">DIAGNOSTIC COMPLETE</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700;">All 12 Questions Answered</h3>
+                                                    <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                        Your marketing readiness fit score and optimal channel allocations are updated on the right. You can retake or adjust anytime.
+                                                    </p>
+                                                </div>
+
+                                                <div style="display: flex; gap: 0.75rem; align-items: center; padding-top: 1.25rem; border-top: 1px solid #2A2B25; flex-wrap: wrap;">
+                                                    <button onclick="restartBudgetDiagnostic()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Start Again
+                                                    </button>
+                                                    <button onclick="window.print()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Save as PDF
+                                                    </button>
+                                                    <button id="budget-copy-btn" onclick="copyBudgetResults()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Copy Results
+                                                    </button>
+                                                    <a href="/contact.html" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease;">
+                                                        Discuss Strategy
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }
+                                }
+
+                                function updateBudgetCard2() {
+                                    const answeredCount = Object.keys(budgetAnswers).length;
+                                    const path = document.getElementById("budget-graph-path");
+                                    const area = document.getElementById("budget-graph-area");
+                                    const dot = document.getElementById("budget-graph-dot");
+                                    const badge = document.getElementById("budget-score-badge");
+                                    const progressLbl = document.getElementById("budget-progress-label");
+                                    const scoreVal = document.getElementById("budget-score-value");
+                                    const bottom = document.getElementById("card-budget-bottom");
+
+                                    if (budgetCardIdx === -1) {
+                                        if (progressLbl) progressLbl.textContent = `BENCHMARK FIT`;
+                                        if (scoreVal) scoreVal.textContent = `READINESS SCORE: 100%`;
+                                        if (badge) {
+                                            badge.textContent = "BENCHMARK";
+                                            badge.style.color = "#FFFCE1";
+                                            badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                        }
+
+                                        const pathD = "M 0 95 L 400 25";
+                                        const areaD = "M 0 95 L 400 25 L 400 100 L 0 100 Z";
+                                        if (path) path.setAttribute("d", pathD);
+                                        if (area) area.setAttribute("d", areaD);
+                                        if (dot) { dot.setAttribute("cx", "400"); dot.setAttribute("cy", "25"); }
+
+                                        if (!bottom) return;
+
+                                        bottom.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1.75rem;">
+                                                <div>
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+                                                        <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">LIVE DIAGNOSTIC BENCHMARK</span>
+                                                        <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">BENCHMARK FIT</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Where should your budget go?</h3>
+                                                    <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
+                                                        Select options on Tool 01 to see your live marketing readiness curve and optimal channel allocation build progressively.
+                                                    </p>
+                                                </div>
+
+                                                <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 0.5rem; opacity: 0.6;">
+                                                    <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">OPTIMAL CHANNEL WEIGHT</div>
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.85rem;">
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase;">GOOGLE ADS</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">50%</div>
+                                                        </div>
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase;">PAID SOCIAL</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">30%</div>
+                                                        </div>
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase;">SEO & CONTENT</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">20%</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                                        <span style="font-size: 0.85rem; font-weight: 600; color: #7C7C70;">Pending Inputs...</span>
+                                                        <span style="font-size: 0.95rem; font-weight: 700; color: #7C7C70;">-- / mo</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `;
+                                        return;
+                                    }
+
+                                    const m = calculateBudgetMix();
+                                    const r = calculateBudgetReadiness();
+                                    const b = calculateBudgetBand(r.total);
+                                    const hd = calculateBudgetHeadline(m);
+
+                                    if (progressLbl) progressLbl.textContent = `PROGRESS: ${answeredCount} / ${BUDGET_QUESTIONS.length}`;
+                                    if (scoreVal) scoreVal.textContent = `READINESS SCORE: ${Math.round(r.total)}%`;
+
+                                    const targetX = (answeredCount / BUDGET_QUESTIONS.length) * 400;
+                                    const endY = 95 - (r.total / 100) * 70;
+                                    const pathD = `M 0 95 L ${targetX.toFixed(1)} ${endY.toFixed(1)}`;
+                                    const areaD = `${pathD} L ${targetX.toFixed(1)} 100 L 0 100 Z`;
+
+                                    if (path) path.setAttribute("d", pathD);
+                                    if (area) area.setAttribute("d", areaD);
+                                    if (dot) { dot.setAttribute("cx", targetX.toFixed(1)); dot.setAttribute("cy", endY.toFixed(1)); }
+
+                                    if (badge) {
+                                        badge.textContent = budgetCardIdx >= BUDGET_QUESTIONS.length ? "RECOMMENDED FIT" : "DIAGNOSTIC ACTIVE";
+                                        badge.style.color = "#FFE32A";
+                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                    }
+
+                                    if (!bottom) return;
+
+                                    const boxesHtml = m.pct.slice(0, 4).map(([k, p]) => `
+                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem; box-sizing: border-box;">
+                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.35; display: flex; align-items: center; min-height: 2.2em;">${CHANNELS[k]?.name || k}</div>
+                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; line-height: 1;">${p}%</div>
+                                        </div>
+                                    `).join("");
+
+                                    const sectionTag = budgetCardIdx >= BUDGET_QUESTIONS.length ? 'RECOMMENDED STRATEGY' : 'LIVE DIAGNOSTIC';
+                                    const badgeTag = r.total >= 60 ? 'HIGH FIT' : 'MODERATE FIT';
 
                                     bottom.innerHTML = `
-                                        <div>
-                                            <div style="display: flex; justify-content: space-between; align-items: flex-center; margin-bottom: 1rem;">
-                                                <span style="font-family: monospace; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em;">DIAGNOSTIC COMPLETE</span>
-                                                <span style="font-size: 0.85rem; font-weight: 700; color: ${isHigh ? '#FFE32A' : '#FFE32A'};">${isHigh ? 'HIGH READINESS' : 'LOW READINESS'}</span>
+                                        <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1.75rem;">
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+                                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">${sectionTag}</span>
+                                                    <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${badgeTag}</span>
+                                                </div>
+                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${hd.h}</h3>
+                                                <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
+                                                    ${hd.p}
+                                                </p>
                                             </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 0.75rem;">Score: ${finalScore}%</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">
-                                                ${isHigh 
-                                                    ? 'Your infrastructure is well-positioned for scale. Focus media spend on Google Search intent capture (60%) paired with Meta Retargeting (40%).' 
-                                                    : 'Your infrastructure requires quick optimization in conversion tracking or landing pages prior to scaling ad spend.'}
-                                            </p>
-                                            
-                                            <div style="background: rgba(255, 252, 225, 0.03); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
-                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 0.5rem; text-transform: uppercase;">Recommended Media Allocation</div>
-                                                <div style="display: flex; gap: 1rem; font-size: 0.85rem; color: #FFFCE1;">
-                                                    <div><strong>Search Ads:</strong> ${isHigh ? '60%' : '75%'}</div>
-                                                    <div><strong>Social Ads:</strong> ${isHigh ? '30%' : '20%'}</div>
-                                                    <div><strong>Retargeting:</strong> ${isHigh ? '10%' : '5%'}</div>
+
+                                            <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 0.5rem;">
+                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">OPTIMAL CHANNEL ALLOCATION</div>
+                                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.85rem;">
+                                                    ${boxesHtml}
+                                                </div>
+                                                <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 8px; padding: 0.9rem 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                                    <span style="font-size: 0.85rem; font-weight: 600; color: #FFFCE1;">Estimated Monthly Commitment</span>
+                                                    <span style="font-size: 1rem; font-weight: 700; color: #FFE32A;">€${m.spend.toLocaleString()} / mo</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                                            <button type="button" id="card-restart-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 10px 18px; border-radius: 6px; font-size: 0.85rem; cursor: pointer;">Retake Diagnostic</button>
-                                            <div class="u-button-wrapper" style="margin-top: 0;">
-                                                <a href="/contact.html" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                    <div class="btn__bg"></div>
-                                                    <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                    <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Discuss Strategy</p></div>
-                                                </a>
-                                            </div>
-                                        </div>
                                     `;
-
-                                    const restartBtn = document.getElementById("card-restart-btn");
-                                    if (restartBtn) {
-                                        restartBtn.onclick = () => {
-                                            cardIdx = -1;
-                                            cardAnswers = {};
-                                            scoreHistory = [];
-                                            renderCardStep();
-                                        };
-                                    }
-                                    return;
                                 }
 
-                                const q = DIAG_QUESTIONS[cardIdx];
-                                const curAns = cardAnswers[q.id];
+                                function copyBudgetResults() {
+                                    const m = calculateBudgetMix();
+                                    const r = calculateBudgetReadiness();
+                                    const b = calculateBudgetBand(r.total);
 
-                                const optsHtml = q.options.map((opt, i) => {
-                                    const isSelected = q.multi ? (curAns && curAns.includes(opt.v)) : (curAns === opt.v);
-                                    return `
-                                        <button type="button" class="entry_option ${isSelected ? 'sel' : ''}" data-v="${opt.v}" style="width: 100%; border: 1px solid ${isSelected ? '#FFFCE1' : '#2A2B25'}; background-color: ${isSelected ? 'rgba(255, 252, 225, 0.06)' : 'transparent'}; border-radius: 8px; text-align: left; margin-bottom: 0.5rem; transition: border-color 0.2s ease, background-color 0.2s ease;">
-                                            <span class="entry_option_num" style="color: ${isSelected ? '#FFFCE1' : '#7C7C70'}; border-color: ${isSelected ? '#FFFCE1' : '#2A2B25'};">${i + 1}</span>
-                                            <div style="display: flex; flex-direction: column; text-align: left; padding: 2px 0;">
-                                                <span class="u-text-style-small-medium" style="color: #FFFCE1;">${opt.label}</span>
-                                                ${opt.sub ? `<span style="font-size: 0.78rem; color: #7C7C70; margin-top: 3px;">${opt.sub}</span>` : ''}
-                                            </div>
-                                        </button>
-                                    `;
-                                }).join('');
+                                    let summaryText = `MARKETING BUDGET DIAGNOSTIC RESULTS:
+` +
+                                        `Readiness Score: ${r.total}/100 (${b.label})
+` +
+                                        `Demand Split: ${m.create}% Create Demand / ${m.capture}% Capture Demand
+` +
+                                        `Monthly Budget Basis: €${m.spend}/mo
 
-                                bottom.innerHTML = `
-                                    <div>
-                                        <div class="entry_meta" style="margin-bottom: 0.75rem;">
-                                            <span>${q.num.toUpperCase()} OF ${DIAG_QUESTIONS.length}</span>
-                                        </div>
-                                        <h4 class="u-text-style-main-medium" style="margin-bottom: 0.5rem; color: #FFFCE1;">${q.title}</h4>
-                                        ${q.help ? `<p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.25rem;">${q.help}</p>` : `<div style="margin-bottom: 1rem;"></div>`}
-                                        <div class="entry_options" style="margin-bottom: 1.5rem;">
-                                            ${optsHtml}
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #2A2B25; padding-top: 1rem;">
-                                        <button type="button" id="card-back-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; ${cardIdx === 0 ? 'visibility: hidden;' : ''}">Back</button>
-                                        <div class="u-button-wrapper" style="margin-top: 0; ${!curAns ? 'opacity: 0.5; pointer-events: none;' : ''}">
-                                            <a id="card-next-btn" href="javascript:void(0);" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">${cardIdx === DIAG_QUESTIONS.length - 1 ? 'Process Final Score' : 'Next Question'}</p></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                `;
+` +
+                                        `Recommended Channel Allocations:
+`;
 
-                                bottom.querySelectorAll(".entry_option").forEach(btn => {
-                                    btn.onclick = () => {
-                                        cardAnswers[q.id] = btn.dataset.v;
-                                        renderCardStep();
-                                    };
-                                });
+                                    m.pct.forEach(([k, p]) => {
+                                        const cName = CHANNELS[k]?.name || k;
+                                        const eur = Math.round(m.spend * p / 100);
+                                        summaryText += `- ${cName}: ${p}% (≈ €${eur}/mo)
+`;
+                                    });
 
-                                const backBtn = document.getElementById("card-back-btn");
-                                if (backBtn) {
-                                    backBtn.onclick = () => {
-                                        if (cardIdx > 0) {
-                                            cardIdx--;
-                                            scoreHistory.pop();
-                                            renderCardStep();
-                                        }
-                                    };
-                                }
-
-                                const nextBtn = document.getElementById("card-next-btn");
-                                if (nextBtn) {
-                                    nextBtn.onclick = () => {
-                                        let stepWeight = 60;
-                                        const chosenVal = cardAnswers[q.id];
-                                        if (chosenVal) {
-                                            const selOpt = q.options.find(o => o.v === chosenVal);
-                                            if (selOpt && selOpt.weight !== undefined) {
-                                                stepWeight = selOpt.weight;
+                                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                                        navigator.clipboard.writeText(summaryText).then(() => {
+                                            const btn = document.getElementById("budget-copy-btn");
+                                            if (btn) {
+                                                btn.textContent = "Copied!";
+                                                setTimeout(() => { btn.textContent = "Copy Results"; }, 2000);
                                             }
-                                        }
-                                        scoreHistory.push(stepWeight);
-                                        cardIdx++;
-                                        renderCardStep();
-                                    };
+                                        }).catch(() => {
+                                            alert(summaryText);
+                                        });
+                                    } else {
+                                        alert(summaryText);
+                                    }
                                 }
-                            }
+                                window.copyBudgetResults = copyBudgetResults;
 
-                            document.addEventListener("DOMContentLoaded", () => {
-                                renderCardStep();
-                            });
-                        })();
+                                function renderBudgetAll() {
+                                    renderBudgetCard1();
+                                    updateBudgetCard2();
+                                }
+                                window.renderBudgetAll = renderBudgetAll;
+                                window.renderBudgetCard1 = renderBudgetCard1;
+                                window.updateBudgetCard2 = updateBudgetCard2;
+
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    renderBudgetAll();
+                                });
+                            })();
                         </script>
 
                         <!-- Card 2 (Find Platform Trigger Card) -->
-                        <div class="content_wrap entry_card" style="grid-column: span 6; margin-top: 2rem;">
-                            <div class="entry_meta">
-                                <span>TOOL 02</span>
-                                <span>10 QUESTIONS &middot; 2 MIN</span>
-                            </div>
-                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Which platform
-                                should<br>you build on?</h3>
-                            <p class="u-text-style-small"
-                                style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">A
-                                recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not
-                                the monthly sticker price.</p>
-
-                            <div class="entry_meta" style="margin-bottom: 1rem;">QUESTION 01 OF 10</div>
-                            <h4 class="u-text-style-main-medium" style="margin-bottom: 1.5rem; color: #FFFCE1;">What is
-                                the
-                                site actually for?</h4>
-
-                            <div class="entry_options" style="margin-bottom: 2.5rem;">
-                                <div class="entry_option">
-                                    <span class="entry_option_num">1</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">Getting
-                                        enquiries</span>
-                                </div>
-                                <div class="entry_option">
-                                    <span class="entry_option_num">2</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">Selling
-                                        online</span>
-                                </div>
-                                <div class="entry_option">
-                                    <span class="entry_option_num">3</span>
-                                    <span class="u-text-style-small-medium" style="color: #FFFCE1;">A brochure
-                                        presence</span>
-                                </div>
-                            </div>
-
-                            <div class="u-button-wrapper">
-                                <a href="javascript:void(0);"
-                                    onclick="startPlatformDiagnostic(); return false;"
-                                    data-barba-prevent="all" data-theme="dark" data-btn-hover=""
-                                    class="btn w-inline-block no-barba">
-                                    <div class="btn__bg"></div>
-                                    <div class="btn__circle-wrap">
-                                        <div class="btn__circle">
-                                            <div class="before__100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="btn__text u-text-style-main-medium">
-                                        <p class="btn-text-p">Find Platform</p>
-                                    </div>
-                                </a>
-                            </div>
+                        <div id="card-tool02-left" class="content_wrap entry_card"
+                            style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                         </div>
 
                         <!-- Interactive Platform Finder Card (Opposite Find Platform) -->
-                        <div id="card-platform-container" class="content_wrap entry_card" style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                        <div id="card-platform-container" class="content_wrap entry_card"
+                            style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                             <!-- Top ~40%: Visual Dynamic SVG Line Graph & Platform Fit Metrics -->
-                            <div id="platform-diag-top" style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                    <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">PLATFORM FIT DIAGNOSTIC GRAPH</span>
-                                    <span id="platform-score-badge" style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">INITIAL</span>
+                            <div id="platform-diag-top"
+                                style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span
+                                        style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; color: #7C7C70; text-transform: uppercase;">PLATFORM
+                                        FIT DIAGNOSTIC GRAPH</span>
+                                    <span id="platform-score-badge"
+                                        style="font-size: 0.75rem; font-weight: 700; background-color: rgba(255, 252, 225, 0.08); color: #FFFCE1; padding: 4px 10px; border-radius: 4px; border: 1px solid #2A2B25;">INITIAL</span>
                                 </div>
-                                
+
                                 <!-- SVG Line Graph -->
                                 <div style="position: relative; width: 100%; height: 110px; margin-top: 0.5rem;">
-                                    <svg id="platform-svg-graph" width="100%" height="100%" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">
-                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3" stroke-width="1"/>
-                                        
-                                        <path id="platform-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z" fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;"/>
-                                        <path id="platform-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transition: d 0.4s ease;"/>
-                                        <circle id="platform-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A" stroke="#0E100F" stroke-width="2" style="transition: cx 0.4s ease, cy 0.4s ease;"/>
+                                    <svg id="platform-svg-graph" width="100%" height="100%" viewBox="0 0 400 110"
+                                        preserveAspectRatio="none" style="overflow: visible;">
+                                        <line x1="0" y1="20" x2="400" y2="20" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+                                        <line x1="0" y1="55" x2="400" y2="55" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+                                        <line x1="0" y1="90" x2="400" y2="90" stroke="#2A2B25" stroke-dasharray="3 3"
+                                            stroke-width="1" />
+
+                                        <path id="platform-graph-area" d="M 0 95 L 400 95 L 400 100 L 0 100 Z"
+                                            fill="rgba(255, 252, 225, 0.03)" style="transition: d 0.4s ease;" />
+                                        <path id="platform-graph-path" d="M 0 95 L 400 95" fill="none" stroke="#FFFCE1"
+                                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                                            style="transition: d 0.4s ease;" />
+                                        <circle id="platform-graph-dot" cx="0" cy="95" r="5" fill="#FFE32A"
+                                            stroke="#0E100F" stroke-width="2"
+                                            style="transition: cx 0.4s ease, cy 0.4s ease;" />
                                     </svg>
                                 </div>
-                                
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
-                                    <span id="platform-progress-label">PROGRESS: 0 / 2</span>
-                                    <span id="platform-score-value" style="color: #FFFCE1; font-weight: 700;">SCORE: --</span>
+
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid #2A2B25; font-size: 0.8rem; color: #7C7C70;">
+                                    <span id="platform-progress-label">PROGRESS: 0 / 10</span>
+                                    <span id="platform-score-value" style="color: #FFFCE1; font-weight: 700;">SCORE:
+                                        --</span>
                                 </div>
                             </div>
 
-                            <!-- Bottom ~60%: Interactive Questions & Step Flow -->
-                            <div id="card-platform-bottom" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
+                            <!-- Bottom ~60%: Dynamic Results ONLY (No Questions) -->
+                            <div id="card-platform-bottom"
+                                style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between;">
                             </div>
                         </div>
 
                         <script>
-                        (function() {
-                            const PLATFORM_QUESTIONS = [
-                                {
-                                    id: "kind", num: "Question 01", title: "What is the site actually for?",
-                                    help: "Pick the job it has to do first. Everything else is secondary.",
-                                    options: [
-                                        { v: "brochure", label: "Winning enquiries", sub: "People find you, read, and get in touch", weight: 75 },
-                                        { v: "shop", label: "Selling products", sub: "Stock, checkout, shipping, returns", weight: 85 },
-                                        { v: "booking", label: "Taking bookings", sub: "Appointments, rooms, tables, classes", weight: 70 },
-                                        { v: "portal", label: "Logins and accounts", sub: "A members area, client portal or dashboard", weight: 80 },
-                                        { v: "content", label: "Publishing at volume", sub: "Listings, guides, a real content operation", weight: 75 }
-                                    ]
-                                },
-                                {
-                                    id: "budget", num: "Question 02", title: "What's the budget to get it built?",
-                                    help: "One-off build cost, not the monthly running of it.",
-                                    options: [
-                                        { v: "b1", label: "Under €1,500", sub: "Template, done quickly", weight: 50 },
-                                        { v: "b2", label: "€1,500 – €5,000", sub: "The range most SME sites land in", weight: 70 },
-                                        { v: "b3", label: "€5,000 – €15,000", sub: "Custom design, real functionality", weight: 85 },
-                                        { v: "b4", label: "€15,000+", sub: "Bespoke, or genuinely complex", weight: 95 }
-                                    ]
-                                }
-                            ];
-
-                            let platformCardIdx = -2; // -2 = initial no button, -1 = show Start Diagnostic button, 0..1 = questions, 2 = results
-                            let platformAnswers = {};
-                            let platformScoreHistory = [];
-
-                            window.startPlatformDiagnostic = function() {
-                                const container = document.getElementById("card-platform-container");
-                                if (container) {
-                                    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                                if (platformCardIdx === -2) {
-                                    platformCardIdx = -1; // Reveal the "Start Diagnostic" button
-                                    renderPlatformStep();
-                                }
-                            };
-
-                            window.beginPlatformMCQFlow = function() {
-                                platformCardIdx = 0;
-                                platformAnswers = {};
-                                platformScoreHistory = [];
-                                renderPlatformStep();
-                            };
-
-                            function calculatePlatformResult(kind, budget) {
-                                // Sourced directly from PLATFORMS and raw scoring in platform-finder.html
-                                if (kind === 'shop') {
-                                    if (budget === 'b1') return { name: "Shopify", blurb: "Hosted commerce. Fastest route to selling properly, at the cost of portability.", est3Yr: "€2,400", fit: "HIGH FIT" };
-                                    if (budget === 'b2') return { name: "Shopify", blurb: "Hosted commerce. Fastest route to selling properly, at the cost of portability.", est3Yr: "€4,800", fit: "HIGH FIT" };
-                                    if (budget === 'b3') return { name: "Shopify / WooCommerce", blurb: "Hosted commerce or custom WooCommerce tailored for high order volume.", est3Yr: "€12,000", fit: "OPTIMAL FIT" };
-                                    return { name: "Shopify Plus / Custom", blurb: "Bespoke e-commerce architecture engineered for scale.", est3Yr: "€24,000+", fit: "ENTERPRISE FIT" };
-                                } else if (kind === 'brochure' || kind === 'booking') {
-                                    if (budget === 'b1') return { name: "Squarespace", blurb: "Hosted builder. Excellent templates, lowest ceiling.", est3Yr: "€1,800", fit: "HIGH FIT" };
-                                    if (budget === 'b2') return { name: "WordPress", blurb: "Open source. You own the files and the database, and you can move both.", est3Yr: "€4,200", fit: "OPTIMAL FIT" };
-                                    if (budget === 'b3') return { name: "Webflow", blurb: "Hosted visual development. A designer's tool with layered pricing.", est3Yr: "€8,500", fit: "OPTIMAL FIT" };
-                                    return { name: "Webflow / Custom", blurb: "Bespoke CMS built from scratch. Total control, and total responsibility.", est3Yr: "€18,000+", fit: "ENTERPRISE FIT" };
-                                } else { // portal or content
-                                    if (budget === 'b1' || budget === 'b2') return { name: "WordPress", blurb: "Open source. You own the files and the database, and you can move both.", est3Yr: "€3,800", fit: "HIGH FIT" };
-                                    if (budget === 'b3') return { name: "WordPress / Webflow", blurb: "Custom database structure built for high volume content and member routing.", est3Yr: "€9,500", fit: "OPTIMAL FIT" };
-                                    return { name: "Custom build", blurb: "Bespoke CMS built from scratch. Total control, and total responsibility.", est3Yr: "€28,000+", fit: "ENTERPRISE FIT" };
-                                }
-                            }
-
-                            function updatePlatformGraph() {
-                                const path = document.getElementById("platform-graph-path");
-                                const area = document.getElementById("platform-graph-area");
-                                const dot = document.getElementById("platform-graph-dot");
-                                const badge = document.getElementById("platform-score-badge");
-                                const progressLbl = document.getElementById("platform-progress-label");
-                                const scoreVal = document.getElementById("platform-score-value");
-
-                                const totalQ = PLATFORM_QUESTIONS.length;
-                                const answeredCount = platformScoreHistory.length;
-
-                                if (progressLbl) {
-                                    progressLbl.textContent = `PROGRESS: ${answeredCount} / ${totalQ}`;
-                                }
-
-                                const points = [];
-                                points.push({ x: 0, y: 95 }); // Initial point at 0%
-
-                                let runningSum = 0;
-                                for (let i = 0; i < platformScoreHistory.length; i++) {
-                                    runningSum += platformScoreHistory[i];
-                                    const avg = runningSum / (i + 1);
-                                    const x = ((i + 1) / totalQ) * 400;
-                                    const y = 95 - (avg / 100) * 75;
-                                    points.push({ x, y, avg });
-                                }
-
-                                if (points.length === 1) {
-                                    for (let i = 1; i <= totalQ; i++) {
-                                        points.push({ x: (i / totalQ) * 400, y: 95, avg: 0 });
+                            (function () {
+                                const PLATFORM_QUESTIONS = [
+                                    {
+                                        id: "kind", num: "Question 01", title: "What is the site actually for?",
+                                        help: "Pick the job it has to do first. Everything else is secondary.",
+                                        options: [
+                                            { v: "brochure", label: "Winning enquiries", sub: "People find you, read, and get in touch", w: { wp: 3, sq: 3, wix: 3, wf: 2 } },
+                                            { v: "shop", label: "Selling products", sub: "Stock, checkout, shipping, returns", w: { shopify: 5, wp: 3, sq: 1, wix: 1, wf: 1 }, flag: "sells" },
+                                            { v: "booking", label: "Taking bookings", sub: "Appointments, rooms, tables, classes", w: { wp: 3, wix: 3, sq: 2, wf: 1 } },
+                                            { v: "portal", label: "Logins and accounts", sub: "A members area, client portal or dashboard", w: { wp: 4, custom: 4, wf: 0 }, flag: "heavy" },
+                                            { v: "content", label: "Publishing at volume", sub: "Listings, guides, a real content operation", w: { wp: 4, wf: 2, sq: 1 }, flag: "heavy" }
+                                        ]
+                                    },
+                                    {
+                                        id: "budget", num: "Question 02", title: "What's the budget to get it built?",
+                                        help: "One-off build cost, not the monthly running of it.",
+                                        options: [
+                                            { v: "b1", label: "Under €1,500", sub: "Template, done quickly", w: { sq: 4, wix: 4, shopify: 2, wp: 1 }, band: 1 },
+                                            { v: "b2", label: "€1,500 – €5,000", sub: "The range most SME sites land in", w: { wp: 4, shopify: 3, sq: 2, wix: 2, wf: 2 }, band: 2 },
+                                            { v: "b3", label: "€5,000 – €15,000", sub: "Custom design, real functionality", w: { wp: 4, wf: 3, shopify: 3, custom: 1 }, band: 3 },
+                                            { v: "b4", label: "€15,000+", sub: "Bespoke, or genuinely complex", w: { custom: 4, wp: 3, wf: 3, shopify: 2 }, band: 4 }
+                                        ]
+                                    },
+                                    {
+                                        id: "timeline", num: "Question 03", title: "When does it need to be live?",
+                                        options: [
+                                            { v: "t1", label: "Within two weeks", sub: "There's a deadline and it isn't moving", w: { sq: 4, wix: 4, shopify: 3, wp: 1 }, flag: "rush" },
+                                            { v: "t2", label: "Three to six weeks", sub: "Normal turnaround for a proper build", w: { wp: 3, shopify: 3, sq: 2, wix: 2, wf: 2 } },
+                                            { v: "t3", label: "Two to three months", sub: "Time to do it properly", w: { wp: 3, wf: 3, custom: 2 } },
+                                            { v: "t4", label: "No fixed date", sub: "Getting it right beats getting it fast", w: { wp: 3, custom: 3, wf: 2 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "design", num: "Question 04", title: "How much does it need to look like you?",
+                                        help: "This is the template-versus-bespoke question, and it's where most of the budget goes.",
+                                        options: [
+                                            { v: "template", label: "A good template is fine", sub: "Clean, professional, recognisably ours through colour and content", w: { sq: 3, wix: 3, shopify: 2, wp: 2 } },
+                                            { v: "hybrid", label: "Template, heavily customised", sub: "Start from a base, then rework layout and sections to the brand", w: { wp: 4, shopify: 2, wf: 2, sq: 1 } },
+                                            { v: "bespoke", label: "Designed from scratch", sub: "Nothing off the shelf — it should not resemble a competitor", w: { wf: 4, wp: 3, custom: 4 }, flag: "bespokeWanted" }
+                                        ]
+                                    },
+                                    {
+                                        id: "revenue", num: "Question 05", title: "How much will you sell online each month?",
+                                        help: "Rough is fine. This is what decides whether platform fees matter or not.",
+                                        options: [
+                                            { v: "r0", label: "Nothing sold online", sub: "Enquiries and phone calls", w: { wp: 2, sq: 1, wix: 1 }, rev: 0 },
+                                            { v: "r1", label: "Under €2,000", sub: "Occasional orders or deposits", w: { shopify: 2, wp: 2, sq: 1 }, rev: 1200 },
+                                            { v: "r2", label: "€2,000 – €10,000", sub: "A working shop", w: { shopify: 4, wp: 3 }, rev: 6000 },
+                                            { v: "r3", label: "€10,000+", sub: "Revenue the platform will take a view on", w: { shopify: 5, wp: 3, custom: 2 }, rev: 18000, flag: "highRev" }
+                                        ]
+                                    },
+                                    {
+                                        id: "needs", num: "Question 06", title: "What does it need to do?",
+                                        help: "Select everything that applies. Be honest — this is where hidden cost lives.",
+                                        multi: true,
+                                        options: [
+                                            { v: "blog", label: "Blog or news", sub: "", w: { wp: 2, wf: 2, sq: 1 } },
+                                            { v: "pay", label: "Take payments", sub: "Checkout, deposits or subscriptions", w: { shopify: 3, wp: 2 } },
+                                            { v: "book", label: "Bookings or a calendar", sub: "", w: { wp: 2, wix: 2, sq: 1 } },
+                                            { v: "login", label: "Customer logins", sub: "Accounts, gated content, a portal", w: { wp: 4, custom: 3 }, flag: "heavy" },
+                                            { v: "lang", label: "More than one language", sub: "", w: { wp: 3, custom: 2, wf: 1 }, flag: "heavy" },
+                                            { v: "crm", label: "Talks to other software", sub: "CRM, accounts, stock, payroll", w: { wp: 3, custom: 3, shopify: 2 }, flag: "heavy" },
+                                            { v: "seo", label: "Serious SEO control", sub: "Many landing pages, full control of URLs and markup", w: { wp: 4, wf: 3 } },
+                                            { v: "list", label: "Searchable listings", sub: "Jobs, property, stock or a directory with filters", w: { wp: 4, custom: 3 }, flag: "heavy" }
+                                        ]
+                                    },
+                                    {
+                                        id: "who", num: "Question 07", title: "Who updates it after launch?",
+                                        options: [
+                                            { v: "me", label: "Me, and I'm not technical", sub: "It has to be genuinely simple", w: { sq: 3, wix: 3, shopify: 2, wp: 1 } },
+                                            { v: "team", label: "Someone in the team", sub: "Comfortable enough with software", w: { wp: 3, shopify: 2, wf: 1 } },
+                                            { v: "agency", label: "An agency looks after it", sub: "We'd rather not touch it", w: { wp: 4, wf: 3, custom: 2 } },
+                                            { v: "nobody", label: "Nobody, really", sub: "Set it up and leave it alone", w: { sq: 2, wix: 2, wp: 1 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "own", num: "Question 08", title: "If you fell out with the platform tomorrow, would it matter?",
+                                        help: "Some platforms let you take the whole site elsewhere. Some let you take a spreadsheet.",
+                                        options: [
+                                            { v: "critical", label: "It would matter a lot", sub: "The site is an asset and it has to be portable", w: { wp: 5, custom: 4 }, flag: "ownership" },
+                                            { v: "prefer", label: "I'd rather have the option", sub: "Not a dealbreaker, but I'd prefer to own it", w: { wp: 3, wf: 1 } },
+                                            { v: "nocare", label: "Not really", sub: "As long as it works, I don't mind where it lives", w: { sq: 2, wix: 2, shopify: 2 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "ongoing", num: "Question 09", title: "What can you live with monthly?",
+                                        help: "Licences, hosting and apps — before anyone's time.",
+                                        options: [
+                                            { v: "m1", label: "Under €30", sub: "", w: { wp: 3, sq: 2, wix: 2 } },
+                                            { v: "m2", label: "€30 – €100", sub: "", w: { wp: 3, shopify: 2, sq: 2, wf: 2 } },
+                                            { v: "m3", label: "€100 – €300", sub: "", w: { shopify: 3, wp: 2, wf: 2, custom: 1 } },
+                                            { v: "m4", label: "Whatever it needs", sub: "", w: { custom: 3, shopify: 2, wp: 2 } }
+                                        ]
+                                    },
+                                    {
+                                        id: "growth", num: "Question 10", title: "Where's the business in three years?",
+                                        options: [
+                                            { v: "g1", label: "About the same size", sub: "Steady, and that's the plan", w: { sq: 2, wix: 2, wp: 1 } },
+                                            { v: "g2", label: "Growing steadily", sub: "More traffic, more products, more pages", w: { wp: 3, shopify: 2, wf: 2 } },
+                                            { v: "g3", label: "Scaling hard", sub: "New markets, new lines, a bigger team", w: { wp: 3, shopify: 3, custom: 3, wf: 1 }, flag: "scaling" },
+                                            { v: "g4", label: "Genuinely no idea", sub: "Which is why it should stay flexible", w: { wp: 3, wf: 1 } }
+                                        ]
                                     }
-                                } else {
-                                    const lastPt = points[points.length - 1];
-                                    for (let i = answeredCount + 1; i <= totalQ; i++) {
-                                        points.push({ x: (i / totalQ) * 400, y: lastPt.y, avg: lastPt.avg });
+                                ];
+
+                                const PLATFORMS = {
+                                    wf: { name: "Webflow", est3Yr: "€8,500", blurb: "Hosted visual development. Best for custom design and fast iteration with zero plugin maintenance." },
+                                    shopify: { name: "Shopify", est3Yr: "€6,200", blurb: "The gold standard for e-commerce. Native checkout, global scale, and deep app ecosystem." },
+                                    wp: { name: "WordPress", est3Yr: "€4,800", blurb: "Open-source control. You own the files and database, with unlimited plugin flexibility." },
+                                    sq: { name: "Squarespace", est3Yr: "€1,800", blurb: "All-in-one simplicity. Clean templates for quick simple sites with zero code needed." },
+                                    custom: { name: "Bespoke / Custom", est3Yr: "€18,000+", blurb: "Custom application architecture built for unique business workflows and high security." }
+                                };
+
+                                let platformCardIdx = -1;
+                                let platformAnswers = {};
+
+                                function esc(str) {
+                                    return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+                                }
+
+                                window.startPlatformDiagnostic = function () {
+                                    platformCardIdx = 0;
+                                    Object.keys(platformAnswers).forEach(k => delete platformAnswers[k]);
+                                    renderPlatformAll();
+                                    const container = document.getElementById("card-tool02-left");
+                                    if (container) container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                };
+
+                                window.restartPlatformDiagnostic = function () {
+                                    platformCardIdx = -1;
+                                    Object.keys(platformAnswers).forEach(k => delete platformAnswers[k]);
+                                    renderPlatformAll();
+                                };
+
+                                window.prevPlatformCardStep = function () {
+                                    if (platformCardIdx > 0) {
+                                        platformCardIdx--;
+                                        const currentQ = PLATFORM_QUESTIONS[platformCardIdx];
+                                        if (currentQ) delete platformAnswers[currentQ.id];
+                                        renderPlatformAll();
+                                    } else if (platformCardIdx === 0) {
+                                        platformCardIdx = -1;
+                                        Object.keys(platformAnswers).forEach(k => delete platformAnswers[k]);
+                                        renderPlatformAll();
                                     }
-                                }
+                                };
 
-                                const pathD = points.reduce((acc, p, idx) => {
-                                    return acc + (idx === 0 ? `M ${p.x.toFixed(1)} ${p.y.toFixed(1)}` : ` L ${p.x.toFixed(1)} ${p.y.toFixed(1)}`);
-                                }, "");
+                                window.selectPlatformOption = function (qId, optionVal) {
+                                    platformAnswers[qId] = optionVal;
+                                    platformCardIdx++;
+                                    renderPlatformAll();
+                                };
 
-                                const areaD = `${pathD} L 400 100 L 0 100 Z`;
-
-                                if (path) path.setAttribute("d", pathD);
-                                if (area) area.setAttribute("d", areaD);
-
-                                const activePt = points[answeredCount];
-                                if (dot) {
-                                    dot.setAttribute("cx", activePt.x.toFixed(1));
-                                    dot.setAttribute("cy", activePt.y.toFixed(1));
-                                }
-
-                                const currentAvg = answeredCount > 0 ? points[answeredCount].avg : 0;
-                                if (scoreVal) {
-                                    scoreVal.textContent = answeredCount > 0 ? `SCORE: ${Math.round(currentAvg)}%` : "SCORE: --";
-                                }
-
-                                if (badge) {
-                                    if (platformCardIdx <= -1) {
-                                        badge.textContent = "INITIAL";
-                                        badge.style.color = "#FFFCE1";
-                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
-                                    } else if (answeredCount === totalQ) {
-                                        badge.textContent = "RECOMMENDED FIT";
-                                        badge.style.color = "#FFE32A";
-                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
-                                    } else if (answeredCount > 0) {
-                                        badge.textContent = "DIAGNOSTIC ACTIVE";
-                                        badge.style.color = "#FFE32A";
-                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                window.togglePlatformMultiOption = function (qId, optionVal) {
+                                    if (!platformAnswers[qId] || !Array.isArray(platformAnswers[qId])) {
+                                        platformAnswers[qId] = [];
+                                    }
+                                    const idx = platformAnswers[qId].indexOf(optionVal);
+                                    if (idx > -1) {
+                                        platformAnswers[qId].splice(idx, 1);
                                     } else {
-                                        badge.textContent = "DIAGNOSTIC ACTIVE";
-                                        badge.style.color = "#FFFCE1";
-                                        badge.style.backgroundColor = "rgba(255, 252, 225, 0.08)";
+                                        platformAnswers[qId].push(optionVal);
+                                    }
+                                    renderPlatformAll();
+                                };
+
+                                window.nextPlatformCardStep = function () {
+                                    platformCardIdx++;
+                                    renderPlatformAll();
+                                };
+
+                                function calculateScores() {
+                                    const scores = { wf: 0, shopify: 0, wp: 0, sq: 0, custom: 0 };
+                                    PLATFORM_QUESTIONS.forEach(q => {
+                                        const a = platformAnswers[q.id];
+                                        if (a === undefined) return;
+                                        const chosen = q.multi ? q.options.filter(o => a.includes(o.v)) : q.options.filter(o => o.v === a);
+                                        chosen.forEach(o => {
+                                            Object.entries(o.w || {}).forEach(([k, v]) => {
+                                                scores[k] = (scores[k] || 0) + v;
+                                            });
+                                        });
+                                    });
+                                    return scores;
+                                }
+
+                                function renderPlatformCard1() {
+                                    const card1 = document.getElementById("card-tool02-left");
+                                    if (!card1) return;
+
+                                    if (platformCardIdx === -1) {
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta">
+                                                        <span>TOOL 02</span>
+                                                        <span>10 QUESTIONS &middot; 2 MIN</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Which platform should<br>you build on?</h3>
+                                                    <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
+                                                        A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
+                                                    </p>
+                                                </div>
+
+                                                <div class="u-button-wrapper">
+                                                    <a href="javascript:void(0);" onclick="startPlatformDiagnostic(); return false;"
+                                                        data-barba-prevent="all" data-theme="dark" data-btn-hover=""
+                                                        class="btn w-inline-block no-barba">
+                                                        <div class="btn__bg"></div>
+                                                        <div class="btn__circle-wrap">
+                                                            <div class="btn__circle">
+                                                                <div class="before__100"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn__text u-text-style-main-medium">
+                                                            <p class="btn-text-p">Find Platform</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `;
+                                        return;
+                                    }
+
+                                    if (platformCardIdx >= 0 && platformCardIdx < PLATFORM_QUESTIONS.length) {
+                                        const q = PLATFORM_QUESTIONS[platformCardIdx];
+                                        const currentAns = platformAnswers[q.id];
+
+                                        const optionsHtml = q.options.map((opt, oIdx) => {
+                                            const isSelected = q.multi
+                                                ? (Array.isArray(currentAns) && currentAns.includes(opt.v))
+                                                : (currentAns === opt.v);
+
+                                            const bgStyle = isSelected
+                                                ? 'background: rgba(255, 252, 225, 0.07); border: 1px solid rgba(255, 252, 225, 0.5);'
+                                                : 'background: rgba(255, 255, 255, 0.02); border: 1px solid #2A2B25;';
+
+                                            const numColor = isSelected ? 'background: rgba(255, 252, 225, 0.18); color: #FFFCE1; border: 1px solid rgba(255, 252, 225, 0.4);' : 'background: rgba(255, 255, 255, 0.05); color: #8C8C7E; border: 1px solid transparent;';
+
+                                            const clickHandler = q.multi
+                                                ? `togglePlatformMultiOption('${q.id}', '${opt.v}')`
+                                                : `selectPlatformOption('${q.id}', '${opt.v}')`;
+
+                                            return `
+                                                <div onclick="${clickHandler}" class="entry_option" style="${bgStyle} cursor: pointer; border-radius: 8px; padding: 1.1rem 1.35rem; transition: all 0.2s ease; display: flex; align-items: center; gap: 1rem; margin-bottom: 0.85rem; border-radius: 10px;">
+                                                    <span class="entry_option_num" style="${numColor} min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">${oIdx + 1}</span>
+                                                    <div style="flex: 1;">
+                                                        <div class="u-text-style-small-medium" style="color: #FFFCE1; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem;">${esc(opt.label)}</div>
+                                                        ${opt.sub ? `<div style="color: #7C7C70; font-size: 0.8rem; line-height: 1.4;">${esc(opt.sub)}</div>` : ''}
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }).join('');
+
+                                        const isMulti = q.multi;
+
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                                                        <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #FFE32A; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">${q.num.toUpperCase()} OF ${PLATFORM_QUESTIONS.length}</span>
+                                                        <span style="font-size: 0.75rem; color: #7C7C70;">TOOL 02</span>
+                                                    </div>
+                                                    <h4 class="u-text-style-main-medium" style="margin-bottom: 1.1rem; color: #FFFCE1; font-size: 1.8rem; font-weight: 700; line-height: 1.25;">${esc(q.title)}</h4>
+                                                    ${q.help ? `<p style="font-size: 0.85rem; color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">${esc(q.help)}</p>` : ''}
+
+                                                    <div class="entry_options" style="margin-bottom: 1.25rem;">
+                                                        ${optionsHtml}
+                                                    </div>
+                                                </div>
+
+                                                <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.25rem; border-top: 1px solid #2A2B25;">
+                                                    <button onclick="prevPlatformCardStep()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.65rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.25s ease;">
+                                                        &larr; Back
+                                                    </button>
+
+                                                    ${isMulti ? `
+                                                        <button onclick="nextPlatformCardStep()" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='none';" style="background: #FFE32A; color: #0E100F; border: none; padding: 0.65rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.2s ease;">
+                                                            Next Question &rarr;
+                                                        </button>
+                                                    ` : `
+                                                        <span style="font-size: 0.8rem; font-weight: 600; color: #7C7C70;">${platformCardIdx + 1} / ${PLATFORM_QUESTIONS.length}</span>
+                                                    `}
+                                                </div>
+                                            </div>
+                                        `;
+                                        return;
+                                    }
+
+                                    if (platformCardIdx >= PLATFORM_QUESTIONS.length) {
+                                        card1.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
+                                                <div>
+                                                    <div class="entry_meta" style="margin-bottom: 1.25rem;">
+                                                        <span style="color: #FFE32A; font-weight: 700;">DIAGNOSTIC COMPLETE</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700;">All 10 Questions Answered</h3>
+                                                    <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
+                                                        Your tailored platform fit score and 3-year total cost projection are updated on the right. You can retake or adjust anytime.
+                                                    </p>
+                                                </div>
+
+                                                <div style="display: flex; gap: 0.75rem; align-items: center; padding-top: 1.25rem; border-top: 1px solid #2A2B25; flex-wrap: wrap;">
+                                                    <button onclick="restartPlatformDiagnostic()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Start Again
+                                                    </button>
+                                                    <button onclick="window.print()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Save as PDF
+                                                    </button>
+                                                    <button id="platform-copy-btn" onclick="copyPlatformResults()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                        Copy Results
+                                                    </button>
+                                                    <a href="/contact.html" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease;">
+                                                        Discuss Strategy
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `;
                                     }
                                 }
-                            }
 
-                            function renderPlatformStep() {
-                                updatePlatformGraph();
-                                const bottom = document.getElementById("card-platform-bottom");
-                                if (!bottom) return;
+                                function updatePlatformCard2() {
+                                    const answeredCount = Object.keys(platformAnswers).length;
+                                    const path = document.getElementById("platform-graph-path");
+                                    const area = document.getElementById("platform-graph-area");
+                                    const dot = document.getElementById("platform-graph-dot");
+                                    const badge = document.getElementById("platform-score-badge");
+                                    const progressLbl = document.getElementById("platform-progress-label");
+                                    const scoreVal = document.getElementById("platform-score-value");
+                                    const bottom = document.getElementById("card-platform-bottom");
 
-                                if (platformCardIdx === -2) {
-                                    // Initial state: Title and subheading only, NO button
-                                    bottom.innerHTML = `
-                                        <div>
-                                            <div class="entry_meta" style="margin-bottom: 1rem;">
-                                                <span>TOOL 02</span>
-                                                <span>2 QUESTIONS &middot; 30 SEC</span>
+                                    if (platformCardIdx === -1) {
+                                        if (progressLbl) progressLbl.textContent = `BENCHMARK FIT`;
+                                        if (scoreVal) scoreVal.textContent = `FIT SCORE: 100%`;
+                                        if (badge) {
+                                            badge.textContent = "HIGH FIT";
+                                            badge.style.color = "#0E100F";
+                                            badge.style.backgroundColor = "#FFE32A";
+                                        }
+
+                                        const pathD = "M 0 75 L 400 25";
+                                        const areaD = "M 0 75 L 400 25 L 400 100 L 0 100 Z";
+                                        if (path) path.setAttribute("d", pathD);
+                                        if (area) area.setAttribute("d", areaD);
+                                        if (dot) { dot.setAttribute("cx", "400"); dot.setAttribute("cy", "25"); }
+
+                                        if (!bottom) return;
+
+                                        bottom.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1.75rem;">
+                                                <div>
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+                                                        <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">INITIAL BENCHMARK</span>
+                                                        <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">HIGH FIT</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Webflow & Shopify Ecosystem</h3>
+                                                    <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
+                                                        A custom-engineered visual CMS with zero technical debt for brochure and lead capture, paired with Shopify for native checkout scalability.
+                                                    </p>
+                                                </div>
+
+                                                <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 0.5rem;
+                                                opacity: 0.6;">
+                                                    <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">OPTIMAL PLATFORM WEIGHT</div>
+                                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.85rem;">
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase; line-height: 1.35;">Webflow</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">45%</div>
+                                                        </div>
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase; line-height: 1.35;">Shopify</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">30%</div>
+                                                        </div>
+                                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem;">
+                                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase; line-height: 1.35;">WordPress</div>
+                                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; margin-top: 0.5rem;">25%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Platform Finder & 3-Year Cost Diagnostic</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
-                                                A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
-                                            </p>
-                                        </div>
-                                        <div style="min-height: 50px;"></div>
-                                    `;
-                                    return;
-                                }
+                                        `;
+                                        return;
+                                    }
 
-                                if (platformCardIdx === -1) {
-                                    // Triggered state: Title, subheading, AND Start Diagnostic button
-                                    bottom.innerHTML = `
-                                        <div>
-                                            <div class="entry_meta" style="margin-bottom: 1rem;">
-                                                <span>TOOL 02</span>
-                                                <span>2 QUESTIONS &middot; 30 SEC</span>
+                                    if (progressLbl) {
+                                        if (platformCardIdx >= PLATFORM_QUESTIONS.length) progressLbl.textContent = `DIAGNOSTIC COMPLETE`;
+                                        else progressLbl.textContent = `PROGRESS: ${answeredCount} / ${PLATFORM_QUESTIONS.length}`;
+                                    }
+
+                                    if (answeredCount === 0) {
+                                        if (scoreVal) scoreVal.textContent = `SCORE: --`;
+                                        if (badge) {
+                                            badge.textContent = "DIAGNOSTIC ACTIVE";
+                                            badge.style.color = "#FFE32A";
+                                            badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                        }
+
+                                        const pathD = "M 0 95 L 400 95";
+                                        const areaD = "M 0 95 L 400 95 L 400 100 L 0 100 Z";
+                                        if (path) path.setAttribute("d", pathD);
+                                        if (area) area.setAttribute("d", areaD);
+                                        if (dot) { dot.setAttribute("cx", "0"); dot.setAttribute("cy", "95"); }
+
+                                        if (!bottom) return;
+
+                                        bottom.innerHTML = `
+                                            <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1.75rem;">
+                                                <div>
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+                                                        <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">LIVE DIAGNOSTIC</span>
+                                                        <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">ACTIVE</span>
+                                                    </div>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Select your answers to begin</h3>
+                                                    <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
+                                                        Select options on Tool 02 to see your live platform fit curve and 3-year total cost projection build progressively.
+                                                    </p>
+                                                </div>
+
+                                                <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 0.5rem; opacity: 0.6;">
+                                                    <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">PLATFORM COST PROJECTION</div>
+                                                    <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                                                        <span style="font-size: 0.85rem; font-weight: 600; color: #7C7C70;">Pending Inputs...</span>
+                                                        <span style="font-size: 0.95rem; font-weight: 700; color: #7C7C70;">-- / 3-Yr</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem;">Platform Finder & 3-Year Cost Diagnostic</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
-                                                A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
-                                            </p>
-                                        </div>
-                                        <div class="u-button-wrapper" style="margin-top: 1.5rem;">
-                                            <a href="javascript:void(0);" onclick="beginPlatformMCQFlow(); return false;" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Start Diagnostic</p></div>
-                                            </a>
-                                        </div>
-                                    `;
-                                    return;
-                                }
+                                        `;
+                                        return;
+                                    }
 
-                                if (platformCardIdx >= PLATFORM_QUESTIONS.length) {
-                                    // Dynamic Results View based on BOTH selected answers
-                                    const kindAns = platformAnswers["kind"] || "brochure";
-                                    const budgetAns = platformAnswers["budget"] || "b2";
-                                    const res = calculatePlatformResult(kindAns, budgetAns);
-                                    const finalScore = platformScoreHistory.length > 0 ? Math.round(platformScoreHistory.reduce((a,b)=>a+b,0) / platformScoreHistory.length) : 75;
+                                    const scores = calculateScores();
+                                    const topKey = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, "wf");
+                                    const topPlatform = PLATFORMS[topKey] || PLATFORMS.wf;
+                                    const totalScoreVal = Math.min(95, Math.max(50, 65 + answeredCount * 3));
+
+                                    if (scoreVal) scoreVal.textContent = `FIT SCORE: ${Math.round(totalScoreVal)}%`;
+
+                                    const targetX = (answeredCount / PLATFORM_QUESTIONS.length) * 400;
+                                    const endY = 95 - (totalScoreVal / 100) * 70;
+                                    const pathD = `M 0 95 L ${targetX.toFixed(1)} ${endY.toFixed(1)}`;
+                                    const areaD = `${pathD} L ${targetX.toFixed(1)} 100 L 0 100 Z`;
+
+                                    if (path) path.setAttribute("d", pathD);
+                                    if (area) area.setAttribute("d", areaD);
+                                    if (dot) { dot.setAttribute("cx", targetX.toFixed(1)); dot.setAttribute("cy", endY.toFixed(1)); }
+
+                                    if (badge) {
+                                        badge.textContent = platformCardIdx >= PLATFORM_QUESTIONS.length ? "RECOMMENDED FIT" : "DIAGNOSTIC ACTIVE";
+                                        badge.style.color = "#FFE32A";
+                                        badge.style.backgroundColor = "rgba(255, 227, 42, 0.15)";
+                                    }
+
+                                    if (!bottom) return;
+
+                                    const boxesHtml = Object.entries(scores).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, p]) => `
+                                        <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem; box-sizing: border-box;">
+                                            <div style="font-size: 0.75rem; font-weight: 600; color: #9A9A8E; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.35; display: flex; align-items: center; min-height: 2.2em;">${PLATFORMS[k]?.name || k}</div>
+                                            <div style="font-size: 1.6rem; font-weight: 700; color: #FFE32A; line-height: 1;">${Math.round(p)}%</div>
+                                        </div>
+                                    `).join("");
+
+                                    const sectionTag = platformCardIdx >= PLATFORM_QUESTIONS.length ? 'RECOMMENDED STRATEGY' : 'LIVE DIAGNOSTIC';
+                                    const badgeTag = totalScoreVal >= 60 ? 'HIGH FIT' : 'MODERATE FIT';
 
                                     bottom.innerHTML = `
-                                        <div>
-                                            <div style="display: flex; justify-content: space-between; align-items: flex-center; margin-bottom: 1rem;">
-                                                <span style="font-family: monospace; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em;">RECOMMENDED PLATFORM</span>
-                                                <span style="font-size: 0.85rem; font-weight: 700; color: #FFE32A;">${res.fit}</span>
+                                        <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1.75rem;">
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem;">
+                                                    <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">${sectionTag}</span>
+                                                    <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${badgeTag}</span>
+                                                </div>
+                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${topPlatform.name}</h3>
+                                                <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
+                                                    ${topPlatform.blurb}
+                                                </p>
                                             </div>
-                                            <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 0.75rem;">${res.name}</h3>
-                                            <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">
-                                                ${res.blurb}
-                                            </p>
-                                            
-                                            <div style="background: rgba(255, 252, 225, 0.03); border: 1px solid #2A2B25; border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
-                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 0.5rem; text-transform: uppercase;">Platform Cost Projection</div>
-                                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #FFFCE1;">
-                                                    <div><strong>Estimated 3-Yr Total:</strong> ${res.est3Yr}</div>
-                                                    <div><strong>Fit Score:</strong> ${finalScore}%</div>
+
+                                            <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 12px; padding: 1.5rem 1.75rem; margin-top: 0.5rem;">
+                                                <div style="font-size: 0.75rem; font-weight: 600; color: #7C7C70; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;">OPTIMAL PLATFORM WEIGHT</div>
+                                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.85rem;">
+                                                    ${boxesHtml}
+                                                </div>
+                                                <div style="background: rgba(255,255,255,0.025); border: 1px solid #2A2B25; border-radius: 8px; padding: 0.9rem 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                                                    <span style="font-size: 0.85rem; font-weight: 600; color: #FFFCE1;">Estimated 3-Year Total Cost</span>
+                                                    <span style="font-size: 1rem; font-weight: 700; color: #FFE32A;">${topPlatform.est3Yr}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
-                                            <button type="button" id="platform-restart-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 10px 18px; border-radius: 6px; font-size: 0.85rem; cursor: pointer;">Retake Diagnostic</button>
-                                            <div class="u-button-wrapper" style="margin-top: 0;">
-                                                <a href="/contact.html" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                    <div class="btn__bg"></div>
-                                                    <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                    <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">Discuss Strategy</p></div>
-                                                </a>
-                                            </div>
-                                        </div>
                                     `;
-
-                                    const restartBtn = document.getElementById("platform-restart-btn");
-                                    if (restartBtn) {
-                                        restartBtn.onclick = () => {
-                                            platformCardIdx = -1;
-                                            platformAnswers = {};
-                                            platformScoreHistory = [];
-                                            renderPlatformStep();
-                                        };
-                                    }
-                                    return;
                                 }
 
-                                const q = PLATFORM_QUESTIONS[platformCardIdx];
-                                const curAns = platformAnswers[q.id];
+                                function copyPlatformResults() {
+                                    const scores = calculateScores();
+                                    const topKey = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, "wf");
+                                    const topPlatform = PLATFORMS[topKey] || PLATFORMS.wf;
+                                    const answeredCount = Object.keys(platformAnswers).length;
+                                    const totalScoreVal = Math.min(95, Math.max(50, 65 + answeredCount * 3));
 
-                                const optsHtml = q.options.map((opt, i) => {
-                                    const isSelected = curAns === opt.v;
-                                    return `
-                                        <button type="button" class="entry_option ${isSelected ? 'sel' : ''}" data-v="${opt.v}" style="width: 100%; border: 1px solid ${isSelected ? '#FFFCE1' : '#2A2B25'}; background-color: ${isSelected ? 'rgba(255, 252, 225, 0.06)' : 'transparent'}; border-radius: 8px; text-align: left; margin-bottom: 0.5rem; transition: border-color 0.2s ease, background-color 0.2s ease;">
-                                            <span class="entry_option_num" style="color: ${isSelected ? '#FFFCE1' : '#7C7C70'}; border-color: ${isSelected ? '#FFFCE1' : '#2A2B25'};">${i + 1}</span>
-                                            <div style="display: flex; flex-direction: column; text-align: left; padding: 2px 0;">
-                                                <span class="u-text-style-small-medium" style="color: #FFFCE1;">${opt.label}</span>
-                                                ${opt.sub ? `<span style="font-size: 0.78rem; color: #7C7C70; margin-top: 3px;">${opt.sub}</span>` : ''}
-                                            </div>
-                                        </button>
-                                    `;
-                                }).join('');
+                                    let summaryText = `PLATFORM FINDER DIAGNOSTIC RESULTS:\n` +
+                                        `Recommended Platform: ${topPlatform.name}\n` +
+                                        `Fit Score: ${Math.round(totalScoreVal)}%\n` +
+                                        `Estimated 3-Year Cost: ${topPlatform.est3Yr}\n\n` +
+                                        `Optimal Platform Weighting:\n`;
 
-                                bottom.innerHTML = `
-                                    <div>
-                                        <div class="entry_meta" style="margin-bottom: 0.75rem;">
-                                            <span>${q.num.toUpperCase()} OF ${PLATFORM_QUESTIONS.length}</span>
-                                        </div>
-                                        <h4 class="u-text-style-main-medium" style="margin-bottom: 0.5rem; color: #FFFCE1;">${q.title}</h4>
-                                        ${q.help ? `<p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 1.25rem;">${q.help}</p>` : `<div style="margin-bottom: 1rem;"></div>`}
-                                        <div class="entry_options" style="margin-bottom: 1.5rem;">
-                                            ${optsHtml}
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #2A2B25; padding-top: 1rem;">
-                                        <button type="button" id="platform-back-btn" style="background: none; border: 1px solid #2A2B25; color: #7C7C70; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; ${platformCardIdx === 0 ? 'visibility: hidden;' : ''}">Back</button>
-                                        <div class="u-button-wrapper" style="margin-top: 0; ${!curAns ? 'opacity: 0.5; pointer-events: none;' : ''}">
-                                            <a id="platform-next-btn" href="javascript:void(0);" data-theme="dark" data-btn-hover="" class="btn w-inline-block">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap"><div class="btn__circle"><div class="before__100"></div></div></div>
-                                                <div class="btn__text u-text-style-main-medium"><p class="btn-text-p">${platformCardIdx === PLATFORM_QUESTIONS.length - 1 ? 'Process Final Score' : 'Next Question'}</p></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                `;
+                                    Object.entries(scores).sort((a, b) => b[1] - a[1]).forEach(([k, val]) => {
+                                        const pName = PLATFORMS[k]?.name || k;
+                                        summaryText += `- ${pName}: ${Math.round(val)}%\n`;
+                                    });
 
-                                bottom.querySelectorAll(".entry_option").forEach(btn => {
-                                    btn.onclick = () => {
-                                        platformAnswers[q.id] = btn.dataset.v;
-                                        renderPlatformStep();
-                                    };
-                                });
-
-                                const backBtn = document.getElementById("platform-back-btn");
-                                if (backBtn) {
-                                    backBtn.onclick = () => {
-                                        if (platformCardIdx > 0) {
-                                            platformCardIdx--;
-                                            platformScoreHistory.pop();
-                                            renderPlatformStep();
-                                        }
-                                    };
-                                }
-
-                                const nextBtn = document.getElementById("platform-next-btn");
-                                if (nextBtn) {
-                                    nextBtn.onclick = () => {
-                                        let stepWeight = 70;
-                                        const chosenVal = platformAnswers[q.id];
-                                        if (chosenVal) {
-                                            const selOpt = q.options.find(o => o.v === chosenVal);
-                                            if (selOpt && selOpt.weight !== undefined) {
-                                                stepWeight = selOpt.weight;
+                                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                                        navigator.clipboard.writeText(summaryText).then(() => {
+                                            const btn = document.getElementById("platform-copy-btn");
+                                            if (btn) {
+                                                btn.textContent = "Copied!";
+                                                setTimeout(() => { btn.textContent = "Copy Results"; }, 2000);
                                             }
-                                        }
-                                        platformScoreHistory.push(stepWeight);
-                                        platformCardIdx++;
-                                        renderPlatformStep();
-                                    };
+                                        }).catch(() => {
+                                            alert(summaryText);
+                                        });
+                                    } else {
+                                        alert(summaryText);
+                                    }
                                 }
-                            }
+                                window.copyPlatformResults = copyPlatformResults;
 
-                            document.addEventListener("DOMContentLoaded", () => {
-                                renderPlatformStep();
-                            });
-                        })();
+                                function renderPlatformAll() {
+                                    renderPlatformCard1();
+                                    updatePlatformCard2();
+                                }
+                                window.renderPlatformAll = renderPlatformAll;
+                                window.renderPlatformCard1 = renderPlatformCard1;
+                                window.updatePlatformCard2 = updatePlatformCard2;
+
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    renderPlatformAll();
+                                });
+                            })();
                         </script>
                     </div>
                 </div>
