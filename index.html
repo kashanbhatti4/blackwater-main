@@ -2491,13 +2491,13 @@
                             display: flex !important;
                             flex-direction: column !important;
                             width: 100% !important;
-                            gap: 2rem !important;
+                            gap: 1rem !important;
                         }
 
                         .home_hero_new .capabilities_number_wrap {
                             display: flex !important;
                             align-items: center !important;
-                            gap: 2rem !important;
+                            gap: 1rem !important;
                         }
 
                         /* Diagonal Alignment */
@@ -2765,7 +2765,15 @@
                                 margin-left: 0 !important;
                             }
 
-                            /* Mobile responsive size adjustments for hero counter and capabilities */
+                            /* Mobile responsive size and gap adjustments for hero counter and capabilities */
+                            .home_hero_new .capabilities_numbers_wrap {
+                                gap: 0.75rem !important;
+                            }
+
+                            .home_hero_new .capabilities_number_wrap {
+                                gap: 0.75rem !important;
+                            }
+
                             .home_hero_new .capabilities_number {
                                 width: clamp(3.5rem, 11vw, 4.5rem) !important;
                                 height: clamp(3.5rem, 11vw, 4.5rem) !important;
@@ -5133,15 +5141,166 @@
                             font-weight: 600;
                         }
 
+                        #entry-point .content_layout.u-grid-custom {
+                            gap: 2rem !important;
+                        }
+
+                        #card-tool01-left,
+                        #card-budget-container,
+                        #card-tool02-left,
+                        #card-platform-container {
+                            margin-top: 0 !important;
+                            margin-bottom: 0 !important;
+                        }
+
                         @media screen and (max-width: 991px) {
-                            .entry_card {
+                            #entry-point .content_layout.u-grid-custom {
+                                display: flex !important;
+                                flex-direction: column !important;
+                                gap: 1.25rem !important;
+                            }
+
+                            .entry_card,
+                            #card-tool01-left,
+                            #card-budget-container,
+                            #card-tool02-left,
+                            #card-platform-container {
                                 grid-column: span 12 !important;
-                                margin-bottom: 1.5rem;
-                                padding: 2rem;
+                                margin-top: 0 !important;
+                                margin-bottom: 0 !important;
+                                padding: 1.25rem 1.25rem !important;
+                                min-height: auto !important;
+                                height: auto !important;
                             }
 
                             .entry_option {
-                                padding: 0.6rem 0.8rem;
+                                padding: 0.75rem 0.9rem !important;
+                            }
+
+                            /* Mobile responsive card heading sizing */
+                            .entry_card h3,
+                            .entry_card h4,
+                            .entry_card .u-text-style-h3,
+                            .entry_card .u-text-style-main-medium {
+                                font-size: clamp(1.15rem, 4.2vw, 1.45rem) !important;
+                                line-height: 1.3 !important;
+                            }
+
+                            .entry_card h2,
+                            .entry_card .u-text-style-h2 {
+                                font-size: clamp(1.25rem, 4.8vw, 1.65rem) !important;
+                                line-height: 1.25 !important;
+                                margin-bottom: 0.85rem !important;
+                            }
+
+                            #budget-diag-top h3,
+                            #platform-diag-top h3,
+                            #card-budget-bottom h3,
+                            #card-platform-bottom h3 {
+                                font-size: clamp(1.25rem, 4.8vw, 1.65rem) !important;
+                                line-height: 1.25 !important;
+                            }
+
+                            /* Mobile responsive card body text & paragraph sizing */
+                            .entry_card p,
+                            .entry_card .u-text-style-main,
+                            .entry_card .u-text-style-small {
+                                font-size: 0.88rem !important;
+                                line-height: 1.5 !important;
+                                /* margin-bottom: 1.15rem !important;/ */
+                            }
+
+                            .entry_card .entry_meta {
+                                font-size: 0.7rem !important;
+                                margin-bottom: 1rem !important;
+                            }
+
+                            .entry_option {
+                                font-size: 0.85rem !important;
+                                line-height: 1.4 !important;
+                                padding: 0.75rem 0.9rem !important;
+                            }
+
+                            .entry_option_num {
+                                font-size: 0.75rem !important;
+                                padding: 2px 8px !important;
+                            }
+
+                            /* Mobile responsive card button sizing & padding */
+                            .entry_card .btn {
+                                padding: 0.6rem 1.2rem !important;
+                                min-height: 2.75rem !important;
+                                height: auto !important;
+                            }
+
+                            .entry_card .btn .btn-text-p,
+                            .entry_card .btn .btn__text {
+                                font-size: 0.85rem !important;
+                            }
+
+                            .entry_card button,
+                            .entry_card a[style*="border-radius"] {
+                                padding: 0.55rem 0.95rem !important;
+                                font-size: 0.8rem !important;
+                            }
+                        }
+
+                        @media screen and (max-width: 479px) {
+                            #entry-point .content_layout.u-grid-custom {
+                                gap: 1rem !important;
+                            }
+
+                            .entry_card,
+                            #card-tool01-left,
+                            #card-budget-container,
+                            #card-tool02-left,
+                            #card-platform-container {
+                                padding: 1rem 1rem !important;
+                            }
+
+                            .entry_card p,
+                            .entry_card .u-text-style-main,
+                            .entry_card .u-text-style-small {
+                                font-size: 0.84rem !important;
+                                line-height: 1.45 !important;
+                                /* margin-bottom: 1rem !important; */
+                            }
+
+                            .entry_option {
+                                font-size: 0.82rem !important;
+                                padding: 0.65rem 0.8rem !important;
+                            }
+
+                            .entry_card h3,
+                            .entry_card h4,
+                            .entry_card .u-text-style-h3,
+                            .entry_card .u-text-style-main-medium {
+                                font-size: 1.15rem !important;
+                            }
+
+                            .entry_card h2,
+                            .entry_card .u-text-style-h2 {
+                                font-size: 1.3rem !important;
+                            }
+
+                            .entry_card .btn {
+                                padding: 0.5rem 1rem !important;
+                                min-height: 2.5rem !important;
+                            }
+
+                            .entry_card .btn .btn-text-p,
+                            .entry_card .btn .btn__text {
+                                font-size: 0.8rem !important;
+                            }
+
+                            .entry_card button,
+                            .entry_card a[style*="border-radius"] {
+                                padding: 0.5rem 0.75rem !important;
+                                font-size: 0.75rem !important;
+                            }
+
+                            .entry_card div[style*="display: flex"][style*="flex-wrap: wrap"] {
+                                gap: 0.5rem !important;
                             }
                         }
                     </style>
@@ -5484,7 +5643,7 @@
                                                         <span>TOOL 01</span>
                                                         <span>12 QUESTIONS &middot; 90 SEC</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Where should your<br>marketing budget go?</h3>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1.2rem;">Where should your<br>marketing budget go?</h3>
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
                                                         Most marketing money is wasted on the right channel at the wrong time. This asks twelve questions about your business and gives you a budget split, a readiness score, and the fixes to make first.
                                                     </p>
@@ -5791,12 +5950,12 @@
 
                         <!-- Card 2 (Find Platform Trigger Card) -->
                         <div id="card-tool02-left" class="content_wrap entry_card"
-                            style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                            style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                         </div>
 
                         <!-- Interactive Platform Finder Card (Opposite Find Platform) -->
                         <div id="card-platform-container" class="content_wrap entry_card"
-                            style="grid-column: span 6; margin-top: 2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
+                            style="grid-column: span 6; display: flex; flex-direction: column; justify-content: space-between; min-height: 620px;">
                             <!-- Top ~40%: Visual Dynamic SVG Line Graph & Platform Fit Metrics -->
                             <div id="platform-diag-top"
                                 style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; flex: 0 0 auto; box-sizing: border-box;">
@@ -6044,7 +6203,7 @@
                                                         <span>TOOL 02</span>
                                                         <span>10 QUESTIONS &middot; 2 MIN</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 2rem;">Which platform should<br>you build on?</h3>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1.2rem;">Which platform should<br>you build on?</h3>
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
                                                         A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
                                                     </p>
