@@ -146,6 +146,16 @@
                 padding-top: 100px;
             }
 
+            .service_wrap,
+            .u-position-sticky,
+            .styleguide_nav_wrap,
+            .home_about_content,
+            .evolution_pin-wrap,
+            .privacy_menu_sticky_wrap {
+                top: 100px !important;
+                min-height: calc(100vh - 100px) !important;
+            }
+
             .simple-navbar {
                 position: fixed;
                 top: 0;
@@ -153,7 +163,7 @@
                 width: 100%;
                 height: 100px;
                 z-index: 9999;
-                background-color: transparent;
+                background-color: #0E100F;
                 border-bottom: 1px solid var(--swatch--border);
                 pointer-events: none;
             }
@@ -172,7 +182,7 @@
             .simple-navbar__burger-box {
                 pointer-events: auto;
                 height: 100%;
-                background-color: #FFFCE1;
+                /* background-color: #131615; */
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -191,13 +201,11 @@
                 display: block;
                 width: 3.75rem;
                 height: 3.75rem;
-                color: #0E100F;
+                color: #FFFCE1;
                 transition: transform 0.3s ease;
             }
 
-            .simple-navbar__logo-link:hover {
-                transform: scale(1.05);
-            }
+
 
             .simple-navbar__logo-svg {
                 width: 100%;
@@ -215,7 +223,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 cursor: pointer;
-                color: #0E100F;
+                color: #FFFCE1;
                 position: relative;
                 z-index: 10002;
                 transition: color 0.3s ease;
@@ -275,7 +283,7 @@
             }
 
             .simple-navbar__links-item {
-                overflow: hidden;
+                /* Removed overflow: hidden to prevent text clipping on hover */
             }
 
             .simple-navbar__link {
@@ -315,6 +323,16 @@
             @media (max-width: 48em) {
                 body {
                     padding-top: 80px;
+                }
+
+                .service_wrap,
+                .u-position-sticky,
+                .styleguide_nav_wrap,
+                .home_about_content,
+                .evolution_pin-wrap,
+                .privacy_menu_sticky_wrap {
+                    top: 80px !important;
+                    min-height: calc(100vh - 80px) !important;
                 }
 
                 .simple-navbar {
@@ -363,72 +381,25 @@
                     font-size: 1.25rem;
                 }
             }
+
+            @media screen and (min-width: 1041px) {
+                .capabilities_wrap {
+                    top: 0 !important;
+                }
+
+                .home_hero_title_new_heading {
+                    width: auto !important;
+                    max-width: 50% !important;
+                }
+            }
         </style>
         <div class="simple-navbar__container">
             <!-- Logo Box -->
-            <div class="simple-navbar__logo-box">
-                <a href="/index.html" class="simple-navbar__logo-link" aria-label="Blackwater Home">
-                    <svg class="simple-navbar__logo-svg" viewBox="0 0 1000 1000" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_6_79)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1000V79H25V1000H0Z" fill="#FAE421" />
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M40 1000V0H65V1000H40Z" fill="#FAE421" />
-                            <path
-                                d="M138 40H197.07C213.24 40 224.13 40.9922 234.69 44.9608C256.14 52.8981 272.64 70.757 272.64 98.5374C272.64 117.719 264.06 135.247 238.32 146.161C271.32 152.445 292.11 175.264 292.11 204.037C292.11 240.747 261.75 256.291 248.22 260.921C235.02 265.551 224.46 265.551 200.37 265.551H138V40ZM191.46 68.7726H170.01V136.57H191.46C199.71 136.57 213.9 135.909 221.82 131.279C228.09 127.972 239.31 119.042 239.31 101.183C239.31 88.6158 233.37 77.7021 223.47 73.072C214.23 68.7726 201.03 68.7726 191.46 68.7726ZM200.37 165.674H170.01V236.778H202.02C211.26 236.778 227.1 236.778 235.35 233.471C251.85 227.188 258.78 212.967 258.78 201.061C258.78 191.47 254.16 177.249 237.33 170.304C228.75 166.666 217.86 165.674 200.37 165.674Z"
-                                fill="currentColor" />
-                            <path d="M349.373 40V265.551H320.003V40H349.373Z" fill="currentColor" />
-                            <path
-                                d="M507.69 239.093V256.952C494.16 265.882 488.55 268.527 479.31 268.527C466.44 268.527 459.51 263.897 456.87 253.314C444 263.567 430.47 268.527 416.94 268.527C395.16 268.527 380.64 251.33 380.64 232.148C380.64 202.714 407.37 193.785 431.13 185.186L457.2 175.926V167.989C457.2 149.468 448.29 141.862 430.47 141.862C414.3 141.862 397.8 149.468 383.61 166.335V134.255C395.16 120.696 411.33 114.081 432.78 114.081C462.81 114.081 486.57 129.294 486.57 163.028V239.424C486.57 245.046 488.55 247.031 492.18 247.031C495.15 247.031 501.09 244.054 507.69 239.093ZM457.2 235.456V192.131C432.12 200.73 410.34 209.329 410.34 226.857C410.34 239.093 419.25 247.692 431.46 247.692C440.7 247.692 449.28 243.062 457.2 235.456Z"
-                                fill="currentColor" />
-                            <path
-                                d="M633.825 124.334V155.752C625.575 150.46 611.715 141.531 592.575 141.531C561.885 141.531 547.365 167.658 547.365 191.139C547.365 215.943 561.885 240.747 598.185 240.747C613.695 240.747 626.235 235.786 637.125 230.825V259.929C630.525 262.244 615.015 268.527 593.895 268.527C542.745 268.527 517.665 232.81 517.665 192.131C517.665 156.083 538.125 114.081 590.925 114.081C610.065 114.081 622.275 119.373 633.825 124.334Z"
-                                fill="currentColor" />
-                            <path
-                                d="M801.308 117.058L737.948 189.816L814.178 265.551H774.908L700.658 189.816L766.328 117.058H801.308ZM699.338 40V265.551H669.638V40H699.338Z"
-                                fill="currentColor" />
-                            <path
-                                d="M481.597 349L390.499 575.35H383.568L309.964 391.894L235.699 575.35H228.768L138 349H170.346L232.398 504.08L294.781 349H325.477L388.189 504.08L449.581 349H481.597Z"
-                                fill="currentColor" />
-                            <path
-                                d="M599.24 547.634V565.452C585.707 574.36 580.096 577 570.854 577C557.982 577 551.05 572.381 548.41 561.822C535.537 572.051 522.004 577 508.472 577C486.688 577 472.165 559.842 472.165 540.705C472.165 511.339 498.9 502.43 522.665 493.851L548.74 484.612V476.693C548.74 458.216 539.828 450.627 522.004 450.627C505.831 450.627 489.328 458.216 475.135 475.043V443.038C486.688 429.509 502.861 422.91 524.315 422.91C554.351 422.91 578.115 438.088 578.115 471.744V547.964C578.115 553.573 580.096 555.553 583.727 555.553C586.697 555.553 592.638 552.583 599.24 547.634ZM548.74 544.004V500.78C523.655 509.359 501.871 517.938 501.871 535.425C501.871 547.634 510.782 556.213 522.995 556.213C532.236 556.213 540.818 551.593 548.74 544.004Z"
-                                fill="currentColor" />
-                            <path
-                                d="M658.241 395.194V425.88H705.11V452.276H658.241V516.948C658.571 535.425 658.901 538.725 663.522 544.004C669.133 549.944 676.395 550.274 679.365 550.274C685.307 550.274 696.529 549.614 712.702 539.715V567.101C698.839 574.69 683.326 577 674.744 577C664.512 577 646.359 572.711 636.127 558.193C628.865 547.304 628.865 531.466 628.865 517.938V452.276H603.12V449.307L658.241 395.194Z"
-                                fill="currentColor" />
-                            <path
-                                d="M858.892 530.806V559.512C848.66 566.111 831.827 577 800.801 577C785.288 577 767.464 574.69 749.641 556.213C730.167 536.085 727.526 513.318 727.526 499.13C727.526 452.936 756.572 422.91 796.84 422.91C831.497 422.91 854.931 447.657 859.882 480.323C861.533 490.221 861.533 496.821 861.533 502.43H757.232C758.222 524.537 772.745 548.954 805.092 548.954C824.235 548.954 843.049 542.355 858.892 530.806ZM757.892 484.942H832.487C832.157 479.003 829.846 448.317 796.51 448.317C787.268 448.317 776.046 451.946 768.124 460.855C760.203 469.434 758.883 478.343 757.892 484.942Z"
-                                fill="currentColor" />
-                            <path
-                                d="M891.739 425.88H921.115V459.865C930.686 445.017 944.549 422.91 965.343 422.91C969.634 422.91 982.837 423.24 1000 439.738L984.487 465.475C980.856 461.845 967.654 450.957 956.101 450.957C945.209 450.957 921.115 462.835 921.115 496.491V574.03H891.739V425.88Z"
-                                fill="currentColor" />
-                            <path
-                                d="M138 657.403H213.9C235.02 657.403 271.65 657.403 301.68 680.554C326.76 699.736 344.91 731.485 344.91 770.179C344.91 827.394 304.65 857.489 290.79 866.088C263.4 882.954 232.38 882.954 209.28 882.954H138V657.403ZM210.6 686.176H170.01V853.851H211.59C228.42 853.851 254.82 852.528 273.96 840.953C296.73 826.732 311.58 799.282 311.58 768.525C311.58 741.076 299.04 709.657 264.72 694.444C246.24 686.176 231.06 686.176 210.6 686.176Z"
-                                fill="currentColor" />
-                            <path
-                                d="M396.39 671.955C406.29 671.955 413.88 679.892 413.88 689.153C413.88 698.413 405.96 706.681 396.39 706.681C385.17 706.681 379.23 696.428 379.23 689.153C379.23 680.885 386.49 671.955 396.39 671.955ZM411.24 734.461V882.954H381.87V734.461H411.24Z"
-                                fill="currentColor" />
-                            <path
-                                d="M571.538 734.461V757.281H541.178C552.728 768.856 556.688 777.124 556.688 789.691C556.688 801.928 549.758 816.149 542.828 823.094C523.028 844.26 482.767 833.677 482.767 851.205C482.767 859.473 498.278 864.434 527.978 870.387C559.658 876.671 570.878 892.876 570.878 911.727C570.878 941.161 544.808 959.02 500.918 959.02C460.988 959.02 432.608 940.169 432.608 914.042C432.608 892.215 444.157 879.317 469.897 873.033C459.667 866.749 455.047 860.796 455.047 854.182C455.047 844.591 464.288 836.323 478.478 833.016V832.354C467.588 827.724 459.338 821.441 453.728 813.503C448.448 805.897 445.807 796.637 445.807 785.723C445.807 753.974 470.558 734.461 510.488 734.461H571.538ZM530.288 786.054C530.288 771.833 517.088 759.927 501.578 759.927C485.408 759.927 472.207 772.163 472.207 786.715C472.207 802.92 484.087 813.834 501.908 813.834C518.408 813.834 530.288 802.259 530.288 786.054ZM542.497 914.042C542.497 895.191 512.137 890.23 493.987 890.23C474.187 890.23 460.328 899.49 460.328 912.719C460.328 927.602 474.848 935.539 501.578 935.539C527.318 935.539 542.497 927.602 542.497 914.042Z"
-                                fill="currentColor" />
-                            <path
-                                d="M609.408 671.955C619.308 671.955 626.898 679.892 626.898 689.153C626.898 698.413 618.978 706.681 609.408 706.681C598.188 706.681 592.248 696.428 592.248 689.153C592.248 680.885 599.508 671.955 609.408 671.955ZM624.258 734.461V882.954H594.888V734.461H624.258Z"
-                                fill="currentColor" />
-                            <path
-                                d="M700.735 703.704V734.461H747.595V760.919H700.735V825.74C701.065 844.26 701.395 847.567 706.015 852.859C711.625 858.812 718.885 859.143 721.855 859.143C727.795 859.143 739.015 858.481 755.185 848.56V876.009C741.325 883.616 725.815 885.931 717.235 885.931C707.005 885.931 688.855 881.632 678.625 867.08C671.365 856.166 671.365 840.292 671.365 826.732V760.919H645.625V757.942L700.735 703.704Z"
-                                fill="currentColor" />
-                            <path
-                                d="M903.425 856.497V874.356C889.895 883.285 884.285 885.931 875.045 885.931C862.175 885.931 855.245 881.301 852.605 870.718C839.735 880.97 826.205 885.931 812.675 885.931C790.895 885.931 776.375 868.734 776.375 849.552C776.375 820.118 803.105 811.188 826.865 802.59L852.935 793.329V785.392C852.935 766.872 844.025 759.265 826.205 759.265C810.035 759.265 793.535 766.872 779.345 783.738V751.659C790.895 738.099 807.065 731.485 828.515 731.485C858.545 731.485 882.305 746.698 882.305 780.431V856.828C882.305 862.45 884.285 864.434 887.915 864.434C890.885 864.434 896.825 861.458 903.425 856.497ZM852.935 852.859V809.535C827.855 818.133 806.075 826.732 806.075 844.26C806.075 856.497 814.985 865.096 827.195 865.096C836.435 865.096 845.015 860.466 852.935 852.859Z"
-                                fill="currentColor" />
-                            <path d="M958.125 657.403V882.954H928.755V657.403H958.125Z" fill="currentColor" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_6_79">
-                                <rect width="1000" height="1000" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                </a>
-            </div>
+            <a href="/index.html" class="simple-navbar__logo-box" aria-label="Blackwater Home">
+                <div class="simple-navbar__logo-link">
+                    <img src="/assets/images/logo-light.svg" class="simple-navbar__logo-svg" alt="Blackwater Logo">
+                </div>
+            </a>
 
             <!-- Burger Box -->
             <div class="simple-navbar__burger-box">
@@ -1755,12 +1726,97 @@
                     <div class="main-section_contain u-container project_hero">
                         <div class="content_layout u-grid-custom project_hero is-menu">
                             <div class="content_wrap u-column-span-12 u-grid-subgrid project_hero1">
+                                <style>
+                                    .main-section_wrap.project_hero {
+                                        min-height: auto !important;
+                                        height: auto !important;
+                                        padding-top: clamp(40px, 6vw, 50px) !important;
+                                        padding-bottom: clamp(30px, 4vw, 70px) !important;
+                                    }
+
+                                    .content_layout.project_hero.is-menu {
+                                        padding-top: 0 !important;
+                                    }
+
+                                    .main-section_contain.project_hero,
+                                    .content_layout.project_hero {
+                                        flex: none !important;
+                                        height: auto !important;
+                                        padding-bottom: 0 !important;
+                                    }
+
+                                    .project_hero .u-section-spacer {
+                                        display: none !important;
+                                    }
+
+                                    @media screen and (max-width: 1040px) {
+                                        .main-section_wrap.project_hero {
+                                            padding-top: 0px !important;
+                                            padding-bottom: clamp(47px, 5.5vw, 51px) !important;
+                                        }
+                                    }
+
+                                    @media screen and (max-width: 768px) {
+                                        .main-section_wrap.project_hero {
+                                            padding-top: 0 !important;
+                                        }
+                                    }
+
+                                    @media screen and (max-width: 767px) {
+                                        .project_hero_content {
+                                            display: flex !important;
+                                            flex-direction: column !important;
+                                            justify-content: flex-start !important;
+                                            gap: 16px !important;
+                                            height: auto !important;
+                                        }
+
+                                        .project_hero_description {
+                                            justify-content: flex-start !important;
+                                            margin-top: 0 !important;
+                                        }
+
+                                        .project_hero1 .project_reel_wrap {
+                                            margin-top: 24px !important;
+                                            margin-bottom: 0 !important;
+                                            aspect-ratio: 16/9 !important;
+                                            height: auto !important;
+                                        }
+                                    }
+
+                                    @media (min-width: 768px) {
+                                        .project_hero1 {
+                                            align-items: stretch !important;
+                                        }
+
+                                        .project_hero1 .project_reel_wrap {
+                                            position: relative !important;
+                                            height: 100% !important;
+                                            min-height: 0 !important;
+                                            overflow: hidden !important;
+                                            border-radius: 4px !important;
+                                            aspect-ratio: unset !important;
+                                        }
+
+                                        .project_hero1 .project_reel_wrap video {
+                                            position: absolute !important;
+                                            top: 0 !important;
+                                            left: 0 !important;
+                                            width: 100% !important;
+                                            height: 100% !important;
+                                            object-fit: cover !important;
+                                            border-radius: 4px !important;
+                                            display: block !important;
+                                        }
+                                    }
+                                </style>
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
+                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 24px;"
                                     class="project_hero_content u-display-contents-small">
                                     <!--$-->
-                                    <div id="" data-span-lg="" class="project_hero_title u-order-first-small">
+                                    <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
+                                        style="margin-bottom: 0;">
                                         <h1 class="project_hero_heading u-text-style-h1">Nine front doors </h1>
                                         <div class="project_hero_client_wrap">
                                             <p class="project_hero_client u-text-style-large">for&nbsp;</p>
@@ -1770,7 +1826,8 @@
                                     </div>
                                     <!--/$-->
                                     <!--$-->
-                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small">
+                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small"
+                                        style="margin-top: 0; padding-top: 0;">
                                         <div class="w-dyn-list">
                                             <div role="list"
                                                 class="project_hero_tags_wrap u-order-last-small w-dyn-items">
@@ -1801,46 +1858,17 @@
                                 </div>
                                 <!--/$-->
                                 <!--$-->
-                                <div data-bunny-background-init=""
-                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/0887aa74-7d0c-459a-879d-e2ae5be2b2d5/playlist.m3u8"
-                                    data-player-status="idle" data-player-lazy="false" data-player-autoplay="true"
-                                    data-player-activated="false" id="" data-span-lg="" data-start-lg=""
+                                <div id="" data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
                                     class="project_reel_wrap">
-                                    <div class="code-embed w-embed">
-                                        <style>
-                                            /* Animation */
-
-                                            [data-bunny-background-init] :is(.bunny-bg__placeholder, .bunny-bg__loading) {
-                                                transition: opacity 0.3s linear, visibility 0.3s linear;
-                                            }
-
-                                            /* Placeholder */
-
-                                            [data-bunny-background-init][data-player-status="playing"] .bunny-bg__placeholder,
-                                            [data-bunny-background-init][data-player-status="paused"] .bunny-bg__placeholder,
-                                            [data-bunny-background-init][data-player-activated="true"][data-player-status="ready"] .bunny-bg__placeholder {
-                                                opacity: 0;
-                                                visibility: hidden;
-                                            }
-
-                                            @media screen and (max-width: 767px) {
-                                                .project_reel_wrap {
-                                                    margin-top: 3rem;
-                                                    margin-bottom: 2rem;
-                                                }
-                                            }
-                                        </style>
-                                    </div>
-                                    <!--$--><video preload="auto" width="1920" height="1080" playsinline="playsinline"
-                                        muted="" loop="" autoplay="" class="bunny-bg__video" style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source src="/assets/videos/0_Black_Water_Dark_Water_1280x720.mp4" type="video/mp4">
-                                        <source src="../assets/videos/0_Black_Water_Dark_Water_1280x720.mp4" type="video/mp4">
+                                    <!--$--><video preload="auto" playsinline="playsinline" muted="" loop=""
+                                        autoplay="">
+                                        <source src="/assets/videos/0_Black_Water_Dark_Water_1280x720.mp4"
+                                            type="video/mp4">
+                                        <source src="../assets/videos/0_Black_Water_Dark_Water_1280x720.mp4"
+                                            type="video/mp4">
                                     </video>
                                     <!--/$-->
-                                    <!-- <img width="Auto"
-                                        src="https://res.cloudinary.com/di3rmgxjc/image/upload/v1786209420/blackwater_egaga5.png"
-                                        alt="" loading="lazy" sizes="100vw" class="bunny-bg__placeholder" /> -->
                                 </div>
                                 <!--/$-->
                             </div>
@@ -1868,7 +1896,7 @@
                                     <span
                                         style="width: 10px; height: 10px; border-radius: 50%; background: #FFE32A; display: inline-block;"></span>
                                     <span class="browser_url"
-                                        style="font-family: monospace; font-size: 12px; color: #7C7C70; margin-left: 12px; letter-spacing: 0.5px;">windmillhealthcare.ie</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin-left: 12px; letter-spacing: 0.5px;">windmillhealthcare.ie</span>
                                 </div>
                                 <div class="video_wrapper"
                                     style="position: relative; aspect-ratio: 16/10; width: 100%;">
@@ -1898,13 +1926,14 @@
                             style="display: grid; grid-template-columns: 1fr; gap: 32px; padding-block: 40px;">
                             <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
                                 <p class="sec_label u-text-style-small"
-                                    style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                     01 / The brief</p>
                                 <p class="lede_text u-text-style-large"
                                     style="font-size: 24px; line-height: 1.5; color: #FFFCE1; max-width: 800px; margin: 0;">
                                     Families researching a nursing home don't search for a healthcare group. They search
                                     for one care centre, in one county, usually under pressure and often from a
-                                    distance. Windmill needed each of its centres to be findable on its own terms — and
+                                    distance. Windmill needed each of its centres to be findable on its own terms â€”
+                                    and
                                     it needed a website it actually controlled.
                                 </p>
                             </div>
@@ -1921,7 +1950,7 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
-                                style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
+                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
                                 02 / Results</p>
 
                             <div class="results_grid"
@@ -1931,7 +1960,7 @@
                                     <span class="results_number"
                                         style="font-size: 48px; font-weight: 800; color: var(--swatch--turquoise, #87BAB2); line-height: 1; letter-spacing: -1px;">+14.8%</span>
                                     <span
-                                        style="font-family: monospace; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
                                         search sessions, year on year</span>
                                 </div>
                                 <div class="stat_card"
@@ -1939,7 +1968,7 @@
                                     <span class="results_number"
                                         style="font-size: 48px; font-weight: 800; color: var(--swatch--pink, #D56D88); line-height: 1; letter-spacing: -1px;">71%</span>
                                     <span
-                                        style="font-family: monospace; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
                                         all site traffic now arrives via organic search</span>
                                 </div>
                                 <div class="stat_card"
@@ -1947,7 +1976,7 @@
                                     <span class="results_number"
                                         style="font-size: 48px; font-weight: 800; color: var(--swatch--orange, #F17752); line-height: 1; letter-spacing: -1px;">62%</span>
                                     <span
-                                        style="font-family: monospace; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
                                         organic traffic lands on an individual centre page</span>
                                 </div>
                                 <div class="stat_card"
@@ -1955,14 +1984,14 @@
                                     <span class="results_number"
                                         style="font-size: 48px; font-weight: 800; color: var(--swatch--yellow, #F1A650); line-height: 1; letter-spacing: -1px;">+280%</span>
                                     <span
-                                        style="font-family: monospace; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
                                         social sessions, year on year</span>
                                 </div>
                             </div>
 
                             <p class="footnote_text u-text-style-small"
-                                style="color: #FFFCE1; font-family: monospace; margin-top: 24px;">
-                                Google Analytics 4, property 481463625. Like-for-like comparison, 1 March – 5 August,
+                                style="color: #FFFCE1; font-family: 'Inter', sans-serif; margin-top: 24px;">
+                                Google Analytics 4, property 481463625. Like-for-like comparison, 1 March â€“ 5 August,
                                 2026 against 2025.
                             </p>
                         </div>
@@ -2073,7 +2102,7 @@
                             style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
                             <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 16px;">
                                 <p class="sec_label u-text-style-small"
-                                    style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                     03 / The challenge</p>
                                 <h2 class="challenge_heading u-text-style-h2"
                                     style="color: #FFFCE1; line-height: 1.2; margin: 0;">
@@ -2132,14 +2161,15 @@
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         04 / Mobile build</p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: 32px; color: #0E100F; line-height: 1.3; margin: 0;">
                                         Most families are searching on a phone, often from a hospital corridor.
                                     </h2>
                                     <p style="color: #7C7C70; font-size: 16px; line-height: 1.6; margin: 0;">
-                                        The mobile build carries the full care centre content — no cut-down version, no
+                                        The mobile build carries the full care centre content â€” no cut-down version,
+                                        no
                                         hidden pages. Contact details, visiting information and enquiry routes stay
                                         within a thumb's reach at every scroll position.
                                     </p>
@@ -2157,7 +2187,7 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
-                                style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
+                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
                                 05 / Across the site</p>
 
                             <div data-xsmall-columns="2" data-large-columns="3" data-medium-columns="3"
@@ -2170,8 +2200,8 @@
                                             alt="Homepage" style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
                                     <span
-                                        style="font-family: monospace; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">01
-                                        — Homepage</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">01
+                                        â€” Homepage</span>
                                 </div>
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
@@ -2181,8 +2211,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
                                     <span
-                                        style="font-family: monospace; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">02
-                                        — Care centre template</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">02
+                                        â€” Care centre template</span>
                                 </div>
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
@@ -2192,8 +2222,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
                                     <span
-                                        style="font-family: monospace; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">03
-                                        — Careers & openings</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">03
+                                        â€” Careers & openings</span>
                                 </div>
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
@@ -2203,8 +2233,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
                                     <span
-                                        style="font-family: monospace; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">04
-                                        — Paying for care</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">04
+                                        â€” Paying for care</span>
                                 </div>
                             </div>
                         </div>
@@ -2259,7 +2289,7 @@
                                 STYLE="--span-lg: 10; --span-md: 12; --span-sm: 12; --span-xs: 12;"
                                 class="process_heading_wrap">
                                 <p class="sec_label u-text-style-small"
-                                    style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 40px 0;">
+                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 40px 0;">
                                     06 / What we did</p>
                             </div>
 
@@ -2278,7 +2308,8 @@
                                         owns</strong><br><br>
                                     We duplicated the full site, stood it up on hosting we could administer properly,
                                     and issued credentials in Windmill's name. They came out of it owning their website
-                                    outright rather than renting access to it — which is also what made everything after
+                                    outright rather than renting access to it â€” which is also what made everything
+                                    after
                                     this possible.
                                 </p>
                             </div>
@@ -2322,7 +2353,7 @@
                                         brand</strong><br><br>
                                     The redesign holds the original palette and identity exactly as established, so
                                     prior brand spend keeps compounding. Modernisation went into layout, typography,
-                                    imagery, hierarchy and mobile — the things that signal currency without touching
+                                    imagery, hierarchy and mobile â€” the things that signal currency without touching
                                     recognition.
                                 </p>
                             </div>
@@ -2374,7 +2405,7 @@
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         07 / On the results page</p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
@@ -2386,8 +2417,8 @@
                                         than cropped to a single flattering screenshot.
                                     </p>
                                     <p class="caption_text u-text-style-small"
-                                        style="color: #4A4B40; font-family: monospace; margin: 0;">
-                                        Google results vary by location, device and personalisation — treat this as
+                                        style="color: #4A4B40; font-family: 'Inter', sans-serif; margin: 0;">
+                                        Google results vary by location, device and personalisation â€” treat this as
                                         illustrative of position rather than a measurement of it.
                                     </p>
                                 </div>
@@ -2407,7 +2438,7 @@
                             style="display: grid; grid-template-columns: 1fr; gap: 40px;">
                             <div style="max-width: 700px; display: grid; grid-template-columns: 1fr; gap: 16px;">
                                 <p class="sec_label u-text-style-small"
-                                    style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                     08 / Landing pages</p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
@@ -2415,7 +2446,7 @@
                                 </h2>
                                 <p style="color: #7C7C70; font-size: 16px; line-height: 1.6; margin: 0;">
                                     Across the reporting period, individual care centre pages pulled 7,076 organic
-                                    sessions — nearly four times the homepage. Families arrive at the specific centre
+                                    sessions â€” nearly four times the homepage. Families arrive at the specific centre
                                     they're considering, not at the top of the site and inward. This is the clearest
                                     evidence the page-per-centre structure is doing its job.
                                 </p>
@@ -2434,7 +2465,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">1,827</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,827</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2446,7 +2477,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">1,250</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,250</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2458,7 +2489,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">1,185</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,185</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2470,7 +2501,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">963</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">963</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2482,7 +2513,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">843</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">843</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2494,7 +2525,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">825</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">825</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2506,7 +2537,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">782</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">782</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2518,7 +2549,7 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">771</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">771</span>
                                 </div>
                                 <div class="chart_row"
                                     style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
@@ -2530,12 +2561,13 @@
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: monospace; color: #FFE32A; font-size: 14px; text-align: right;">457</span>
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">457</span>
                                 </div>
                             </div>
 
-                            <p class="footnote_text u-text-style-small" style="color: #4A4B40; font-family: monospace;">
-                                Organic search sessions by landing page, 1 March – 5 August 2026. Bars scaled against
+                            <p class="footnote_text u-text-style-small"
+                                style="color: #4A4B40; font-family: 'Inter', sans-serif;">
+                                Organic search sessions by landing page, 1 March â€“ 5 August 2026. Bars scaled against
                                 the homepage.
                             </p>
                         </div>
@@ -2586,7 +2618,7 @@
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         09 / Client testimonial</p>
                                     <blockquote
                                         style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px;">
@@ -2595,8 +2627,8 @@
                                             facilities is fully findable by the families who need us."</p>
                                     </blockquote>
                                     <cite
-                                        style="display: block; font-family: monospace; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">
-                                        John C. O'Connor, Managing Director — Windmill Healthcare Group
+                                        style="display: block; font-family: 'Inter', sans-serif; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">
+                                        John C. O'Connor, Managing Director â€” Windmill Healthcare Group
                                     </cite>
                                 </div>
                             </div>
@@ -2648,7 +2680,7 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
-                                style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 48px;">
+                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 48px;">
                                 10 / Everything delivered</p>
 
                             <div class="scope_grid"
@@ -2658,17 +2690,20 @@
                                         style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
                                         Migration & ownership</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Full site
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Full
+                                            site
                                             duplication</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Hosting
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Hosting
                                             migration</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Credentials in client's name</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Full asset
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Full
+                                            asset
                                             ownership</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Backup &
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Backup &
                                             restore setup</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> SSL & DNS
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> SSL &
+                                            DNS
                                             configuration</li>
                                     </ul>
                                 </div>
@@ -2677,17 +2712,19 @@
                                         style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
                                         Search</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Technical
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
+                                            Technical
                                             SEO audit</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Page-per-centre setup</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> On-page
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> On-page
                                             optimisation</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Internal
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Internal
                                             linking structure</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Local SEO
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Local
+                                            SEO
                                             campaign</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> GA4
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> GA4
                                             analytics setup</li>
                                     </ul>
                                 </div>
@@ -2696,17 +2733,18 @@
                                         style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
                                         Design & build</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Full site
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Full
+                                            site
                                             redesign</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Brand
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Brand
                                             palette preserved</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Care
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Care
                                             centre template</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Careers
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Careers
                                             section portal</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Mobile-first development</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Accessibility pass</li>
                                     </ul>
                                 </div>
@@ -2715,17 +2753,17 @@
                                         style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
                                         Content</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Care
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Care
                                             centre page copy</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Service/care-type copy</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> News &
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> News &
                                             article portal</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span>
                                             Photography direction</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Video
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Video
                                             capturing sessions</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Monthly
+                                        <li class="scope_item_premium"><span class="scope_item_dash">â€”</span> Monthly
                                             optimisation</li>
                                     </ul>
                                 </div>
@@ -2744,7 +2782,7 @@
                                 style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
                                 <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: monospace; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         11 / One thing we're watching</p>
                                 </div>
                                 <div class="challenge_paragraphs" style="flex: 1.2 1 450px; color: #7C7C70;">
@@ -2752,7 +2790,7 @@
                                         Organic engagement rate sits at 63.2% for the current period, against 66.8% a
                                         year
                                         earlier. With organic sessions up almost 15%, a modest dilution is the expected
-                                        pattern — a wider top of funnel brings in more early-stage researchers. It's a
+                                        pattern â€” a wider top of funnel brings in more early-stage researchers. It's a
                                         live
                                         item in the current optimisation cycle, and we'd rather say so than leave it
                                         out.
@@ -2846,10 +2884,12 @@
                         <div class="content_wrap u-column-span-10 cta_content_wrap"
                             style="grid-column-end: span 12; display: flex; justify-content: center; align-items: center; gap: 6vw;">
                             <div class="cta_text_wrap">
-                                <h2 class="cta_heading u-text-style-h3">Own your site. Then make it findable.</h2>
+                                <h2 class="cta_heading u-text-style-h3">Own your site. Then
+                                    make it findable.
+                                </h2>
                                 <p class="cta_paragraph u-text-style-main">
-                                    Our ad work with Irish businesses across web, SEO, paid media and video — all of
-                                    it in-house, under one roof.
+                                    Our ad work with Irish businesses across web, SEO, paid
+                                    media and video — all of it in-house, under one roof.
                                 </p>
                                 <!--$-->
                                 <div STYLE="" class="u-button-wrapper">
@@ -2904,18 +2944,18 @@
                                     border-radius: 24px !important;
                                 }
 
-                                /* Default solid circle → dark olive */
+                                /* Default solid circle â†’ dark olive */
                                 .cta_grid_circle:not(.is-blank):not(.is-pink):not(.is-orange):not(.is-yellow) {
                                     background-color: #2A2B25 !important;
                                 }
 
-                                /* Pink & yellow → bright yellow */
+                                /* Pink & yellow â†’ bright yellow */
                                 .cta_grid_circle.is-pink,
                                 .cta_grid_circle.is-yellow {
                                     background-color: #FFE32A !important;
                                 }
 
-                                /* Orange → dark olive */
+                                /* Orange â†’ dark olive */
                                 .cta_grid_circle.is-orange {
                                     background-color: #2A2B25 !important;
                                 }
@@ -2970,22 +3010,38 @@
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo3.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /></div>
-                                    <div class="cta_grid_circle"></div>
+                                    <div class="cta_grid_circle cd-2"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo2.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo7.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                     <div class="cta_grid_circle cd-3"><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo5.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo4.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /></div>
-                                    <div class="cta_grid_circle is-pink u-display-none-medium"></div>
+                                    <div class="cta_grid_circle is-pink u-display-none-medium cd-4"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo8.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo9.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                 </div>
                                 <div class="cta_circles_line">
-                                    <div class="cta_grid_circle is-pink"></div>
+                                    <div class="cta_grid_circle is-pink cd-5"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo11.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo12.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                     <div class="cta_grid_circle is-blank cd-2"><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo13.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo15.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /></div>
-                                    <div class="cta_grid_circle is-orange"></div>
+                                    <div class="cta_grid_circle is-orange cd-1"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo2.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo5.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                     <div class="cta_grid_circle is-blank u-display-none-medium cd-5"><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo1.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
@@ -2998,13 +3054,21 @@
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo6.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /></div>
-                                    <div class="cta_grid_circle is-yellow"></div>
+                                    <div class="cta_grid_circle is-yellow cd-3"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo7.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo8.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                     <div class="cta_grid_circle is-blank cd-4"><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo13.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /><img
                                             src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo15.png"
                                             loading="lazy" alt="" class="cta_grid_circle_img" /></div>
-                                    <div class="cta_grid_circle u-display-none-medium"></div>
+                                    <div class="cta_grid_circle u-display-none-medium cd-2"><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo9.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /><img
+                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo11.png"
+                                            loading="lazy" alt="" class="cta_grid_circle_img" /></div>
                                 </div>
                             </div>
                         </div>
@@ -3014,213 +3078,346 @@
                     class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim">
                 </div>
             </section>
-            <footer id="" data-css-scroll="" data-css-scroll-threshold="66%"
-                class="main-section_wrap u-section footer_wrap">
+            <footer id="footer" class="main-section_wrap u-section footer_wrap"
+                style="background-color: #0E100F; color: #FFFCE1; padding: 5rem 0 3rem 0; border-top: 1px solid #2A2B25; font-family: 'Inter', sans-serif;">
                 <div class="u-embed-css w-embed">
-                    <style data-css-animator="footer-hey">
-                        @keyframes hey-turquoise {
-                            to {
-                                transform: translateY(8%);
+                    <style>
+                        .footer_ref_grid {
+                            display: grid;
+                            grid-template-columns: 1.2fr 1fr 1fr 1.6fr;
+                            gap: 2rem;
+
+                        }
+
+                        .footer_ref_col_title {
+                            font-size: 1.2rem;
+                            font-weight: 600;
+                            letter-spacing: 0.1em;
+                            color: #7C7C70;
+                            text-transform: uppercase;
+                            margin-bottom: 1.5rem;
+                        }
+
+                        .footer_ref_links {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.55rem;
+                        }
+
+                        .footer_ref_links a {
+                            color: #FFFCE1;
+                            text-decoration: none;
+                            font-size: 1rem;
+                            transition: color 0.2s ease;
+                        }
+
+                        .footer_ref_links a:hover {
+                            color: #FFE32A;
+                        }
+
+                        .footer_ref_subscribe_box {
+                            display: flex;
+                            align-items: center;
+                            background: #131615;
+                            border: 1px solid #2A2B25;
+                            border-radius: 100px;
+                            padding: 8px 8px 8px 24px;
+                            width: 100%;
+                            max-width: 480px;
+                            box-sizing: border-box;
+                            transition: border-color 0.2s ease;
+                        }
+
+                        .footer_ref_subscribe_box:focus-within {
+                            border-color: #FFE32A;
+                        }
+
+                        .footer_ref_subscribe_input {
+                            background: transparent;
+                            border: none;
+                            outline: none;
+                            color: #FFFCE1;
+                            font-size: 1rem;
+                            padding: 0.4rem 0;
+                            font-family: 'Inter', sans-serif;
+                            flex: 1;
+                            min-width: 0;
+                        }
+
+                        .footer_ref_subscribe_input::placeholder {
+                            color: #7C7C70;
+                        }
+
+                        .footer_ref_subscribe_btn {
+                            background: #FFE32A;
+                            color: #0E100F;
+                            border: none;
+                            border-radius: 100px;
+                            padding: 0.85rem 1.8rem;
+                            font-size: 0.95rem;
+                            font-weight: 700;
+                            font-family: 'Inter', sans-serif;
+                            cursor: pointer;
+                            transition: all 0.2s ease;
+                            white-space: nowrap;
+                        }
+
+                        .footer_ref_subscribe_btn:hover {
+                            background: #FFFCE1;
+                        }
+
+                        .footer_ref_social_icons svg {
+                            width: 26px !important;
+                            height: 26px !important;
+                        }
+
+                        .footer_ref_bottom_bar {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            gap: 1.5rem;
+                            padding-top: 2rem;
+                            border-top: 1px solid #2A2B25;
+                            font-size: 1rem;
+                            color: #7C7C70;
+                        }
+
+                        .footer_ref_socials_legal {
+                            display: flex;
+                            align-items: center;
+                            gap: 1.5rem;
+                            flex-wrap: wrap;
+                        }
+
+                        .footer_ref_social_icons {
+                            display: flex;
+                            align-items: center;
+                            gap: 1.25rem;
+                        }
+
+                        .footer_ref_social_icons a {
+                            color: #FFFCE1;
+                            transition: color 0.2s ease, transform 0.2s ease;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .footer_ref_social_icons a:hover {
+                            color: #FFE32A;
+                            transform: translateY(-2px);
+                        }
+
+                        .footer_ref_divider {
+                            width: 1px;
+                            height: 16px;
+                            background-color: #2A2B25;
+                        }
+
+                        .footer_ref_legal_links {
+                            display: flex;
+                            align-items: center;
+                            gap: 1.25rem;
+                        }
+
+                        .footer_ref_legal_links a {
+                            color: #7C7C70;
+                            text-decoration: none;
+                            font-size: 0.85rem;
+                            transition: color 0.2s ease;
+                        }
+
+                        .footer_ref_legal_links a:hover {
+                            color: #FFFCE1;
+                        }
+
+                        @media screen and (max-width: 991px) {
+                            .footer_ref_grid {
+                                grid-template-columns: 1fr 1fr;
+                                gap: 2rem;
+                            }
+
+                            .footer_ref_col_title {
+                                font-size: 0.75rem !important;
+                                margin-bottom: 0.85rem !important;
+                            }
+
+                            .footer_ref_links {
+                                gap: 0.4rem !important;
+                            }
+
+                            .footer_ref_links a {
+                                font-size: 0.88rem !important;
+                            }
+
+                            .footer_ref_bottom_bar {
+                                font-size: 0.85rem !important;
+                            }
+
+                            .footer_ref_social_icons svg {
+                                width: 20px !important;
+                                height: 20px !important;
                             }
                         }
 
-                        [data-value="turquoise"] {
-                            animation: hey-turquoise 0.2s ease-out 0s both;
-                        }
+                        @media screen and (max-width: 600px) {
+                            .footer_ref_grid {
+                                grid-template-columns: 1fr;
+                                gap: 1.75rem;
+                            }
 
-                        @keyframes hey-pink {
-                            to {
-                                transform: translateY(16%);
+                            .footer_ref_col_title {
+                                font-size: 0.75rem !important;
+                                margin-bottom: 0.56rem !important;
+                            }
+
+                            .footer_ref_links {
+                                gap: 0.3rem !important;
+                            }
+
+                            .footer_ref_links a {
+                                font-size: 0.85rem !important;
+                            }
+
+                            .footer_ref_bottom_bar {
+                                flex-direction: column;
+                                align-items: flex-start;
+                                gap: 1.25rem;
                             }
                         }
 
-                        [data-value="pink"] {
-                            animation: hey-pink 0.4s ease-out 0s both;
-                        }
-
-                        @keyframes hey-orange {
-                            to {
-                                transform: translateY(24%);
+                        @media screen and (max-width: 500px) {
+                            .footer_ref_subscribe_box {
+                                flex-direction: column;
+                                align-items: stretch;
+                                background: transparent !important;
+                                border: none !important;
+                                padding: 0 !important;
+                                gap: 0.75rem;
+                                max-width: 100% !important;
                             }
-                        }
 
-                        [data-value="orange"] {
-                            animation: hey-orange 0.6s ease-out 0s both;
-                        }
-
-                        @keyframes hey-yellow {
-                            to {
-                                transform: translateY(32%);
+                            .footer_ref_subscribe_input {
+                                background: #131615 !important;
+                                border: 1px solid #2A2B25 !important;
+                                border-radius: 100px !important;
+                                padding: 0.75rem 1.25rem !important;
+                                width: 100% !important;
+                                box-sizing: border-box !important;
                             }
-                        }
 
-                        [data-value="yellow"] {
-                            animation: hey-yellow 0.8s ease-out 0s both;
+                            .footer_ref_subscribe_input:focus {
+                                border-color: #FFE32A !important;
+                            }
+
+                            .footer_ref_subscribe_btn {
+                                width: 100% !important;
+                                border-radius: 100px !important;
+                                padding: 0.75rem 1.25rem !important;
+                                text-align: center !important;
+                                box-sizing: border-box !important;
+                            }
                         }
                     </style>
                 </div>
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-10 u-grid-subgrid footer_contain"
-                            style="grid-column-end: span 12;">
-                            <!--$-->
-                            <div data-span-lg="" data-start-lg=""
-                                STYLE="--span-lg: 9; --span-md: 8; --span-sm: 12; --span-xs: 12;" id=""
-                                class="footer_cta_wrap">
-                                <div class="footer_cta_hey_wrap">
-                                    <div class="footer_cta_hey u-text-style-display">Hey</div>
-                                    <div data-value="turquoise" class="footer_cta_hey u-text-style-display is-absolute">
-                                        Hey</div>
-                                    <div data-value="pink"
-                                        class="footer_cta_hey u-text-style-display is-absolute is-pink">Hey</div>
-                                    <div data-value="orange"
-                                        class="footer_cta_hey u-text-style-display is-absolute is-orange">Hey</div>
-                                    <div data-value="yellow"
-                                        class="footer_cta_hey u-text-style-display is-absolute is-yellow">Hey</div>
-                                </div>
-                                <div data-trigger="hover focus" class="footer_cta_button_wrap">
-                                    <div class="footer_cta_button_element">
-                                        <!--$-->
-                                        <div class="clickable_wrap u-cover-absolute"><a
-                                                aria-label="Contact Blackwater Digital" target="" href="/contact.html"
-                                                class="clickable_link w-inline-block"></a></div>
-                                        <!--/$-->
-                                        <div class="footer_cta_button_text u-text-style-h2">let's talk</div>
-                                        <div class="footer_cta_button_icon w-embed"><svg viewBox="0 0 38 38" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                                                <g clip-path="url(#clip0_2633_2547)">
-                                                    <path
-                                                        d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                        fill="#191919" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_2633_2547">
-                                                        <rect width="38" height="38" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/$-->
-                            <!--$-->
-                            <div id="" data-span-lg="" data-start-lg=""
-                                STYLE="--span-lg: 3; --span-md: 4; --span-sm: 12; --span-xs: 12;"
-                                class="footer_contact_layout">
-                                <div data-trigger="hover focus" class="footer_contact_wrap">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="WhatsApp"
-                                            target="_blank" href="#" class="clickable_link w-inline-block"></a>
-                                    </div>
-                                    <!--/$-->
-                                    <div class="footer_contact_text u-text-style-large">WhatsApp</div>
-                                    <div class="footer_contact_icon w-embed"><svg viewBox="0 0 22 22" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                                            <path
-                                                d="M11.033 4.89408C7.70092 4.89408 4.99125 7.60375 4.98942 10.934C4.9885 12.2934 5.38725 13.3118 6.05642 14.377L5.44592 16.6063L7.73208 16.0068C8.756 16.6146 9.73408 16.9794 11.0275 16.9794C14.3568 16.9794 17.0693 14.2698 17.0702 10.9386C17.0729 7.601 14.3733 4.895 11.033 4.89408ZM14.586 13.5318C14.4348 13.9563 13.7087 14.3431 13.3604 14.3953C13.0478 14.4421 12.6518 14.4613 12.2164 14.3238C11.9524 14.2404 11.6142 14.1286 11.1815 13.9416C9.36008 13.1551 8.17025 11.3208 8.0795 11.1998C7.98875 11.0788 7.33792 10.2153 7.33792 9.32158C7.33792 8.42783 7.80725 7.98875 7.97317 7.80633C8.14 7.623 8.33617 7.57717 8.45717 7.57717L8.8055 7.58358C8.91733 7.58908 9.06675 7.54142 9.21433 7.89525C9.36558 8.25917 9.72858 9.15292 9.77442 9.24367C9.81933 9.33442 9.8505 9.44075 9.78908 9.56175C9.72858 9.68275 9.69833 9.75883 9.60758 9.86425L9.33533 10.1823C9.24458 10.2731 9.15017 10.3712 9.25558 10.5527C9.36192 10.7342 9.72583 11.3291 10.2658 11.8103C10.9597 12.4291 11.5445 12.6207 11.726 12.7114C11.9075 12.8022 12.0138 12.7875 12.1193 12.6656C12.2256 12.5446 12.573 12.1358 12.694 11.9533C12.815 11.7709 12.936 11.8021 13.1028 11.8626C13.2697 11.9231 14.1625 12.3622 14.344 12.4538C14.5255 12.5446 14.6465 12.5904 14.6923 12.6656C14.7373 12.7435 14.7373 13.1074 14.586 13.5318ZM0 0V22H22V0H0ZM11.0303 18.2068C9.81383 18.2068 8.61575 17.9016 7.55425 17.3223L3.7015 18.3333L4.73275 14.5677C4.09658 13.4658 3.762 12.2155 3.76292 10.934C3.76475 6.92633 7.02442 3.66667 11.0303 3.66667C12.9745 3.66758 14.7996 4.42475 16.1718 5.79792C17.5441 7.17108 18.2994 8.998 18.2985 10.9395C18.2967 14.9472 15.0361 18.2068 11.0303 18.2068Z"
-                                                fill="currentColor" />
-                                        </svg></div>
-                                </div>
-                                <div data-trigger="hover focus" class="footer_contact_wrap">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="Send email" target=""
-                                            href="#" class="clickable_link w-inline-block"></a>
-                                    </div>
-                                    <!--/$-->
-                                    <div class="footer_contact_text u-text-style-large">Email</div>
-                                    <div class="footer_contact_icon is-email w-embed"><svg viewBox="0 0 22 22"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            preserveAspectRatio="xMidYMid meet">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M22 0V22H0V0H22ZM15.5833 14.6668C17.6073 14.6668 19.25 13.0241 19.25 11.0001C19.25 8.97611 17.6073 7.33344 15.5833 7.33344C13.5593 7.33344 11.9167 8.97611 11.9167 11.0001C11.9167 11.6674 12.0954 12.2944 12.408 12.8334H9.592C9.90458 12.2944 10.0833 11.6674 10.0833 11.0001C10.0833 8.97611 8.44067 7.33344 6.41667 7.33344C4.39267 7.33344 2.75 8.97611 2.75 11.0001C2.75 13.0241 4.39267 14.6668 6.41667 14.6668H15.5833ZM6.41667 9.16677C7.42867 9.16677 8.25 9.98811 8.25 11.0001C8.25 12.0121 7.42867 12.8334 6.41667 12.8334C5.40467 12.8334 4.58333 12.0121 4.58333 11.0001C4.58333 9.98811 5.40467 9.16677 6.41667 9.16677ZM15.5833 9.16677C16.5953 9.16677 17.4167 9.98811 17.4167 11.0001C17.4167 12.0121 16.5953 12.8334 15.5833 12.8334C14.5713 12.8334 13.75 12.0121 13.75 11.0001C13.75 9.98811 14.5713 9.16677 15.5833 9.16677Z"
-                                                fill="currentColor" />
-                                        </svg></div>
-                                </div>
-                            </div>
-                            <!--/$-->
-                            <!--$-->
-                            <div id="" data-span-lg="" data-start-lg=""
-                                STYLE="--span-lg: 3; --span-md: 5; --span-sm: 12; --span-xs: 12; --start-lg: 10; --start-md: 8; --start-sm: 1; --start-xs: 1;"
-                                class="footer_socials">
-                                <div data-trigger="hover focus" class="footer_socials_wrap">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="View Instagram"
-                                            target="_blank" href="#" class="clickable_link w-inline-block"></a></div>
-                                    <!--/$-->
-                                    <div class="footer_social_text u-text-style-main-medium">Instagram</div>
-                                    <div class="footer_contact_icon is-social w-embed"><svg viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            preserveAspectRatio="xMidYMid meet">
-                                            <g clip-path="url(#clip0_4576_2323)">
-                                                <path
-                                                    d="M9.778 8C9.778 8.982 8.982 9.778 8 9.778C7.018 9.778 6.222 8.98267 6.222 8C6.222 7.018 7.018 6.222 8 6.222C8.982 6.222 9.778 7.018 9.778 8ZM12.342 5.84533C12.3673 6.40733 12.3727 6.576 12.3727 8C12.3727 9.424 12.3673 9.59267 12.342 10.1553C12.2753 11.5887 11.6027 12.276 10.156 12.3413C9.59333 12.3667 9.42467 12.3727 8 12.3727C6.576 12.3727 6.40667 12.3673 5.84533 12.342C4.396 12.276 3.72467 11.5873 3.65933 10.156C3.63333 9.59267 3.62733 9.424 3.62733 8C3.62733 6.576 3.63333 6.40733 3.65867 5.84533C3.72467 4.41067 4.398 3.72467 5.84467 3.65933C6.40733 3.63333 6.576 3.628 8 3.628C9.424 3.628 9.59333 3.63333 10.1553 3.65867C11.6007 3.72467 12.2753 4.41067 12.342 5.84533ZM10.7387 8C10.7387 6.48733 9.512 5.26133 8 5.26133C6.48733 5.26133 5.26133 6.48733 5.26133 8C5.26133 9.51267 6.488 10.7387 8 10.7387C9.51267 10.7387 10.7387 9.51267 10.7387 8ZM11.4867 5.15333C11.4867 4.8 11.2 4.51333 10.8467 4.51333C10.4933 4.51333 10.2067 4.8 10.2067 5.15333C10.2067 5.50667 10.4933 5.79333 10.8467 5.79333C11.2007 5.79333 11.4867 5.50667 11.4867 5.15333ZM16 0V16H0V0H16ZM13.3333 8C13.3333 6.552 13.3273 6.37 13.3013 5.80133C13.214 3.86667 12.138 2.788 10.1993 2.69933C9.63 2.67267 9.44867 2.66667 8 2.66667C6.55133 2.66667 6.37067 2.67267 5.80133 2.69867C3.864 2.78733 2.788 3.862 2.69867 5.80067C2.67267 6.37 2.66667 6.552 2.66667 8C2.66667 9.44867 2.67267 9.63 2.69867 10.1987C2.788 12.136 3.86267 13.2127 5.80133 13.3013C6.37067 13.3273 6.55133 13.3333 8 13.3333C9.44867 13.3333 9.63 13.3273 10.1993 13.3013C12.134 13.2127 13.214 12.138 13.3013 10.1987C13.3273 9.63 13.3333 9.44867 13.3333 8Z"
-                                                    fill="currentColor" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_4576_2323">
-                                                    <rect width="16" height="16" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></div>
-                                </div>
-                                <div data-trigger="hover focus" class="footer_socials_wrap">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="View LinkedIn"
-                                            target="_blank" href="#" class="clickable_link w-inline-block"></a></div>
-                                    <!--/$-->
-                                    <div class="footer_social_text u-text-style-main-medium">LinkedIn</div>
-                                    <div class="footer_contact_icon is-social w-embed"><svg viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            preserveAspectRatio="xMidYMid meet">
-                                            <g clip-path="url(#clip0_4576_2327)">
-                                                <path
-                                                    d="M0 0V16H16V0H0ZM5.33333 12.6667H3.33333V5.33333H5.33333V12.6667ZM4.33333 4.488C3.68933 4.488 3.16667 3.96133 3.16667 3.312C3.16667 2.66267 3.68933 2.136 4.33333 2.136C4.97733 2.136 5.5 2.66267 5.5 3.312C5.5 3.96133 4.978 4.488 4.33333 4.488ZM13.3333 12.6667H11.3333V8.93067C11.3333 6.68533 8.66667 6.85533 8.66667 8.93067V12.6667H6.66667V5.33333H8.66667V6.51C9.598 4.786 13.3333 4.65867 13.3333 8.16067V12.6667Z"
-                                                    fill="currentColor" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_4576_2327">
-                                                    <rect width="16" height="16" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></div>
-                                </div>
-                                <div data-trigger="hover focus" class="footer_socials_wrap">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="View TikTok"
-                                            target="_blank" href="#" class="clickable_link w-inline-block"></a></div>
-                                    <!--/$-->
-                                    <div class="footer_social_text u-text-style-main-medium">TikTok</div>
-                                    <div class="footer_contact_icon is-social w-embed"><svg viewBox="0 0 16 16"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                                            preserveAspectRatio="xMidYMid meet">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M16 16H0V0H16V16ZM10.5888 4.67827C10.1502 4.2186 9.87461 3.59829 9.85653 2.90909C9.31268 2.9135 8.76838 2.90913 8.22017 2.91761L8.21875 2.9169C8.20636 4.62236 8.21425 6.32848 8.21023 8.03835C8.20621 8.79782 8.22297 9.55303 8.18111 10.3125V10.3168C8.16069 10.4827 8.09927 10.6358 8.00994 10.7621L8.00639 10.7685C7.76597 11.1633 7.34068 11.4303 6.85085 11.4453H6.85369C6.8336 11.4463 6.81304 11.4467 6.79261 11.4467C6.12858 11.4466 5.57059 10.9859 5.41193 10.3558L5.38565 10.228C5.37822 10.1627 5.3743 10.0962 5.37429 10.0291C5.37429 9.85666 5.40007 9.68971 5.4446 9.54474L5.44744 9.53409C5.64445 8.9682 6.17703 8.56321 6.80256 8.56321C6.97284 8.56324 7.13616 8.59302 7.2777 8.64489C7.27771 8.01716 7.30311 7.38909 7.29474 6.76136C7.12612 6.7332 6.95296 6.71805 6.77628 6.71804C5.14624 6.71804 3.80547 7.97318 3.64134 9.59588C3.63296 9.80363 3.63652 10.0158 3.64489 10.228L3.64631 10.2422C3.75322 11.259 4.32998 12.1334 5.16619 12.6463C5.62634 12.9281 6.16542 13.0909 6.74219 13.0909C6.79102 13.0909 6.83954 13.0901 6.88068 13.0881H6.88565C7.90464 13.0567 8.80045 12.5291 9.35369 11.7259L9.3473 11.7365C9.6782 11.2574 9.88454 10.6832 9.91903 10.054C9.93142 8.81947 9.92283 7.58054 9.92685 6.34162C10.1329 6.48364 10.3502 6.61188 10.6058 6.73651L10.5781 6.72443C11.121 6.98181 11.7233 7.13143 12.3636 7.14773V5.43821L12.3544 5.4375C11.6765 5.38996 11.0614 5.10984 10.5888 4.67827Z"
-                                                fill="currentColor" />
-                                        </svg></div>
-                                </div>
-                            </div>
-                            <!--/$-->
-                            <div class="footer_line u-column-span-12 u-column-start-1"></div>
-                            <!--$-->
-                            <div id="" data-span-lg="" data-start-lg=""
-                                STYLE="grid-column: 1 / -1; display: flex; flex-direction: row; align-items: center; justify-content: center; text-align: center; width: 100%; gap: 6px; flex-wrap: wrap;"
-                                class="footer_copyright_wrap">
-                                <!--$-->
-                                <div class="footer_bottom_text u-text-style-small-medium"
-                                    style="display: flex; gap: 4px; justify-content: center;">
-                                    <!--$--><span>© </span>
-                                    <!--/$-->
-                                    <!--$--><span data-dynamic-year=" ">2026</span>
-                                    <!--/$-->
-                                    <!--$--><span>A Blackwater Digital.</span>
-                                    <!--/$-->
-                                </div>
-                                <!--/$-->
-                                <div class="footer_rights_text u-text-style-small-medium" style="text-align: center;">
-                                    All rights reserved.</div>
-                            </div>
-                            <!--/$-->
 
+                <div class="main-section_contain u-container">
+                    <!-- Top 4 Columns Grid -->
+                    <div class="footer_ref_grid">
+                        <!-- Column 1: Brand & Tagline -->
+                        <div>
+                            <div style="display: flex; align-items: stretch; gap: 1rem; margin-bottom: 1.25rem;">
+                                <div style="width: 4.5px; background-color: #FFE32A; border-radius: 3px;"></div>
+                                <div
+                                    style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.08; color: #FFFCE1; letter-spacing: -0.015em;">
+                                    Black<br>Water<br>Digital
+                                </div>
+                            </div>
+                            <p
+                                style="font-size: 0.88rem; color: #7C7C70; margin: 0; line-height: 1.5; max-width: 280px;">
+                                Strategic digital marketing for ambitious businesses.
+                            </p>
+                        </div>
+
+                        <!-- Column 2: SERVICES -->
+                        <div>
+                            <div class="footer_ref_col_title">SERVICES</div>
+                            <ul class="footer_ref_links">
+                                <li><a href="/services.html">Strategy</a></li>
+                                <li><a href="/services.html">Paid Media</a></li>
+                                <li><a href="/services.html">SEO</a></li>
+                                <li><a href="/services.html">Content &amp; Creative</a></li>
+                                <li><a href="/services.html">Web &amp; CRO</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 3: RESOURCES -->
+                        <div>
+                            <div class="footer_ref_col_title">RESOURCES</div>
+                            <ul class="footer_ref_links">
+                                <li><a href="/all-articles.html">Journal</a></li>
+                                <li><a href="#entry-point">Tools</a></li>
+                                <li><a href="/work.html">Case Studies</a></li>
+                                <li><a href="/about.html">About</a></li>
+                                <li><a href="/contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 4: STAY IN THE LOOP -->
+                        <div>
+                            <div class="footer_ref_col_title">STAY IN THE LOOP</div>
+                            <p style="font-size: 0.88rem; color: #7C7C70; margin-bottom: 1.25rem; line-height: 1.4;">
+                                Get practical insights, not spam.
+                            </p>
+                            <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); return false;"
+                                class="footer_ref_subscribe_box">
+                                <input type="email" placeholder="Your email address" required
+                                    class="footer_ref_subscribe_input">
+                                <button type="submit" class="footer_ref_subscribe_btn">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Bar -->
+                    <div class="footer_ref_bottom_bar">
+                        <div>&copy; 2025 Black Water Digital. All rights reserved.</div>
+
+                        <div class="footer_ref_socials_legal">
+                            <!-- Social Icons -->
+                            <div class="footer_ref_social_icons">
+                                <!-- LinkedIn -->
+                                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z" />
+                                    </svg>
+                                </a>
+                                <!-- Instagram -->
+                                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    </svg>
+                                </a>
+                                <!-- X / Twitter -->
+                                <a href="https://x.com" target="_blank" rel="noopener" aria-label="X">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    </svg>
+                                </a>
+                                <!-- YouTube -->
+                                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3247,7 +3444,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js"></script>
 
-    
+
 
     <style>
         .reset-animations,
