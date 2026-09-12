@@ -5942,9 +5942,15 @@
                                 window.renderBudgetCard1 = renderBudgetCard1;
                                 window.updateBudgetCard2 = updateBudgetCard2;
 
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    renderBudgetAll();
-                                });
+                                window.initDiagnostics = function () {
+                                    if (typeof window.renderBudgetAll === 'function') window.renderBudgetAll();
+                                    if (typeof window.renderPlatformAll === 'function') window.renderPlatformAll();
+                                };
+
+                                renderBudgetAll();
+                                if (document.readyState === "loading") {
+                                    document.addEventListener("DOMContentLoaded", renderBudgetAll);
+                                }
                             })();
                         </script>
 
@@ -6538,9 +6544,15 @@
                                 window.renderPlatformCard1 = renderPlatformCard1;
                                 window.updatePlatformCard2 = updatePlatformCard2;
 
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    renderPlatformAll();
-                                });
+                                window.initDiagnostics = function () {
+                                    if (typeof window.renderBudgetAll === 'function') window.renderBudgetAll();
+                                    if (typeof window.renderPlatformAll === 'function') window.renderPlatformAll();
+                                };
+
+                                renderPlatformAll();
+                                if (document.readyState === "loading") {
+                                    document.addEventListener("DOMContentLoaded", renderPlatformAll);
+                                }
                             })();
                         </script>
                     </div>
@@ -7437,9 +7449,9 @@
                             background: #131615;
                             border: 1px solid #2A2B25;
                             border-radius: 100px;
-                            padding: 4px 4px 4px 18px;
+                            padding: 8px 8px 8px 24px;
                             width: 100%;
-                            max-width: 380px;
+                            max-width: 480px;
                             box-sizing: border-box;
                             transition: border-color 0.2s ease;
                         }
@@ -7453,7 +7465,8 @@
                             border: none;
                             outline: none;
                             color: #FFFCE1;
-                            font-size: 0.85rem;
+                            font-size: 1rem;
+                            padding: 0.4rem 0;
                             font-family: 'Inter', sans-serif;
                             flex: 1;
                             min-width: 0;
@@ -7468,8 +7481,8 @@
                             color: #0E100F;
                             border: none;
                             border-radius: 100px;
-                            padding: 0.65rem 1.4rem;
-                            font-size: 0.85rem;
+                            padding: 0.85rem 1.8rem;
+                            font-size: 0.95rem;
                             font-weight: 700;
                             font-family: 'Inter', sans-serif;
                             cursor: pointer;

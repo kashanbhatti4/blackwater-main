@@ -16,6 +16,10 @@ let onceFunctionsInitialized = false;
 const hasLenis = typeof window.Lenis !== "undefined";
 const hasScrollTrigger = typeof window.ScrollTrigger !== "undefined";
 
+if (hasScrollTrigger) {
+  ScrollTrigger.config({ autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
+}
+
 const rmMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
 let reducedMotion = rmMQ.matches;
 rmMQ.addEventListener?.("change", e => (reducedMotion = e.matches));
@@ -57,6 +61,21 @@ function initBeforeEnterFunctions(next) {
 function initAfterEnterFunctions(next) {
   nextPage = next || document;
 
+  // Re-eval inline scripts inside incoming container during Barba navigation
+  if (nextPage && nextPage !== document) {
+    const scripts = nextPage.querySelectorAll('script:not([src])');
+    scripts.forEach(oldScript => {
+      try {
+        const newScript = document.createElement('script');
+        newScript.textContent = oldScript.textContent;
+        document.body.appendChild(newScript);
+        document.body.removeChild(newScript);
+      } catch (e) {
+        console.error('Error executing inline script on transition:', e);
+      }
+    });
+  }
+
   // Runs after enter animation completes
   if (has('[data-css-scroll]')) initCssScrollAnimations();
   if (has('[data-slider="list"]')) initDraggableInfiniteGSAPSlider();
@@ -79,7 +98,11 @@ function initAfterEnterFunctions(next) {
   if (has('.hb-p-67a28ee5727d8900071953b9-3')) initHoneyBookEmbed();
   if (has('#article-content') && typeof renderJournalArticle === 'function') renderJournalArticle(nextPage);
   if (has('#all-articles-content') && typeof renderAllArticles === 'function') renderAllArticles(nextPage);
+
   if (typeof window.initDiagnostics === 'function') window.initDiagnostics();
+  if (typeof window.renderBudgetAll === 'function') window.renderBudgetAll();
+  if (typeof window.renderPlatformAll === 'function') window.renderPlatformAll();
+
   updateActiveNavLink();
 
   if (hasLenis) {
@@ -1907,6 +1930,9 @@ function initTabs() {
 }
 
 function initProcessLines() {
+  const processSection = nextPage.querySelector(".process_section_wrap");
+  if (!processSection) return;
+
   const isLargeScreen = window.matchMedia('(min-width: 1050px)').matches;
 
   if (isLargeScreen) {
@@ -1917,7 +1943,7 @@ function initProcessLines() {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: nextPage.querySelector(".process_section_wrap"),
+        trigger: processSection,
         start: "top 20%",
         end: "bottom 90%",
         scrub: 1,
@@ -1927,7 +1953,13 @@ function initProcessLines() {
     lines.forEach((lineId, index) => {
       const path = nextPage.querySelector(lineId);
       if (path) {
-        const pathLength = path.getTotalLength();
+        let pathLength = 0;
+        try {
+          pathLength = path.getTotalLength();
+        } catch (e) {}
+        if (!pathLength || isNaN(pathLength) || pathLength === 0) {
+          pathLength = 2500;
+        }
         gsap.set(path, {
           strokeDasharray: pathLength,
           strokeDashoffset: pathLength
@@ -1954,25 +1986,34 @@ function initProcessLines() {
       }
     });
 
-    const mobileTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: nextPage.querySelector(".process_wrap"),
-        start: "top 75%",
-        end: "bottom 70%",
-        scrub: 1,
-      }
-    });
+    const processWrap = nextPage.querySelector(".process_wrap");
+    if (processWrap) {
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: processWrap,
+          start: "top 75%",
+          end: "bottom 70%",
+          scrub: 1,
+        }
+      });
 
-    wrappers.forEach((wrapper, index) => {
-      if (wrapper) {
-        mobileTl.to(wrapper.querySelectorAll('.process_line'), {
-          scaleX: 1,
-          duration: 1,
-          ease: "power2.out",
-          stagger: 0.15
-        }, index * 1);
-      }
-    });
+      wrappers.forEach((wrapper, index) => {
+        if (wrapper) {
+          mobileTl.to(wrapper.querySelectorAll('.process_line'), {
+            scaleX: 1,
+            duration: 1,
+            ease: "power2.out",
+            stagger: 0.15
+          }, index * 1);
+        }
+      });
+    }
+  }
+
+  if (typeof ScrollTrigger !== 'undefined') {
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
   }
 }
 
