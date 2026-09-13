@@ -472,7 +472,8 @@
 
                 .home_hero_title_new_heading {
                     width: auto !important;
-                    max-width: 50% !important;
+                    max-width: none !important;
+                    flex: none !important;
                 }
             }
         </style>
@@ -1789,8 +1790,8 @@
                     <style data-css-animator="home-hero-new-intro">
                         .home_hero_new {
                             background-color: #0E100F;
-                            height: 100vh;
-                            min-height: 100vh;
+                            /* height: 100vh;
+                            min-height: 100vh; */
                             position: relative;
                             display: flex;
                             align-items: center;
@@ -1830,6 +1831,7 @@
                             /* Remove gap between lines */
                             grid-row-gap: 0 !important;
                             /* Remove gap between lines */
+                            animation: hide-intro-layout 0.1s ease-out 3.7s forwards;
                         }
 
                         .home_hero_new .home_intro_title_wrapper {
@@ -2092,6 +2094,19 @@
 
                             to {
                                 clip-path: inset(0% 0 100% 0);
+                            }
+                        }
+
+                        @keyframes hide-intro-layout {
+                            to {
+                                visibility: hidden !important;
+                                opacity: 0 !important;
+                                pointer-events: none !important;
+                                height: 0 !important;
+                                min-height: 0 !important;
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                overflow: hidden !important;
                             }
                         }
 
@@ -2456,21 +2471,55 @@
 
                         /* Hero 50% 50% split & Badges placement */
                         @media (min-width: 1041px) {
+                            .home_hero_new {
+                                animation: post-intro-desktop-hero 0.4s ease-out 3.7s forwards;
+                            }
+
+                            .home_hero_new .main-section_contain {
+                                animation: post-intro-contain-height 0.4s ease-out 3.7s forwards;
+                            }
+
+                            .home_hero_new .home_hero_title_new_layout,
+                            .home_hero_new .home_hero_title_new_wrapper {
+                                width: 50% !important;
+                                max-width: 50% !important;
+                            }
+
                             .home_hero_new .home_hero_content_under {
                                 width: 50% !important;
                                 max-width: 50% !important;
                                 padding-right: 2rem !important;
+                                top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px) !important;
                             }
 
                             .home_hero_new .capabilities_wrap {
                                 position: absolute !important;
                                 right: 0 !important;
-                                top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 50px) !important;
+                                top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px) !important;
                                 width: 50% !important;
                                 max-width: 50% !important;
                                 z-index: 6;
                                 margin-top: 0 !important;
                                 padding-left: 2rem !important;
+                            }
+                        }
+
+                        @keyframes post-intro-desktop-hero {
+                            to {
+                                align-items: flex-start !important;
+                                height: auto !important;
+                                min-height: auto !important;
+                                padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+                                padding-bottom: 2rem !important;
+                                /* Single controllable bottom spacing */
+                            }
+                        }
+
+                        @keyframes post-intro-contain-height {
+                            to {
+                                position: relative !important;
+                                height: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px + clamp(6.2rem, 9.5vw, 9.8rem) * 3 + 2rem) !important;
+                                min-height: auto !important;
                             }
                         }
 
