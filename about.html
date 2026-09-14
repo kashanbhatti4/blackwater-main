@@ -2063,11 +2063,68 @@
                         color: #7C7C70 !important;
                         fill: #7C7C70 !important;
                     }
+
                     .team_member_icons svg,
                     .team_member_icons svg path,
                     .team_member_icons path {
                         fill: #7C7C70 !important;
-                        stroke: #7C7C70 !important;
+                        /* stroke: #7C7C70 !important; */
+                    }
+
+                    .team_member_wrap {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        justify-content: flex-start !important;
+                        height: 100%;
+                    }
+
+                    .slider_wrap {
+                        margin-bottom: 16px !important;
+                    }
+
+                    .team_member_content {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        justify-content: flex-start !important;
+                        flex-grow: 1 !important;
+                        margin-top: 0 !important;
+                        padding-top: 0 !important;
+                    }
+
+                    .team_member_icons {
+                        margin-top: 0 !important;
+                        margin-bottom: 12px !important;
+                    }
+
+                    .team_member_role_badge {
+                        display: inline-block;
+                        width: fit-content;
+                        max-width: 100%;
+                        align-self: flex-start;
+                        margin-top: 8px;
+                        margin-bottom: 12px;
+                        padding: 5px 12px;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 11px;
+                        font-weight: 600;
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        color: #ffe32a;
+                        background: rgba(255, 227, 42, 0.2);
+
+                        border: 1px solid #ffe32a;
+                        border-radius: 20px;
+                        box-sizing: border-box;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        .team_member_role_badge {
+                            font-size: 10px;
+                            padding: 4px 10px;
+                            margin-top: 6px;
+                            margin-bottom: 10px;
+                            letter-spacing: 0.06em;
+                        }
                     }
                 </style>
                 <div data-wf--spacer--variant="main"
@@ -2080,7 +2137,7 @@
                                 <h2 class="team_heading u-text-style-h1">Meet Blackwater</h2>
                                 <p class="team_paragraph u-text-style-large">(the people behind the growth)</p>
                             </div>
-                            <!--$-->
+                            <!--$ team cards-->
                             <div data-wf--grid--variant="default" STYLE="" data-number="12" class="u-grid-wrapper">
                                 <div role="none" data-large-columns="4" data-medium-columns="2" data-small-columns="1"
                                     data-xsmall-columns="0" class="u-grid">
@@ -2135,7 +2192,7 @@
                                                         <!--$-->
                                                         <div data-wf--visual-image--variant="tall-4-5" STYLE=""
                                                             class="u-image-wrapper w-variant-35ea7d22-774e-1ba9-1dcc-8a392636f83d">
-                                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                                            <img src="https://blackwatercdn.b-cdn.net/Team%20Cards/Daniel.png"
                                                                 loading="lazy"
                                                                 alt="Achi wearing a black FEED t-shirt, standing with arms crossed with the word &#x27;Achi&#x27; in vertical text."
                                                                 class="u-image" />
@@ -2278,16 +2335,7 @@
                                                         data-loop="0" data-direction="1" data-autoplay="0"
                                                         data-renderer="svg" data-default-duration="0"
                                                         data-duration="0.4" data-loading="eager"></div>
-                                                    <a aria-label="WhatsApp" data-trigger="hover focus" href="#"
-                                                        target="_blank" class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-comment"></div>
-                                                    </a>
-                                                    <a aria-label="Send email" data-trigger="hover focus" href="#"
-                                                        class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-send"></div>
-                                                    </a>
+
                                                 </div>
                                                 <a aria-label="View Instagram" data-trigger="hover focus" href="#"
                                                     target="_blank" class="team_member_icon_link w-inline-block">
@@ -2301,7 +2349,7 @@
                                                 </a>
                                             </div>
                                             <div class="team_member_name_wrap">
-                                                <h3 class="team_member_name u-text-style-main-bold">bharath_sidde</h3>
+                                                <h3 class="team_member_name u-text-style-main-bold">Daniel Crowley</h3>
                                                 <!--$--><svg data-wf--team-member-icon--variant="base"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
                                                     class="team_member_name_icon"><!--$-->
@@ -2319,12 +2367,18 @@
                                                 </svg>
                                                 <!--/$-->
                                             </div>
-                                            <p class="team_member_paragraph u-text-style-small">I'm passionate about
-                                                helping businesses grow through smart digital strategy, strong creative
-                                                thinking, and meaningful results. At Blackwater Digital, I bring
-                                                together strategy, technology, and creativity to build digital
-                                                experiences that help businesses get noticed, connect with the right
-                                                people, and grow with confidence.</p>
+                                            <span class="team_member_role_badge">Founder &amp; Director</span>
+                                            <p class="team_member_paragraph u-text-style-small">Daniel is the director
+                                                of Blackwater Digital. He holds a Bachelor of Honors in Construction
+                                                Management, and his career began in San Francisco, where he worked as a
+                                                Project Manager and Estimator, gaining experience managing projects and
+                                                estimating costs.
+                                                As director, Daniel is the face of Blackwater Digital, representing the
+                                                company publicly and setting its overall direction. His background in
+                                                construction management and project estimation gave him a grounding in
+                                                managing complex, high stakes work, and he brings that same discipline
+                                                to steering the agency forward.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="team_member_wrap">
@@ -2378,7 +2432,7 @@
                                                         <!--$-->
                                                         <div data-wf--visual-image--variant="tall-4-5" STYLE=""
                                                             class="u-image-wrapper w-variant-35ea7d22-774e-1ba9-1dcc-8a392636f83d">
-                                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                                            <img src="https://blackwatercdn.b-cdn.net/Team%20Cards/Bharath.png"
                                                                 loading="lazy"
                                                                 alt="Emma wearing a black FEED t-shirt with the name Emma written vertically."
                                                                 class="u-image" />
@@ -2522,16 +2576,7 @@
                                                         data-loop="0" data-direction="1" data-autoplay="0"
                                                         data-renderer="svg" data-default-duration="0"
                                                         data-duration="0.4" data-loading="eager"></div>
-                                                    <a aria-label="WhatsApp" data-trigger="hover focus" href="#"
-                                                        target="_blank" class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-comment"></div>
-                                                    </a>
-                                                    <a aria-label="Send email" data-trigger="hover focus" href="#"
-                                                        class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-send"></div>
-                                                    </a>
+
                                                 </div>
                                                 <a aria-label="View Instagram" data-trigger="hover focus" href="#"
                                                     target="_blank" class="team_member_icon_link w-inline-block">
@@ -2545,7 +2590,7 @@
                                                 </a>
                                             </div>
                                             <div class="team_member_name_wrap">
-                                                <h3 class="team_member_name u-text-style-main-bold">bharath_sidde</h3>
+                                                <h3 class="team_member_name u-text-style-main-bold">Bharath_sidde</h3>
                                                 <!--$--><svg data-wf--team-member-icon--variant="pink"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
                                                     class="team_member_name_icon w-variant-4f9bf0e6-68bc-40fe-e72a-46d890f913cd"><!--$-->
@@ -2563,12 +2608,17 @@
                                                 </svg>
                                                 <!--/$-->
                                             </div>
-                                            <p class="team_member_paragraph u-text-style-small">I'm passionate about
-                                                helping businesses grow through smart digital strategy, strong creative
-                                                thinking, and meaningful results. At Blackwater Digital, I bring
-                                                together strategy, technology, and creativity to build digital
-                                                experiences that help businesses get noticed, connect with the right
-                                                people, and grow with confidence.</p>
+                                            <span class="team_member_role_badge">Project Manager</span>
+                                            <p class="team_member_paragraph u-text-style-small">Bharath is the project
+                                                manager at Blackwater Digital, overseeing the day to day running of
+                                                client projects across the agency. With a strong foundation in business
+                                                strategy and finance, Bharath is responsible for keeping projects on
+                                                track and ensuring client work is delivered to a high standard.
+                                                His role focuses on planning, resource management and optimizing
+                                                internal processes to keep delivery efficient. Bharath's expertise in
+                                                business strategy and financial management has been central to how
+                                                Blackwater Digital runs projects and manages client relationships
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="team_member_wrap">
@@ -2622,7 +2672,7 @@
                                                         <!--$-->
                                                         <div data-wf--visual-image--variant="tall-4-5" STYLE=""
                                                             class="u-image-wrapper w-variant-35ea7d22-774e-1ba9-1dcc-8a392636f83d">
-                                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                                            <img src="https://blackwatercdn.b-cdn.net/Team%20Cards/Sohan.png"
                                                                 loading="lazy"
                                                                 alt="Ben wearing a black FEED t-shirt standing with the name Ben in vertical text."
                                                                 class="u-image" />
@@ -2766,16 +2816,7 @@
                                                         data-loop="0" data-direction="1" data-autoplay="0"
                                                         data-renderer="svg" data-default-duration="0"
                                                         data-duration="0.4" data-loading="eager"></div>
-                                                    <a aria-label="WhatsApp" data-trigger="hover focus" href="#"
-                                                        target="_blank" class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-comment"></div>
-                                                    </a>
-                                                    <a aria-label="Send email" data-trigger="hover focus" href="#"
-                                                        class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-send"></div>
-                                                    </a>
+
                                                 </div>
                                                 <a aria-label="View Instagram" data-trigger="hover focus" href="#"
                                                     target="_blank" class="team_member_icon_link w-inline-block">
@@ -2789,7 +2830,7 @@
                                                 </a>
                                             </div>
                                             <div class="team_member_name_wrap">
-                                                <h3 class="team_member_name u-text-style-main-bold">bharath_sidde</h3>
+                                                <h3 class="team_member_name u-text-style-main-bold">Sohan Ahammad</h3>
                                                 <!--$--><svg data-wf--team-member-icon--variant="orange"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
                                                     class="team_member_name_icon w-variant-82e49fd6-8dea-a0e4-b241-75e48dc746b8"><!--$-->
@@ -2807,12 +2848,20 @@
                                                 </svg>
                                                 <!--/$-->
                                             </div>
-                                            <p class="team_member_paragraph u-text-style-small">I'm passionate about
-                                                helping businesses grow through smart digital strategy, strong creative
-                                                thinking, and meaningful results. At Blackwater Digital, I bring
-                                                together strategy, technology, and creativity to build digital
-                                                experiences that help businesses get noticed, connect with the right
-                                                people, and grow with confidence.</p>
+                                            <span class="team_member_role_badge">Lead Web Designer</span>
+                                            <p class="team_member_paragraph u-text-style-small">Sohan is the lead web
+                                                developer at Blackwater Digital, coming from a tech background with a
+                                                specialisation in front end and back end development. He works across
+                                                multiple platforms, which gives him the flexibility to build the right
+                                                solution for a client rather than fitting every project into a single
+                                                system.
+
+                                                Sohan leads the technical build process from structure through to
+                                                launch, balancing front end design with the backend systems that keep a
+                                                site running reliably. His cross platform experience means Blackwater
+                                                Digital is not tied to one technology, and clients get a build suited to
+                                                their actual needs rather than a default template.
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="team_member_wrap">
@@ -2866,7 +2915,7 @@
                                                         <!--$-->
                                                         <div data-wf--visual-image--variant="tall-4-5" STYLE=""
                                                             class="u-image-wrapper w-variant-35ea7d22-774e-1ba9-1dcc-8a392636f83d">
-                                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                                            <img src="https://blackwatercdn.b-cdn.net/Team%20Cards/Jamie.png"
                                                                 loading="lazy"
                                                                 alt="Anthony wearing a black FEED t-shirt, pointing to the logo with the name Anthony displayed vertically."
                                                                 class="u-image" />
@@ -3010,16 +3059,7 @@
                                                         data-loop="0" data-direction="1" data-autoplay="0"
                                                         data-renderer="svg" data-default-duration="0"
                                                         data-duration="0.4" data-loading="eager"></div>
-                                                    <a aria-label="WhatsApp" data-trigger="hover focus" href="#"
-                                                        target="_blank" class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-comment"></div>
-                                                    </a>
-                                                    <a aria-label="Send email" data-trigger="hover focus" href="#"
-                                                        class="team_member_icon_link w-inline-block">
-                                                        <div fill="none" viewBox="0 0 24 24"
-                                                            class="team_member_icon is-send"></div>
-                                                    </a>
+
                                                 </div>
                                                 <a aria-label="View Instagram" data-trigger="hover focus" href="#"
                                                     target="_blank" class="team_member_icon_link w-inline-block">
@@ -3033,7 +3073,7 @@
                                                 </a>
                                             </div>
                                             <div class="team_member_name_wrap">
-                                                <h3 class="team_member_name u-text-style-main-bold">bharath_sidde</h3>
+                                                <h3 class="team_member_name u-text-style-main-bold">Jamie Lee</h3>
                                                 <!--$--><svg data-wf--team-member-icon--variant="yellow"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
                                                     class="team_member_name_icon w-variant-59e80b17-dc18-23c6-3071-372f7f3234cc"><!--$-->
@@ -3051,12 +3091,18 @@
                                                 </svg>
                                                 <!--/$-->
                                             </div>
-                                            <p class="team_member_paragraph u-text-style-small">I'm passionate about
-                                                helping businesses grow through smart digital strategy, strong creative
-                                                thinking, and meaningful results. At Blackwater Digital, I bring
-                                                together strategy, technology, and creativity to build digital
-                                                experiences that help businesses get noticed, connect with the right
-                                                people, and grow with confidence.</p>
+                                            <span class="team_member_role_badge">Marketing Executive</span>
+                                            <p class="team_member_paragraph u-text-style-small">Jamie is a marketing
+                                                executive at Blackwater Digital, where he specialises in content, social
+                                                media and broader marketing strategy. He holds a BA International
+                                                degree, bringing a wider perspective on language and communication into
+                                                how he shapes campaigns for clients.
+                                                Jamie builds content that matches each client's voice, runs social
+                                                strategy that stays consistent across platforms, and shapes the wider
+                                                marketing approach behind client accounts. His focus is on connecting
+                                                day to day content work with the bigger strategic goal, so campaigns
+                                                move with a clear direction rather than just staying active.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

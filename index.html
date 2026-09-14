@@ -1801,6 +1801,8 @@
                         }
 
                         .home_hero_new .main-section_contain {
+                            position: relative !important;
+                            min-height: 650px !important;
                             grid-column-gap: var(--_spacing---space--4) !important;
                             grid-row-gap: var(--_spacing---space--4) !important;
                             column-gap: var(--_spacing---space--4) !important;
@@ -1831,7 +1833,7 @@
                             /* Remove gap between lines */
                             grid-row-gap: 0 !important;
                             /* Remove gap between lines */
-                            animation: hide-intro-layout 0.1s ease-out 3.7s forwards;
+                            animation: hide-intro-layout 0.1s ease-out 3.7s forwards !important;
                         }
 
                         .home_hero_new .home_intro_title_wrapper {
@@ -2099,14 +2101,14 @@
 
                         @keyframes hide-intro-layout {
                             to {
-                                visibility: hidden !important;
-                                opacity: 0 !important;
-                                pointer-events: none !important;
-                                height: 0 !important;
-                                min-height: 0 !important;
-                                margin: 0 !important;
-                                padding: 0 !important;
-                                overflow: hidden !important;
+                                opacity: 0;
+                                visibility: hidden;
+                                pointer-events: none;
+                                height: 0;
+                                min-height: 0;
+                                margin: 0;
+                                padding: 0;
+                                overflow: hidden;
                             }
                         }
 
@@ -2450,6 +2452,7 @@
                             align-items: flex-start;
                             box-sizing: border-box;
                             z-index: 6;
+                            margin-top: 3.2rem;
                         }
 
                         @keyframes capabilities-intro {
@@ -3002,19 +3005,19 @@
                         <div class="capabilities_numbers_wrap">
                             <div class="capabilities_number_wrap is-end">
                                 <div class="capabilities_number is-pink">
-                                    <div class="capabilities_number_text u-text-style-h1"></div>
+                                    <div class="capabilities_number_text u-text-style-h1">1</div>
                                 </div>
                                 <div class="capabilities_title u-text-style-h2">team</div>
                             </div>
                             <div class="capabilities_number_wrap is-center">
                                 <div class="capabilities_number is-orange">
-                                    <div class="capabilities_number_text u-text-style-h1"></div>
+                                    <div class="capabilities_number_text u-text-style-h1">1</div>
                                 </div>
                                 <div class="capabilities_title u-text-style-h2">plan</div>
                             </div>
                             <div class="capabilities_number_wrap">
                                 <div class="capabilities_number">
-                                    <div class="capabilities_number_text u-text-style-h1"></div>
+                                    <div class="capabilities_number_text u-text-style-h1">1</div>
                                 </div>
                                 <div class="capabilities_title u-text-style-h2">goal</div>
                             </div>
@@ -3500,7 +3503,7 @@
                                             <div class="slider__slide-inner">
                                                 <!--$-->
                                                 <div data-bunny-background-init=""
-                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/f0e41406-58a5-454e-ba07-f00ffba25327/playlist.m3u8"
+                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/09768d2e-1b6d-429a-b251-143f2ee15fc9/playlist.m3u8"
                                                     data-player-status="idle" data-player-lazy="false"
                                                     data-player-autoplay="true" data-player-activated="false" id=""
                                                     class="project_reel_wrap u-order-auto-small">
@@ -3878,7 +3881,7 @@
                                             <div class="slider__slide-inner">
                                                 <!--$-->
                                                 <div data-bunny-background-init=""
-                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/4a91980e-ab01-43cb-b00a-6284b6d1b7d4/playlist.m3u8"
+                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/acd7120a-6bb0-4e06-a203-2e5878cc36bd/playlist.m3u8"
                                                     data-player-status="idle" data-player-lazy="false"
                                                     data-player-autoplay="true" data-player-activated="false" id=""
                                                     class="project_reel_wrap u-order-auto-small">
@@ -7248,208 +7251,7 @@
                 </div>
             </section>
 
-            <!--/$-->
-            <!--$case study section-->
-            <section id="" class="main-section_wrap u-section">
-                <div class="u-embed-css w-embed">
-                    <style data-css-animator="integrations-reveal">
-                        @keyframes integration-reveal {
-                            from {
-                                opacity: 0;
-                                transform: translateY(60px);
-                            }
 
-                            to {
-                                opacity: 1;
-                                transform: translateY(0);
-                            }
-                        }
-
-                        .integration_video_wrap {
-                            animation: integration-reveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) calc((0.3s * var(--i)) + 0.1s) both;
-                        }
-
-                        .content_wrap {
-                            > :nth-child(1) {
-                                --i: 1
-                            }
-
-                            > :nth-child(2) {
-                                --i: 0
-                            }
-                        }
-                    </style>
-                </div>
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-10 integration_wrap" style="grid-column-end: span 12;">
-                            <div data-css-scroll-threshold="33%" data-css-scroll="retrigger-none"
-                                class="integration_wrap">
-                                <!--$-->
-                                <div data-wf--button-main--variant="link" data-button=" " data-trigger="hover focus"
-                                    class="button_main_wrap w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="Windmill Healthcare"
-                                            target="" href="/project/windmill-healthcare.html"
-                                            class="clickable_link w-inline-block"></a></div>
-                                    <!--/$-->
-                                    <div class="button_main_element w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                        <div aria-hidden="true"
-                                            class="button_main_text u-text-style-main-medium w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                            Windmill Healthcare</div>
-                                        <div
-                                            class="button_main_icon w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400 u-hide-if-empty">
-                                            <div class="arrow_up_svg w-embed"><svg viewBox="0 0 38 38" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    preserveAspectRatio="xMidYMid meet">
-                                                    <g clip-path="url(#clip0_2633_2547)">
-                                                        <path
-                                                            d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                            fill="currentColor" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2633_2547">
-                                                            <rect width="38" height="38" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg></div>
-                                        </div>
-                                        <div class="button_main_line w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/$-->
-                                <div class="integration_video_wrap">
-                                    <!--$-->
-                                    <div data-bunny-background-init=""
-                                        data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/d0880156-8bae-4f6f-9870-8ee908395a8c/playlist.m3u8"
-                                        data-player-status="idle" data-player-lazy="false" data-player-autoplay="true"
-                                        data-player-activated="false" id="" class="integration_reel_wrap">
-                                        <div class="code-embed w-embed">
-                                            <style>
-                                                /* Animation */
-                                                [data-bunny-background-init] :is(.bunny-bg__placeholder, .bunny-bg__loading) {
-                                                    transition: opacity 0.3s linear, visibility 0.3s linear;
-                                                }
-
-                                                /* Placeholder */
-                                                [data-bunny-background-init][data-player-status="playing"] .bunny-bg__placeholder,
-                                                [data-bunny-background-init][data-player-status="paused"] .bunny-bg__placeholder,
-                                                [data-bunny-background-init][data-player-activated="true"][data-player-status="ready"] .bunny-bg__placeholder {
-                                                    opacity: 0;
-                                                    visibility: hidden;
-                                                }
-                                            </style>
-                                        </div>
-                                        <!--$--><video preload="auto" width="1920" height="1080"
-                                            playsinline="playsinline" muted="" class="bunny-bg__video"></video>
-                                        <!--/$-->
-                                    </div>
-                                    <!--/$-->
-                                    <div class="integration_video_description">
-                                        <p class="integration_video_text u-text-style-small"
-                                            style="color: #FFE32A !important;">SEO & Web Build &bull; Care Group</p>
-                                    </div>
-                                </div>
-                                <!-- Case study result blurb -->
-                                <div style="margin-top: 1.2rem; padding: 0 0.25rem;">
-                                    <p
-                                        style="font-size: var(--_typography---font-size--text-large, 1.25rem); font-weight: 700; color: #FFFCE1; margin: 0 0 0.8rem 0; line-height: 1.2;">
-                                        +14.8% organic search traffic growth</p>
-                                    <p
-                                        style="font-size: var(--_typography---font-size--text-small, 0.875rem); color: #7C7C70; margin: 0; line-height: 1.6;">
-                                        with hosting migration and a complete conversion-focused redesign. Built
-                                        page-per-centre templates and established complete technical SEO foundations.
-                                    </p>
-                                </div>
-                            </div>
-                            <div data-css-scroll-threshold="33%" data-css-scroll="retrigger-none"
-                                class="integration_wrap">
-                                <!--$-->
-                                <div data-wf--button-main--variant="link" data-button=" " data-trigger="hover focus"
-                                    class="button_main_wrap w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                    <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="Fuseguard" target=""
-                                            href="/project/fuseguard.html" class="clickable_link w-inline-block"></a>
-                                    </div>
-                                    <!--/$-->
-                                    <div class="button_main_element w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                        <div aria-hidden="true"
-                                            class="button_main_text u-text-style-main-medium w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                            Fuseguard</div>
-                                        <div
-                                            class="button_main_icon w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400 u-hide-if-empty">
-                                            <div class="arrow_up_svg w-embed"><svg viewBox="0 0 38 38" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    preserveAspectRatio="xMidYMid meet">
-                                                    <g clip-path="url(#clip0_2633_2547)">
-                                                        <path
-                                                            d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                            fill="currentColor" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2633_2547">
-                                                            <rect width="38" height="38" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg></div>
-                                        </div>
-                                        <div class="button_main_line w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/$-->
-                                <div class="integration_video_wrap">
-                                    <!--$-->
-                                    <div data-bunny-background-init=""
-                                        data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/8198ad1a-ba6b-4400-8d4c-6c6a91376e40/playlist.m3u8"
-                                        data-player-status="idle" data-player-lazy="false" data-player-autoplay="true"
-                                        data-player-activated="false" id="" class="integration_reel_wrap">
-                                        <div class="code-embed w-embed">
-                                            <style>
-                                                /* Animation */
-                                                [data-bunny-background-init] :is(.bunny-bg__placeholder, .bunny-bg__loading) {
-                                                    transition: opacity 0.3s linear, visibility 0.3s linear;
-                                                }
-
-                                                /* Placeholder */
-                                                [data-bunny-background-init][data-player-status="playing"] .bunny-bg__placeholder,
-                                                [data-bunny-background-init][data-player-status="paused"] .bunny-bg__placeholder,
-                                                [data-bunny-background-init][data-player-activated="true"][data-player-status="ready"] .bunny-bg__placeholder {
-                                                    opacity: 0;
-                                                    visibility: hidden;
-                                                }
-                                            </style>
-                                        </div>
-                                        <!--$--><video preload="auto" width="1920" height="1080"
-                                            playsinline="playsinline" muted="" class="bunny-bg__video"></video>
-                                        <!--/$-->
-                                    </div>
-                                    <!--/$-->
-                                    <div class="integration_video_description">
-                                        <p class="integration_video_text u-text-style-small"
-                                            style="color: #FFE32A !important;">Paid Search &bull; Safety Testing</p>
-                                    </div>
-                                </div>
-                                <!-- Case study result blurb -->
-                                <div style="margin-top: 1.2rem; padding: 0 0.25rem;">
-                                    <p
-                                        style="font-size: var(--_typography---font-size--text-large, 1.25rem); font-weight: 700; color: #FFFCE1; margin: 0 0 0.8rem 0; line-height: 1.2;">
-                                        5x enquiry volume growth in four months</p>
-                                    <p
-                                        style="font-size: var(--_typography---font-size--text-small, 0.875rem); color: #7C7C70; margin: 0; line-height: 1.6;">
-                                        by building Google Ads campaigns from scratch. Split budget by job type,
-                                        excluded DIY and job-seeker searches, and established form conversion tracking.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div data-wf--spacer--variant="small"
-                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
-            </section>
-            <!--/$-->
 
             <!--$-->
             <footer id="footer" class="main-section_wrap u-section footer_wrap"
