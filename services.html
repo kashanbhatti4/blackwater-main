@@ -1958,15 +1958,17 @@
                             border-radius: 0;
                             overflow: hidden;
                             position: relative;
-                            background-color: #1a1a1a;
+                            background-color: transparent;
                         }
 
-                        .service_card_video {
+                        .service_card_video,
+                        .service_media_iframe {
                             width: 100%;
                             height: 100%;
-                            object-fit: cover;
-                            border-radius: 0;
+                            border: none;
                             display: block;
+                            background: transparent;
+                            overflow: hidden;
                         }
 
                         @media screen and (max-width: 991px) {
@@ -2004,18 +2006,54 @@
                                 flex-direction: column !important;
                             }
 
-                            .service_card_video {
+                            .service_card_video,
+                            .service_media_iframe {
                                 width: 100% !important;
                                 height: 100% !important;
                                 aspect-ratio: 16 / 9 !important;
                                 object-fit: cover !important;
                                 border-radius: 0 !important;
+                                border: none !important;
+                            }
+                        }
+
+                        @media screen and (min-width: 768px) and (max-width: 991px) {
+
+                            .services_spacer,
+                            .space-services-sections {
+                                display: none !important;
+                            }
+
+                            .service_wrap {
+                                padding-top: 2rem !important;
+                                padding-bottom: 2rem !important;
+                            }
+
+                            .service_contain {
+                                padding-top: 0 !important;
+                                padding-bottom: 0 !important;
+                            }
+
+                            .service_content_paragraph {
+                                font-size: 0.95rem !important;
+                                line-height: 1.45 !important;
+                            }
+
+                            .service_media_wrap {
+                                max-height: 320px !important;
+                                margin-top: 0.75rem !important;
+                                margin-bottom: 0.75rem !important;
                             }
                         }
 
                         @media screen and (max-width: 767px) {
                             .service_intro_text_group {
                                 gap: 15px;
+                            }
+
+                            .service_content_paragraph {
+                                font-size: 0.9rem !important;
+                                line-height: 1.4 !important;
                             }
                         }
                     </style>
@@ -2098,9 +2136,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/web-design.html?v=17" class="service_media_iframe"
+                                        title="Web Design Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -2188,9 +2225,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/seo-ai-overview.html?v=17" class="service_media_iframe"
+                                        title="SEO & AI Search Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -2279,9 +2315,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/paid-ads.html?v=17" class="service_media_iframe"
+                                        title="Paid Advertising Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -2366,9 +2401,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/social-media.html?v=17" class="service_media_iframe"
+                                        title="Social Media Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -2378,6 +2412,8 @@
                 </section>
                 <!--/$-->
                 <div class="space-services-sections is-pink u-display-none-medium"></div>
+            </div>
+
             <!--$plan section-->
             <section id="" class="main-section_wrap u-section process_section_wrap">
                 <div class="u-embed-css w-embed">
@@ -2438,13 +2474,13 @@
                                 margin-bottom: 30px;
                             }
                         }
-                    
+
                         @media screen and (max-width: 1024px) {
                             .process_div-lines_wrapper.is-4 {
                                 display: none !important;
                             }
                         }
-</style>
+                    </style>
                 </div>
                 <div class="services_spacer is-desktop"></div>
                 <div class="services_spacer is-medium"></div>
@@ -2523,7 +2559,7 @@
                                 <div class="process_line is-yellow"></div>
                             </div>
                             <!--/$-->
-                            
+
                             <!--$-->
                             <div id="" data-span-lg="" data-start-lg=""
                                 STYLE="--span-lg: 10; --span-md: 12; --span-sm: 12; --span-xs: 12;"
@@ -2585,35 +2621,35 @@
                                 </div>
                                 <div class="mwg016-container">
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/shopify-clr-icon.png"
                                             alt="Crew working in The CAVE Studio with equipment, including camera, lights, a black dog on a box, and a mannequin in black dress."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/google-clr-icon.png"
                                             alt="Man in a suit sitting on a chair on a set in The CAVE Studio with cameras and lighting equipment, with a backdrop of illuminated bookshelves."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/squarespace-clr-mockup.png"
                                             alt="Photographer taking a picture of a man standing next to a car with its hood open in The CAVE Studio."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/wordpress-clr-icon.png"
                                             alt="Person with headphones operating video production equipment with multiple monitors showing a live recording in The CAVE Studio."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/webflow-clr-icon.png"
                                             alt="Crew wearing yellow safety vests, holding camera, clapperboard, microphone, and audio mixer."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/insta-clr-icon.png"
                                             alt="Two men in a podcast studio in The CAVE Studio, one holding a puppet with glasses and a microphone, smiling and interacting."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/claud-clr-icon.png"
                                             alt="Monitor screen showing a woman speaking on a set in The CAVE Studio with hanging light bulbs, purple background and silhouette of a person watching."
                                             class="mwg016-media" /></div>
                                     <div class="mwg016-media-wrapper"><img loading="lazy"
-                                            src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                            src="https://blackwatercdn.b-cdn.net/Tool%20Icons/BW-clr-icon.png"
                                             alt="Two men standing and talking on a set in The CAVE Studio with a large camera crane and bright studio lighting."
                                             class="mwg016-media" /></div>
                                 </div>
@@ -5033,7 +5069,7 @@ display: none;
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js"></script>
 
-    
+
 
     <style>
         .reset-animations,

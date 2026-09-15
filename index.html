@@ -3191,7 +3191,7 @@
                                             <div class="slider__slide-inner">
                                                 <!--$-->
                                                 <div data-bunny-background-init=""
-                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/d0880156-8bae-4f6f-9870-8ee908395a8c/playlist.m3u8"
+                                                    data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/1ce8ff6d-5299-4a09-b508-7a117d53ce57/playlist.m3u8"
                                                     data-player-status="idle" data-player-lazy="false"
                                                     data-player-autoplay="true" data-player-activated="false" id=""
                                                     class="project_reel_wrap u-order-auto-small">
@@ -3243,7 +3243,7 @@
                                                                 for</p>
                                                             <p
                                                                 class="showreel_overlay_subtitle u-text-style-small-medium">
-                                                                Care Group </p>
+                                                                Financial Management </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4528,15 +4528,17 @@
                             border-radius: 0;
                             overflow: hidden;
                             position: relative;
-                            background-color: #1a1a1a;
+                            background-color: transparent;
                         }
 
-                        .service_card_video {
+                        .service_card_video,
+                        .service_media_iframe {
                             width: 100%;
                             height: 100%;
-                            object-fit: cover;
-                            border-radius: 0;
+                            border: none;
                             display: block;
+                            background: transparent;
+                            overflow: hidden;
                         }
 
                         @media screen and (max-width: 991px) {
@@ -4574,18 +4576,53 @@
                                 flex-direction: column !important;
                             }
 
-                            .service_card_video {
+                            .service_card_video,
+                            .service_media_iframe {
                                 width: 100% !important;
                                 height: 100% !important;
                                 aspect-ratio: 16 / 9 !important;
                                 object-fit: cover !important;
                                 border-radius: 0 !important;
+                                border: none !important;
+                            }
+                        }
+
+                        @media screen and (min-width: 768px) and (max-width: 991px) {
+                            .services_spacer,
+                            .space-services-sections {
+                                display: none !important;
+                            }
+
+                            .service_wrap {
+                                padding-top: 2rem !important;
+                                padding-bottom: 2rem !important;
+                            }
+
+                            .service_contain {
+                                padding-top: 0 !important;
+                                padding-bottom: 0 !important;
+                            }
+
+                            .service_content_paragraph {
+                                font-size: 0.95rem !important;
+                                line-height: 1.45 !important;
+                            }
+
+                            .service_media_wrap {
+                                max-height: 320px !important;
+                                margin-top: 0.75rem !important;
+                                margin-bottom: 0.75rem !important;
                             }
                         }
 
                         @media screen and (max-width: 767px) {
                             .service_intro_text_group {
                                 gap: 15px;
+                            }
+
+                            .service_content_paragraph {
+                                font-size: 0.9rem !important;
+                                line-height: 1.4 !important;
                             }
                         }
                     </style>
@@ -4668,9 +4705,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/web-design.html?v=17" class="service_media_iframe"
+                                        title="Web Design Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -4758,9 +4794,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/seo-ai-overview.html?v=17" class="service_media_iframe"
+                                        title="SEO & AI Search Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -4849,9 +4884,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/paid-ads.html?v=17" class="service_media_iframe"
+                                        title="Paid Advertising Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -4936,9 +4970,8 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <video autoplay loop muted playsinline
-                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                        class="service_card_video"></video>
+                                    <iframe src="./animations/social-media.html?v=17" class="service_media_iframe"
+                                        title="Social Media Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
                         </div>
