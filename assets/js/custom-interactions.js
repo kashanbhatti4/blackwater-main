@@ -203,14 +203,21 @@ barba.hooks.afterEnter(data => {
   // Run page functions
   initAfterEnterFunctions(data.next.container);
 
-  // Settle
-  if (hasLenis) {
-    lenis.resize();
-    lenis.start();
-  }
+  // Settle layout after fonts and render cycle settle
+  const refreshLayout = () => {
+    if (hasLenis) {
+      lenis.resize();
+      lenis.start();
+    }
+    if (hasScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
+  };
 
-  if (hasScrollTrigger) {
-    ScrollTrigger.refresh();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(refreshLayout);
+  } else {
+    refreshLayout();
   }
 });
 
