@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Blog & Insights | Blackwater Digital</title>
+    <meta name="description" content="Explore actionable insights on growth, SEO, paid search, creative strategy, and digital marketing from Blackwater Digital." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/assets/css/webflow.css?v=64" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+    <style>
+        body {
+            background-color: #0F1110;
+            color: #FFFCE1;
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .blog-header-section {
+            padding: 120px 5% 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #FFFCE1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .blog-subtitle {
+            font-size: 1.25rem;
+            color: #9EA39E;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        /* Controls */
+        .controls-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 0 5%;
+        }
+
+        .category-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill-btn {
+            background: #181A18;
+            border: 1px solid #2A2E2A;
+            color: #C8CCC7;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .pill-btn:hover, .pill-btn.active {
+            background: #F17752;
+            border-color: #F17752;
+            color: #FFF;
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 260px;
+        }
+
+        .search-input {
+            width: 100%;
+            background: #181A18;
+            border: 1px solid #2A2E2A;
+            border-radius: 20px;
+            padding: 10px 18px 10px 40px;
+            color: #FFFCE1;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #87BAB2;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9EA39E;
+        }
+
+        /* Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 5%;
+        }
+
+        .blog-card {
+            background: #181A18;
+            border: 1px solid #2A2E2A;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: #87BAB2;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #212421;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: #87BAB2;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .category-tag {
+            background: rgba(135, 186, 178, 0.15);
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(135, 186, 178, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #FFFCE1;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-excerpt {
+            color: #9EA39E;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .card-footer-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #F17752;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 80px;
+        }
+
+        .page-btn {
+            background: #181A18;
+            border: 1px solid #2A2E2A;
+            color: #FFFCE1;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .page-btn.active {
+            background: #F17752;
+            border-color: #F17752;
+        }
+
+        .site-nav {
+            padding: 24px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: #FFFCE1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .blog-title { font-size: 2.2rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .controls-bar { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simple Navigation Header -->
+    <header class="site-nav">
+        <a href="/" style="display: flex; align-items: center; gap: 10px;">
+            <img src="/logo.svg" alt="Blackwater Logo" style="height: 32px;">
+            <span style="font-weight: 700; font-size: 1.1rem;">BLACKWATER</span>
+        </a>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/services.html">Services</a>
+            <a href="/work.html">Work</a>
+            <a href="/blog" style="color: #F17752;">Blog</a>
+            <a href="/contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="blog-header-section">
+        <h1 class="blog-title">Articles & Marketing Insights</h1>
+        <p class="blog-subtitle">Strategic breakdowns, search engine algorithms, high-converting copy, and digital growth tactics for modern brands.</p>
+    </section>
+
+    <!-- Controls (Categories + Search) -->
+    <div class="controls-bar">
+        <div class="category-pills" id="category-filters">
+            <button class="pill-btn active" onclick="filterByCategory('')">All Posts</button>
+        </div>
+
+        <div class="search-box">
+            <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="public-search-input" class="search-input" placeholder="Search insights...">
+        </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <main class="blog-grid" id="blog-grid-container">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: #9EA39E;">
+            Loading blog posts...
+        </div>
+    </main>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination-container"></div>
+
+    <!-- Simple Footer -->
+    <footer style="border-top: 1px solid #2A2E2A; padding: 40px 5%; text-align: center; color: #9EA39E; font-size: 0.9rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>© 2026 Blackwater Digital. All rights reserved.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="/admin/login.html" style="color: #87BAB2; text-decoration: none;">CMS Login</a>
+                <a href="/contact.html" style="color: #9EA39E; text-decoration: none;">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentCategory = '';
+        let currentSearch = '';
+        let currentPage = 1;
+
+        async function loadCategories() {
+            try {
+                const res = await fetch('/api/categories');
+                const data = await res.json();
+                const container = document.getElementById('category-filters');
+                
+                let html = `<button class="pill-btn ${currentCategory === '' ? 'active' : ''}" onclick="filterByCategory('')">All Posts</button>`;
+                (data.categories || []).forEach(c => {
+                    html += `<button class="pill-btn ${currentCategory === c.slug ? 'active' : ''}" onclick="filterByCategory('${c.slug}')">${escapeHtml(c.name)}</button>`;
+                });
+                container.innerHTML = html;
+            } catch (e) {}
+        }
+
+        async function fetchBlogs() {
+            const container = document.getElementById('blog-grid-container');
+            let url = `/api/blogs?page=${currentPage}&limit=9`;
+            if (currentCategory) url += `&category=${encodeURIComponent(currentCategory)}`;
+            if (currentSearch) url += `&search=${encodeURIComponent(currentSearch)}`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                const blogs = data.blogs || [];
+
+                if (blogs.length === 0) {
+                    container.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: #9EA39E;">
+                            <h3>No published articles found.</h3>
+                            <p style="margin-top: 8px;">Try adjusting your category filter or search terms.</p>
+                        </div>
+                    `;
+                    renderPagination(0);
+                    return;
+                }
+
+                container.innerHTML = blogs.map(blog => {
+                    const img = blog.featured_image || '/assets/images/logo.svg';
+                    const dateStr = blog.published_at 
+                        ? new Date(blog.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                        : new Date(blog.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                    return `
+                        <a href="/blog/${blog.slug}" class="blog-card">
+                            <div class="card-img-wrapper">
+                                <img src="${img}" alt="${escapeHtml(blog.title)}" class="card-img" onerror="this.src='/logo.svg'">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-meta">
+                                    <span class="category-tag">${escapeHtml(blog.category_name || 'General')}</span>
+                                    <span>•</span>
+                                    <span>${blog.reading_time || '5 min read'}</span>
+                                    <span>•</span>
+                                    <span>${dateStr}</span>
+                                </div>
+                                <h2 class="card-title">${escapeHtml(blog.title)}</h2>
+                                <p class="card-excerpt">${escapeHtml(blog.excerpt || '')}</p>
+                                <div class="card-footer-link">
+                                    Read Full Article <span>→</span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+
+                renderPagination(data.pagination ? data.pagination.totalPages : 1);
+            } catch (err) {
+                container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: #E74C3C;">Failed to load articles.</div>`;
+            }
+        }
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById('pagination-container');
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function filterByCategory(slug) {
+            currentCategory = slug;
+            currentPage = 1;
+            loadCategories();
+            fetchBlogs();
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            fetchBlogs();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
+        }
+
+        let searchDebounce = null;
+        document.getElementById('public-search-input').addEventListener('input', (e) => {
+            clearTimeout(searchDebounce);
+            searchDebounce = setTimeout(() => {
+                currentSearch = e.target.value.trim();
+                currentPage = 1;
+                fetchBlogs();
+            }, 300);
+        });
+
+        loadCategories();
+        fetchBlogs();
+    </script>
+</body>
+</html>
