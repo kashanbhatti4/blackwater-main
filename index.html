@@ -5477,9 +5477,9 @@
                                         id: "demand", num: "Question 02", title: "Does anyone already search for what you sell?",
                                         help: "The single biggest factor. You cannot buy ads against a search nobody types.",
                                         options: [
-                                            { v: "new", label: "No — it's genuinely new", sub: "People don't know this category exists yet", w: { ga: 0, seo: 1, ps: 5, os: 3, vid: 3 }, flag: "newCategory" },
-                                            { v: "hybrid", label: "Sort of — new angle on a known problem", sub: "They search for the problem, not for us", w: { ga: 2, seo: 3, ps: 3, os: 2, vid: 2 } },
-                                            { v: "exists", label: "Yes — people search for this daily", sub: "Established category with real competitors", w: { ga: 5, seo: 5, ps: 1, os: 1, vid: 1 } }
+                                            { v: "new", label: "No, it's genuinely new", sub: "People don't know this category exists yet", w: { ga: 0, seo: 1, ps: 5, os: 3, vid: 3 }, flag: "newCategory" },
+                                            { v: "hybrid", label: "Sort of, new angle on a known problem", sub: "They search for the problem, not for us", w: { ga: 2, seo: 3, ps: 3, os: 2, vid: 2 } },
+                                            { v: "exists", label: "Yes, people search for this daily", sub: "Established category with real competitors", w: { ga: 5, seo: 5, ps: 1, os: 1, vid: 1 } }
                                         ]
                                     },
                                     {
@@ -5488,7 +5488,7 @@
                                         options: [
                                             { v: "urgent", label: "Urgent need", sub: "Something's broken, or a deadline is looming", w: { ga: 5, seo: 3, ps: 1, os: 0, vid: 0, lsa: 4 }, flag: "urgent" },
                                             { v: "planned", label: "Planned purchase", sub: "Researched over days or weeks before deciding", w: { ga: 3, seo: 4, ps: 2, os: 2, vid: 2 } },
-                                            { v: "want", label: "A want", sub: "Nice to have — driven by desire, timing or mood", w: { ga: 1, seo: 1, ps: 6, os: 4, vid: 4 }, flag: "want" }
+                                            { v: "want", label: "A want", sub: "Nice to have, driven by desire, timing or mood", w: { ga: 1, seo: 1, ps: 6, os: 4, vid: 4 }, flag: "want" }
                                         ]
                                     },
                                     {
@@ -5518,7 +5518,7 @@
                                     },
                                     {
                                         id: "value", num: "Question 07", title: "What's an average customer worth to you?",
-                                        help: "First order or first year — whichever you think in.",
+                                        help: "First order or first year, whichever you think in.",
                                         options: [
                                             { v: "low", label: "Under €250", sub: "Volume business", w: { ga: 1, seo: 2, ps: 3, os: 2, vid: 1 } },
                                             { v: "mid", label: "€250 – €2,500", sub: "", w: { ga: 3, seo: 3, ps: 2, os: 1, vid: 1 } },
@@ -5548,7 +5548,7 @@
                                         ]
                                     },
                                     {
-                                        id: "site", num: "Question 10", title: "Honestly — how good is the website?",
+                                        id: "site", num: "Question 10", title: "Honestly, how good is the website?",
                                         help: "Ad money lands on your site. A weak site wastes every euro upstream of it.",
                                         options: [
                                             { v: "none", label: "No site, or a social page only", sub: "", w: {}, flag: "noSite" },
@@ -5559,7 +5559,7 @@
                                     },
                                     {
                                         id: "track", num: "Question 11", title: "Do you know where your enquiries come from?",
-                                        help: "Without this, every recommendation below is a guess — including mine.",
+                                        help: "Without this, every recommendation below is a guess, including mine.",
                                         options: [
                                             { v: "no", label: "No idea", sub: "Enquiries arrive, source unknown", w: {}, flag: "noTracking" },
                                             { v: "some", label: "Roughly", sub: "We ask people, or we can half-guess", w: {}, flag: "weakTracking" },
@@ -5568,7 +5568,7 @@
                                     },
                                     {
                                         id: "budget", num: "Question 12", title: "What can you commit monthly?",
-                                        help: "Media spend plus management. Be realistic — a thin budget spread across four channels beats nothing, badly.",
+                                        help: "Media spend plus management. Be realistic, a thin budget spread across four channels beats nothing, badly.",
                                         options: [
                                             { v: "b1", label: "Under €500", sub: "", w: {}, spend: 400, band: 1 },
                                             { v: "b2", label: "€500 – €1,500", sub: "", w: {}, spend: 1000, band: 2 },
@@ -5579,11 +5579,11 @@
                                 ];
 
                                 const CHANNELS = {
-                                    ga: { name: "Google Ads — Search", pole: "capture", why: "Buys you the top of the page the moment somebody types the problem." },
+                                    ga: { name: "Google Ads, Search", pole: "capture", why: "Buys you the top of the page the moment somebody types the problem." },
                                     seo: { name: "SEO & Google Business Profile", pole: "capture", why: "Slower to start, but it compounds and the clicks stop costing you money." },
                                     ps: { name: "Paid social", pole: "create", why: "Puts you in front of people who weren't looking yet. Meta for consumers, LinkedIn for business buyers." },
                                     os: { name: "Organic social & content", pole: "create", why: "Builds the familiarity that makes every paid channel cheaper." },
-                                    vid: { name: "Video production", pole: "create", why: "The asset everything else runs on — ads, site, socials, sales calls." },
+                                    vid: { name: "Video production", pole: "create", why: "The asset everything else runs on, ads, site, socials, sales calls." },
                                     lsa: { name: "Local Services Ads", pole: "capture", why: "Sits above Search results and charges per lead, not per click. Eligibility varies by trade." }
                                 };
 
@@ -5712,7 +5712,7 @@
                                 }
 
                                 function calculateBudgetHeadline(m) {
-                                    if (m.capture >= 70) return { h: "Capture the demand that already exists", p: "People are actively searching for what you sell. The fastest money here is in front of that search — not in interrupting people who weren't looking. Social plays a supporting role." };
+                                    if (m.capture >= 70) return { h: "Capture the demand that already exists", p: "People are actively searching for what you sell. The fastest money here is in front of that search, not in interrupting people who weren't looking. Social plays a supporting role." };
                                     if (m.create >= 70) return { h: "Create the demand first", p: "Not enough people are searching for this yet, so search ads have little to catch. Budget belongs in front of the right audience with creative that explains why they should care." };
                                     return { h: "Run both, with different jobs", p: "You sit in the middle: there's real search demand, but not enough of it to grow on alone. Social creates the demand and search catches it." };
                                 }
@@ -6135,7 +6135,7 @@
                                         options: [
                                             { v: "template", label: "A good template is fine", sub: "Clean, professional, recognisably ours through colour and content", w: { sq: 3, wix: 3, shopify: 2, wp: 2 } },
                                             { v: "hybrid", label: "Template, heavily customised", sub: "Start from a base, then rework layout and sections to the brand", w: { wp: 4, shopify: 2, wf: 2, sq: 1 } },
-                                            { v: "bespoke", label: "Designed from scratch", sub: "Nothing off the shelf — it should not resemble a competitor", w: { wf: 4, wp: 3, custom: 4 }, flag: "bespokeWanted" }
+                                            { v: "bespoke", label: "Designed from scratch", sub: "Nothing off the shelf, it should not resemble a competitor", w: { wf: 4, wp: 3, custom: 4 }, flag: "bespokeWanted" }
                                         ]
                                     },
                                     {
@@ -6150,7 +6150,7 @@
                                     },
                                     {
                                         id: "needs", num: "Question 06", title: "What does it need to do?",
-                                        help: "Select everything that applies. Be honest — this is where hidden cost lives.",
+                                        help: "Select everything that applies. Be honest, this is where hidden cost lives.",
                                         multi: true,
                                         options: [
                                             { v: "blog", label: "Blog or news", sub: "", w: { wp: 2, wf: 2, sq: 1 } },
@@ -6183,7 +6183,7 @@
                                     },
                                     {
                                         id: "ongoing", num: "Question 09", title: "What can you live with monthly?",
-                                        help: "Licences, hosting and apps — before anyone's time.",
+                                        help: "Licences, hosting and apps, before anyone's time.",
                                         options: [
                                             { v: "m1", label: "Under €30", sub: "", w: { wp: 3, sq: 2, wix: 2 } },
                                             { v: "m2", label: "€30 – €100", sub: "", w: { wp: 3, shopify: 2, sq: 2, wf: 2 } },
