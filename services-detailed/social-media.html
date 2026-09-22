@@ -1836,8 +1836,158 @@
                 </div>
             </section>
 
+            <!-- SECTION 3: The Work (Content Wall) -->
+            <section id="work" class="main-section_wrap u-section"
+                style="padding-block: 80px; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .content_wall_grid {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        gap: 20px;
+                        margin-top: 40px;
+                    }
+
+                    .content_wall_item {
+                        position: relative;
+                        background: #131615;
+                        border: 1px solid #2A2B25;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        aspect-ratio: 4/3;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .content_wall_image {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .content_wall_item:hover .content_wall_image {
+                        transform: scale(1.05);
+                    }
+
+                    .content_wall_tag {
+                        position: absolute;
+                        bottom: 12px;
+                        right: 12px;
+                        background: rgba(19, 22, 21, 0.85);
+                        border: 1px solid #2A2B25;
+                        padding: 4px 10px;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 11px;
+                        color: #FFFCE1;
+                        border-radius: 2px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+
+                    @media (max-width: 991px) {
+                        .content_wall_grid {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+
+                    @media (max-width: 767px) {
+                        .content_wall_grid {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+                <div class="main-section_contain u-container">
+                    <div class="content_layout u-grid-custom">
+                        <div class="content_wrap u-column-span-10"
+                            style="grid-column: 1 / -1; width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 20px;">
+
+                            <!-- Header with Title on Left and Button on Opposite Side -->
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%; flex-wrap: wrap; gap: 20px;">
+                                <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px;">
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                                        01 / The Work
+                                    </p>
+                                    <h2 class="u-text-style-h2"
+                                        style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
+                                        Real client content, doing real selling.
+                                    </h2>
+                                    <p
+                                        style="font-size: 15.5px; line-height: 1.65; margin: 0; max-width: 58ch; color: #7C7C70;">
+                                        This wall does more selling than any copy, drop in the exported creatives and
+                                        reels.
+                                    </p>
+                                </div>
+                                <div>
+                                    <div data-wf--button-main--variant="secondary" data-button=" "
+                                        data-trigger="hover focus" class="button_main_wrap" style="margin-top: 0;">
+                                        <div class="clickable_wrap u-cover-absolute">
+                                            <a aria-label="View All Work" href="/work.html"
+                                                class="clickable_link w-inline-block"></a>
+                                        </div>
+                                        <div class="button_main_element w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
+                                            <div aria-hidden="true"
+                                                class="button_main_text u-text-style-main-medium w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
+                                                View all</div>
+                                            <div class="button_main_icon u-hide-if-empty"></div>
+                                            <div class="button_main_line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content_wall_grid">
+                                <div class="content_wall_item">
+                                    <video preload="metadata" muted loop playsinline autoplay
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/9c458bf8-0923-490b-bfbc-c306a16655fa/playlist.m3u8"
+                                            type="application/x-mpegURL">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/9c458bf8-0923-490b-bfbc-c306a16655fa/playlist.m3u8"
+                                            type="video/mp4">
+                                    </video>
+                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                        alt="Frameless SPC Tiles" class="content_wall_image"> -->
+                                    <span class="content_wall_tag">Fortis Financial</span>
+                                </div>
+                                <div class="content_wall_item">
+                                    <video preload="metadata" muted loop playsinline autoplay
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/852ca485-edaf-459a-a14e-d081278870c7/playlist.m3u8"
+                                            type="application/x-mpegURL">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/852ca485-edaf-459a-a14e-d081278870c7/playlist.m3u8"
+                                            type="video/mp4">
+                                    </video>
+                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                        alt="Frameless sliding door" class="content_wall_image"> -->
+                                    <span class="content_wall_tag">Clarity Investigations</span>
+                                </div>
+                                <div class="content_wall_item">
+                                    <video preload="metadata" muted loop playsinline autoplay
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/bdc36180-d7ae-4a9d-aba9-d99d4484e807/playlist.m3u8"
+                                            type="application/x-mpegURL">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/bdc36180-d7ae-4a9d-aba9-d99d4484e807/playlist.m3u8"
+                                            type="video/mp4">
+                                    </video>
+                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                        alt="Showroom reel" class="content_wall_image"> -->
+                                    <span class="content_wall_tag">Frameless</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- SECTION 2: Desktop Video Showcase -->
-            <section class="main-section_wrap u-section">
+            <!-- <section class="main-section_wrap u-section" style=" padding-block: 60px; ">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-10 project_gallery"
@@ -1873,7 +2023,7 @@
                     </div>
                 </div>
                 <div data-wf--spacer--variant="small" class="u-section-spacer u-ignore-trim"></div>
-            </section>
+            </section> -->
 
             <!-- SECTION 2.5: Stats Dashboard -->
             <section class="main-section_wrap u-section"
@@ -1982,133 +2132,7 @@
                 </script>
             </section>
 
-            <!-- SECTION 3: The Work (Content Wall) -->
-            <section id="work" class="main-section_wrap u-section"
-                style="padding-block: 80px; border-bottom: 1px solid #2A2B25;">
-                <style>
-                    .content_wall_grid {
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 20px;
-                        margin-top: 40px;
-                    }
 
-                    .content_wall_item {
-                        position: relative;
-                        background: #131615;
-                        border: 1px solid #2A2B25;
-                        border-radius: 4px;
-                        overflow: hidden;
-                        aspect-ratio: 4/3;
-                        display: flex;
-                        flex-direction: column;
-                    }
-
-                    .content_wall_image {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        transition: transform 0.3s ease;
-                    }
-
-                    .content_wall_item:hover .content_wall_image {
-                        transform: scale(1.05);
-                    }
-
-                    .content_wall_tag {
-                        position: absolute;
-                        bottom: 12px;
-                        right: 12px;
-                        background: rgba(19, 22, 21, 0.85);
-                        border: 1px solid #2A2B25;
-                        padding: 4px 10px;
-                        font-family: 'Inter', sans-serif;
-                        font-size: 11px;
-                        color: #FFFCE1;
-                        border-radius: 2px;
-                        text-transform: uppercase;
-                        letter-spacing: 0.5px;
-                    }
-
-                    @media (max-width: 991px) {
-                        .content_wall_grid {
-                            grid-template-columns: repeat(2, 1fr);
-                        }
-                    }
-
-                    @media (max-width: 767px) {
-                        .content_wall_grid {
-                            grid-template-columns: 1fr;
-                        }
-                    }
-                </style>
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-10"
-                            style="grid-column: 1 / -1; width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 20px;">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                01 / The Work
-                            </p>
-                            <h2 class="u-text-style-h2"
-                                style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
-                                Real client content, doing real selling.
-                            </h2>
-                            <p
-                                style="font-size: 15.5px; line-height: 1.65; margin: 0; max-width: 58ch; color: #7C7C70;">
-                                This wall does more selling than any copy, drop in the exported creatives and reels.
-                            </p>
-                            <div class="content_wall_grid">
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Frameless SPC Tiles" class="content_wall_image">
-                                    <span class="content_wall_tag">Frameless</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Frameless sliding door" class="content_wall_image">
-                                    <span class="content_wall_tag">Frameless</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Showroom reel" class="content_wall_image">
-                                    <span class="content_wall_tag">Frameless</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Before/after clean" class="content_wall_image">
-                                    <span class="content_wall_tag">Tile Restoration</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Product creative" class="content_wall_image">
-                                    <span class="content_wall_tag">Cork Retail Co.</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Behind the scenes" class="content_wall_image">
-                                    <span class="content_wall_tag">Munster Foods</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Offer creative" class="content_wall_image">
-                                    <span class="content_wall_tag">Cork Retail Co.</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Team story post" class="content_wall_image">
-                                    <span class="content_wall_tag">Harbour Legal</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="UGC collab still" class="content_wall_image">
-                                    <span class="content_wall_tag">Munster Foods</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- SECTION 4: Six services, one system -->
             <section class="main-section_wrap u-section"
@@ -2437,12 +2461,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div
-                                            style="aspect-ratio: 16/10; overflow: hidden; border: 1px solid #2A2B25; border-radius: 4px;">
-                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
+                                        <a href="/project/frameless.html" class="w-inline-block"
+                                            style="aspect-ratio: 16/10; overflow: hidden; border: 1px solid #2A2B25; border-radius: 4px; display: flex; align-items: center; justify-content: center; text-decoration: none; background-color: #0e100f;">
+                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo3.png"
                                                 alt="Frameless marble SPC tiles reel still"
-                                                style="width: 100%; height: 100%; object-fit: cover;">
-                                        </div>
+                                                style="max-width: 55%; max-height: 55%; width: auto; height: auto; object-fit: contain; object-position: center;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -2644,7 +2668,7 @@
                                                     <!--$-->
                                                     <div class="clickable_wrap u-cover-absolute"><a
                                                             aria-label="View Windmill Healthcare" target=""
-                                                            href="/project/windmill-healthcare.html"
+                                                            href="/project/fortis-financial-management.html"
                                                             class="clickable_link w-inline-block"></a></div>
                                                     <!--/$-->
                                                     <!--$-->
@@ -2659,14 +2683,14 @@
                                                     <div class="showreel_overlay_content is-project">
                                                         <h3
                                                             class="showreel_overlay_title_project u-text-style-main-bold">
-                                                            Windmill Healthcare </h3>
+                                                            Fortis Financial Management </h3>
                                                         <div class="showreel_subtitle_wrap">
                                                             <p
                                                                 class="showreel_overlay_subtitle u-text-style-small-medium">
                                                                 for</p>
                                                             <p
                                                                 class="showreel_overlay_subtitle u-text-style-small-medium">
-                                                                Care Group </p>
+                                                                Financial Management </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3513,283 +3537,283 @@
                             style="grid-column: 1 / -1; width: 100%; max-width: 100%;">
                             <h2 class="testimonials_heading u-text-style-h1">How our clients feel</h2>
                             <div class="testimonials_cards_wrap">
-                                    <div class="testimonials_collection_wrapper w-dyn-list">
-                                        <div data-slider="testimonials" role="list"
-                                            class="testimonials_collection_list w-dyn-items">
-                                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
-                                                <div class="testimonials_card_wrap">
-                                                    <div class="testimonials_card_text_wrap">
-                                                        <div class="testimonials_card_client_wrap">
-                                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                                Audrey Philpott— Clarity Investigations</h3>
-                                                            <div class="testimonials_card_rating_wrap">
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
+                                <div class="testimonials_collection_wrapper w-dyn-list">
+                                    <div data-slider="testimonials" role="list"
+                                        class="testimonials_collection_list w-dyn-items">
+                                        <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                                            <div class="testimonials_card_wrap">
+                                                <div class="testimonials_card_text_wrap">
+                                                    <div class="testimonials_card_client_wrap">
+                                                        <h3 class="testimonials_card_client_name u-text-style-main">
+                                                            Audrey Philpott— Clarity Investigations</h3>
+                                                        <div class="testimonials_card_rating_wrap">
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
                                                             </div>
                                                         </div>
-                                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                                            "Working with Blackwater was a turning
-                                                            point. We now own our digital presence outright, and each of
-                                                            our care
-                                                            facilities is fully findable by the families who need us."
-                                                        </p>
                                                     </div>
-                                                    <div class="testimonials_card_img_wrap"
-                                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                                        <div data-bunny-background-init=""
-                                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/048c1b60-0d10-46e9-a543-160dafe7aac3/playlist.m3u8"
-                                                            data-player-status="idle" data-player-lazy="false"
-                                                            data-player-autoplay="true" data-player-activated="false"
-                                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                                            <video preload="auto" playsinline muted loop controls
-                                                                style="width: 100%; height: 100%; object-fit: cover; display: block;"
-                                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/048c1b60-0d10-46e9-a543-160dafe7aac3/playlist.m3u8"></video>
-                                                        </div>
+                                                    <p class="testimonials_card_paragraph u-text-style-large">
+                                                        "Working with Blackwater was a turning
+                                                        point. We now own our digital presence outright, and each of
+                                                        our care
+                                                        facilities is fully findable by the families who need us."
+                                                    </p>
+                                                </div>
+                                                <div class="testimonials_card_img_wrap"
+                                                    style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
+                                                    <div data-bunny-background-init=""
+                                                        data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/048c1b60-0d10-46e9-a543-160dafe7aac3/playlist.m3u8"
+                                                        data-player-status="idle" data-player-lazy="false"
+                                                        data-player-autoplay="true" data-player-activated="false"
+                                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
+                                                        <video preload="auto" playsinline muted loop
+                                                            style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/048c1b60-0d10-46e9-a543-160dafe7aac3/playlist.m3u8"></video>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
-                                                <div class="testimonials_card_wrap">
-                                                    <div class="testimonials_card_text_wrap">
-                                                        <div class="testimonials_card_client_wrap">
-                                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                                VJ Bronk - Frameless</h3>
-                                                            <div class="testimonials_card_rating_wrap">
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
+                                        </div>
+                                        <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                                            <div class="testimonials_card_wrap">
+                                                <div class="testimonials_card_text_wrap">
+                                                    <div class="testimonials_card_client_wrap">
+                                                        <h3 class="testimonials_card_client_name u-text-style-main">
+                                                            VJ Bronk - Frameless</h3>
+                                                        <div class="testimonials_card_rating_wrap">
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
                                                             </div>
                                                         </div>
-                                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                                            "BW Digital was more than happy to help.
-                                                            Bharath patiently reviewed the site, made all the necessary
-                                                            adjustments, removed
-                                                            a pile of unnecessary add-on costs, and completed the
-                                                            project to far more than
-                                                            our satisfaction. Throughout the entire process, he remained
-                                                            positive, smiling,
-                                                            and incredibly effective."</p>
                                                     </div>
-                                                    <div class="testimonials_card_img_wrap"
-                                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                                        <div data-bunny-background-init=""
-                                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/fab862fc-189e-4ae5-9da5-0182295779c8/playlist.m3u8"
-                                                            data-player-status="idle" data-player-lazy="false"
-                                                            data-player-autoplay="true" data-player-activated="false"
-                                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                                            <video preload="auto" playsinline muted loop controls
-                                                                style="width: 100%; height: 100%; object-fit: cover; display: block;"
-                                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/fab862fc-189e-4ae5-9da5-0182295779c8/playlist.m3u8"></video>
-                                                        </div>
+                                                    <p class="testimonials_card_paragraph u-text-style-large">
+                                                        "BW Digital was more than happy to help.
+                                                        Bharath patiently reviewed the site, made all the necessary
+                                                        adjustments, removed
+                                                        a pile of unnecessary add-on costs, and completed the
+                                                        project to far more than
+                                                        our satisfaction. Throughout the entire process, he remained
+                                                        positive, smiling,
+                                                        and incredibly effective."</p>
+                                                </div>
+                                                <div class="testimonials_card_img_wrap"
+                                                    style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
+                                                    <div data-bunny-background-init=""
+                                                        data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/fab862fc-189e-4ae5-9da5-0182295779c8/playlist.m3u8"
+                                                        data-player-status="idle" data-player-lazy="false"
+                                                        data-player-autoplay="true" data-player-activated="false"
+                                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
+                                                        <video preload="auto" playsinline muted loop
+                                                            style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/fab862fc-189e-4ae5-9da5-0182295779c8/playlist.m3u8"></video>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
-                                                <div class="testimonials_card_wrap">
-                                                    <div class="testimonials_card_text_wrap">
-                                                        <div class="testimonials_card_client_wrap">
-                                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                                Conor
-                                                                Parkinson
-                                                                —
-                                                                Primtac Personnel</h3>
-                                                            <div class="testimonials_card_rating_wrap">
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
-                                                                <div class="testimonials_card_rating_icon">
-                                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                                        class="u-svg"><!--$-->
-                                                                        <path
-                                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                                            fill="currentColor"></path><!--/$-->
-                                                                    </svg>
-                                                                    <!--/$-->
-                                                                </div>
+                                        </div>
+                                        <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                                            <div class="testimonials_card_wrap">
+                                                <div class="testimonials_card_text_wrap">
+                                                    <div class="testimonials_card_client_wrap">
+                                                        <h3 class="testimonials_card_client_name u-text-style-main">
+                                                            Conor
+                                                            Parkinson
+                                                            —
+                                                            Primtac Personnel</h3>
+                                                        <div class="testimonials_card_rating_wrap">
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
+                                                            </div>
+                                                            <div class="testimonials_card_rating_icon">
+                                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg"
+                                                                    width="100%" viewBox="0 0 20 20" fill="none"
+                                                                    class="u-svg"><!--$-->
+                                                                    <path
+                                                                        d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
+                                                                        fill="currentColor"></path><!--/$-->
+                                                                </svg>
+                                                                <!--/$-->
                                                             </div>
                                                         </div>
-                                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                                            "I would highly recommend BW to anyone
-                                                            looking to upscale their marketing to improve their website
-                                                            and give their
-                                                            company a whole revamp online - the revamp that Primtac went
-                                                            through with BW
-                                                            has been a massive success."</p>
                                                     </div>
-                                                    <div class="testimonials_card_img_wrap"
-                                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                                        <div data-bunny-background-init=""
-                                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/5500e227-0eac-45ec-aae1-661e3c95a8c4/playlist.m3u8"
-                                                            data-player-status="idle" data-player-lazy="false"
-                                                            data-player-autoplay="true" data-player-activated="false"
-                                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                                            <video preload="auto" playsinline muted loop controls
-                                                                style="width: 100%; height: 100%; object-fit: cover; display: block;"
-                                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/5500e227-0eac-45ec-aae1-661e3c95a8c4/playlist.m3u8"></video>
-                                                        </div>
+                                                    <p class="testimonials_card_paragraph u-text-style-large">
+                                                        "I would highly recommend BW to anyone
+                                                        looking to upscale their marketing to improve their website
+                                                        and give their
+                                                        company a whole revamp online - the revamp that Primtac went
+                                                        through with BW
+                                                        has been a massive success."</p>
+                                                </div>
+                                                <div class="testimonials_card_img_wrap"
+                                                    style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
+                                                    <div data-bunny-background-init=""
+                                                        data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/5500e227-0eac-45ec-aae1-661e3c95a8c4/playlist.m3u8"
+                                                        data-player-status="idle" data-player-lazy="false"
+                                                        data-player-autoplay="true" data-player-activated="false"
+                                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
+                                                        <video preload="auto" playsinline muted loop
+                                                            style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/5500e227-0eac-45ec-aae1-661e3c95a8c4/playlist.m3u8"></video>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="testimonials_cards_navigation_wrap">
-                                        <!--$-->
-                                        <div data-wf--button-arrow--variant="primary-left"
-                                            data-slider-prev="testimonials" data-button=" " class="button_arrow_wrap">
-                                            <div class="button_arrow_element">
-                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-                                                    fill="none" class="u-svg is-arrow"><!--$-->
-                                                    <path
-                                                        d="M18.4333 25.3335L25.9 32.8002L24 34.6668L13.3333 24.0002L24 13.3335L25.9 15.2002L18.4333 22.6668H34.6667V25.3335H18.4333Z"
-                                                        fill="currentColor"></path><!--/$-->
-                                                </svg>
-                                                <!--/$-->
-                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                    fill="none" class="u-svg team_slider"><!--$-->
-                                                    <path d="M8.5 6L12.5 10L8.5 14" stroke="#191919"
-                                                        stroke-opacity="0.75" stroke-width="1.5"></path><!--/$-->
-                                                </svg>
-                                                <!--/$-->
-                                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                    fill="none" class="u-svg team_slider is-left"><!--$-->
-                                                    <path d="M11.5 6L7.5 10L11.5 14" stroke="#191919"
-                                                        stroke-opacity="0.75" stroke-width="1.5"></path><!--/$-->
-                                                </svg>
-                                                <!--/$-->
-                                            </div>
+                                </div>
+                                <div class="testimonials_cards_navigation_wrap">
+                                    <!--$-->
+                                    <div data-wf--button-arrow--variant="primary-left" data-slider-prev="testimonials"
+                                        data-button=" " class="button_arrow_wrap">
+                                        <div class="button_arrow_element">
+                                            <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                                fill="none" class="u-svg is-arrow"><!--$-->
+                                                <path
+                                                    d="M18.4333 25.3335L25.9 32.8002L24 34.6668L13.3333 24.0002L24 13.3335L25.9 15.2002L18.4333 22.6668H34.6667V25.3335H18.4333Z"
+                                                    fill="currentColor"></path><!--/$-->
+                                            </svg>
+                                            <!--/$-->
+                                            <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="none" class="u-svg team_slider"><!--$-->
+                                                <path d="M8.5 6L12.5 10L8.5 14" stroke="#191919" stroke-opacity="0.75"
+                                                    stroke-width="1.5"></path><!--/$-->
+                                            </svg>
+                                            <!--/$-->
+                                            <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="none" class="u-svg team_slider is-left"><!--$-->
+                                                <path d="M11.5 6L7.5 10L11.5 14" stroke="#191919" stroke-opacity="0.75"
+                                                    stroke-width="1.5"></path><!--/$-->
+                                            </svg>
+                                            <!--/$-->
+                                        </div>
                                         <!--$-->
                                         <div class="clickable_wrap u-cover-absolute">
                                             <!--$--><button type="button" aria-label="Previous"
