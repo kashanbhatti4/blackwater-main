@@ -1889,31 +1889,104 @@
                                 <div class="marquee_wrapper">
                                     <div class="u-embed-css w-embed">
                                         <style>
-                                            @keyframes marquee {
+                                            .marquee_wrapper {
+                                                position: relative;
+                                                flex-grow: 1;
+                                                height: 60px;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                overflow: visible;
+                                            }
+
+                                            .ai-logos-container {
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                right: 0;
+                                                bottom: 0;
+                                                pointer-events: none;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                z-index: 10;
+                                            }
+
+                                            .ai-logo {
+                                                position: absolute;
+                                                width: 60px;
+                                                height: 60px;
+                                                object-fit: contain;
+                                                opacity: 0;
+                                                animation-name: slide-left-to-right;
+                                                animation-duration: 4s;
+                                                animation-timing-function: linear;
+                                                animation-iteration-count: infinite;
+                                            }
+
+                                            @keyframes slide-left-to-right {
                                                 0% {
-                                                    transform: translateX(-100%);
+                                                    left: 0%;
+                                                    transform: translateX(0%);
+                                                    opacity: 0;
+                                                }
+
+                                                10% {
+                                                    left: 10%;
+                                                    transform: translateX(-10%);
+                                                    opacity: 1;
+                                                }
+
+                                                90% {
+                                                    left: 90%;
+                                                    transform: translateX(-90%);
+                                                    opacity: 1;
                                                 }
 
                                                 100% {
-                                                    transform: translateX(0%);
+                                                    left: 100%;
+                                                    transform: translateX(-100%);
+                                                    opacity: 0;
                                                 }
                                             }
 
-                                            .marquee_content {
-                                                animation: marquee 8s linear infinite;
-                                                will-change: transform;
+                                            @media (max-width: 767px) {
+                                                .marquee_wrapper {
+                                                    width: 100%;
+                                                }
+
+                                                .ai-logo {
+                                                    width: 35px;
+                                                    height: 35px;
+                                                }
+                                            }
+
+                                            .meta-logo {
+                                                animation-delay: 0s;
+                                            }
+
+                                            .google-ads-logo {
+                                                animation-delay: 1s;
+                                            }
+
+                                            .wordpress-logo {
+                                                animation-delay: 2s;
+                                            }
+
+                                            .insta-logo {
+                                                animation-delay: 3s;
                                             }
                                         </style>
                                     </div>
-                                    <div class="marquee_content">
-                                        <div class="services_color"></div>
-                                        <div class="services_color is-pink"></div>
-                                        <div class="services_color is-orange"></div>
-                                        <div class="services_color is-yellow"></div>
-                                        <div class="services_color"></div>
-                                        <div class="services_color is-pink"></div>
-                                        <div class="services_color is-orange"></div>
-                                        <div class="services_color is-yellow"></div>
+                                    <div class="ai-logos-container">
+                                        <img src="https://blackwatercdn.b-cdn.net/Tool%20Icons/meta%20ads.png"
+                                            class="ai-logo meta-logo" alt="Meta">
+                                        <img src="https://blackwatercdn.b-cdn.net/Tool%20Icons/google.png"
+                                            class="ai-logo google-ads-logo" alt="Google Ads">
+                                        <img src="https://blackwatercdn.b-cdn.net/Tool%20Icons/wordpress-white-icon.png"
+                                            class="ai-logo wordpress-logo" alt="wordpress">
+                                        <img src="https://blackwatercdn.b-cdn.net/Tool%20Icons/insta-white-icon.png"
+                                            class="ai-logo insta-logo" alt="insta">
                                     </div>
                                 </div>
                                 <div class="hero_process_text u-text-style-large">Finish
@@ -2713,7 +2786,7 @@
                             style="grid-column: 1 / -1; width: 100%; max-width: 100%;">
                             <div class="div-block">
                                 <div class="featured_nav_wrap">
-                                    <div class="slider__overlay-count">
+                                    <div class="slider__overlay-count" style="visibility: hidden;">
                                         <div class="slider__count-col">
                                             <h2 data-slide-count="step" class="slider__count-heading u-text-style-h2">01
                                             </h2>
@@ -2850,7 +2923,7 @@
                                                     <!--$-->
                                                     <div class="clickable_wrap u-cover-absolute"><a
                                                             aria-label="View Windmill Healthcare" target=""
-                                                            href="/project/fortis-financial-management.html"
+                                                            href="/project/windmill-healthcare.html"
                                                             class="clickable_link w-inline-block"></a></div>
                                                     <!--/$-->
                                                     <!--$-->
@@ -2865,14 +2938,14 @@
                                                     <div class="showreel_overlay_content is-project">
                                                         <h3
                                                             class="showreel_overlay_title_project u-text-style-main-bold">
-                                                            Fortis Financial Management </h3>
+                                                            Windmill Healthcare </h3>
                                                         <div class="showreel_subtitle_wrap">
                                                             <p
                                                                 class="showreel_overlay_subtitle u-text-style-small-medium">
                                                                 for</p>
                                                             <p
                                                                 class="showreel_overlay_subtitle u-text-style-small-medium">
-                                                                Financial Management </p>
+                                                                Healthcare</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3845,7 +3918,7 @@
                                     <div class="button_main_element w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
                                         <div aria-hidden="true"
                                             class="button_main_text u-text-style-main-medium w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400">
-                                            Fuseguard</div>
+                                            Cork Demolitions</div>
                                         <div
                                             class="button_main_icon w-variant-625d5df4-ad91-f7dc-9e2f-2e69f3fd7400 u-hide-if-empty">
                                             <div class="arrow_up_svg w-embed"><svg viewBox="0 0 38 38" fill="none"
@@ -3897,7 +3970,7 @@
                                     <!--/$-->
                                     <div class="integration_video_description">
                                         <p class="integration_video_text u-text-style-small"
-                                            style="color: #FFE32A !important;">Paid Search &bull; Safety Testing</p>
+                                            style="color: #FFE32A !important;">Paid Search &bull; Demolitions</p>
                                     </div>
                                 </div>
                                 <!-- Case study result blurb -->
