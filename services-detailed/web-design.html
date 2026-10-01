@@ -3391,8 +3391,8 @@
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
-                        width: 40px;
-                        height: 40px;
+                        width: 60px;
+                        height: 60px;
                         border-radius: 50%;
                         background: #FFE32A;
                         border: 3px solid #2A2B25;
@@ -3477,11 +3477,12 @@
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-10"
-                            style="grid-column: 1 / -1; width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 60px;">
+                            style="grid-column: 1 / -1; width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 60px;">
 
                             <!-- Eyebrow + Title -->
-                            <div style="display: flex; flex-direction: column; gap: 16px;">
-                                <div style="display: flex; align-items: center; gap: 12px;">
+                            <div
+                                style="display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center;">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
 
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
@@ -3494,54 +3495,41 @@
                                 </h2>
                             </div>
 
-                            <!-- Two Columns: Slider and Case Details -->
-                            <div
-                                style="display: flex; gap: 60px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-
-                                <!-- Slider Column -->
-                                <div style="flex: 1.2 1 450px; width: 100%;">
-                                    <div class="slider_container" id="compareSlider">
-                                        <!-- Before State -->
-                                        <div class="slider_overlay_before" id="beforeOverlay">
-                                            <img id="beforeImg" class="slider_img"
-                                                src="https://blackwatercdn.b-cdn.net/Services-detailed/web-design-service/Windmill%20Old.png"
-                                                alt="Before site screenshot" style="max-width: none;">
-                                        </div>
-
-                                        <!-- After State -->
-                                        <div class="slider_img_after">
-                                            <img class="slider_img"
-                                                src="https://blackwatercdn.b-cdn.net/Services-detailed/web-design-service/Windmill%20New.png"
-                                                alt="After site screenshot">
-                                        </div>
-
-                                        <div class="slider_label slider_label_before">Before</div>
-                                        <div class="slider_label slider_label_after">After</div>
-
-                                        <!-- Handle -->
-                                        <div class="slider_handle" id="sliderHandle">
-                                            <div class="slider_handle_button">
-                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                                    stroke="#0E100F" stroke-width="3" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path d="M5 12h14M12 5l-7 7 7 7" />
-                                                </svg>
-                                            </div>
-                                        </div>
+                            <!-- Centered Slider Container -->
+                            <!-- <div style="width: 100%; max-width: 900px; margin: 0 auto;"> -->
+                            <div style="width: 100%; margin: 0 auto;">
+                                <div class="slider_container" id="compareSlider">
+                                    <!-- Before State -->
+                                    <div class="slider_overlay_before" id="beforeOverlay">
+                                        <img id="beforeImg" class="slider_img"
+                                            src="https://blackwatercdn.b-cdn.net/Services-detailed/web-design-service/Windmill%20Old.png"
+                                            alt="Before site screenshot" style="max-width: none;">
                                     </div>
 
-                                    <!-- Range Slider Control -->
-                                    <input type="range" min="0" max="100" value="50" class="range_slider_control"
-                                        id="rangeControl">
+                                    <!-- After State -->
+                                    <div class="slider_img_after">
+                                        <img class="slider_img"
+                                            src="https://blackwatercdn.b-cdn.net/Services-detailed/web-design-service/Windmill%20New.png"
+                                            alt="After site screenshot">
+                                    </div>
+
+                                    <div class="slider_label slider_label_before">Before</div>
+                                    <div class="slider_label slider_label_after">After</div>
+
+                                    <!-- Handle -->
+                                    <div class="slider_handle" id="sliderHandle">
+                                        <div class="slider_handle_button">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E100F"
+                                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M5 12h14M12 5l-7 7 7 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- Case Details Column -->
-                                <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 32px;">
-
-
-
-                                </div>
-
+                                <!-- Range Slider Control -->
+                                <input type="range" min="0" max="100" value="50" class="range_slider_control"
+                                    id="rangeControl">
                             </div>
 
                         </div>
