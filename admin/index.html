@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog CMS Admin | Blackwater Digital</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+
+    <!-- ==================================================== -->
+    <!-- 1. AUTH / LOGIN SCREEN                                -->
+    <!-- ==================================================== -->
+    <div id="auth-screen" class="cms-auth-container" style="display: none;">
+        <div class="cms-auth-card">
+            <div class="cms-auth-brand">
+                <img src="/logo.svg" alt="Blackwater Logo" onerror="this.style.display='none'">
+                <span>Blackwater CMS</span>
+            </div>
+            <h1 class="cms-auth-title">Admin Sign In</h1>
+            <p class="cms-auth-subtitle">Enter your credentials to manage blogs & publications</p>
+
+            <div id="login-error" style="display:none; color: var(--danger); background: rgba(224, 82, 82, 0.1); border: 1px solid var(--danger); padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 20px;"></div>
+
+            <form id="login-form">
+                <div class="cms-form-group" style="text-align: left;">
+                    <label class="cms-label">Username or Email</label>
+                    <input type="text" id="login-username" class="cms-input" placeholder="admin" required autofocus autocomplete="username">
+                </div>
+                <div class="cms-form-group" style="text-align: left;">
+                    <label class="cms-label">Password</label>
+                    <input type="password" id="login-password" class="cms-input" placeholder="••••••••••••" required autocomplete="current-password">
+                </div>
+                <button type="submit" id="login-submit-btn" class="cms-btn cms-btn-primary" style="width: 100%; padding: 14px; margin-top: 8px;">
+                    Sign In to Dashboard
+                </button>
+            </form>
+            <div style="margin-top: 24px; font-size: 12px; color: var(--text-muted);">
+                <a href="/" target="_blank" data-barba-prevent>← Return to Website</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 2. MAIN APPLICATION LAYOUT                            -->
+    <!-- ==================================================== -->
+    <div id="app-layout" class="cms-layout" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <aside class="cms-sidebar">
+            <div class="cms-sidebar-header">
+                <a href="/admin" class="cms-sidebar-brand" data-barba-prevent>
+                    <img src="/logo.svg" alt="Blackwater" onerror="this.style.display='none'">
+                    <span>Blackwater</span>
+                </a>
+            </div>
+
+            <nav class="cms-sidebar-nav">
+                <button type="button" id="nav-blogs-btn" class="cms-nav-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <span>All Articles</span>
+                </button>
+                <button type="button" id="nav-create-btn" class="cms-nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>Write Article</span>
+                </button>
+                <a href="/blogs" target="_blank" class="cms-nav-item" data-barba-prevent>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span>View Public Blog ↗</span>
+                </a>
+                <a href="/" target="_blank" class="cms-nav-item" data-barba-prevent>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Website Home ↗</span>
+                </a>
+            </nav>
+
+            <div class="cms-sidebar-footer">
+                <div class="cms-user-info">
+                    <span id="current-user-name" class="cms-user-name">Admin</span>
+                    <span class="cms-user-role">Administrator</span>
+                </div>
+                <button type="button" id="logout-btn" class="cms-btn-icon" title="Logout">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="cms-main">
+            <header class="cms-header">
+                <div>
+                    <h2 style="font-family: var(--font-heading); font-size: 20px; font-weight: 600;">Blog Management Portal</h2>
+                </div>
+                <div>
+                    <button type="button" class="cms-btn cms-btn-primary" onclick="window.openNewBlogEditor()">
+                        + New Post
+                    </button>
+                </div>
+            </header>
+
+            <div class="cms-content">
+                <!-- ============================================ -->
+                <!-- VIEW 1: BLOGS LIST / DASHBOARD               -->
+                <!-- ============================================ -->
+                <div id="blogs-list-view">
+                    <!-- Metrics Summary -->
+                    <div class="cms-metrics-grid">
+                        <div class="cms-metric-card">
+                            <div class="cms-metric-label">Total Articles</div>
+                            <div id="count-total" class="cms-metric-value">0</div>
+                        </div>
+                        <div class="cms-metric-card">
+                            <div class="cms-metric-label">Published Live</div>
+                            <div id="count-published" class="cms-metric-value" style="color: var(--success);">0</div>
+                        </div>
+                        <div class="cms-metric-card">
+                            <div class="cms-metric-label">Drafts</div>
+                            <div id="count-drafts" class="cms-metric-value" style="color: var(--accent-gold);">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Blogs Table -->
+                    <div class="cms-table-container">
+                        <div class="cms-table-header-tools">
+                            <div class="cms-search-box">
+                                <span class="cms-search-icon">🔍</span>
+                                <input type="text" id="blogs-search-input" class="cms-input" placeholder="Search articles by title...">
+                            </div>
+                            <div class="cms-filter-tabs">
+                                <button type="button" class="cms-filter-btn active" data-filter="all">All</button>
+                                <button type="button" class="cms-filter-btn" data-filter="published">Published</button>
+                                <button type="button" class="cms-filter-btn" data-filter="draft">Drafts</button>
+                            </div>
+                        </div>
+
+                        <table class="cms-table">
+                            <thead>
+                                <tr>
+                                    <th>Article</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Published Date</th>
+                                    <th style="text-align: right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="blogs-table-body">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted);">
+                                        Loading articles...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ============================================ -->
+                <!-- VIEW 2: BLOG EDITOR (CREATE / EDIT)           -->
+                <!-- ============================================ -->
+                <div id="blog-editor-view" style="display: none;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                        <h2 id="editor-heading" style="font-family: var(--font-heading); font-size: 26px; font-weight: 600;">
+                            Create New Blog Post
+                        </h2>
+                        <div style="display: flex; gap: 12px;">
+                            <button type="button" id="editor-cancel-btn" class="cms-btn cms-btn-secondary">
+                                Cancel
+                            </button>
+                            <button type="submit" form="blog-editor-form" id="editor-save-btn" class="cms-btn cms-btn-primary">
+                                Save Post
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="blog-editor-form">
+                        <div class="cms-editor-grid">
+                            <!-- Left: Main Content Inputs -->
+                            <div class="cms-editor-main">
+                                <div class="cms-form-group">
+                                    <label class="cms-label">Post Title *</label>
+                                    <input type="text" id="blog-title-input" class="cms-input" placeholder="e.g. Why Irish SMEs Waste 40% of Their Google Ads Budget" required style="font-size: 18px; font-weight: 600;">
+                                </div>
+
+                                <div class="cms-form-group">
+                                    <label class="cms-label">URL Slug *</label>
+                                    <input type="text" id="blog-slug-input" class="cms-input" placeholder="why-irish-smes-waste-budget" required>
+                                    <div class="cms-input-helper">The web address for this post: <code>/blog/<span>your-slug</span></code></div>
+                                </div>
+
+                                <div class="cms-form-group">
+                                    <label class="cms-label">Excerpt / Summary</label>
+                                    <textarea id="blog-excerpt-input" class="cms-textarea" rows="3" placeholder="Brief 1-2 sentence overview shown on blog cards and search engines..."></textarea>
+                                </div>
+
+                                <div class="cms-form-group">
+                                    <label class="cms-label">Article Body Content *</label>
+                                    <!-- WYSIWYG Toolbar -->
+                                    <div class="cms-toolbar">
+                                        <button type="button" class="cms-tool-btn" data-command="bold" title="Bold"><b>B</b></button>
+                                        <button type="button" class="cms-tool-btn" data-command="italic" title="Italic"><i>I</i></button>
+                                        <button type="button" class="cms-tool-btn" data-command="underline" title="Underline"><u>U</u></button>
+                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="h2" title="Heading 2">H2</button>
+                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="h3" title="Heading 3">H3</button>
+                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="p" title="Paragraph">¶</button>
+                                        <button type="button" class="cms-tool-btn" data-command="insertUnorderedList" title="Bullet List">• List</button>
+                                        <button type="button" class="cms-tool-btn" data-command="insertOrderedList" title="Numbered List">1. List</button>
+                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="blockquote" title="Quote">❝ Quote</button>
+                                        <button type="button" class="cms-tool-btn" data-command="createLink" title="Add Link">🔗 Link</button>
+                                        <button type="button" class="cms-tool-btn" data-command="removeFormat" title="Clear Formatting">✕ Clear</button>
+                                    </div>
+                                    <!-- Rich text editable container -->
+                                    <div id="blog-content-editor" class="cms-content-editor" contenteditable="true">
+                                        <p>Write your article here...</p>
+                                    </div>
+                                </div>
+
+                                <!-- SEO Settings Section -->
+                                <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border-color);">
+                                    <h3 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 20px;">Search Engine Optimization (SEO)</h3>
+                                    
+                                    <div class="cms-form-group">
+                                        <label class="cms-label">Meta Title</label>
+                                        <input type="text" id="blog-meta-title" class="cms-input" placeholder="Leave empty to use the post title">
+                                    </div>
+
+                                    <div class="cms-form-group">
+                                        <label class="cms-label">Meta Description</label>
+                                        <textarea id="blog-meta-desc" class="cms-textarea" rows="2" placeholder="Leave empty to use the excerpt"></textarea>
+                                    </div>
+
+                                    <label class="cms-label" style="margin-top: 16px;">Search Result Preview</label>
+                                    <div class="cms-seo-preview">
+                                        <div id="seo-preview-url" class="cms-seo-preview-url">https://bwdigitalmarketing.ie/blog/your-slug</div>
+                                        <div id="seo-preview-title" class="cms-seo-preview-title">Your Blog Post Title</div>
+                                        <div id="seo-preview-desc" class="cms-seo-preview-desc">A compelling summary of this article will appear here in search engine results.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Publishing & Media Sidebar -->
+                            <div class="cms-editor-sidebar">
+                                <!-- Status & Publish Panel -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">Publishing Options</div>
+                                    
+                                    <div class="cms-form-group">
+                                        <label class="cms-label">Status</label>
+                                        <select id="blog-status-select" class="cms-select">
+                                            <option value="draft">Draft (Private)</option>
+                                            <option value="published">Published (Live)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="cms-form-group">
+                                        <label class="cms-label">Publish Date</label>
+                                        <input type="datetime-local" id="blog-published-at" class="cms-input">
+                                    </div>
+
+                                    <div class="cms-form-group">
+                                        <label class="cms-label">Estimated Read Time</label>
+                                        <input type="text" id="blog-reading-time" class="cms-input" placeholder="5 min" value="5 min">
+                                    </div>
+                                </div>
+
+                                <!-- Category Panel -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">
+                                        <span>Category</span>
+                                        <button type="button" id="add-category-btn" class="cms-btn cms-btn-secondary cms-btn-sm">+ New</button>
+                                    </div>
+
+                                    <select id="blog-category-select" class="cms-select">
+                                        <option value="">Select Category...</option>
+                                    </select>
+                                </div>
+
+                                <!-- Featured Image Panel -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">Featured Image</div>
+                                    
+                                    <div id="image-dropzone" class="cms-upload-dropzone">
+                                        <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                                        
+                                        <div id="image-upload-prompt">
+                                            <div style="font-size: 28px; margin-bottom: 8px;">📷</div>
+                                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 6px;">
+                                                Click or drag image here to upload
+                                            </p>
+                                            <span style="font-size: 11px; color: var(--text-muted);">JPG, PNG, or WebP up to 5MB</span>
+                                        </div>
+
+                                        <img id="image-preview" class="cms-upload-preview" alt="Featured Image Preview">
+                                    </div>
+
+                                    <button type="button" id="image-remove-btn" class="cms-btn cms-btn-danger cms-btn-sm" style="display: none; width: 100%; margin-top: 10px;">
+                                        Remove Image
+                                    </button>
+                                </div>
+
+                                <!-- Tags Panel -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">Tags</div>
+                                    <input type="text" id="tag-input" class="cms-input" placeholder="Type tag & press Enter...">
+                                    <div id="tag-container" class="cms-tag-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="cms-toast" class="cms-toast">
+        <span id="cms-toast-msg">Operation completed</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/admin/js/admin-api.js"></script>
+    <script src="/admin/js/admin-app.js"></script>
+</body>
+</html>

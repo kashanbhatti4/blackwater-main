@@ -2,12 +2,21 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
 import apiSendHandler from './api/send.js';
+import authHandler from './api/auth.js';
+import blogsHandler from './api/blogs.js';
+import categoriesHandler from './api/categories.js';
+import uploadHandler from './api/upload.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = process.env.PORT || 3000;
+// Load environment variables
+dotenv.config({ path: path.join(__dirname, '.env') });
+
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 const MIME_TYPES = {
     '.html': 'text/html; charset=utf-8',
@@ -29,38 +38,90 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer(async (req, res) => {
-    let statusCode = 200;
-
+    // Convenience helper methods
     res.status = function(code) {
-        statusCode = code;
         res.statusCode = code;
         return res;
     };
 
     res.json = function(data) {
-        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.end(JSON.stringify(data));
         return res;
     };
 
+    // CORS & Options
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+
+    if (req.method === 'OPTIONS') {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+
     const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
     const pathname = parsedUrl.pathname;
 
-    if (pathname === '/api/send') {
+    // =========================================================
+    // 1. API ROUTES
+    // =========================================================
+
+    // Special case: File Upload (must stream directly, do not buffer JSON body)
+    if (pathname === '/api/upload') {
+        if (req.method === 'POST') {
+            return uploadHandler(req, res);
+        } else if (req.method === 'DELETE') {
+            // Read body for delete URL
+            let body = '';
+            req.on('data', chunk => { body += chunk.toString(); });
+            req.on('end', async () => {
+                try { req.body = body ? JSON.parse(body) : {}; } catch (e) { req.body = {}; }
+                return uploadHandler(req, res);
+            });
+            return;
+        }
+    }
+
+    // JSON Body collector for other API endpoints
+    if (pathname.startsWith('/api/')) {
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();
         });
+
         req.on('end', async () => {
             try {
                 req.body = body ? JSON.parse(body) : {};
             } catch (e) {
                 req.body = {};
             }
+
             try {
-                await apiSendHandler(req, res);
+                // Existing Contact Handler
+                if (pathname === '/api/send') {
+                    return await apiSendHandler(req, res);
+                }
+
+                // Auth Routes
+                if (pathname.startsWith('/api/auth/')) {
+                    return await authHandler(req, res, pathname);
+                }
+
+                // Categories Routes
+                if (pathname === '/api/categories') {
+                    return await categoriesHandler(req, res, pathname);
+                }
+
+                // Blogs Routes
+                if (pathname.startsWith('/api/blogs')) {
+                    return await blogsHandler(req, res, pathname, parsedUrl.searchParams);
+                }
+
+                return res.status(404).json({ error: 'API route not found' });
             } catch (err) {
-                console.error('API Error:', err);
+                console.error('Server Internal Error:', err);
                 if (!res.writableEnded) {
                     res.status(500).json({ error: err.message || 'Internal Server Error' });
                 }
@@ -69,6 +130,69 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
+    // =========================================================
+    // 2. PUBLIC UPLOADED ASSETS (/uploads/blogs/*)
+    // =========================================================
+    if (pathname.startsWith('/uploads/blogs/')) {
+        const filename = path.basename(pathname);
+        const filePath = path.join(__dirname, 'public/uploads/blogs', filename);
+
+        fs.stat(filePath, (err, stats) => {
+            if (err || !stats.isFile()) {
+                res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+                res.end('Image not found');
+                return;
+            }
+
+            const ext = path.extname(filePath).toLowerCase();
+            const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+            res.writeHead(200, {
+                'Content-Type': contentType,
+                'Cache-Control': 'public, max-age=86400, immutable'
+            });
+            const stream = fs.createReadStream(filePath);
+            stream.pipe(res);
+        });
+        return;
+    }
+
+    // =========================================================
+    // 3. ADMIN DASHBOARD ROUTING (/admin or /admin/*)
+    // =========================================================
+    if (pathname === '/admin' || pathname === '/admin/' || pathname === '/admin/index.html') {
+        const adminFile = path.join(__dirname, 'admin/index.html');
+        return serveStaticFile(adminFile, res);
+    }
+
+    if (pathname.startsWith('/admin/')) {
+        const relativePath = pathname.replace(/^\/admin\//, '');
+        const adminStatic = path.join(__dirname, 'admin', relativePath);
+        if (fs.existsSync(adminStatic) && fs.statSync(adminStatic).isFile()) {
+            return serveStaticFile(adminStatic, res);
+        }
+        // Fallback for SPA routing in admin
+        return serveStaticFile(path.join(__dirname, 'admin/index.html'), res);
+    }
+
+    // =========================================================
+    // 4. PUBLIC BLOG DYNAMIC ROUTING
+    // =========================================================
+    // Listing page: /blogs or /all-articles
+    if (pathname === '/blogs' || pathname === '/blogs/' || pathname === '/blogs.html') {
+        const blogsListFile = path.join(__dirname, 'blogs.html');
+        return serveStaticFile(blogsListFile, res);
+    }
+
+    // Dynamic single article page: /blog/:slug
+    if (pathname.startsWith('/blog/') || pathname === '/blog') {
+        const blogDetailFile = path.join(__dirname, 'blog.html');
+        return serveStaticFile(blogDetailFile, res);
+    }
+
+    // =========================================================
+    // 5. STANDARD STATIC WEBSITE FILES
+    // =========================================================
     let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
     if (safePath === '/' || safePath === '\\') {
         safePath = '/index.html';
@@ -86,10 +210,14 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
+    serveStaticFile(filePath, res);
+});
+
+function serveStaticFile(filePath, res) {
     fs.stat(filePath, (err, stats) => {
         if (err || !stats.isFile()) {
             res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end('<h1>404 Not Found</h1>');
+            res.end('<h1>404 Not Found</h1><p>The requested page could not be found.</p>');
             return;
         }
 
@@ -100,8 +228,10 @@ const server = http.createServer(async (req, res) => {
         const readStream = fs.createReadStream(filePath);
         readStream.pipe(res);
     });
-});
+}
 
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Blog Admin Dashboard: http://localhost:${PORT}/admin`);
+    console.log(`Public Blogs: http://localhost:${PORT}/blogs`);
 });

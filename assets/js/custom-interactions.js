@@ -2233,19 +2233,38 @@ function initHoneyBookEmbed() {
 
 
 
-function renderJournalArticle(container) {
+async function renderJournalArticle(container) {
   const urlParams = new URLSearchParams(window.location.search);
-  const articleId = urlParams.get('id');
+  const articleId = urlParams.get('id') || urlParams.get('slug');
   const articleContent = container.querySelector('#article-content') || document.getElementById('article-content');
 
   if (!articleContent) return;
 
-  if (!articleId || typeof window.journalArticles === 'undefined') {
-    showNotFound(articleContent);
-    return;
-  }
+  let article = null;
 
-  const article = window.journalArticles.find(a => a.id === articleId || 'article-' + a.id === articleId || a.id.replace('article-', '') === articleId);
+  if (articleId) {
+    try {
+      const res = await fetch('/api/blogs/' + encodeURIComponent(articleId));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.blog) {
+          article = {
+            id: data.blog.slug,
+            title: data.blog.title,
+            category: data.blog.category || data.blog.category_name || 'General',
+            readingTime: data.blog.reading_time || '5 min',
+            image: data.blog.featured_image,
+            excerpt: data.blog.excerpt,
+            body: data.blog.content
+          };
+        }
+      }
+    } catch (e) {}
+
+    if (!article && typeof window.journalArticles !== 'undefined') {
+      article = window.journalArticles.find(a => a.id === articleId || 'article-' + a.id === articleId || a.id.replace('article-', '') === articleId);
+    }
+  }
 
   if (!article) {
     showNotFound(articleContent);
@@ -2255,11 +2274,13 @@ function renderJournalArticle(container) {
   document.title = article.title + " | Blackwater Digital Journal";
   const bodyContent = article.body || '<p>Content coming soon.</p>';
   const excerptContent = article.excerpt ? `<div class="article_excerpt">${article.excerpt}</div>` : '';
+  const heroImage = article.image ? `<img src="${article.image}" alt="${article.title}" style="width: 100%; max-height: 480px; object-fit: cover; border-radius: 8px; margin-bottom: 32px;" onerror="this.style.display='none'">` : '';
 
   articleContent.innerHTML = `
         <a href="/index.html#journal" class="article_back" data-barba-prevent>← Back to Journal</a>
         <div class="article_meta">${article.category} &middot; ${article.readingTime}</div>
         <h1 class="u-text-style-h2" style="color: #FFFCE1; margin-bottom: 32px; font-weight: 500;">${article.title}</h1>
+        ${heroImage}
         ${excerptContent}
         <div class="article_divider"></div>
         <div class="article_body">
@@ -2280,24 +2301,51 @@ function showNotFound(container) {
 }
 
 
-function renderAllArticles(container) {
+async function renderAllArticles(container) {
   const allArticlesContent = container.querySelector('#all-articles-content') || document.getElementById('all-articles-content');
   if (!allArticlesContent) return;
 
   document.title = "All Articles | Blackwater Digital";
 
-  if (typeof window.journalArticles === 'undefined') {
+  let articleList = [];
+
+  try {
+    const res = await fetch('/api/blogs');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.blogs && data.blogs.length > 0) {
+        articleList = data.blogs.map(b => ({
+          id: b.slug,
+          title: b.title,
+          category: b.category || 'General',
+          readingTime: b.reading_time || '5 min',
+          image: b.featured_image,
+          excerpt: b.excerpt,
+          url: '/blog/' + b.slug
+        }));
+      }
+    }
+  } catch (e) {}
+
+  if (articleList.length === 0 && typeof window.journalArticles !== 'undefined') {
+    articleList = window.journalArticles.map(article => ({
+      ...article,
+      url: `/article.html?id=${article.id}`
+    }));
+  }
+
+  if (articleList.length === 0) {
     allArticlesContent.innerHTML = '<div style="text-align: center; color: #7C7C70; padding: 100px 0;">No articles available.</div>';
     return;
   }
 
-  const articlesHtml = window.journalArticles.map(article => {
+  const articlesHtml = articleList.map(article => {
     const imageHtml = article.image
       ? `<img src="${article.image}" alt="${article.title}" class="article_card_image">`
       : `<div class="article_card_image_placeholder">No Image</div>`;
 
     return `
-            <a href="/article.html?id=${article.id}" class="article_card" data-barba-prevent>
+            <a href="${article.url}" class="article_card" data-barba-prevent>
                 ${imageHtml}
                 <div class="article_card_content">
                     <div class="article_card_meta">${article.category} &middot; ${article.readingTime}</div>

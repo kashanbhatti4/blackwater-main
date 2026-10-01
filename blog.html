@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="page-title">Blog Article | Blackwater Digital</title>
+    <meta id="page-meta-desc" name="description" content="Read insightful digital marketing, video production, and strategy articles from Blackwater Digital." />
+    
+    <!-- OpenGraph & Twitter Meta -->
+    <meta id="og-title" property="og:title" content="Blog Article | Blackwater Digital" />
+    <meta id="og-desc" property="og:description" content="Digital marketing, creative strategy, and video production insights." />
+    <meta id="og-image" property="og:image" content="/assets/images/logo.svg" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
+    <link href="/assets/css/webflow.css?v=64" rel="stylesheet" type="text/css" />
+
+    <style>
+        .article_page_wrap {
+            padding: 140px 0 100px;
+            min-height: 80vh;
+        }
+        .article_container {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .article_back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #87BAB2;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .article_back:hover {
+            color: #FFFCE1;
+            transform: translateX(-4px);
+        }
+        .article_meta_bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #7C7C70;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .article_category_pill {
+            background: rgba(135, 186, 178, 0.15);
+            color: #87BAB2;
+            border: 1px solid rgba(135, 186, 178, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .article_h1 {
+            color: #FFFCE1;
+            font-size: 44px;
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .article_hero_img_wrap {
+            margin: 36px 0 44px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #141716;
+            max-height: 520px;
+        }
+        .article_hero_img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .article_lead_excerpt {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #FFFCE1;
+            margin-bottom: 36px;
+            font-weight: 400;
+            border-left: 3px solid #F17752;
+            padding-left: 20px;
+        }
+        .article_divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 36px 0;
+        }
+        .article_body_content {
+            color: #b5b5a8;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        .article_body_content p {
+            margin-bottom: 24px;
+        }
+        .article_body_content h2 {
+            color: #FFFCE1;
+            font-size: 28px;
+            margin-top: 48px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .article_body_content h3 {
+            color: #FFFCE1;
+            font-size: 22px;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .article_body_content ul, .article_body_content ol {
+            margin: 20px 0 28px 24px;
+        }
+        .article_body_content li {
+            margin-bottom: 10px;
+        }
+        .article_body_content blockquote {
+            border-left: 4px solid #87BAB2;
+            padding: 12px 24px;
+            margin: 32px 0;
+            font-style: italic;
+            color: #FFFCE1;
+            background: rgba(135, 186, 178, 0.04);
+            border-radius: 0 8px 8px 0;
+        }
+        .article_body_content a {
+            color: #87BAB2;
+            text-decoration: underline;
+        }
+        .article_tags_wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .article_tag_item {
+            background: #1a1e1c;
+            color: #7C7C70;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        @media (max-width: 767px) {
+            .article_h1 {
+                font-size: 32px;
+            }
+            .article_page_wrap {
+                padding-top: 110px;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #0E100F;">
+
+    <!-- Website Header / Navbar -->
+    <div class="simple-navbar" style="position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 999; background-color: #0E100F; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; padding: 0 40px;">
+            <a href="/" data-barba-prevent style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="/logo.svg" alt="Blackwater" style="height: 36px;">
+                <span style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #FFFCE1; letter-spacing: -0.02em;">Blackwater</span>
+            </a>
+
+            <div style="display: flex; gap: 32px; align-items: center;">
+                <a href="/work" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Work</a>
+                <a href="/about" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">About</a>
+                <a href="/services" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Services</a>
+                <a href="/blogs" data-barba-prevent style="color: #FFFCE1; font-size: 14px; font-weight: 600; text-transform: uppercase;">Journal</a>
+                <a href="/contact" data-barba-prevent style="background: #87BAB2; color: #0c0e0d; padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 700; text-transform: uppercase;">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Article Section -->
+    <main class="article_page_wrap">
+        <article class="article_container" id="article-main-container">
+            <div style="text-align: center; color: #7C7C70; padding: 100px 0;">
+                Loading article...
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #080909; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 60px 40px; text-align: center; color: #646a66; font-size: 14px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div style="color: #FFFCE1; font-weight: 600;">© 2026 Blackwater Digital. All rights reserved.</div>
+            <div style="display: flex; gap: 24px;">
+                <a href="/blogs" data-barba-prevent style="color: #87BAB2;">Journal</a>
+                <a href="/admin" data-barba-prevent style="color: #646a66;">Admin Portal</a>
+                <a href="/contact" data-barba-prevent style="color: #7C7C70;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dynamic Fetch & Render Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('article-main-container');
+            
+            // Extract slug from path (/blog/:slug) or query string (?slug=... or ?id=...)
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            let slugOrId = '';
+            
+            if (pathParts.length >= 2 && pathParts[0] === 'blog') {
+                slugOrId = pathParts[1];
+            } else {
+                const params = new URLSearchParams(window.location.search);
+                slugOrId = params.get('slug') || params.get('id');
+            }
+
+            if (!slugOrId) {
+                renderNotFound('No article specified');
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/blogs/${encodeURIComponent(slugOrId)}`);
+                if (!res.ok) {
+                    throw new Error('Article not found');
+                }
+
+                const data = await res.json();
+                const blog = data.blog;
+
+                if (!blog) {
+                    renderNotFound();
+                    return;
+                }
+
+                // Update SEO metadata dynamically
+                document.title = (blog.meta_title || blog.title) + ' | Blackwater Digital';
+                const metaDesc = document.getElementById('page-meta-desc');
+                if (metaDesc) metaDesc.content = blog.meta_description || blog.excerpt || '';
+                
+                const ogTitle = document.getElementById('og-title');
+                if (ogTitle) ogTitle.content = blog.meta_title || blog.title;
+
+                const ogDesc = document.getElementById('og-desc');
+                if (ogDesc) ogDesc.content = blog.meta_description || blog.excerpt || '';
+
+                if (blog.featured_image) {
+                    const ogImage = document.getElementById('og-image');
+                    if (ogImage) ogImage.content = blog.featured_image;
+                }
+
+                // Format Published Date
+                const dateStr = blog.published_at 
+                    ? new Date(blog.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+                    : '';
+
+                const heroImgHtml = blog.featured_image ? `
+                    <div class="article_hero_img_wrap">
+                        <img src="${blog.featured_image}" alt="${escapeHtml(blog.title)}" class="article_hero_img">
+                    </div>
+                ` : '';
+
+                const excerptHtml = blog.excerpt ? `
+                    <div class="article_lead_excerpt">${escapeHtml(blog.excerpt)}</div>
+                ` : '';
+
+                const tagsHtml = (blog.tags && blog.tags.length > 0) ? `
+                    <div class="article_tags_wrap">
+                        ${blog.tags.map(t => `<span class="article_tag_item">#${escapeHtml(t.name)}</span>`).join('')}
+                    </div>
+                ` : '';
+
+                container.innerHTML = `
+                    <a href="/blogs" class="article_back" data-barba-prevent>
+                        ← Back to all articles
+                    </a>
+                    
+                    <div class="article_meta_bar">
+                        ${blog.category ? `<span class="article_category_pill">${escapeHtml(blog.category)}</span>` : ''}
+                        ${blog.reading_time ? `<span>${escapeHtml(blog.reading_time)}</span>` : ''}
+                        ${dateStr ? `<span>&middot;</span><span>${dateStr}</span>` : ''}
+                    </div>
+
+                    <h1 class="article_h1">${escapeHtml(blog.title)}</h1>
+
+                    ${heroImgHtml}
+                    ${excerptHtml}
+
+                    <div class="article_divider"></div>
+
+                    <div class="article_body_content">
+                        ${blog.content}
+                    </div>
+
+                    ${tagsHtml}
+
+                    <div style="margin-top: 60px; text-align: center;">
+                        <a href="/blogs" class="article_back" data-barba-prevent style="font-size: 16px;">
+                            ← Back to all articles
+                        </a>
+                    </div>
+                `;
+            } catch (err) {
+                renderNotFound();
+            }
+
+            function renderNotFound(msg) {
+                document.title = 'Article Not Found | Blackwater Digital';
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 80px 20px;">
+                        <h1 style="color: #FFFCE1; font-size: 36px; margin-bottom: 16px;">Article Not Found</h1>
+                        <p style="color: #7C7C70; font-size: 18px; margin-bottom: 32px;">
+                            The article you are looking for does not exist or may have been unpublished.
+                        </p>
+                        <a href="/blogs" class="article_back" data-barba-prevent style="font-size: 16px;">
+                            ← Return to Articles List
+                        </a>
+                    </div>
+                `;
+            }
+
+            function escapeHtml(text) {
+                if (!text) return '';
+                return text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+        });
+    </script>
+</body>
+</html>
