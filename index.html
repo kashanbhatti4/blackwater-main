@@ -41,7 +41,6 @@
     </script>
     <!--$-->
     <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg" />
-    <script src="/assets/js/article-data.js"></script>
     <!--/$-->
     <!--$-->
 
@@ -6982,14 +6981,14 @@
                                 <div data-wf--button-main--variant="secondary" data-button=" "
                                     data-trigger="hover focus" class="button_main_wrap">
                                     <!--$-->
-                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="All Articles" target=""
-                                            href="/all-articles.html" data-barba-prevent
+                                    <div class="clickable_wrap u-cover-absolute"><a aria-label="All Blogs" target=""
+                                            href="/blogs.html" data-barba-prevent
                                             class="clickable_link w-inline-block"></a></div>
                                     <!--/$-->
                                     <div class="button_main_element w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
                                         <div aria-hidden="true"
                                             class="button_main_text u-text-style-main-medium w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
-                                            All Articles</div>
+                                            All Blogs</div>
                                         <div class="button_main_icon u-hide-if-empty"></div>
                                         <div class="button_main_line"></div>
                                     </div>
@@ -6997,14 +6996,13 @@
                             </div>
 
                             <!-- Journal Rows -->
-                            <div style="display: flex; flex-direction: column; width: 100%;">
+                            <div id="homepage-journal-rows" style="display: flex; flex-direction: column; width: 100%;">
 
                                 <!-- Row 1 -->
-                                <a href="/article.html?id=01" class="journal_row" data-barba-prevent>
+                                <a href="/blog/why-irish-smes-waste-40-of-their-google-ads-budget" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">01</span>
                                     <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Why Irish SMEs Waste 40% of Their Google Ads
-                                            Budget</span>
+                                        <span class="journal_title">Why Irish SMEs Waste 40% of Their Google Ads Budget</span>
                                         <span class="journal_meta">Paid Ads &middot; 6 min</span>
                                     </div>
                                     <div class="journal_arrow">
@@ -7018,11 +7016,10 @@
                                 </a>
 
                                 <!-- Row 2 -->
-                                <a href="/article.html?id=02" class="journal_row" data-barba-prevent>
+                                <a href="/blog/local-seo-ireland-2026-what-moves-the-map-pack" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">02</span>
                                     <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Local SEO Ireland 2026: What Moves the Map
-                                            Pack</span>
+                                        <span class="journal_title">Local SEO Ireland 2026: What Moves the Map Pack</span>
                                         <span class="journal_meta">SEO &middot; 9 min</span>
                                     </div>
                                     <div class="journal_arrow">
@@ -7036,11 +7033,10 @@
                                 </a>
 
                                 <!-- Row 3 -->
-                                <a href="/article.html?id=03" class="journal_row" data-barba-prevent>
+                                <a href="/blog/why-your-fast-website-still-needs-a-better-landing-page" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">03</span>
                                     <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Why Your Fast Website Still Needs a Better Landing
-                                            Page</span>
+                                        <span class="journal_title">Why Your Fast Website Still Needs a Better Landing Page</span>
                                         <span class="journal_meta">Web Design &middot; 5 min</span>
                                     </div>
                                     <div class="journal_arrow">
@@ -7054,11 +7050,10 @@
                                 </a>
 
                                 <!-- Row 4 -->
-                                <a href="/article.html?id=04" class="journal_row" data-barba-prevent>
+                                <a href="/blog/ai-overview-how-search-changes-before-people-buy" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">04</span>
                                     <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">AI Overview: How Search Changes Before People
-                                            Buy</span>
+                                        <span class="journal_title">AI Overview: How Search Changes Before People Buy</span>
                                         <span class="journal_meta">AI Search &middot; 7 min</span>
                                     </div>
                                     <div class="journal_arrow">
@@ -7072,6 +7067,53 @@
                                 </a>
 
                             </div>
+
+                            <script>
+                                (function () {
+                                    async function loadLatestBlogs() {
+                                        try {
+                                            const res = await fetch('/api/blogs?limit=4');
+                                            if (!res.ok) return;
+                                            const data = await res.json();
+                                            const blogs = data.blogs || [];
+                                            if (!blogs || blogs.length === 0) return;
+
+                                            const container = document.getElementById('homepage-journal-rows');
+                                            if (!container) return;
+
+                                            const arrowSvg = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+
+                                            const rowsHtml = blogs.slice(0, 4).map((blog, idx) => {
+                                                const num = String(idx + 1).padStart(2, '0');
+                                                const category = blog.category || 'General';
+                                                const readingTime = blog.reading_time || '5 min';
+                                                const slug = blog.slug || blog.id;
+                                                let title = blog.title || '';
+                                                if (title.length > 75) {
+                                                    title = title.substring(0, 72).trim() + '...';
+                                                }
+                                                return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_row" data-barba-prevent>' +
+                                                    '<span class="journal_num">' + num + '</span>' +
+                                                    '<div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">' +
+                                                        '<span class="journal_title">' + title + '</span>' +
+                                                        '<span class="journal_meta">' + category + ' &middot; ' + readingTime + '</span>' +
+                                                    '</div>' +
+                                                    '<div class="journal_arrow">' + arrowSvg + '</div>' +
+                                                '</a>';
+                                            }).join('');
+
+                                            container.innerHTML = rowsHtml;
+                                        } catch (err) {
+                                            // Keep fallback rows on error
+                                        }
+                                    }
+                                    if (document.readyState === 'loading') {
+                                        document.addEventListener('DOMContentLoaded', loadLatestBlogs);
+                                    } else {
+                                        loadLatestBlogs();
+                                    }
+                                })();
+                            </script>
 
                         </div>
                     </div>
