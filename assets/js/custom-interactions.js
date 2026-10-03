@@ -402,13 +402,23 @@ function updateActiveNavLink() {
   if (!navbar) return;
 
   const links = navbar.querySelectorAll('.simple-navbar__link');
-  const currentPath = window.location.pathname;
+  let currentPath = window.location.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+  if (currentPath.length > 1 && currentPath.endsWith('/')) {
+    currentPath = currentPath.slice(0, -1);
+  }
+  if (!currentPath) currentPath = '/';
 
   links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (currentPath.includes(href) && href !== '/') {
+    let href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
+    href = href.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+    if (href.length > 1 && href.endsWith('/')) {
+      href = href.slice(0, -1);
+    }
+    if (!href) href = '/';
+
+    if (href === '/' && currentPath === '/') {
       link.classList.add('is-active');
-    } else if (href === '/' && (currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '')) {
+    } else if (href !== '/' && (currentPath === href || currentPath.startsWith(href + '/'))) {
       link.classList.add('is-active');
     } else {
       link.classList.remove('is-active');

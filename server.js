@@ -160,7 +160,13 @@ const server = http.createServer(async (req, res) => {
     // =========================================================
     // 3. ADMIN DASHBOARD ROUTING (/admin or /admin/*)
     // =========================================================
-    if (pathname === '/admin' || pathname === '/admin/' || pathname === '/admin/index.html') {
+    if (pathname === '/admin/index.html') {
+        res.writeHead(301, { 'Location': `/admin${parsedUrl.search || ''}` });
+        res.end();
+        return;
+    }
+
+    if (pathname === '/admin' || pathname === '/admin/') {
         const adminFile = path.join(__dirname, 'admin/index.html');
         return serveStaticFile(adminFile, res);
     }
@@ -176,10 +182,50 @@ const server = http.createServer(async (req, res) => {
     }
 
     // =========================================================
-    // 4. PUBLIC BLOG DYNAMIC ROUTING
+    // 4. CLEAN URL REDIRECTS (301 Permanent Redirects for SEO)
     // =========================================================
-    // Listing page: /blogs or /all-articles
-    if (pathname === '/blogs' || pathname === '/blogs/' || pathname === '/blogs.html') {
+    const searchString = parsedUrl.search || '';
+
+    // Redirect /index.html, /index, or /index/ -> /
+    if (pathname === '/index.html' || pathname === '/index' || pathname === '/index/') {
+        res.writeHead(301, { 'Location': `/${searchString}` });
+        res.end();
+        return;
+    }
+
+    // Legacy redirects for blog routes
+    if (pathname === '/all-articles' || pathname === '/all-articles/' || pathname === '/all-articles.html') {
+        res.writeHead(301, { 'Location': `/blogs${searchString}` });
+        res.end();
+        return;
+    }
+    if (pathname === '/blog.html') {
+        res.writeHead(301, { 'Location': `/blogs${searchString}` });
+        res.end();
+        return;
+    }
+
+    // Redirect any *.html to clean URL (exclude iframe embeds in /animations/)
+    if (pathname.endsWith('.html') && !pathname.startsWith('/animations/')) {
+        const cleanPath = pathname.slice(0, -5);
+        res.writeHead(301, { 'Location': `${cleanPath}${searchString}` });
+        res.end();
+        return;
+    }
+
+    // Remove trailing slashes for clean URLs (e.g. /work/ -> /work), excluding root '/'
+    if (pathname.length > 1 && pathname.endsWith('/')) {
+        const cleanPath = pathname.slice(0, -1);
+        res.writeHead(301, { 'Location': `${cleanPath}${searchString}` });
+        res.end();
+        return;
+    }
+
+    // =========================================================
+    // 5. PUBLIC BLOG DYNAMIC ROUTING
+    // =========================================================
+    // Listing page: /blogs
+    if (pathname === '/blogs') {
         const blogsListFile = path.join(__dirname, 'blogs.html');
         return serveStaticFile(blogsListFile, res);
     }
@@ -191,7 +237,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     // =========================================================
-    // 5. STANDARD STATIC WEBSITE FILES
+    // 6. STANDARD STATIC WEBSITE FILES & CLEAN URL FALLBACK
     // =========================================================
     let safePath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
     if (safePath === '/' || safePath === '\\') {
