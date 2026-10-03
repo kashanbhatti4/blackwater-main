@@ -38,6 +38,7 @@ gsap.defaults({ ease: "feed", duration: durationDefault });
 // -----------------------------------------
 
 function initOnceFunctions() {
+  handleHashScroll();
   initLenis();
   if (onceFunctionsInitialized) return;
   onceFunctionsInitialized = true;
@@ -2374,3 +2375,19 @@ async function renderAllArticles(container) {
         </div>
     `;
 }
+
+function handleHashScroll() {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        if (lenis && typeof lenis.scrollTo === 'function') {
+          lenis.scrollTo(target, { offset: -100, duration: 1.2 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 400);
+    }
+  }
+}
+window.addEventListener('load', handleHashScroll);
