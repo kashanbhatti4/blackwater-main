@@ -67,10 +67,16 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .category_chip:hover, .category_chip.active {
-            background: rgba(135, 186, 178, 0.15);
-            color: #87BAB2;
-            border-color: #87BAB2;
+        .category_chip:hover {
+            background: rgba(255, 227, 42, 0.08);
+            color: #FFFCE1;
+            border-color: rgba(255, 227, 42, 0.4);
+        }
+        .category_chip.active {
+            background: rgba(255, 227, 42, 0.15);
+            color: #FFE32A;
+            border-color: #FFE32A;
+            font-weight: 600;
         }
         .blog_search_input {
             background: #141716;
@@ -84,7 +90,7 @@
             transition: border-color 0.2s ease;
         }
         .blog_search_input:focus {
-            border-color: #87BAB2;
+            border-color: #FFE32A;
         }
         .blogs_grid {
             display: grid;
@@ -103,7 +109,7 @@
         }
         .blog_card:hover {
             transform: translateY(-6px);
-            border-color: rgba(135, 186, 178, 0.4);
+            border-color: rgba(255, 227, 42, 0.35);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
         }
         .blog_card_img_wrap {
@@ -132,7 +138,7 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
-            color: #87BAB2;
+            color: #FFE32A;
             margin-bottom: 12px;
             font-weight: 600;
         }
@@ -149,7 +155,7 @@
             transition: color 0.2s ease;
         }
         .blog_card:hover .blog_card_title {
-            color: #87BAB2;
+            color: #FFE32A;
         }
         .blog_card_excerpt {
             color: #7C7C70;
@@ -187,6 +193,21 @@
             .blog_search_input {
                 width: 100%;
             }
+        }
+            .blogs_return_home {
+            color: #7C7C70;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .blogs_return_home:hover {
+            color: #FFE32A;
+            transform: translateX(-4px);
         }
     </style>
 </head>
@@ -475,7 +496,7 @@
     <main class="blogs_page_wrap">
         <div class="blogs_container">
             <header class="blogs_header">
-                <a href="/" data-barba-prevent style="color: #87BAB2; font-size: 14px; text-decoration: none; margin-bottom: 12px; display: inline-block;">← Return Home</a>
+                <a href="/" data-barba-prevent class="blogs_return_home">← Return Home</a>
                 <h1 class="blogs_title">All Blogs</h1>
                 <p class="blogs_subtitle">
                     Strategic perspectives on high-performance paid ads, SEO & AI search, website conversion, and digital marketing growth.
