@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Journal & Articles | Blackwater Digital</title>
-    <meta name="description" content="Explore insights, marketing strategies, and creative production analysis from the Blackwater Digital team." />
+    <title>All Blogs | Blackwater Digital</title>
+    <meta name="description" content="Explore blogs, growth insights, and strategic digital marketing perspectives from the Blackwater Digital team." />
     
-    <meta property="og:title" content="Journal & Articles | Blackwater Digital" />
+    <meta property="og:title" content="All Blogs | Blackwater Digital" />
     <meta property="og:description" content="Insights on SEO &amp; AI Search, Paid Ads, Web Design, and Social Media from Blackwater Digital." />
     <meta property="og:image" content="/assets/images/logo.svg" />
     <meta property="og:type" content="website" />
@@ -204,7 +204,7 @@
                 <a href="/work" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Work</a>
                 <a href="/about" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">About</a>
                 <a href="/services" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Services</a>
-                <a href="/blogs" data-barba-prevent style="color: #87BAB2; font-size: 14px; font-weight: 600; text-transform: uppercase;">Journal</a>
+                <a href="/blogs" data-barba-prevent style="color: #87BAB2; font-size: 14px; font-weight: 600; text-transform: uppercase;">Blogs</a>
                 <a href="/contact" data-barba-prevent style="background: #87BAB2; color: #0c0e0d; padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 700; text-transform: uppercase;">Contact</a>
             </div>
         </div>
@@ -215,9 +215,9 @@
         <div class="blogs_container">
             <header class="blogs_header">
                 <a href="/" data-barba-prevent style="color: #87BAB2; font-size: 14px; text-decoration: none; margin-bottom: 12px; display: inline-block;">← Return Home</a>
-                <h1 class="blogs_title">The Journal</h1>
+                <h1 class="blogs_title">All Blogs</h1>
                 <p class="blogs_subtitle">
-                    Strategic perspectives on high-performance paid ads, local SEO, website conversion, and human-first creative production.
+                    Strategic perspectives on high-performance paid ads, SEO & AI search, website conversion, and digital marketing growth.
                 </p>
             </header>
 
@@ -227,7 +227,7 @@
                 </div>
 
                 <div>
-                    <input type="text" id="blog-search" class="blog_search_input" placeholder="Search articles...">
+                    <input type="text" id="blog-search" class="blog_search_input" placeholder="Search blogs...">
                 </div>
             </div>
 
@@ -685,7 +685,7 @@
                         : '';
                     const imgHtml = blog.featured_image
                         ? `<img src="${blog.featured_image}" alt="${escapeHtml(blog.title)}" class="blog_card_img" onerror="this.src='/logo.svg'">`
-                        : `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#646a66;font-size:12px;">BLACKWATER JOURNAL</div>`;
+                        : `<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#646a66;font-size:12px;">BLACKWATER BLOGS</div>`;
 
                     return `
                         <a href="/blog/${blog.slug}" class="blog_card" data-barba-prevent>

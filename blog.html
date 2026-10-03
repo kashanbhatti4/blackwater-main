@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title id="page-title">Blog Article | Blackwater Digital</title>
+    <title id="page-title">Blog | Blackwater Digital</title>
     <meta id="page-meta-desc" name="description" content="Read insightful digital marketing, web design, SEO, and paid growth articles from Blackwater Digital." />
     
     <!-- OpenGraph & Twitter Meta -->
@@ -176,7 +176,7 @@
                 <a href="/work" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Work</a>
                 <a href="/about" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">About</a>
                 <a href="/services" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Services</a>
-                <a href="/blogs" data-barba-prevent style="color: #FFFCE1; font-size: 14px; font-weight: 600; text-transform: uppercase;">Journal</a>
+                <a href="/blogs" data-barba-prevent style="color: #FFFCE1; font-size: 14px; font-weight: 600; text-transform: uppercase;">Blogs</a>
                 <a href="/contact" data-barba-prevent style="background: #87BAB2; color: #0c0e0d; padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 700; text-transform: uppercase;">Contact</a>
             </div>
         </div>
@@ -603,7 +603,7 @@
 
                 container.innerHTML = `
                     <a href="/blogs" class="article_back" data-barba-prevent>
-                        ← Back to all articles
+                        ← Back to all blogs
                     </a>
                     
                     <div class="article_meta_bar">
@@ -627,7 +627,7 @@
 
                     <div style="margin-top: 60px; text-align: center;">
                         <a href="/blogs" class="article_back" data-barba-prevent style="font-size: 16px;">
-                            ← Back to all articles
+                            ← Back to all blogs
                         </a>
                     </div>
                 `;
@@ -636,15 +636,15 @@
             }
 
             function renderNotFound(msg) {
-                document.title = 'Article Not Found | Blackwater Digital';
+                document.title = 'Blog Not Found | Blackwater Digital';
                 container.innerHTML = `
                     <div style="text-align: center; padding: 80px 20px;">
-                        <h1 style="color: #FFFCE1; font-size: 36px; margin-bottom: 16px;">Article Not Found</h1>
+                        <h1 style="color: #FFFCE1; font-size: 36px; margin-bottom: 16px;">Blog Not Found</h1>
                         <p style="color: #7C7C70; font-size: 18px; margin-bottom: 32px;">
-                            The article you are looking for does not exist or may have been unpublished.
+                            The blog you are looking for does not exist or may have been unpublished.
                         </p>
                         <a href="/blogs" class="article_back" data-barba-prevent style="font-size: 16px;">
-                            ← Return to Articles List
+                            ← Return to All Blogs
                         </a>
                     </div>
                 `;
