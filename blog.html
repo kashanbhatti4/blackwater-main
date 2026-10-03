@@ -165,22 +165,288 @@
 <body style="background-color: #0E100F;">
 
     <!-- Website Header / Navbar -->
-    <div class="simple-navbar" style="position: fixed; top: 0; left: 0; width: 100%; height: 90px; z-index: 999; background-color: #0E100F; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; padding: 0 40px;">
-            <a href="/" data-barba-prevent style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <img src="/logo.svg" alt="Blackwater" style="height: 36px;">
-                <span style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: #FFFCE1; letter-spacing: -0.02em;">Blackwater</span>
+    <div class="simple-navbar">
+        <style>
+            .simple-navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100px;
+                z-index: 9999;
+                background-color: #0E100F;
+                border-bottom: 1px solid var(--swatch--border, #2A2B25);
+                pointer-events: none;
+            }
+
+            .simple-navbar__container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                pointer-events: none;
+            }
+
+            .simple-navbar__logo-box,
+            .simple-navbar__burger-box {
+                pointer-events: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .simple-navbar__logo-box {
+                padding: 0 2.5rem;
+            }
+
+            .simple-navbar__burger-box {
+                padding: 0 3rem;
+                cursor: pointer;
+            }
+
+            .simple-navbar__logo-link {
+                display: block;
+                width: 3.75rem;
+                height: 3.75rem;
+                color: #FFFCE1;
+                transition: transform 0.3s ease;
+            }
+
+            .simple-navbar__logo-svg {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+
+            .simple-navbar__burger {
+                background: none;
+                border: none;
+                padding: 0;
+                width: 2.25rem;
+                height: 1.25rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                color: #FFFCE1;
+                position: relative;
+                z-index: 10002;
+                transition: color 0.3s ease;
+            }
+
+            .simple-navbar__burger-line {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: currentColor;
+                transition: transform 0.4s cubic-bezier(0.625, 0.05, 0, 1), opacity 0.4s ease;
+                transform-origin: center;
+            }
+
+            /* Burger transform to X when open */
+            .simple-navbar.is-open .simple-navbar__burger {
+                color: var(--_theme---text, #FFFCE1);
+            }
+
+            .simple-navbar.is-open .simple-navbar__burger-line:nth-child(1) {
+                transform: translateY(0.55rem) rotate(45deg);
+            }
+
+            .simple-navbar.is-open .simple-navbar__burger-line:nth-child(2) {
+                transform: translateY(-0.55rem) rotate(-45deg);
+            }
+
+            .simple-navbar__menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--_theme---background, #0E100F);
+                z-index: 10001;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                clip-path: circle(0% at calc(100% - 4.5rem) 50px);
+                transition: clip-path 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+                pointer-events: none;
+            }
+
+            .simple-navbar.is-open .simple-navbar__menu-overlay {
+                clip-path: circle(150% at calc(100% - 4.5rem) 50px);
+                pointer-events: auto;
+            }
+
+            .simple-navbar__links {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+
+            .simple-navbar__link {
+                display: inline-flex;
+                align-items: baseline;
+                gap: 1rem;
+                text-decoration: none;
+                font-family: 'Plain', sans-serif;
+                font-size: 5rem;
+                font-weight: 900;
+                color: #7C7C70;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+            /* Hover & Active states */
+            .simple-navbar__link:hover {
+                transform: translateX(12px);
+            }
+
+            .simple-navbar__link:hover,
+            .simple-navbar__link.is-active {
+                color: #FFFCE1;
+            }
+
+            body.no-scroll {
+                overflow: hidden !important;
+                height: 100vh;
+            }
+
+            @media (max-width: 48em) {
+                .simple-navbar {
+                    height: 80px;
+                }
+
+                .simple-navbar__logo-box {
+                    padding: 0 1.5rem;
+                }
+
+                .simple-navbar__burger-box {
+                    padding: 0 2rem;
+                }
+
+                .simple-navbar__logo-link {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+
+                .simple-navbar__burger {
+                    width: 1.75rem;
+                    height: 1rem;
+                }
+
+                .simple-navbar.is-open .simple-navbar__burger-line:nth-child(1) {
+                    transform: translateY(0.45rem) rotate(45deg);
+                }
+
+                .simple-navbar.is-open .simple-navbar__burger-line:nth-child(2) {
+                    transform: translateY(-0.45rem) rotate(-45deg);
+                }
+
+                .simple-navbar__menu-overlay {
+                    clip-path: circle(0% at calc(100% - 2.9rem) 40px);
+                }
+
+                .simple-navbar.is-open .simple-navbar__menu-overlay {
+                    clip-path: circle(150% at calc(100% - 2.9rem) 40px);
+                }
+
+                .simple-navbar__link {
+                    font-size: 3rem;
+                }
+            }
+        </style>
+        <div class="simple-navbar__container">
+            <!-- Logo Box -->
+            <a href="/index.html" class="simple-navbar__logo-box" aria-label="Blackwater Home" data-barba-prevent>
+                <div class="simple-navbar__logo-link">
+                    <img src="/assets/images/logo-light.svg" class="simple-navbar__logo-svg" alt="Blackwater Logo">
+                </div>
             </a>
 
-            <div style="display: flex; gap: 32px; align-items: center;">
-                <a href="/work" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Work</a>
-                <a href="/about" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">About</a>
-                <a href="/services" data-barba-prevent style="color: #7C7C70; font-size: 14px; font-weight: 600; text-transform: uppercase;">Services</a>
-                <a href="/blogs" data-barba-prevent style="color: #FFFCE1; font-size: 14px; font-weight: 600; text-transform: uppercase;">Blogs</a>
-                <a href="/contact" data-barba-prevent style="background: #87BAB2; color: #0c0e0d; padding: 10px 22px; border-radius: 4px; font-size: 13px; font-weight: 700; text-transform: uppercase;">Contact</a>
+            <!-- Burger Box -->
+            <div class="simple-navbar__burger-box">
+                <button class="simple-navbar__burger" aria-label="Open navigation menu">
+                    <span class="simple-navbar__burger-line"></span>
+                    <span class="simple-navbar__burger-line"></span>
+                </button>
             </div>
         </div>
+
+        <!-- Navigation Menu Overlay -->
+        <div class="simple-navbar__menu-overlay">
+            <nav class="simple-navbar__nav">
+                <ul class="simple-navbar__links">
+                    <li class="simple-navbar__links-item">
+                        <a href="/work.html" class="simple-navbar__link" data-barba-prevent>
+                            <span class="simple-navbar__link-text">WORK</span>
+                        </a>
+                    </li>
+                    <li class="simple-navbar__links-item">
+                        <a href="/about.html" class="simple-navbar__link" data-barba-prevent>
+                            <span class="simple-navbar__link-text">ABOUT</span>
+                        </a>
+                    </li>
+                    <li class="simple-navbar__links-item">
+                        <a href="/services.html" class="simple-navbar__link" data-barba-prevent>
+                            <span class="simple-navbar__link-text">SERVICES</span>
+                        </a>
+                    </li>
+                    <li class="simple-navbar__links-item">
+                        <a href="/blogs.html" class="simple-navbar__link is-active" data-barba-prevent>
+                            <span class="simple-navbar__link-text">BLOGS</span>
+                        </a>
+                    </li>
+                    <li class="simple-navbar__links-item">
+                        <a href="/contact.html" class="simple-navbar__link" data-barba-prevent>
+                            <span class="simple-navbar__link-text">CONTACT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
+    <script>
+        (function() {
+            const navbar = document.querySelector('.simple-navbar');
+            if (!navbar) return;
+            const burgerBox = navbar.querySelector('.simple-navbar__burger-box');
+            const burger = navbar.querySelector('.simple-navbar__burger');
+            const links = navbar.querySelectorAll('.simple-navbar__link');
+
+            function toggleMenu(e) {
+                if (e) e.stopPropagation();
+                const isOpen = navbar.classList.toggle('is-open');
+                if (isOpen) {
+                    document.body.classList.add('no-scroll');
+                } else {
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+
+            function closeMenu() {
+                if (navbar.classList.contains('is-open')) {
+                    navbar.classList.remove('is-open');
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+
+            const clickTarget = burgerBox || burger;
+            if (clickTarget) {
+                clickTarget.addEventListener('click', toggleMenu);
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        })();
+    </script>
 
     <!-- Main Article Section -->
     <main class="article_page_wrap">
