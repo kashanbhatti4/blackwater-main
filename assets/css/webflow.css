@@ -547,45 +547,35 @@ p, .paragraph, .body-text {
 }
 
 /* Portfolio Hero Live Website Button */
+/* Directional Button Hover Animations (Signature Webflow / GSAP Button) */
+.btn .btn__text {
+  transition: color 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.btn .btn__circle {
+  transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+  transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
+  background-color: #FFFCE1;
+}
+
+.btn:hover .btn__circle {
+  transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+}
+
+.btn[data-theme="dark"] .btn__circle {
+  background-color: var(--_theme---text, #0E100F);
+}
+
+.btn[data-theme="dark"]:hover .btn__text,
+.btn[data-theme="dark"]:hover .btn__text *,
+.btn[data-theme="dark"]:hover .btn-text-p {
+  color: var(--_theme---background, #FFFCE1) !important;
+}
+
 .project_hero_cta_wrap {
   margin-top: 16px;
   display: flex;
   align-items: center;
-}
-
-.btn_live_site {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background-color: var(--color-accent-yellow, #FFE32A);
-  color: var(--color-charcoal, #0E100F) !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 14px 28px;
-  border-radius: 100px;
-  text-decoration: none !important;
-  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-.btn_live_site:hover {
-  background-color: var(--color-cream, #FFFCE1);
-  color: var(--color-charcoal, #0E100F) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 227, 42, 0.25);
-}
-
-.btn_live_site .btn_live_icon {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s ease;
-}
-
-.btn_live_site:hover .btn_live_icon {
-  transform: translate(3px, -3px);
 }
 
 @media screen and (max-width: 767px) {
@@ -593,10 +583,5 @@ p, .paragraph, .body-text {
     order: 3 !important;
     margin-top: 10px;
     width: 100%;
-  }
-  .btn_live_site {
-    width: 100%;
-    justify-content: center;
-    padding: 16px 24px;
   }
 }
