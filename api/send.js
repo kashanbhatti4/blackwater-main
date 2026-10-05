@@ -28,6 +28,9 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Resend API key is not configured on the server' });
     }
     
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Blackwater Digital <onboarding@resend.dev>';
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'info@blackwaterdigital.ie';
+
     try {
         const response = await fetch('https://api.resend.com/emails', {
             method: 'POST',
@@ -36,17 +39,23 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${resendApiKey}`
             },
             body: JSON.stringify({
-                from: 'Blackwater Website <onboarding@resend.dev>', // Change to your verified Resend domain once configured
-                to: 'info@bwdigitalmarketing.ie', // Receive lead submissions here
+                from: fromEmail,
+                to: toEmail,
                 subject: `New Lead: ${service} from ${name}`,
                 html: `
-                    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
-                        <h2 style="color: #131615; border-bottom: 2px solid #87BAB2; padding-bottom: 10px;">New Contact Lead Submission</h2>
-                        <p style="font-size: 16px; line-height: 1.5;"><strong>Name:</strong> ${name}</p>
-                        <p style="font-size: 16px; line-height: 1.5;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-                        <p style="font-size: 16px; line-height: 1.5;"><strong>Service Requested:</strong> ${service}</p>
-                        <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #F17752;">
-                            <p style="font-size: 15px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+                    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #2A2B25; border-radius: 8px; background-color: #0E100F; color: #FFFCE1;">
+                        <div style="border-bottom: 2px solid #FFE32A; padding-bottom: 14px; margin-bottom: 20px;">
+                            <h2 style="color: #FFE32A; margin: 0; font-size: 22px; letter-spacing: 0.5px;">New Website Lead Submission</h2>
+                            <p style="color: #7C7C70; margin: 6px 0 0 0; font-size: 13px;">Received via Blackwater Digital contact form</p>
+                        </div>
+                        <div style="background-color: #171918; padding: 18px; border-radius: 6px; margin-bottom: 20px;">
+                            <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Name</strong>${name}</p>
+                            <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Email</strong><a href="mailto:${email}" style="color: #FFE32A; text-decoration: none;">${email}</a></p>
+                            <p style="font-size: 15px; margin: 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Service Requested</strong>${service}</p>
+                        </div>
+                        <div style="padding: 18px; background-color: #171918; border-left: 3px solid #FFE32A; border-radius: 4px;">
+                            <strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 8px;">Message</strong>
+                            <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #FFFCE1; white-space: pre-wrap;">${message}</p>
                         </div>
                     </div>
                 `
