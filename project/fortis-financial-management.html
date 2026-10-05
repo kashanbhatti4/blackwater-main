@@ -1809,6 +1809,60 @@
                                             display: block !important;
                                         }
                                     }
+                                    .project_hero_cta_wrap {
+                                        margin-top: 12px;
+                                        display: flex;
+                                        align-items: center;
+                                    }
+
+                                    .btn_live_site {
+                                        display: inline-flex;
+                                        align-items: center;
+                                        gap: 12px;
+                                        background-color: #FFE32A;
+                                        color: #0E100F !important;
+                                        font-family: inherit;
+                                        font-size: 13px;
+                                        font-weight: 700;
+                                        text-transform: uppercase;
+                                        letter-spacing: 1.5px;
+                                        padding: 14px 28px;
+                                        border-radius: 100px;
+                                        text-decoration: none !important;
+                                        transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+                                    }
+
+                                    .btn_live_site:hover {
+                                        background-color: #FFFCE1;
+                                        color: #0E100F !important;
+                                        transform: translateY(-2px);
+                                        box-shadow: 0 6px 20px rgba(255, 227, 42, 0.25);
+                                    }
+
+                                    .btn_live_site .btn_live_icon {
+                                        width: 14px;
+                                        height: 14px;
+                                        transition: transform 0.3s ease;
+                                    }
+
+                                    .btn_live_site:hover .btn_live_icon {
+                                        transform: translate(3px, -3px);
+                                    }
+
+                                    @media screen and (max-width: 767px) {
+                                        .project_hero_cta_wrap {
+                                            order: 3 !important;
+                                            margin-top: 8px;
+                                            width: 100%;
+                                        }
+                                        .btn_live_site {
+                                            width: 100%;
+                                            justify-content: center;
+                                            padding: 16px 24px;
+                                        }
+                                    }
+
                                 </style>
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
@@ -1851,6 +1905,16 @@
                                         </div>
                                     </div>
                                     <!--/$-->
+                                
+                                    <!-- View Live Website Button -->
+                                    <div class="project_hero_cta_wrap">
+                                        <a href="https://fortisfinancial.ie" target="_blank" rel="noopener noreferrer" class="btn_live_site" data-barba-prevent aria-label="Visit Fortis Financial Management live website">
+                                            <span>View Live Website</span>
+                                            <svg class="btn_live_icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                                 <!--/$-->
                                 <!--$-->
