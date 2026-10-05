@@ -4721,9 +4721,8 @@ display: none;
                     <style>
                         .footer_ref_grid {
                             display: grid;
-                            grid-template-columns: 1.2fr 1fr 1fr 1.6fr;
+                            grid-template-columns: 1.25fr 0.9fr 0.9fr 1.35fr 1.4fr;
                             gap: 2rem;
-
                         }
 
                         .footer_ref_col_title {
@@ -4753,6 +4752,51 @@ display: none;
 
                         .footer_ref_links a:hover {
                             color: #FFE32A;
+                        }
+
+                        .footer_ref_contact_list {
+                            gap: 0.85rem !important;
+                        }
+
+                        .footer_contact_item {
+                            display: inline-flex !important;
+                            align-items: flex-start;
+                            gap: 0.75rem;
+                            color: #FFFCE1;
+                            text-decoration: none;
+                            font-size: 0.95rem;
+                            line-height: 1.45;
+                            transition: color 0.2s ease, transform 0.2s ease;
+                        }
+
+                        .footer_contact_item:hover {
+                            color: #FFE32A !important;
+                        }
+
+                        .footer_contact_icon {
+                            flex-shrink: 0;
+                            width: 18px;
+                            height: 18px;
+                            color: #FFE32A;
+                            margin-top: 2px;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            transition: transform 0.2s ease;
+                        }
+
+                        .footer_contact_item:hover .footer_contact_icon {
+                            transform: scale(1.1);
+                        }
+
+                        .footer_contact_icon svg {
+                            width: 18px;
+                            height: 18px;
+                            display: block;
+                        }
+
+                        .footer_contact_text {
+                            word-break: break-word;
                         }
 
                         .footer_ref_subscribe_box {
@@ -4872,10 +4916,24 @@ display: none;
                             color: #FFFCE1;
                         }
 
+                        @media screen and (max-width: 1200px) {
+                            .footer_ref_grid {
+                                grid-template-columns: 1.2fr 1fr 1fr 1.4fr;
+                                gap: 2rem;
+                            }
+                            .footer_ref_grid > div:last-child {
+                                grid-column: span 2;
+                            }
+                        }
+
                         @media screen and (max-width: 991px) {
                             .footer_ref_grid {
                                 grid-template-columns: 1fr 1fr;
                                 gap: 2rem;
+                            }
+
+                            .footer_ref_grid > div:last-child {
+                                grid-column: span 2;
                             }
 
                             .footer_ref_col_title {
@@ -4887,7 +4945,8 @@ display: none;
                                 gap: 0.4rem !important;
                             }
 
-                            .footer_ref_links a {
+                            .footer_ref_links a,
+                            .footer_contact_item {
                                 font-size: 0.88rem !important;
                             }
 
@@ -4907,6 +4966,10 @@ display: none;
                                 gap: 1.75rem;
                             }
 
+                            .footer_ref_grid > div:last-child {
+                                grid-column: auto;
+                            }
+
                             .footer_ref_col_title {
                                 font-size: 0.75rem !important;
                                 margin-bottom: 0.56rem !important;
@@ -4916,7 +4979,8 @@ display: none;
                                 gap: 0.3rem !important;
                             }
 
-                            .footer_ref_links a {
+                            .footer_ref_links a,
+                            .footer_contact_item {
                                 font-size: 0.85rem !important;
                             }
 
@@ -4963,7 +5027,7 @@ display: none;
                 </div>
 
                 <div class="main-section_contain u-container">
-                    <!-- Top 4 Columns Grid -->
+                    <!-- Top 5 Columns Grid -->
                     <div class="footer_ref_grid">
                         <!-- Column 1: Brand & Tagline -->
                         <div>
@@ -5003,7 +5067,56 @@ display: none;
                             </ul>
                         </div>
 
-                        <!-- Column 4: STAY IN THE LOOP -->
+                        <!-- Column 4: GET IN TOUCH -->
+                        <div>
+                            <div class="footer_ref_col_title">GET IN TOUCH</div>
+                            <ul class="footer_ref_links footer_ref_contact_list">
+                                <li>
+                                    <a href="https://maps.google.com/?q=12+Cook+Street,+Cork,+Ireland" target="_blank" rel="noopener noreferrer" class="footer_contact_item">
+                                        <span class="footer_contact_icon" aria-hidden="true">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                        </span>
+                                        <span class="footer_contact_text">12 Cook Street, Cork, Ireland</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" class="footer_contact_item" aria-label="WhatsApp: 0899858730">
+                                        <span class="footer_contact_icon" aria-hidden="true">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="footer_contact_text">0899858730</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tel:0212033042" class="footer_contact_item" aria-label="Landline: 021 203 3042">
+                                        <span class="footer_contact_icon" aria-hidden="true">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="footer_contact_text">021 203 3042</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:info@bwdigitalmarketing.ie" class="footer_contact_item" aria-label="Email: info@bwdigitalmarketing.ie">
+                                        <span class="footer_contact_icon" aria-hidden="true">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="footer_contact_text">info@bwdigitalmarketing.ie</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 5: STAY IN THE LOOP -->
                         <div>
                             <div class="footer_ref_col_title">STAY IN THE LOOP</div>
                             <p style="font-size: 0.88rem; color: #7C7C70; margin-bottom: 1.25rem; line-height: 1.4;">
@@ -5018,7 +5131,7 @@ display: none;
                         </div>
                     </div>
 
-                                        <!-- Bottom Bar -->
+                    <!-- Bottom Bar -->
                     <div class="footer_ref_bottom_bar">
                         <div>&copy; 2026 Black Water Digital. All rights reserved.</div>
 
@@ -5026,25 +5139,30 @@ display: none;
                             <!-- Social Icons -->
                             <div class="footer_ref_social_icons">
                                 <!-- LinkedIn -->
-                                <a href="https://www.linkedin.com/company/bw-digitalmarketing-ireland/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <a href="https://www.linkedin.com/company/bw-digitalmarketing-ireland/" target="_blank"
+                                    rel="noopener" aria-label="LinkedIn">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                                         <path
                                             d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.7a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z" />
                                     </svg>
                                 </a>
                                 <!-- Instagram -->
-                                <a href="https://www.instagram.com/bwdigitalmarketingireland/" target="_blank" rel="noopener" aria-label="Instagram">
+                                <a href="https://www.instagram.com/bwdigitalmarketingireland/" target="_blank"
+                                    rel="noopener" aria-label="Instagram">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                                         <path
                                             d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                     </svg>
                                 </a>
                                 <!-- Facebook -->
-                                <a href="https://www.facebook.com/p/BW-Digital-Marketing-61563139352780/" target="_blank" rel="noopener" aria-label="Facebook">
+                                <a href="https://www.facebook.com/p/BW-Digital-Marketing-61563139352780/"
+                                    target="_blank" rel="noopener" aria-label="X">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                         <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.024 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.974h-1.513c-1.49 0-1.956.931-1.956 1.887v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073z"/>
+                                        <path
+                                            d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.024 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.974h-1.513c-1.49 0-1.956.931-1.956 1.887v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073z" />
                                     </svg>
                                 </a>
+
                             </div>
                         </div>
                     </div>
