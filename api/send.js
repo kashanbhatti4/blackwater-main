@@ -28,8 +28,11 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Resend API key is not configured on the server' });
     }
     
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Blackwater Digital <onboarding@resend.dev>';
-    const toEmail = process.env.CONTACT_TO_EMAIL || 'info@blackwaterdigital.ie';
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Blackwater Digital <info@blackwaterdigital.ie>';
+    const toEmailRaw = process.env.CONTACT_TO_EMAIL || 'info@blackwaterdigital.ie, admin@blackwaterdigital.ie';
+    const toList = toEmailRaw.includes(',')
+        ? toEmailRaw.split(',').map(e => e.trim()).filter(Boolean)
+        : toEmailRaw.trim();
 
     try {
         const response = await fetch('https://api.resend.com/emails', {
@@ -40,7 +43,8 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 from: fromEmail,
-                to: toEmail,
+                to: toList,
+                reply_to: email,
                 subject: `New Lead: ${service} from ${name}`,
                 html: `
                     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #2A2B25; border-radius: 8px; background-color: #0E100F; color: #FFFCE1;">
