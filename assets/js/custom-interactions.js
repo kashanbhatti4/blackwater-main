@@ -47,6 +47,7 @@ function initOnceFunctions() {
   initSimpleNavbar();
   initWhatsAppButton();
   updateActiveNavLink();
+  initGoogleReviewsWidget(document);
   if (typeof renderJournalArticle === 'function') renderJournalArticle(document);
   if (typeof renderAllArticles === 'function') renderAllArticles(document);
 }
@@ -107,6 +108,7 @@ function initAfterEnterFunctions(next) {
 
   updateActiveNavLink();
   initWhatsAppButton();
+  initGoogleReviewsWidget(nextPage);
 
   if (hasLenis) {
     lenis.resize();
@@ -115,6 +117,25 @@ function initAfterEnterFunctions(next) {
   if (hasScrollTrigger) {
     ScrollTrigger.refresh();
   }
+}
+
+function initGoogleReviewsWidget(root) {
+  const container = root || document;
+  const countEls = container.querySelectorAll('.footer_g_reviews_count');
+  const scoreEls = container.querySelectorAll('.footer_g_reviews_score');
+  if (!countEls.length && !scoreEls.length) return;
+
+  fetch('/api/google-reviews')
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.reviewCount !== undefined) {
+        countEls.forEach(el => { el.textContent = '(' + data.reviewCount + ')'; });
+      }
+      if (data && data.rating !== undefined) {
+        scoreEls.forEach(el => { el.textContent = Number(data.rating).toFixed(1); });
+      }
+    })
+    .catch(() => {});
 }
 
 // -----------------------------------------

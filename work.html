@@ -30,7 +30,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=65" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=66" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -3568,6 +3568,97 @@
                             </form>
 
                             <!-- Google Reviews Widget -->
+                            <style>
+                                .footer_g_reviews_widget {
+                                    margin-top: 1.25rem;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    gap: 12px;
+                                    background: #131615;
+                                    border: 1px solid #2A2B25;
+                                    border-radius: 8px;
+                                    padding: 10px 14px;
+                                    text-decoration: none;
+                                    transition: all 0.25s ease;
+                                    box-sizing: border-box;
+                                    width: 100%;
+                                }
+                                .footer_g_reviews_widget:hover {
+                                    border-color: #3E4034;
+                                    background: #181B1A;
+                                    transform: translateY(-2px);
+                                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+                                }
+                                .footer_g_reviews_icon {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    flex-shrink: 0;
+                                    width: 36px;
+                                    height: 36px;
+                                    border-radius: 50%;
+                                    background: #181B1A;
+                                    border: 1px solid #2A2B25;
+                                }
+                                .footer_g_reviews_content {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 2px;
+                                    min-width: 0;
+                                }
+                                .footer_g_reviews_top {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 6px;
+                                }
+                                .footer_g_reviews_score {
+                                    font-family: 'Inter', sans-serif;
+                                    font-size: 15px;
+                                    font-weight: 700;
+                                    color: #FFFCE1;
+                                    line-height: 1;
+                                }
+                                .footer_g_reviews_stars {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 2px;
+                                }
+                                .footer_g_reviews_stars svg {
+                                    width: 13px;
+                                    height: 13px;
+                                    display: block;
+                                }
+                                .footer_g_reviews_count {
+                                    font-family: 'Inter', sans-serif;
+                                    font-size: 11.5px;
+                                    font-weight: 600;
+                                    color: #A0A092;
+                                    margin-left: 2px;
+                                    line-height: 1;
+                                }
+                                .footer_g_reviews_label {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 4px;
+                                    font-family: 'Inter', sans-serif;
+                                    font-size: 11.5px;
+                                    font-weight: 500;
+                                    color: #8C8C80;
+                                    line-height: 1.2;
+                                    transition: color 0.2s ease;
+                                }
+                                .footer_g_reviews_widget:hover .footer_g_reviews_label {
+                                    color: #FFFCE1;
+                                }
+                                .footer_g_reviews_arrow {
+                                    font-size: 11px;
+                                    transition: transform 0.2s ease, color 0.2s ease;
+                                }
+                                .footer_g_reviews_widget:hover .footer_g_reviews_arrow {
+                                    transform: translateX(3px);
+                                    color: #FFE32A;
+                                }
+                            </style>
                             <a href="https://share.google/MAAvyQ66KSrDkjbN4" target="_blank" rel="noopener noreferrer"
                                 class="footer_g_reviews_widget" data-barba-prevent aria-label="Review us on Google">
                                 <div class="footer_g_reviews_icon">
