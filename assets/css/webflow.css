@@ -585,3 +585,130 @@ p, .paragraph, .body-text {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Floating WhatsApp Button
+   ========================================================================== */
+.wa_floating_wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wa_floating_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wa_floating_btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.5);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.wa_floating_btn:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0, 0, 0, 0.5);
+  background: #22bf5b;
+}
+
+.wa_floating_btn:hover::before {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.wa_floating_btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.wa_floating_btn svg {
+  width: 30px;
+  height: 30px;
+  fill: #FFFFFF;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wa_floating_btn:hover svg {
+  transform: scale(1.05);
+}
+
+.wa_floating_tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: #131615;
+  color: #FFFCE1;
+  border: 1px solid #2A2B25;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.4;
+}
+
+.wa_floating_tooltip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #131615;
+}
+
+.wa_floating_btn:hover .wa_floating_tooltip,
+.wa_floating_btn:focus-visible .wa_floating_tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media screen and (max-width: 767px) {
+  .wa_floating_wrap {
+    bottom: 20px;
+    right: 20px;
+  }
+  .wa_floating_btn {
+    width: 52px;
+    height: 52px;
+  }
+  .wa_floating_btn svg {
+    width: 27px;
+    height: 27px;
+  }
+  .wa_floating_tooltip {
+    display: none;
+  }
+}
