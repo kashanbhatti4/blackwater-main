@@ -7771,7 +7771,7 @@
                                 </div>
                                 <div class="footer_g_reviews_content">
                                     <div class="footer_g_reviews_top">
-                                        <span class="footer_g_reviews_score">5.0</span>
+                                        <span class="footer_g_reviews_score" id="g-reviews-score">5.0</span>
                                         <div class="footer_g_reviews_stars" aria-label="5 out of 5 stars rating">
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -7779,7 +7779,7 @@
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                         </div>
-                                        <span class="footer_g_reviews_count" id="g-reviews-count">(10)</span>
+                                        <span class="footer_g_reviews_count" id="g-reviews-count">(8)</span>
                                     </div>
                                     <div class="footer_g_reviews_label">
                                         <span>Google Reviews</span>
@@ -7794,12 +7794,12 @@
                                         .then(function (r) { return r.json(); })
                                         .then(function (data) {
                                             if (data && data.reviewCount !== undefined) {
-                                                var countEl = document.getElementById('g-reviews-count');
-                                                if (countEl) countEl.textContent = '(' + data.reviewCount + ')';
+                                                var countEls = document.querySelectorAll('.footer_g_reviews_count');
+                                                countEls.forEach(function(el) { el.textContent = '(' + data.reviewCount + ')'; });
                                             }
                                             if (data && data.rating !== undefined) {
-                                                var scoreEl = document.getElementById('g-reviews-score');
-                                                if (scoreEl) scoreEl.textContent = Number(data.rating).toFixed(1);
+                                                var scoreEls = document.querySelectorAll('.footer_g_reviews_score');
+                                                scoreEls.forEach(function(el) { el.textContent = Number(data.rating).toFixed(1); });
                                             }
                                         })
                                         .catch(function () {});

@@ -13,7 +13,7 @@ export default async function googleReviewsHandler(req, res) {
 
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
   const placeId = process.env.GOOGLE_PLACE_ID;
-  const defaultCount = parseInt(process.env.GOOGLE_REVIEWS_COUNT || '10', 10);
+  const defaultCount = parseInt(process.env.GOOGLE_REVIEWS_COUNT || '8', 10);
   const defaultRating = parseFloat(process.env.GOOGLE_REVIEWS_RATING || '5.0');
 
   // If Places API key and Place ID are provided, fetch dynamically from Google Places API
