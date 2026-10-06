@@ -110,6 +110,13 @@ function initAfterEnterFunctions(next) {
   initWhatsAppButton();
   initGoogleReviewsWidget(nextPage);
 
+  if (typeof gtag === 'function') {
+    gtag('config', 'G-RQ8PC99GKB', {
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title
+    });
+  }
+
   if (hasLenis) {
     lenis.resize();
   }
