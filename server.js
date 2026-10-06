@@ -9,6 +9,7 @@ import authHandler from './api/auth.js';
 import blogsHandler from './api/blogs.js';
 import categoriesHandler from './api/categories.js';
 import uploadHandler from './api/upload.js';
+import googleReviewsHandler from './api/google-reviews.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -117,6 +118,11 @@ const server = http.createServer(async (req, res) => {
                 // Blogs Routes
                 if (pathname.startsWith('/api/blogs')) {
                     return await blogsHandler(req, res, pathname, parsedUrl.searchParams);
+                }
+
+                // Google Reviews Dynamic Endpoint
+                if (pathname === '/api/google-reviews') {
+                    return await googleReviewsHandler(req, res);
                 }
 
                 return res.status(404).json({ error: 'API route not found' });

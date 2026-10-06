@@ -7605,6 +7605,15 @@
                             display: block;
                         }
 
+                        .footer_g_reviews_count {
+                            font-family: 'Inter', sans-serif;
+                            font-size: 11.5px;
+                            font-weight: 600;
+                            color: #A0A092;
+                            margin-left: 2px;
+                            line-height: 1;
+                        }
+
                         .footer_g_reviews_label {
                             display: flex;
                             align-items: center;
@@ -7770,6 +7779,7 @@
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                             <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                                         </div>
+                                        <span class="footer_g_reviews_count" id="g-reviews-count">(10)</span>
                                     </div>
                                     <div class="footer_g_reviews_label">
                                         <span>Google Reviews</span>
@@ -7777,6 +7787,24 @@
                                     </div>
                                 </div>
                             </a>
+
+                            <script type="text/javascript">
+                                (function () {
+                                    fetch('/api/google-reviews')
+                                        .then(function (r) { return r.json(); })
+                                        .then(function (data) {
+                                            if (data && data.reviewCount !== undefined) {
+                                                var countEl = document.getElementById('g-reviews-count');
+                                                if (countEl) countEl.textContent = '(' + data.reviewCount + ')';
+                                            }
+                                            if (data && data.rating !== undefined) {
+                                                var scoreEl = document.getElementById('g-reviews-score');
+                                                if (scoreEl) scoreEl.textContent = Number(data.rating).toFixed(1);
+                                            }
+                                        })
+                                        .catch(function () {});
+                                })();
+                            </script>
                         </div>
                     </div>
 
