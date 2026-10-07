@@ -1857,6 +1857,214 @@
                         class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
                 </section>
 
+                
+<style>
+/* Before & After Comparison Slider */
+.ba_slider_container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    border: 2px solid #2A2B25;
+    background: #131615;
+    border-radius: 8px;
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+    cursor: ew-resize;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+}
+.ba_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.ba_overlay_before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+    border-right: 3px solid #FFE32A;
+}
+.ba_before_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: none;
+    filter: grayscale(85%) contrast(1.1) brightness(0.85);
+    display: block;
+}
+.ba_handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FFE32A;
+    border: 3px solid #0E100F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: ew-resize;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+.ba_label {
+    position: absolute;
+    top: 16px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    z-index: 5;
+    pointer-events: none;
+}
+.ba_label_before {
+    left: 16px;
+    background: rgba(14, 16, 15, 0.9);
+    color: #FFFCE1;
+    border: 1px solid #2A2B25;
+}
+.ba_label_after {
+    right: 16px;
+    background: rgba(255, 227, 42, 0.95);
+    color: #0E100F;
+}
+.range_slider_control {
+    width: 100%;
+    margin-top: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #2A2B25;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+}
+.range_slider_control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #FFE32A;
+    border: 2px solid #0E100F;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.range_slider_control::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Chrome Browser Window Frame */
+.browser_mockup_window {
+    border: 2px solid #2A2B25;
+    background: #131615;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+.browser_mockup_header {
+    background: #181B1A;
+    border-bottom: 2px solid #2A2B25;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.browser_dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+.browser_dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.browser_url_pill {
+    background: #0E100F;
+    border: 1px solid #2A2B25;
+    border-radius: 999px;
+    padding: 4px 18px;
+    font-family: 'Inter', monospace;
+    font-size: 13px;
+    color: #7C7C70;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.browser_scroll_container {
+    position: relative;
+    height: 720px;
+    max-height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: #0E100F;
+}
+.browser_scroll_container::-webkit-scrollbar {
+    width: 8px;
+}
+.browser_scroll_container::-webkit-scrollbar-track {
+    background: #0E100F;
+}
+.browser_scroll_container::-webkit-scrollbar-thumb {
+    background: #2A2B25;
+    border-radius: 4px;
+}
+.browser_scroll_container::-webkit-scrollbar-thumb:hover {
+    background: #FFE32A;
+}
+
+/* Phone Mockup Frame */
+.phone_mockup_device {
+    width: 270px;
+    padding: 12px;
+    border-radius: 40px;
+    background: #181B1A;
+    border: 3px solid #2A2B25;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+.phone_mockup_device:hover {
+    transform: translateY(-4px);
+}
+.phone_mockup_screen {
+    position: relative;
+    aspect-ratio: 9/19;
+    border-radius: 30px;
+    overflow: hidden;
+    background: #0E100F;
+}
+.phone_mockup_notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 15px;
+    border-radius: 20px;
+    background: #181B1A;
+    z-index: 10;
+}
+</style>
+
                 <!-- SECTION 1: THE OVERVIEW (2-Column flex split exactly matching SPCS & Blackbird) -->
                 <section class="main-section_wrap u-section" style="border-top: 1px solid #2A2B25; padding-block: 70px; background-color: #0E100F;">
                     <div class="main-section_contain u-container">
