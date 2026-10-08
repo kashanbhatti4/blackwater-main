@@ -1808,7 +1808,8 @@
                                             aspect-ratio: unset !important;
                                         }
 
-                                        .project_hero1 .project_reel_wrap video {
+                                        .project_hero1 .project_reel_wrap video,
+                                        .project_hero1 .project_reel_wrap img {
                                             position: absolute !important;
                                             top: 0 !important;
                                             left: 0 !important;
@@ -1909,9 +1910,10 @@
                                 <div id="" data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
                                     class="project_reel_wrap">
-                                    <video preload="auto" playsinline="playsinline" muted="" loop="" autoplay="">
-                                        <source src="https://vz-5d3a8c6b-e14.b-cdn.net/ce064947-4b91-4a6d-8a74-69548b65e035/playlist.m3u8" type="video/mp4" />
-                                    </video>
+                                    <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/01%20hero.png"
+                                        alt="The Blackbird Ballycotton - Hero Visual"
+                                        loading="eager"
+                                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; display: block;" />
                                 </div>
                                 <!--/$-->
                             </div>
@@ -1967,7 +1969,6 @@
     height: 100%;
     object-fit: cover;
     max-width: none;
-    filter: grayscale(85%) contrast(1.1) brightness(0.85);
     display: block;
 }
 .ba_handle {
@@ -2084,6 +2085,19 @@
     scroll-behavior: smooth;
     background: #0E100F;
 }
+.browser_scroll_container::-webkit-scrollbar {
+    width: 8px;
+}
+.browser_scroll_container::-webkit-scrollbar-track {
+    background: #0E100F;
+}
+.browser_scroll_container::-webkit-scrollbar-thumb {
+    background: #2A2B25;
+    border-radius: 4px;
+}
+.browser_scroll_container::-webkit-scrollbar-thumb:hover {
+    background: #FFE32A;
+}
 
 /* Phone Mockup Frame */
 .phone_mockup_device {
@@ -2174,12 +2188,12 @@
                             <div style="width: 100%; margin: 10px 0 0 0;">
                                 <div class="ba_slider_container" id="ba-blackbird">
                                     <!-- After State (Base) -->
-                                    <img class="ba_img" src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="The Blackbird Ballycotton after redesign — new homepage" />
+                                    <img class="ba_img" src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/03%20after.png" alt="The Blackbird Ballycotton after redesign — new homepage" />
                                     <span class="ba_label ba_label_after">After</span>
 
                                     <!-- Before State (Clipped Overlay) -->
                                     <div class="ba_overlay_before">
-                                        <img class="ba_before_img" src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="The Blackbird Ballycotton before redesign — old homepage" />
+                                        <img class="ba_before_img" src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/02%20before.png" alt="The Blackbird Ballycotton before redesign — old homepage" />
                                         <span class="ba_label ba_label_before">Before</span>
                                     </div>
 
@@ -2279,7 +2293,7 @@
 
                                 <!-- Upcoming Events Section Mockup -->
                                 <div style="border-radius: 12px; overflow: hidden; background: #0E100F; border: 2px solid #DDD8CE; height: 100%; min-height: 480px; box-shadow: 0 16px 36px rgba(0,0,0,0.15);">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="Upcoming Events section showcase" style="width: 100%; height: 100%; min-height: 480px; object-fit: cover; display: block;" />
+                                    <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/04%20events.png" alt="Upcoming Events section showcase" style="width: 100%; height: 100%; min-height: 480px; object-fit: cover; display: block;" />
                                 </div>
                             </div>
                         </div>
@@ -2307,7 +2321,7 @@
                                 <!-- Room 1 -->
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; height: 320px; box-shadow: 0 16px 36px rgba(0,0,0,0.4);">
-                                        <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="Main Bar photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                        <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/05%20main%20bar.png" alt="Main Bar photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 4px;">
                                         <span style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; color: #FFFCE1;">Main Bar</span>
@@ -2317,7 +2331,7 @@
                                 <!-- Room 2 -->
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; height: 320px; box-shadow: 0 16px 36px rgba(0,0,0,0.4);">
-                                        <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="The Back Room / music room photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                        <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/06%20back%20room.png" alt="The Back Room / music room photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 4px;">
                                         <span style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; color: #FFFCE1;">The Back Room</span>
@@ -2327,7 +2341,7 @@
                                 <!-- Room 3 -->
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; height: 320px; box-shadow: 0 16px 36px rgba(0,0,0,0.4);">
-                                        <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="Beer garden photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                        <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/07%20beer%20garden.png" alt="Beer garden photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 4px;">
                                         <span style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; color: #FFFCE1;">Beer Garden</span>
@@ -2384,7 +2398,7 @@
                                     <span style="font-size: 12px; color: #7C7C70; font-family: 'Inter', sans-serif;">Full Page</span>
                                 </div>
                                 <div class="browser_scroll_container">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="The Blackbird Ballycotton full-page homepage capture" style="width: 100%; height: auto; min-height: 2200px; object-fit: cover; display: block;" />
+                                    <img src="https://blackwatercdn.b-cdn.net/Blackbird%20ballycotton/08%20homepage%20scroll.png" alt="The Blackbird Ballycotton full-page homepage capture" style="width: 100%; height: auto; display: block;" />
                                 </div>
                             </div>
                         </div>
@@ -2403,22 +2417,15 @@
                                     <h2 style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">Checked on a phone, on the cliff walk.</h2>
                                     <p style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">Most visitors look the pub up on their phone, often from the cliff walk or the car. On mobile, the opening hours, tonight's event and directions are the first things you see, and calling the bar is a single tap.</p>
                                 </div>
-                                <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
-                                    <!-- Mobile 1 -->
-                                    <div class="phone_mockup_device">
+                                <div style="display: flex; justify-content: center;">
+                                    <div class="phone_mockup_device" style="width: 290px;">
                                         <div class="phone_mockup_screen">
                                             <div class="phone_mockup_notch"></div>
-                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="Mobile homepage" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                            <video preload="metadata" playsinline="playsinline" muted loop autoplay style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                                <source src="https://vz-5d3a8c6b-e14.b-cdn.net/ce064947-4b91-4a6d-8a74-69548b65e035/playlist.m3u8" type="application/x-mpegURL">
+                                                <source src="https://vz-5d3a8c6b-e14.b-cdn.net/ce064947-4b91-4a6d-8a74-69548b65e035/playlist.m3u8" type="video/mp4">
+                                            </video>
                                         </div>
-                                        <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin: 12px 0 0 0;">Mobile homepage</p>
-                                    </div>
-                                    <!-- Mobile 2 -->
-                                    <div class="phone_mockup_device">
-                                        <div class="phone_mockup_screen">
-                                            <div class="phone_mockup_notch"></div>
-                                            <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png" alt="Mobile events / menu" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-                                        </div>
-                                        <p style="text-align: center; font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin: 12px 0 0 0;">Mobile events / menu</p>
                                     </div>
                                 </div>
                             </div>
@@ -2428,7 +2435,7 @@
             </section>
 
             <!-- SECTION 06: Client Testimonial (Matching clarity-investigations.html video testimonial layout) -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px; background-color: #FFFCE1;">
+            <section class="main-section_wrap u-section" style="display: none; padding-block: 80px; background-color: #FFFCE1;">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
