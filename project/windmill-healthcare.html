@@ -92,29 +92,7 @@
         gtag('js', new Date());
         gtag('config', 'G-TZMN7H2LHB');
     </script>
-    <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Hide scrollbar for Chrome, Safari, and Edge */
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Hide scrollbar for Firefox */
-
-        * {
-            scrollbar-width: none;
-        }
-
-        /* Hide scrollbar for IE and Edge (legacy) */
-
-        * {
-            -ms-overflow-style: none;
-        }
-    </style>
+    
 
     <script type="text/javascript">
         _linkedin_partner_id = "8716850";
@@ -1736,8 +1714,8 @@
                                     .main-section_wrap.project_hero {
                                         min-height: auto !important;
                                         height: auto !important;
-                                        padding-top: clamp(40px, 6vw, 50px) !important;
-                                        padding-bottom: clamp(30px, 4vw, 70px) !important;
+                                        padding-top: clamp(60px, 8vw, 100px) !important;
+                                        padding-bottom: clamp(40px, 5vw, 70px) !important;
                                     }
 
                                     .content_layout.project_hero.is-menu {
@@ -1755,83 +1733,149 @@
                                         display: none !important;
                                     }
 
-                                    @media screen and (max-width: 1040px) {
-                                        .main-section_wrap.project_hero {
-                                            padding-top: 0px !important;
-                                            padding-bottom: clamp(47px, 5.5vw, 51px) !important;
+                                    /* 3 Main Groups Container: Equal spacing between groups */
+                                    .project_hero_content {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        text-align: center !important;
+                                        max-width: 1200px !important;
+                                        margin: 0 auto !important;
+                                        gap: 60px !important; /* Equal spacing between Group 1, Group 2, Group 3 */
+                                        width: 100% !important;
+                                    }
+
+                                    /* GROUP 1: Heading + Subtitle */
+                                    .project_hero_title {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important; /* No extra gap between heading and body text */
+                                    }
+
+                                    .project_hero_heading {
+                                        font-family: 'Plain', Arial, sans-serif !important;
+                                        font-size: clamp(48px, 8.5vw, 120px) !important;
+                                        line-height: 1.02 !important;
+                                        font-weight: 800 !important;
+                                        letter-spacing: -0.025em !important;
+                                        text-align: center !important;
+                                        color: #FFFCE1 !important;
+                                        margin: 0 0 22px 0 !important; /* Spacing between heading and body text set to 22px */
+                                        padding: 0 !important;
+                                    }
+
+                                    @media (min-width: 1200px) {
+                                        .project_hero_heading {
+                                            font-size: 120px !important;
                                         }
                                     }
 
-                                    @media screen and (max-width: 768px) {
-                                        .main-section_wrap.project_hero {
-                                            padding-top: 0 !important;
-                                        }
+                                    .project_hero_client_wrap {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        flex-wrap: wrap !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important;
                                     }
 
-                                    @media screen and (max-width: 767px) {
-                                        .project_hero_content {
-                                            display: flex !important;
-                                            flex-direction: column !important;
-                                            justify-content: flex-start !important;
-                                            gap: 16px !important;
-                                            height: auto !important;
-                                        }
-
-                                        .project_hero_description {
-                                            justify-content: flex-start !important;
-                                            margin-top: 0 !important;
-                                        }
-
-                                        .project_hero1 .project_reel_wrap {
-                                            margin-top: 24px !important;
-                                            margin-bottom: 0 !important;
-                                            aspect-ratio: 16/9 !important;
-                                            height: auto !important;
-                                        }
+                                    .project_hero_client {
+                                        font-family: 'Inter', sans-serif !important;
+                                        font-size: clamp(18px, 2vw, 24px) !important;
+                                        color: #7C7C70 !important;
+                                        font-weight: 500 !important;
+                                        line-height: 1.3 !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
                                     }
 
-                                    @media (min-width: 768px) {
-                                        .project_hero1 {
-                                            align-items: stretch !important;
-                                        }
-
-                                        .project_hero1 .project_reel_wrap {
-                                            position: relative !important;
-                                            height: 100% !important;
-                                            min-height: 0 !important;
-                                            overflow: hidden !important;
-                                            border-radius: 4px !important;
-                                            aspect-ratio: unset !important;
-                                        }
-
-                                        .project_hero1 .project_reel_wrap video {
-                                            position: absolute !important;
-                                            top: 0 !important;
-                                            left: 0 !important;
-                                            width: 100% !important;
-                                            height: 100% !important;
-                                            object-fit: cover !important;
-                                            border-radius: 4px !important;
-                                            display: block !important;
-                                        }
+                                    /* GROUP 2: Tags */
+                                    .project_hero_description {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
                                     }
+
+                                    .project_hero_tags_wrap {
+                                        display: flex !important;
+                                        flex-wrap: wrap !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        gap: 8px 10px !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_tag {
+                                        font-size: 16px !important;
+                                    }
+
+                                    .project_hero_tag p {
+                                        font-family: 'Inter', Arial, sans-serif !important;
+                                        font-size: 16px !important;
+                                        line-height: 1.4 !important;
+                                    }
+
+                                    /* GROUP 3: Button */
                                     .project_hero_cta_wrap {
-                                        margin-top: 12px;
-                                        display: flex;
-                                        align-items: center;
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important; /* Zero margin so gap on parent creates equal spacing */
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_cta_wrap .btn-wrap {
+                                        display: inline-flex !important;
+                                        justify-content: center !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero1 .project_reel_wrap {
+                                        display: none !important;
                                     }
 
                                     @media screen and (max-width: 767px) {
-                                        .project_hero_cta_wrap {
-                                            order: 3 !important;
-                                            margin-top: 8px;
-                                            width: 100%;
+                                        .main-section_wrap.project_hero {
+                                            padding-top: 24px !important;
+                                            padding-bottom: 32px !important;
+                                        }
+
+                                        .project_hero_content {
+                                            gap: 24px !important; /* Equal spacing for mobile */
+                                        }
+
+                                        .project_hero_heading {
+                                            font-size: clamp(38px, 9.5vw, 54px) !important;
+                                            margin-bottom: 10px !important;
+                                        }
+
+                                        .project_hero_client {
+                                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                                        }
+
+                                        .project_hero_tag,
+                                        .project_hero_tag p {
+                                            font-size: 14px !important;
                                         }
                                     }
                                 </style>
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 24px;"
+                                    STYLE="--span-lg: 12; --span-md: 12; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
                                     class="project_hero_content u-display-contents-small">
                                     <!--$-->
                                     <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
@@ -1916,6 +1960,7 @@
                                             </a>
                                         </div>
                                     </div>
+                                </div>
                                 <!--/$-->
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
@@ -1943,7 +1988,31 @@
             </div>
 
             <!-- SECTION 2: Desktop Video Showcase -->
-            <section class="main-section_wrap u-section">
+            <section class="main-section_wrap u-section section_desktop_showcase">
+                <style>
+                    .section_desktop_showcase .browser_url {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        margin-left: 12px !important;
+                        letter-spacing: 0.5px !important;
+                    }
+                    .section_desktop_showcase .iframe_wrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 800px;
+                        max-height: 900px;
+                        background: #ffffff;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_desktop_showcase .browser_url {
+                            font-size: 14px !important;
+                        }
+                        .section_desktop_showcase .iframe_wrapper {
+                            height: 550px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12 project_gallery">
@@ -1957,21 +2026,13 @@
                                         style="width: 10px; height: 10px; border-radius: 50%; background: #FFE32A; display: inline-block;"></span>
                                     <span
                                         style="width: 10px; height: 10px; border-radius: 50%; background: #FFE32A; display: inline-block;"></span>
-                                    <span class="browser_url"
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin-left: 12px; letter-spacing: 0.5px;">windmillhealthcare.ie</span>
+                                    <span class="browser_url">windmillhealthcare.ie</span>
                                 </div>
-                                <div class="video_wrapper"
-                                    style="position: relative; aspect-ratio: 16/10; width: 100%;">
-                                    <video preload="metadata" muted loop playsinline autoplay
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/0887aa74-7d0c-459a-879d-e2ae5be2b2d5/playlist.m3u8"
-                                            type="application/x-mpegURL">
-                                        <!-- Fallback placeholder video loop -->
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/0887aa74-7d0c-459a-879d-e2ae5be2b2d5/playlist.m3u8"
-                                            type="video/mp4">
-                                    </video>
+                                <div class="iframe_wrapper">
+                                    <iframe src="https://windmillhealthcare.ie"
+                                        title="Windmill Healthcare Live Site"
+                                        style="width: 100%; height: 100%; border: none;"
+                                        loading="lazy"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -1981,17 +2042,48 @@
             </section>
 
             <!-- SECTION 3: The Brief -->
-            <section class="main-section_wrap u-section" style="border-top: 1px solid #2A2B25;">
+            <section class="main-section_wrap u-section section_brief" style="border-top: 1px solid #2A2B25;">
+                <style>
+                    .section_brief .content_wrap {
+                        width: 100% !important;
+                        max-width: 100% !important;
+                    }
+                    .section_brief .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin: 0 !important;
+                        width: 100% !important;
+                    }
+                    .section_brief .lede_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(18px, 2vw, 24px) !important;
+                        line-height: 1.45 !important;
+                        color: #FFFCE1 !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        margin: 0 !important;
+                        font-weight: 400 !important;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_brief .sec_label {
+                            font-size: 14px !important;
+                        }
+                        .section_brief .lede_text {
+                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
-                            style="display: grid; grid-template-columns: 1fr; gap: 32px; padding-block: 40px;">
-                            <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
-                                <p class="sec_label u-text-style-small"
-                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                    01 / The brief</p>
-                                <p class="lede_text u-text-style-large"
-                                    style="font-size: 24px; line-height: 1.5; color: #FFFCE1; max-width: 800px; margin: 0;">
+                            style="display: grid; grid-template-columns: 1fr; gap: 32px; padding-block: 40px; width: 100%;">
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 24px; width: 100%;">
+                                <p class="sec_label u-text-style-small">
+                                    The brief</p>
+                                <p class="lede_text u-text-style-large">
                                     Families researching a nursing home don't search for a healthcare group. They search
                                     for one care centre, in one county, usually under pressure and often from a
                                     distance. Windmill needed each of its centres to be findable on its own terms
@@ -2006,53 +2098,92 @@
             </section>
 
             <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_results"
                 style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_results .sec_label {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+                    .section_results .footnote_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #FFFCE1 !important;
+                        line-height: 1.45 !important;
+                        margin-top: 40px !important;
+                    }
+                    .section_results .results_number {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1 !important;
+                        letter-spacing: -1px !important;
+                    }
+                    .section_results .stat_card span:not(.results_number) {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: none !important;
+                        letter-spacing: 0 !important;
+                        line-height: 1.4 !important;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_results .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+                        .section_results .footnote_text {
+                            font-size: 14px !important;
+                            margin-top: 24px !important;
+                        }
+                        .section_results .results_number {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+                        .section_results .stat_card span:not(.results_number) {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                02 / Results</p>
+                            <p class="sec_label u-text-style-small">
+                                Results</p>
 
                             <div class="results_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--turquoise, #87BAB2); line-height: 1; letter-spacing: -1px;">+14.8%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
-                                        search sessions, year on year</span>
+                                        style="color: var(--swatch--turquoise, #87BAB2);">+14.8%</span>
+                                    <span>Organic search sessions, year on year</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--pink, #D56D88); line-height: 1; letter-spacing: -1px;">71%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
-                                        all site traffic now arrives via organic search</span>
+                                        style="color: var(--swatch--pink, #D56D88);">71%</span>
+                                    <span>Of all site traffic now arrives via organic search</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--orange, #F17752); line-height: 1; letter-spacing: -1px;">62%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
-                                        organic traffic lands on an individual centre page</span>
+                                        style="color: var(--swatch--orange, #F17752);">62%</span>
+                                    <span>Of organic traffic lands on an individual centre page</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--yellow, #F1A650); line-height: 1; letter-spacing: -1px;">+280%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
-                                        social sessions, year on year</span>
+                                        style="color: var(--swatch--yellow, #F1A650);">+280%</span>
+                                    <span>Organic social sessions, year on year</span>
                                 </div>
                             </div>
 
                             <p class="footnote_text u-text-style-small"
-                                style="color: #FFFCE1; font-family: 'Inter', sans-serif; margin-top: 24px;">
+                                style="color: #FFFCE1; font-family: 'Inter', sans-serif; margin-top: 40px;">
                                 Google Analytics 4, property 481463625. Like-for-like comparison, 1 March 5 August,
                                 2026 against 2025.
                             </p>
@@ -2122,39 +2253,41 @@
             </section>
 
             <!-- SECTION 5: The Challenge -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px;">
+            <section class="main-section_wrap u-section section_challenge" style="padding-block: 80px;">
                 <style>
-                    .challenge_heading {
-                        font-size: 66px;
-                        letter-spacing: -1.5px;
+                    .section_challenge .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin: 0 !important;
                     }
-
-                    .challenge_paragraphs {
-                        font-size: 30px;
-                        line-height: 1.5;
+                    .section_challenge .challenge_heading {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1.2 !important;
+                        letter-spacing: -1px !important;
+                        color: #FFFCE1 !important;
+                        margin: 0 !important;
                     }
-
-                    @media (max-width: 991px) {
-                        .challenge_heading {
-                            font-size: 44px;
-                            letter-spacing: -1px;
-                        }
-
-                        .challenge_paragraphs {
-                            font-size: 20px;
-                            line-height: 1.6;
-                        }
+                    .section_challenge .challenge_paragraphs p {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(18px, 2vw, 24px) !important;
+                        line-height: 1.5 !important;
+                        color: #7C7C70 !important;
+                        margin: 0 !important;
                     }
-
-                    @media (max-width: 767px) {
-                        .challenge_heading {
-                            font-size: 32px;
-                            letter-spacing: -0.5px;
+                    @media screen and (max-width: 767px) {
+                        .section_challenge .sec_label {
+                            font-size: 14px !important;
                         }
-
-                        .challenge_paragraphs {
-                            font-size: 16px;
-                            line-height: 1.6;
+                        .section_challenge .challenge_heading {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+                        .section_challenge .challenge_paragraphs p {
+                            font-size: clamp(16px, 4.5vw, 18px) !important;
                         }
                     }
                 </style>
@@ -2162,12 +2295,11 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;">
-                            <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 16px;">
-                                <p class="sec_label u-text-style-small"
-                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                    03 / The challenge</p>
+                            <div style="flex: 1 1 350px; display: flex; flex-direction: column; gap: 40px;">
+                                <p class="sec_label u-text-style-small">
+                                    The challenge</p>
                                 <h2 class="challenge_heading u-text-style-h2"
-                                    style="color: #FFFCE1; line-height: 1.2; margin: 0;">
+                                    style="color: #FFFCE1; line-height: 1.2; margin: 0; letter-spacing: -1px;">
                                     The first deliverable wasn't a design. It was ownership.
                                 </h2>
                             </div>
@@ -2198,8 +2330,45 @@
             </section>
 
             <!-- SECTION 6: Mobile Showcase (Split Grid) -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_mobile_build"
                 style="background-color: #FFFCE1; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_mobile_build .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin: 0 !important;
+                    }
+                    .section_mobile_build .mobile_build_heading {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(32px, 3.5vw, 38px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1.2 !important;
+                        letter-spacing: -1px !important;
+                        color: #0E100F !important;
+                        margin: 0 !important;
+                    }
+                    .section_mobile_build .mobile_build_body {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        line-height: 1.6 !important;
+                        color: #7C7C70 !important;
+                        margin: 0 !important;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_mobile_build .sec_label {
+                            font-size: 14px !important;
+                        }
+                        .section_mobile_build .mobile_build_heading {
+                            font-size: clamp(22px, 5.5vw, 28px) !important;
+                        }
+                        .section_mobile_build .mobile_build_body {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
@@ -2207,34 +2376,29 @@
                             <div class="split_layout"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
                                 <div class="phone_mockup_container"
-                                    style="justify-self: center; width: 280px; border: 3px solid #2A2B25; border-radius: 36px; overflow: hidden; background: #131615; box-shadow: none;">
+                                    style="justify-self: center; width: 280px; border: 3px solid #2A2B25; border-radius: 36px; overflow: hidden; background: #ffffff; box-shadow: none;">
                                     <div class="phone_screen"
-                                        style="position: relative; aspect-ratio: 9/19.5; width: 100%;">
-                                        <video preload="metadata" muted loop playsinline autoplay
-                                            style="width: 100%; height: 100%; object-fit: cover;">
-                                            <source
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/029d29a5-33f5-480e-bc7b-acb15ce59393/playlist.m3u8"
-                                                type="application/x-mpegURL">
-                                            <source
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/029d29a5-33f5-480e-bc7b-acb15ce59393/playlist.m3u8"
-                                                type="video/mp4">
-                                        </video>
+                                        style="position: relative; aspect-ratio: 9/19.5; width: 100%; background: #ffffff;">
+                                        <iframe src="https://windmillhealthcare.ie"
+                                            title="Windmill Healthcare Mobile View"
+                                            style="width: 100%; height: 100%; border: none;"
+                                            loading="lazy"></iframe>
                                     </div>
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        04 / Mobile build</p>
-                                    <h2 class="u-text-style-h2"
-                                        style="font-size: 32px; color: #0E100F; line-height: 1.3; margin: 0;">
-                                        Most families are searching on a phone, often from a hospital corridor.
-                                    </h2>
-                                    <p style="color: #7C7C70; font-size: 16px; line-height: 1.6; margin: 0;">
-                                        The mobile build carries the full care centre content no cut-down version,
-                                        no
-                                        hidden pages. Contact details, visiting information and enquiry routes stay
-                                        within a thumb's reach at every scroll position.
-                                    </p>
+                                <div style="display: flex; flex-direction: column; gap: 40px;">
+                                    <p class="sec_label u-text-style-small">
+                                        Mobile build</p>
+                                    <div style="display: flex; flex-direction: column; gap: 30px;">
+                                        <h2 class="mobile_build_heading u-text-style-h2" style="color: #0E100F; line-height: 1.2; margin: 0; letter-spacing: -1px;">
+                                            Most families are searching on a phone, often from a hospital corridor.
+                                        </h2>
+                                        <p class="mobile_build_body" style="color: #7C7C70; margin: 0;">
+                                            The mobile build carries the full care centre content no cut-down version,
+                                            no
+                                            hidden pages. Contact details, visiting information and enquiry routes stay
+                                            within a thumb's reach at every scroll position.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2244,13 +2408,38 @@
             </section>
 
             <!-- SECTION 7: Across the Site Gallery -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px; border-top: 1px solid #2A2B25;">
+            <section class="main-section_wrap u-section section_across_site" style="padding-block: 80px; border-top: 1px solid #2A2B25;">
+                <style>
+                    .section_across_site .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+                    .section_across_site .gallery_card_caption {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 0.5px !important;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_across_site .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+                        .section_across_site .gallery_card_caption {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                05 / Across the site</p>
+                            <p class="sec_label u-text-style-small">
+                                Across the site</p>
 
                             <div data-xsmall-columns="2" data-large-columns="3" data-medium-columns="3"
                                 data-small-columns="2" class="project_gallery_layout u-grid u-order-first-small"
@@ -2261,8 +2450,7 @@
                                         <img src="https://blackwatercdn.b-cdn.net/Windmill%20Case%20Study/Static%20Homepage.png"
                                             alt="Homepage" style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
+                                    <span class="gallery_card_caption"><span
                                             class="n"
                                             style="color: #FFE32A; margin-right: 8px;">01</span>Homepage</span>
                                 </div>
@@ -2273,8 +2461,7 @@
                                             alt="Care centre template"
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
+                                    <span class="gallery_card_caption"><span
                                             class="n"
                                             style="color: #FFE32A; margin-right: 8px;">02</span>Care centre template</span>
                                 </div>
@@ -2285,8 +2472,7 @@
                                             alt="Careers & openings"
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
+                                    <span class="gallery_card_caption"><span
                                             class="n"
                                             style="color: #FFE32A; margin-right: 8px;">03</span>Careers &amp; openings</span>
                                 </div>
@@ -2297,8 +2483,7 @@
                                             alt="Paying for care"
                                             style="width: 100%; height: 100%; object-fit: cover;" />
                                     </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
+                                    <span class="gallery_card_caption"><span
                                             class="n"
                                             style="color: #FFE32A; margin-right: 8px;">04</span>Paying for care</span>
                                 </div>
@@ -2346,6 +2531,67 @@
                         .process_step_paragraph {
                             margin-top: 0;
                         }
+
+                        .process_section_wrap .sec_label {
+                            font-family: 'Inter', Arial, sans-serif !important;
+                            font-size: 16px !important;
+                            color: #7C7C70 !important;
+                            text-transform: uppercase !important;
+                            letter-spacing: 1.5px !important;
+                            margin: 0 0 40px 0 !important;
+                        }
+                        .process_section_wrap .process_step_wrap {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            justify-content: flex-start !important;
+                            gap: 40px !important;
+                            row-gap: 40px !important;
+                        }
+                        .process_section_wrap .process_step_text {
+                            font-family: 'Inter', sans-serif !important;
+                            font-size: 16px !important;
+                            line-height: 1 !important;
+                        }
+                        .process_section_wrap .process_step_content {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            gap: 20px !important;
+                        }
+                        .process_section_wrap .process_card_heading {
+                            font-family: 'Inter', sans-serif !important;
+                            font-size: clamp(18px, 2vw, 24px) !important;
+                            font-weight: 800 !important;
+                            line-height: 1.3 !important;
+                            letter-spacing: -0.5px !important;
+                            color: #FFFCE1 !important;
+                            margin: 0 !important;
+                        }
+                        .process_section_wrap .process_card_body {
+                            font-family: 'Inter', sans-serif !important;
+                            font-size: 16px !important;
+                            line-height: 1.6 !important;
+                            color: #7C7C70 !important;
+                            margin: 0 !important;
+                        }
+                        @media screen and (max-width: 767px) {
+                            .process_section_wrap .sec_label {
+                                font-size: 14px !important;
+                                margin-bottom: 24px !important;
+                            }
+                            .process_section_wrap .process_step_wrap {
+                                gap: 24px !important;
+                                row-gap: 24px !important;
+                            }
+                            .process_section_wrap .process_step_text {
+                                font-size: 14px !important;
+                            }
+                            .process_section_wrap .process_card_heading {
+                                font-size: clamp(16px, 4.5vw, 18px) !important;
+                            }
+                            .process_section_wrap .process_card_body {
+                                font-size: 14px !important;
+                            }
+                        }
                     </style>
                 </div>
                 <div class="main-section_contain u-container">
@@ -2354,9 +2600,8 @@
                             <div id="" data-span-lg=""
                                 STYLE="--span-lg: 10; --span-md: 12; --span-sm: 12; --span-xs: 12;"
                                 class="process_heading_wrap">
-                                <p class="sec_label u-text-style-small"
-                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 40px 0;">
-                                    06 / What we did</p>
+                                <p class="sec_label u-text-style-small">
+                                    What we did</p>
                             </div>
 
                             <div id="" data-span-lg="" data-start-lg="" class="process_div-lines_wrapper is-1">
@@ -2369,15 +2614,16 @@
                                     <div class="process_step_text u-text-style-small-medium">01</div>
                                     <h3 class="process_step_text u-text-style-small-medium">MIGRATE</h3>
                                 </div>
-                                <p class="process_step_paragraph u-text-style-small" style="color: #7C7C70;">
-                                    <strong style="color: #FFFCE1; font-size: 16px;">Rebuilt on infrastructure Windmill
-                                        owns</strong><br><br>
-                                    We duplicated the full site, stood it up on hosting we could administer properly,
-                                    and issued credentials in Windmill's name. They came out of it owning their website
-                                    outright rather than renting access to it which is also what made everything
-                                    after
-                                    this possible.
-                                </p>
+                                <div class="process_step_content">
+                                    <h4 class="process_card_heading">Rebuilt on infrastructure Windmill owns</h4>
+                                    <p class="process_card_body">
+                                        We duplicated the full site, stood it up on hosting we could administer properly,
+                                        and issued credentials in Windmill's name. They came out of it owning their website
+                                        outright rather than renting access to it which is also what made everything
+                                        after
+                                        this possible.
+                                    </p>
+                                </div>
                             </div>
 
                             <div id="" data-span-lg="" data-start-lg="" class="process_div-lines_wrapper is-2">
@@ -2392,13 +2638,14 @@
                                     <div class="process_step_text u-text-style-small-medium">02</div>
                                     <h3 class="process_step_text u-text-style-small-medium">STRUCTURE</h3>
                                 </div>
-                                <p class="process_step_paragraph u-text-style-small" style="color: #7C7C70;">
-                                    <strong style="color: #FFFCE1; font-size: 16px;">Built the SEO around individual
-                                        centres</strong><br><br>
-                                    Every care centre got its own optimised page, treated as a destination rather than a
-                                    subsection of a corporate site. The structure follows how families actually search:
-                                    by facility name, or by care provision in a named county.
-                                </p>
+                                <div class="process_step_content">
+                                    <h4 class="process_card_heading">Built the SEO around individual centres</h4>
+                                    <p class="process_card_body">
+                                        Every care centre got its own optimised page, treated as a destination rather than a
+                                        subsection of a corporate site. The structure follows how families actually search:
+                                        by facility name, or by care provision in a named county.
+                                    </p>
+                                </div>
                             </div>
 
                             <div id="" data-span-lg="" data-start-lg="" class="process_div-lines_wrapper is-3">
@@ -2414,14 +2661,15 @@
                                     <div class="process_step_text u-text-style-small-medium">03</div>
                                     <h3 class="process_step_text u-text-style-small-medium">REBUILD</h3>
                                 </div>
-                                <p class="process_step_paragraph u-text-style-small" style="color: #7C7C70;">
-                                    <strong style="color: #FFFCE1; font-size: 16px;">Modernised inside the existing
-                                        brand</strong><br><br>
-                                    The redesign holds the original palette and identity exactly as established, so
-                                    prior brand spend keeps compounding. Modernisation went into layout, typography,
-                                    imagery, hierarchy and mobile the things that signal currency without touching
-                                    recognition.
-                                </p>
+                                <div class="process_step_content">
+                                    <h4 class="process_card_heading">Modernised inside the existing brand</h4>
+                                    <p class="process_card_body">
+                                        The redesign holds the original palette and identity exactly as established, so
+                                        prior brand spend keeps compounding. Modernisation went into layout, typography,
+                                        imagery, hierarchy and mobile the things that signal currency without touching
+                                        recognition.
+                                    </p>
+                                </div>
                             </div>
 
                             <div id="" data-span-lg="" data-start-lg=""
@@ -2450,7 +2698,54 @@
             </section>
 
             <!-- SECTION 9: On the Results Page (SERP) -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px;">
+            <section class="main-section_wrap u-section section_results_page" style="padding-block: 80px;">
+                <style>
+                    .section_results_page .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin: 0 !important;
+                    }
+                    .section_results_page .results_page_heading {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(32px, 3.5vw, 38px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1.2 !important;
+                        letter-spacing: -1px !important;
+                        color: #FFFCE1 !important;
+                        margin: 0 !important;
+                    }
+                    .section_results_page .results_page_body {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        line-height: 1.6 !important;
+                        color: #7C7C70 !important;
+                        margin: 0 !important;
+                    }
+                    .section_results_page .results_page_caption {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(18px, 2vw, 24px) !important;
+                        line-height: 1.5 !important;
+                        color: #4A4B40 !important;
+                        margin: 0 !important;
+                    }
+                    @media screen and (max-width: 767px) {
+                        .section_results_page .sec_label {
+                            font-size: 14px !important;
+                        }
+                        .section_results_page .results_page_heading {
+                            font-size: clamp(22px, 5.5vw, 28px) !important;
+                        }
+                        .section_results_page .results_page_body {
+                            font-size: 14px !important;
+                        }
+                        .section_results_page .results_page_caption {
+                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
@@ -2469,21 +2764,20 @@
                                             type="video/mp4">
                                     </video>
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        07 / On the results page</p>
-                                    <h2 class="u-text-style-h2"
-                                        style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
-                                        Search a centre by name, or a county by care type.
-                                    </h2>
-                                    <p style="color: #7C7C70; font-size: 16px; line-height: 1.6; margin: 0;">
-                                        The recording runs through live searches for Windmill's care centres and the
-                                        nursing home terms that matter to them, captured in one continuous take rather
-                                        than cropped to a single flattering screenshot.
-                                    </p>
-                                    <p class="caption_text u-text-style-small"
-                                        style="color: #4A4B40; font-family: 'Inter', sans-serif; margin: 0;">
+                                <div style="display: flex; flex-direction: column; gap: 40px;">
+                                    <p class="sec_label u-text-style-small">
+                                        On the results page</p>
+                                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                                        <h2 class="results_page_heading u-text-style-h2">
+                                            Search a centre by name, or a county by care type.
+                                        </h2>
+                                        <p class="results_page_body">
+                                            The recording runs through live searches for Windmill's care centres and the
+                                            nursing home terms that matter to them, captured in one continuous take rather
+                                            than cropped to a single flattering screenshot.
+                                        </p>
+                                    </div>
+                                    <p class="results_page_caption u-text-style-small">
                                         Google results vary by location, device and personalisation treat this as
                                         illustrative of position rather than a measurement of it.
                                     </p>
@@ -2493,173 +2787,6 @@
                     </div>
                 </div>
                 <div data-wf--spacer--variant="small" class="u-section-spacer u-ignore-trim"></div>
-            </section>
-
-            <!-- SECTION 10: Where People Actually Arrive (Doors Chart) -->
-            <section class="main-section_wrap u-section"
-                style="background-color: #131615; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-12"
-                            style="display: grid; grid-template-columns: 1fr; gap: 40px;">
-                            <div style="max-width: 700px; display: grid; grid-template-columns: 1fr; gap: 16px;">
-                                <p class="sec_label u-text-style-small"
-                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                    08 / Landing pages</p>
-                                <h2 class="u-text-style-h2"
-                                    style="font-size: 32px; color: #FFFCE1; line-height: 1.3; margin: 0;">
-                                    The homepage isn't the front door.
-                                </h2>
-                                <p style="color: #7C7C70; font-size: 16px; line-height: 1.6; margin: 0;">
-                                    Across the reporting period, individual care centre pages pulled 7,076 organic
-                                    sessions nearly four times the homepage. Families arrive at the specific centre
-                                    they're considering, not at the top of the site and inward. This is the clearest
-                                    evidence the page-per-centre structure is doing its job.
-                                </p>
-                            </div>
-
-                            <!-- Interactive Bar Chart -->
-                            <div class="chart_container"
-                                style="display: flex; flex-direction: column; gap: 16px; width: 100%; margin-top: 24px;">
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Homepage (for
-                                        contrast)</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="100%"
-                                            style="height: 100%; background: var(--swatch--pink, #D56D88); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,827</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Clarinbridge Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="68.4%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,250</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Willow Brook Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="64.9%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">1,185</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Windmill House Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="52.7%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">963</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Abbot Close Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="46.1%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">843</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Ferbane Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="45.2%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">825</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Killeline Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="42.8%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">782</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Windmill Retirement
-                                        Village</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="42.2%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">771</span>
-                                </div>
-                                <div class="chart_row"
-                                    style="display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 16px;">
-                                    <span style="color: #FFFCE1; font-weight: 500; font-size: 14px;">Padre Pio Care
-                                        Centre</span>
-                                    <div style="height: 16px; background: #2A2B25; position: relative;">
-                                        <div class="chart_bar" data-width="25.0%"
-                                            style="height: 100%; background: var(--swatch--turquoise, #87BAB2); width: 0%; transform-origin: left; transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);">
-                                        </div>
-                                    </div>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; font-size: 14px; text-align: right;">457</span>
-                                </div>
-                            </div>
-
-                            <p class="footnote_text u-text-style-small"
-                                style="color: #4A4B40; font-family: 'Inter', sans-serif;">
-                                Organic search sessions by landing page, 1 March 5 August 2026. Bars scaled against
-                                the homepage.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <script type="text/javascript">
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const bars = document.querySelectorAll('.chart_bar');
-                        if ('IntersectionObserver' in window) {
-                            const observer = new IntersectionObserver(entries => {
-                                entries.forEach(entry => {
-                                    if (entry.isIntersecting) {
-                                        const bar = entry.target;
-                                        bar.style.width = bar.getAttribute('data-width');
-                                        observer.unobserve(bar);
-                                    }
-                                });
-                            }, { threshold: 0.15 });
-
-                            bars.forEach(bar => observer.observe(bar));
-                        } else {
-                            bars.forEach(bar => bar.style.width = bar.getAttribute('data-width'));
-                        }
-                    });
-                </script>
             </section>
 
             <!-- SECTION 11: Testimonial -->
@@ -2705,17 +2832,38 @@
             </section> -->
 
             <!-- SECTION 12: Scope (Everything Delivered) -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_scope"
                 style="background-color: #0E100F; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
                 <style>
+                    .section_scope .sec_label {
+                        font-family: 'Inter', Arial, sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+
                     .scope_card_premium {
                         background-color: #131615;
                         border: 1px solid #2A2B25;
                         border-radius: 4px;
-                        padding: 32px 24px;
+                        padding: 24px !important;
                         display: flex;
                         flex-direction: column;
                         gap: 20px;
+                    }
+
+                    .scope_card_premium h3 {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(18px, 2vw, 24px) !important;
+                        font-weight: 400 !important;
+                        line-height: 1.3 !important;
+                        letter-spacing: -0.5px !important;
+                        color: #FFFCE1 !important;
+                        margin: 0 !important;
+                        padding-bottom: 24px !important;
+                        border-bottom: 1px solid #2A2B25 !important;
                     }
 
                     .scope_list_premium {
@@ -2728,145 +2876,84 @@
                     }
 
                     .scope_item_premium {
-                        display: flex;
-                        gap: 10px;
-                        align-items: flex-start;
-                        color: #7C7C70;
-                        font-size: 14px;
-                        line-height: 1.5;
+                        display: block !important;
+                        padding-left: 0 !important;
+                        margin-left: 0 !important;
+                        color: #7C7C70 !important;
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        line-height: 1.6 !important;
                     }
 
-                    .scope_item_dash {
-                        color: #FFE32A;
-                        font-weight: 700;
-                        user-select: none;
+                    @media screen and (max-width: 767px) {
+                        .section_scope .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+                        .scope_card_premium h3 {
+                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                        }
+                        .scope_item_premium {
+                            font-size: 14px !important;
+                        }
                     }
                 </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 48px;">
-                                10 / Everything delivered</p>
+                            <p class="sec_label u-text-style-small">
+                                Everything delivered</p>
 
                             <div class="scope_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
                                 <div class="scope_card_premium">
-                                    <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
-                                        Migration & ownership</h3>
+                                    <h3>Migration & ownership</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Full
-                                            site
-                                            duplication</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Hosting
-                                            migration</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Credentials in client's name</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Full
-                                            asset
-                                            ownership</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Backup &
-                                            restore setup</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> SSL &
-                                            DNS
-                                            configuration</li>
+                                        <li class="scope_item_premium">Full site duplication</li>
+                                        <li class="scope_item_premium">Hosting migration</li>
+                                        <li class="scope_item_premium">Credentials in client's name</li>
+                                        <li class="scope_item_premium">Full asset ownership</li>
+                                        <li class="scope_item_premium">Backup & restore setup</li>
+                                        <li class="scope_item_premium">SSL & DNS configuration</li>
                                     </ul>
                                 </div>
                                 <div class="scope_card_premium">
-                                    <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
-                                        Search</h3>
+                                    <h3>Search</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Technical
-                                            SEO audit</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Page-per-centre setup</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> On-page
-                                            optimisation</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Internal
-                                            linking structure</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Local
-                                            SEO
-                                            campaign</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> GA4
-                                            analytics setup</li>
+                                        <li class="scope_item_premium">Technical SEO audit</li>
+                                        <li class="scope_item_premium">Page-per-centre setup</li>
+                                        <li class="scope_item_premium">On-page optimisation</li>
+                                        <li class="scope_item_premium">Internal linking structure</li>
+                                        <li class="scope_item_premium">Local SEO campaign</li>
+                                        <li class="scope_item_premium">GA4 analytics setup</li>
                                     </ul>
                                 </div>
                                 <div class="scope_card_premium">
-                                    <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
-                                        Design & build</h3>
+                                    <h3>Design & build</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Full
-                                            site
-                                            redesign</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Brand
-                                            palette preserved</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Care
-                                            centre template</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Careers
-                                            section portal</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Mobile-first development</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Accessibility pass</li>
+                                        <li class="scope_item_premium">Full site redesign</li>
+                                        <li class="scope_item_premium">Brand palette preserved</li>
+                                        <li class="scope_item_premium">Care centre template</li>
+                                        <li class="scope_item_premium">Careers section portal</li>
+                                        <li class="scope_item_premium">Mobile-first development</li>
+                                        <li class="scope_item_premium">Accessibility pass</li>
                                     </ul>
                                 </div>
                                 <div class="scope_card_premium">
-                                    <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
-                                        Content</h3>
+                                    <h3>Content</h3>
                                     <ul class="scope_list_premium">
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Care
-                                            centre page copy</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Service/care-type copy</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> News &
-                                            article portal</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span>
-                                            Photography direction</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Video
-                                            capturing sessions</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash"></span> Monthly
-                                            optimisation</li>
+                                        <li class="scope_item_premium">Care centre page copy</li>
+                                        <li class="scope_item_premium">Service/care-type copy</li>
+                                        <li class="scope_item_premium">News & article portal</li>
+                                        <li class="scope_item_premium">Photography direction</li>
+                                        <li class="scope_item_premium">Video capturing sessions</li>
+                                        <li class="scope_item_premium">Monthly optimisation</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- SECTION 13: One Thing We're Watching -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px;">
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-12">
-                            <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
-                                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        11 / One thing we're watching</p>
-                                </div>
-                                <div class="challenge_paragraphs" style="flex: 1.2 1 450px; color: #7C7C70;">
-                                    <p style="margin: 0;">
-                                        Organic engagement rate sits at 63.2% for the current period, against 66.8% a
-                                        year
-                                        earlier. With organic sessions up almost 15%, a modest dilution is the expected
-                                        pattern a wider top of funnel brings in more early-stage researchers. It's a
-                                        live
-                                        item in the current optimisation cycle, and we'd rather say so than leave it
-                                        out.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div data-wf--spacer--variant="small" class="u-section-spacer u-ignore-trim"></div>
             </section>
 
             <!--$CTA -->
@@ -2940,6 +3027,29 @@
 
                         .cd-5 {
                             --circle-delay: 8s;
+                        }
+
+                        .cta_heading {
+                            font-family: 'Inter', sans-serif !important;
+                            font-size: clamp(46px, 5vw, 56px) !important;
+                            font-weight: 800 !important;
+                            line-height: 1.2 !important;
+                            letter-spacing: -1px !important;
+                        }
+
+                        .cta_paragraph {
+                            font-family: 'Inter', sans-serif !important;
+                            font-size: 16px !important;
+                            line-height: 1.6 !important;
+                        }
+
+                        @media screen and (max-width: 767px) {
+                            .cta_heading {
+                                font-size: clamp(28px, 7vw, 32px) !important;
+                            }
+                            .cta_paragraph {
+                                font-size: 14px !important;
+                            }
                         }
                     </style>
                 </div>
