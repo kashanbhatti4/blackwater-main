@@ -6,3 +6,4 @@ env-production.*
 Thumbs.db
 *.log
 backup-hidden-slides.html
+backup-hidden-work-cards.html
