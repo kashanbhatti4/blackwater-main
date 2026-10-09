@@ -2459,7 +2459,7 @@
                             .home_hero_new .capabilities_wrap {
                                 position: absolute !important;
                                 right: 0 !important;
-                                top: 0 !important;
+                                top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px) !important;
                                 width: 50% !important;
                                 max-width: 50% !important;
                                 z-index: 6;
@@ -2473,8 +2473,8 @@
                                 align-items: flex-start !important;
                                 height: auto !important;
                                 min-height: auto !important;
-                                padding-top: clamp(4.5rem, 6.5vw, 6.5rem) !important;
-                                padding-bottom: 1rem !important;
+                                padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+                                padding-bottom: 2rem !important;
                                 /* Single controllable bottom spacing */
                             }
                         }
@@ -2482,7 +2482,7 @@
                         @keyframes post-intro-contain-height {
                             to {
                                 position: relative !important;
-                                height: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px + clamp(14.5rem, 18.5vw, 18rem)) !important;
+                                height: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px + clamp(6.2rem, 9.5vw, 9.8rem) * 3 + 2rem) !important;
                                 min-height: auto !important;
                             }
                         }
