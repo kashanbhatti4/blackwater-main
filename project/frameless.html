@@ -11,6 +11,268 @@
 
         gtag('config', 'G-RQ8PC99GKB');
     </script>
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR DECLINED CLAIMS */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* Results Numbers Parity */
+        .results_number {
+            font-size: 48px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 800 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels */
+        .results_grid .stat_card span[style*="#FFE32A"],
+        .stat_card span[style*="#FFE32A"],
+        .step_card span[style*="#FFE32A"] {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* 10. Across The Site Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+        }
+
+        .cta_paragraph {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #FFFCE1 !important;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
+        @media screen and (max-width: 767px) {
+
+            .project_hero_heading,
+            h1.project_hero_heading,
+            h1 {
+                font-size: clamp(38px, 9.5vw, 54px) !important;
+                margin-bottom: 10px !important;
+            }
+
+            .project_hero_client {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .project_hero_tag,
+            .project_hero_tag p,
+            .project_details_label,
+            .project_details_value,
+            .u-text-style-small-medium {
+                font-size: 14px !important;
+            }
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            h3,
+            .process_card_heading,
+            .scope_card_premium h3 {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .sec_label {
+                font-size: 14px !important;
+            }
+
+            .results_grid .stat_card span[style*="#FFE32A"],
+            .stat_card span[style*="#FFE32A"],
+            .step_card span[style*="#FFE32A"] {
+                font-size: 14px !important;
+            }
+
+            .lede,
+            .lede_text,
+            p.lede,
+            .challenge_paragraphs p,
+            .results_page_caption {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+            .process_card_body,
+            p.process_card_body,
+            .mobile_build_body,
+            .results_page_body,
+            .scope_item_premium {
+                font-size: 14px !important;
+            }
+
+            .gallery_card span,
+            .gallery_card_caption,
+            .browser_url,
+            figcaption,
+            .image_caption {
+                font-size: 14px !important;
+            }
+
+            .cta_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .cta_paragraph {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .project_hero_heading,
+            h1.project_hero_heading,
+            h1 {
+                font-size: 120px !important;
+            }
+
+            .results_grid .stat_card span[style*="#FFE32A"],
+            .stat_card span[style*="#FFE32A"],
+            .step_card span[style*="#FFE32A"] {
+                font-size: 16px !important;
+            }
+
+            .gallery_card span,
+            .gallery_card_caption,
+            .browser_url,
+            figcaption,
+            .image_caption {
+                font-size: 16px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>﻿
@@ -1973,7 +2235,7 @@
                                 <div
                                     style="flex: 1.2 1 450px; display: flex; flex-direction: column; gap: 20px; font-family: 'Inter', sans-serif;">
                                     <p
-                                        style="color: #FFFCE1; margin: 0; font-size: 18.5px; line-height: 1.6; font-weight: 400;">
+                                        style="color: #FFFCE1; margin: 0; font-size: 24px; line-height: 1.45; font-weight: 400;">
                                         A full redesign taking Frameless from a brochure site to an online shop, with a
                                         bespoke build, a 3D animated hero, SEO, social content and ongoing maintenance.
                                     </p>
@@ -2002,7 +2264,7 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        01 — The brief
+                                        The brief
                                     </p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2054,7 +2316,7 @@
                             <div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px;">
                                 <p class="sec_label u-text-style-small"
                                     style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    02 — Results, earned traffic
+                                    Results, earned traffic
                                 </p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: clamp(28px, 3.6vw, 44px); color: #FFFCE1; margin: 0; line-height: 1.15; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2068,43 +2330,43 @@
                                 <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, border-color 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">+363%</span>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">+363%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; color: #A4A498; line-height: 1.4;">earned
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #A4A498; line-height: 1.4;">earned
                                         sessions, year on year</span>
                                 </div>
                                 <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, border-color 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">+254%</span>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">+254%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; color: #A4A498; line-height: 1.4;">organic
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #A4A498; line-height: 1.4;">organic
                                         search sessions</span>
                                 </div>
                                 <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, border-color 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">+474%</span>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">+474%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; color: #A4A498; line-height: 1.4;">organic
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #A4A498; line-height: 1.4;">organic
                                         social sessions</span>
                                 </div>
                                 <div style="background: #0E100F; border: 1px solid #2A2B25; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s, border-color 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">3m
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">3m
                                         0s</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; color: #A4A498; line-height: 1.4;">average
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #A4A498; line-height: 1.4;">average
                                         organic session duration</span>
                                 </div>
                             </div>
                             <span
-                                style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70; margin-top: 4px;">
+                                style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70; margin-top: 4px;">
                                 Google Analytics 4, January–July 2026 against 2025. Earned traffic covers organic
                                 search, direct, organic social, referral and email.
                             </span>
@@ -2126,7 +2388,7 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        03 — Channel by channel
+                                        Channel by channel
                                     </p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2155,12 +2417,12 @@
                                         <div
                                             style="height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); overflow: hidden; width: 100%;">
                                             <div
-                                                style="height: 100%; width: 39%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;">
+                                                style="height: 100%; width: 39%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.6;">
                                                 ×3.5
                                             </div>
                                         </div>
                                         <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70;">945
+                                            style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;">945
                                             → 3,349 sessions</span>
                                     </div>
                                 </div>
@@ -2174,12 +2436,12 @@
                                         <div
                                             style="height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); overflow: hidden; width: 100%;">
                                             <div
-                                                style="height: 100%; width: 58%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;">
+                                                style="height: 100%; width: 58%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.6;">
                                                 ×5.2
                                             </div>
                                         </div>
                                         <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70;">465
+                                            style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;">465
                                             → 2,418 sessions</span>
                                     </div>
                                 </div>
@@ -2194,12 +2456,12 @@
                                         <div
                                             style="height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); overflow: hidden; width: 100%;">
                                             <div
-                                                style="height: 100%; width: 64%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;">
+                                                style="height: 100%; width: 64%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.6;">
                                                 ×5.7
                                             </div>
                                         </div>
                                         <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70;">284
+                                            style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;">284
                                             → 1,631 sessions</span>
                                     </div>
                                 </div>
@@ -2213,17 +2475,18 @@
                                         <div
                                             style="height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); overflow: hidden; width: 100%;">
                                             <div
-                                                style="height: 100%; width: 100%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;">
+                                                style="height: 100%; width: 100%; border-radius: 10px; background: linear-gradient(90deg, #FFE32A, #FFB800); display: flex; align-items: center; padding: 0 14px; color: #0E100F; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.6;">
                                                 ×8.9
                                             </div>
                                         </div>
                                         <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70;">15
+                                            style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;">15
                                             → 134 sessions</span>
                                     </div>
                                 </div>
                             </div>
-                            <span style="font-family: 'Inter', sans-serif; font-size: 13.5px; color: #7C7C70;">
+                            <span
+                                style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;">
                                 Sessions, January–July 2026 against the same period in 2025. Bars scaled by growth
                                 multiple.
                             </span>
@@ -2245,7 +2508,7 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        04 — Google Search
+                                        Google Search
                                     </p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2267,32 +2530,32 @@
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
                                 <div
                                     style="background: #0E100F; border: 1px solid #2A2B25; border-top: 3px solid #FFE32A; border-radius: 16px; padding: 24px 20px; display: flex; flex-direction: column; gap: 6px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(32px, 3.8vw, 46px); font-weight: 600; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">3.25K</span>
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">3.25K</span>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 14px; color: #A4A498;">clicks
                                         from Google Search</span>
                                 </div>
                                 <div
                                     style="background: #0E100F; border: 1px solid #2A2B25; border-top: 3px solid #FFE32A; border-radius: 16px; padding: 24px 20px; display: flex; flex-direction: column; gap: 6px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(32px, 3.8vw, 46px); font-weight: 600; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">116K</span>
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">116K</span>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 14px; color: #A4A498;">impressions
                                         in search results</span>
                                 </div>
                                 <div
                                     style="background: #0E100F; border: 1px solid #2A2B25; border-top: 3px solid #FFE32A; border-radius: 16px; padding: 24px 20px; display: flex; flex-direction: column; gap: 6px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(32px, 3.8vw, 46px); font-weight: 600; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">91</span>
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -0.03em;">91</span>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 14px; color: #A4A498;">keywords
                                         ranking (Semrush)</span>
                                 </div>
                                 <div
                                     style="background: #0E100F; border: 1px solid #2A2B25; border-top: 3px solid #FFE32A; border-radius: 16px; padding: 24px 20px; display: flex; flex-direction: column; gap: 6px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-size: clamp(32px, 3.8vw, 46px); font-weight: 600; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">#1</span>
+                                    <span class="results_number"
+                                        style="font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -0.03em;">#1</span>
                                     <span style="font-family: 'Inter', sans-serif; font-size: 14px; color: #A4A498;">for
                                         "frameless", up from #2 this week</span>
                                 </div>
@@ -2311,14 +2574,14 @@
                                     </div>
                                     <div style="display: flex; flex-direction: column;">
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">frameless doors</span>
                                             <span
                                                 style="text-align: right; color: #FFE32A; font-weight: 600;">162</span>
                                             <span style="text-align: right; color: #A4A498;">6,238</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">frameless doors
                                                 ireland</span>
                                             <span
@@ -2326,38 +2589,38 @@
                                             <span style="text-align: right; color: #A4A498;">244</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">frameless door</span>
                                             <span style="text-align: right; color: #FFE32A; font-weight: 600;">76</span>
                                             <span style="text-align: right; color: #A4A498;">6,081</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">hidden doors ireland</span>
                                             <span style="text-align: right; color: #FFE32A; font-weight: 600;">73</span>
                                             <span style="text-align: right; color: #A4A498;">316</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">frameless</span>
                                             <span style="text-align: right; color: #FFE32A; font-weight: 600;">64</span>
                                             <span style="text-align: right; color: #A4A498;">1,035</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">pivot doors ireland</span>
                                             <span style="text-align: right; color: #FFE32A; font-weight: 600;">42</span>
                                             <span style="text-align: right; color: #A4A498;">355</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 105px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">sliding doors ireland</span>
                                             <span style="text-align: right; color: #FFE32A; font-weight: 600;">38</span>
                                             <span style="text-align: right; color: #A4A498;">1,140</span>
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; padding-top: 14px;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70; padding-top: 14px;">
                                         Google Search Console, web search, 1 January 2026 to date.
                                     </span>
                                 </div>
@@ -2388,7 +2651,7 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        05 — Rankings
+                                        Rankings
                                     </p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2417,58 +2680,58 @@
                                     </div>
                                     <div style="display: flex; flex-direction: column;">
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">frameless</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,227,42,0.15); border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; font-size: 13px; text-align: center;">#1</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,227,42,0.15); border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#1</span>
                                             <span style="color: #FFE32A; font-weight: 600;">↑1</span>
                                             <span style="text-align: right; color: #A4A498;">140</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">hinged doors</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 13px; text-align: center;">#3</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#3</span>
                                             <span style="color: #7C7C70;">—</span>
                                             <span style="text-align: right; color: #A4A498;">1,000</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">glass pocket doors</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 13px; text-align: center;">#4</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#4</span>
                                             <span style="color: #7C7C70;">—</span>
                                             <span style="text-align: right; color: #A4A498;">110</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">internal sliding
                                                 doors</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 13px; text-align: center;">#8</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#8</span>
                                             <span style="color: #FFE32A; font-weight: 600;">↑4</span>
                                             <span style="text-align: right; color: #A4A498;">590</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">inside sliding doors</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 13px; text-align: center;">#10</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#10</span>
                                             <span style="color: #FFE32A; font-weight: 600;">↑10</span>
                                             <span style="text-align: right; color: #A4A498;">210</span>
                                         </div>
                                         <div
-                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 15px; font-family: 'Inter', sans-serif;">
+                                            style="display: grid; grid-template-columns: minmax(0, 1fr) 75px 75px 75px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 16px; line-height: 1.6; font-family: 'Inter', sans-serif;">
                                             <span style="font-weight: 500; color: #FFFCE1;">internal sliding doors
                                                 ireland</span>
                                             <span
-                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 13px; text-align: center;">#12</span>
+                                                style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid #2A2B25; color: #FFFCE1; font-weight: 600; font-size: 16px; line-height: 1.6; text-align: center;">#12</span>
                                             <span style="color: #FFE32A; font-weight: 600;">↑9</span>
                                             <span style="text-align: right; color: #A4A498;">320</span>
                                         </div>
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; padding-top: 14px;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70; padding-top: 14px;">
                                         Semrush position tracking, google.ie, 1–7 October 2026. Change = places gained
                                         this week.
                                     </span>
@@ -2498,7 +2761,7 @@
                             <div style="display: flex; flex-direction: column; gap: 20px;">
                                 <p class="sec_label u-text-style-small"
                                     style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    06 — AI Overviews
+                                    AI Overviews
                                 </p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2519,13 +2782,13 @@
                                 </p>
                                 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13.5px; padding: 8px 18px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; background: rgba(255,227,42,0.1);">#1
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; padding: 8px 18px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; background: rgba(255,227,42,0.1);">#1
                                         recommended supplier</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13.5px; padding: 8px 18px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; background: rgba(255,227,42,0.1);">#1
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; padding: 8px 18px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-weight: 600; background: rgba(255,227,42,0.1);">#1
                                         cited source</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13.5px; padding: 8px 18px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: rgba(255,255,255,0.03);">Organic,
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; padding: 8px 18px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: rgba(255,255,255,0.03);">Organic,
                                         not paid</span>
                                 </div>
                             </div>
@@ -2554,7 +2817,7 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        07 — The challenge
+                                        The challenge
                                     </p>
                                     <h2 class="u-text-style-h2"
                                         style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2607,7 +2870,7 @@
                             <div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px;">
                                 <p class="sec_label u-text-style-small"
                                     style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    08 — What we did
+                                    What we did
                                 </p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: clamp(28px, 3.6vw, 44px); color: #FFFCE1; margin: 0; line-height: 1.15; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2622,13 +2885,12 @@
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">01
-                                        / Build</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">Build</span>
                                     <h3
                                         style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
                                         Bespoke, with a 3D hero</h3>
                                     <p
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; line-height: 1.6; color: #A4A498; margin: 0;">
                                         A full redesign and custom build that opens on a 3D animated sequence. Glass
                                         doesn't look like much in a still photo. It needs light moving across it before
                                         it looks worth paying for.</p>
@@ -2637,13 +2899,12 @@
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">02
-                                        / Optimise</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">Optimise</span>
                                     <h3
                                         style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
                                         Search mapped to real demand</h3>
                                     <p
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; line-height: 1.6; color: #A4A498; margin: 0;">
                                         Keyword optimisation on every page of the range, so each product and product
                                         type can rank on its own rather than everything funnelling through the homepage.
                                         The same clarity is what gets Frameless quoted in AI answers.</p>
@@ -2652,13 +2913,13 @@
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">03
-                                        / Show it moving</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">Show
+                                        it moving</span>
                                     <h3
                                         style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
                                         Social, because the product is visual</h3>
                                     <p
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; line-height: 1.6; color: #A4A498; margin: 0;">
                                         Short-form video on Instagram and Facebook, showing installations and mechanisms
                                         in motion.</p>
                                 </div>
@@ -2666,13 +2927,12 @@
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.transform='translateY(-4px)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.transform='translateY(0)'">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">04
-                                        / Maintain</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); letter-spacing: 1.2px; text-transform: uppercase; color: #FFE32A; font-weight: 600;">Maintain</span>
                                     <h3
                                         style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
                                         Live site maintenance</h3>
                                     <p
-                                        style="font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0;">
+                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; line-height: 1.6; color: #A4A498; margin: 0;">
                                         Maintenance, updates and support since launch, alongside the marketing, so the
                                         shop keeps working instead of slowly falling apart after handover.</p>
                                 </div>
@@ -2693,7 +2953,7 @@
                             <div style="display: flex; flex-direction: column; gap: 14px; max-width: 780px;">
                                 <p class="sec_label u-text-style-small"
                                     style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    09 — Across the site
+                                    Across the site
                                 </p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: clamp(28px, 3.6vw, 44px); color: #FFFCE1; margin: 0; line-height: 1.15; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2712,8 +2972,7 @@
                                             style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
                                     </div>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFFCE1;"><span
-                                            style="color: #FFE32A;">01</span> Shop</span>
+                                        style="font-family: 'Outfit', sans-serif; font-size: 16px; color: #7C7C70 ;">Shop</span>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div
@@ -2723,8 +2982,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
                                     </div>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFFCE1;"><span
-                                            style="color: #FFE32A;">02</span> Product detail</span>
+                                        style="font-family: 'Outfit', sans-serif;  font-size: 16px; color: #7C7C70 ;">Product
+                                        detail</span>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div
@@ -2734,8 +2993,7 @@
                                             style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
                                     </div>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFFCE1;"><span
-                                            style="color: #FFE32A;">03</span> Category</span>
+                                        style="font-family: 'Outfit', sans-serif; font-size: 16px; color: #7C7C70 ;">Category</span>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <div
@@ -2745,8 +3003,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;">
                                     </div>
                                     <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFFCE1;"><span
-                                            style="color: #FFE32A;">04</span> Basket &amp; checkout</span>
+                                        style="font-family: 'Outfit', sans-serif; font-size: 16px; color: #7C7C70 ;">Basket
+                                        &amp; checkout</span>
                                 </div>
                             </div>
                         </div>
@@ -2765,7 +3023,7 @@
                             <div style="display: flex; flex-direction: column; gap: 20px;">
                                 <p class="sec_label u-text-style-small"
                                     style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    10 — Mobile &amp; social
+                                    Mobile &amp; social
                                 </p>
                                 <h2 class="u-text-style-h2"
                                     style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
@@ -2854,7 +3112,7 @@
                                     </blockquote>
                                     <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
                                         <div
-                                            style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: grid; place-items: center; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 15px;">
+                                            style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: grid; place-items: center; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; line-height: 1.6;">
                                             VB</div>
                                         <div>
                                             <cite
@@ -2892,11 +3150,11 @@
                             <div
                                 style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
                                 <a href="/contact" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
+                                    style="font-size: 16px; line-height: 1.6; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
                                     onmouseover="this.style.transform='scale(1.04)'"
                                     onmouseout="this.style.transform='scale(1)'">Start a conversation</a>
                                 <a href="https://frameless.ie" target="_blank" rel="noopener" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
+                                    style="font-size: 16px; line-height: 1.6; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">View
                                     live website ↗</a>
@@ -3384,7 +3642,8 @@
 
                             .footer_g_reviews_score {
                                 font-family: 'Inter', sans-serif;
-                                font-size: 15px;
+                                font-size: 16px;
+                                line-height: 1.6;
                                 font-weight: 700;
                                 color: #FFFCE1;
                                 line-height: 1;

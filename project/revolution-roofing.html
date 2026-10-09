@@ -5,12 +5,445 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQ8PC99GKB"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-RQ8PC99GKB');
+        gtag('config', 'G-RQ8PC99GKB');
     </script>
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR DECLINED CLAIMS */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* Results Numbers Parity */
+        .results_number {
+            font-size: 48px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 800 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels */
+        .results_grid .stat_card span[style*="#FFE32A"],
+        .stat_card span[style*="#FFE32A"],
+        .step_card span[style*="#FFE32A"] {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* 10. Across The Site Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+        }
+
+        .cta_paragraph {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #FFFCE1 !important;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
+        @media screen and (max-width: 767px) {
+
+            .project_hero_heading,
+            h1.project_hero_heading,
+            h1 {
+                font-size: clamp(38px, 9.5vw, 54px) !important;
+                margin-bottom: 10px !important;
+            }
+
+            .project_hero_client {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .project_hero_tag,
+            .project_hero_tag p,
+            .project_details_label,
+            .project_details_value,
+            .u-text-style-small-medium {
+                font-size: 14px !important;
+            }
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            h3,
+            .process_card_heading,
+            .scope_card_premium h3 {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .sec_label {
+                font-size: 14px !important;
+            }
+
+            .results_grid .stat_card span[style*="#FFE32A"],
+            .stat_card span[style*="#FFE32A"],
+            .step_card span[style*="#FFE32A"] {
+                font-size: 14px !important;
+            }
+
+            .lede,
+            .lede_text,
+            p.lede,
+            .challenge_paragraphs p,
+            .results_page_caption {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+            .process_card_body,
+            p.process_card_body,
+            .mobile_build_body,
+            .results_page_body,
+            .scope_item_premium {
+                font-size: 14px !important;
+            }
+
+            .gallery_card span,
+            .gallery_card_caption,
+            .browser_url,
+            figcaption,
+            .image_caption {
+                font-size: 14px !important;
+            }
+
+            .cta_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .cta_paragraph {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            .project_hero_heading,
+            h1.project_hero_heading,
+            h1 {
+                font-size: 120px !important;
+            }
+
+            .results_grid .stat_card span[style*="#FFE32A"],
+            .stat_card span[style*="#FFE32A"],
+            .step_card span[style*="#FFE32A"] {
+                font-size: 16px !important;
+            }
+
+            .gallery_card span,
+            .gallery_card_caption,
+            .browser_url,
+            figcaption,
+            .image_caption {
+                font-size: 16px !important;
+            }
+        }
+
+        /* CENTERED HERO LAYOUT (ALL SCREENS EXCEPT MOBILE) */
+        @media screen and (min-width: 768px) {
+            .main-section_wrap.project_hero {
+                min-height: auto !important;
+                height: auto !important;
+                padding-top: clamp(60px, 8vw, 100px) !important;
+                padding-bottom: clamp(40px, 5vw, 70px) !important;
+            }
+
+            .project_hero.is-menu {
+                padding-top: 0 !important;
+            }
+
+            .project_hero,
+            .content_layout.project_hero {
+                flex: none !important;
+                height: auto !important;
+                padding-bottom: 0 !important;
+            }
+
+            .project_hero .u-section-spacer {
+                display: none !important;
+            }
+
+            .project_hero_content {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                text-align: center !important;
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+                gap: 60px !important;
+                width: 100% !important;
+            }
+
+            .project_hero_title {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                gap: 0 !important;
+            }
+
+            .project_hero_heading {
+                font-family: 'Plain', Arial, sans-serif !important;
+                font-size: clamp(48px, 8.5vw, 120px) !important;
+                line-height: 1.02 !important;
+                font-weight: 800 !important;
+                letter-spacing: -0.025em !important;
+                text-align: center !important;
+                color: #FFFCE1 !important;
+                margin: 0 0 22px 0 !important;
+                padding: 0 !important;
+            }
+
+            .project_hero_client_wrap {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+                flex-wrap: wrap !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                gap: 0 !important;
+            }
+
+            .project_hero_client {
+                font-family: 'Inter', sans-serif !important;
+                font-size: clamp(18px, 2vw, 24px) !important;
+                color: #7C7C70 !important;
+                font-weight: 500 !important;
+                line-height: 1.3 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .project_hero_description {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .project_hero_tags_wrap {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px 10px !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+            }
+
+            .project_hero_tag {
+                font-size: 16px !important;
+            }
+
+            .project_hero_tag p {
+                font-family: 'Inter', Arial, sans-serif !important;
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+            }
+
+            .project_hero_cta_wrap {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .project_hero_cta_wrap .btn-wrap {
+                display: inline-flex !important;
+                justify-content: center !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .project_hero1 .project_reel_wrap {
+                display: none !important;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            .main-section_wrap.project_hero {
+                padding-top: 24px !important;
+                padding-bottom: 32px !important;
+            }
+
+            .project_hero_content {
+                gap: 24px !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+            }
+
+            .project_hero_heading {
+                font-size: clamp(38px, 9.5vw, 54px) !important;
+                margin-bottom: 10px !important;
+                text-align: left !important;
+            }
+
+            .project_hero_client_wrap {
+                justify-content: flex-start !important;
+                text-align: left !important;
+            }
+
+            .project_hero_client {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .project_hero_tags_wrap {
+                justify-content: flex-start !important;
+            }
+
+            .project_hero_cta_wrap {
+                justify-content: flex-start !important;
+            }
+
+            .project_hero_tag,
+            .project_hero_tag p {
+                font-size: 14px !important;
+            }
+        }
+    </style>
 </head>
 
 <body>﻿
@@ -32,16 +465,12 @@
     <meta
         content="A trust-led site for Revolution Roofing, a father-and-son Cork roofing business, built around the two things that actually win the call: local reputation and how fast they show up after a storm."
         property="og:description">
-    <meta
-        content="https://blackwaterdigital.ie/assets/images/og-preview.png"
-        property="og:image">
+    <meta content="https://blackwaterdigital.ie/assets/images/og-preview.png" property="og:image">
     <meta content="Revolution Roofing | Creative Work by Blackwater Digital" name="twitter:title">
     <meta
         content="A trust-led site for Revolution Roofing, a father-and-son Cork roofing business, built around the two things that actually win the call: local reputation and how fast they show up after a storm."
         name="twitter:description">
-    <meta
-        content="https://blackwaterdigital.ie/assets/images/og-preview.png"
-        name="twitter:image">
+    <meta content="https://blackwaterdigital.ie/assets/images/og-preview.png" name="twitter:image">
     <meta property="og:type" content="website">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -1819,6 +2248,7 @@
                                             display: block !important;
                                         }
                                     }
+
                                     .project_hero_cta_wrap {
                                         margin-top: 12px;
                                         display: flex;
@@ -1835,7 +2265,7 @@
                                 </style>
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 24px;"
+                                    STYLE="--span-lg: 12; --span-md: 12; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
                                     class="project_hero_content u-display-contents-small">
                                     <!--$-->
                                     <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
@@ -1872,7 +2302,7 @@
                                         </div>
                                     </div>
                                     <!--/$-->
-                                
+
                                     <!-- View Live Website Button -->
                                     <div class="project_hero_cta_wrap">
                                         <div class="btn-wrap">
@@ -1901,7 +2331,10 @@
                                                     }
                                                 </style>
                                             </div>
-                                            <a href="https://revolutionroofingltd.ie" target="_blank" rel="noopener noreferrer" data-theme="dark" data-btn-hover="" data-barba-prevent class="btn w-inline-block" aria-label="Visit Revolution Roofing live website">
+                                            <a href="https://revolutionroofingltd.ie" target="_blank"
+                                                rel="noopener noreferrer" data-theme="dark" data-btn-hover=""
+                                                data-barba-prevent class="btn w-inline-block"
+                                                aria-label="Visit Revolution Roofing live website">
                                                 <div class="btn__bg"></div>
                                                 <div class="btn__circle-wrap">
                                                     <div class="btn__circle">
@@ -1914,25 +2347,25 @@
                                             </a>
                                         </div>
                                     </div>
-                                <!--/$-->
-                                <!--$-->
-                                <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
-                                    class="project_reel_wrap">
-                                    <!--$--><video preload="auto" playsinline="playsinline" muted="" loop=""
-                                        autoplay="">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/3e3b9d71-cdf2-4807-a9ce-a4ab70400814/playlist.m3u8"
-                                            type="video/mp4" />
-                                    </video>
+                                    <!--/$-->
+                                    <!--$-->
+                                    <div id="" data-span-lg="" data-start-lg=""
+                                        STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
+                                        class="project_reel_wrap">
+                                        <!--$--><video preload="auto" playsinline="playsinline" muted="" loop=""
+                                            autoplay="">
+                                            <source
+                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/3e3b9d71-cdf2-4807-a9ce-a4ab70400814/playlist.m3u8"
+                                                type="video/mp4" />
+                                        </video>
+                                        <!--/$-->
+                                    </div>
                                     <!--/$-->
                                 </div>
-                                <!--/$-->
                             </div>
                         </div>
-                    </div>
-                    <div data-wf--spacer--variant="small"
-                        class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
+                        <div data-wf--spacer--variant="small"
+                            class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
                 </section>
                 <!--/$-->
             </div>
@@ -1991,9 +2424,10 @@
                                 <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        01 / The Brief</p>
+                                        The Brief</p>
                                     <h2 class="u-text-style-h2"
-                                        style="font-size: 32px; color: #FFFCE1; margin: 0; line-height: 1.3;">Roy and
+                                        style="font-size: clamp(32px, 4vw, 44px); color: #FFFCE1; margin: 0; line-height: 1.3;">
+                                        Roy and
                                         his father built the business. The site had to sound like them.</h2>
                                 </div>
                                 <div class="challenge_paragraphs"
@@ -2025,34 +2459,34 @@
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
                                 style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                02 / Results</p>
+                                Results</p>
 
                             <div class="results_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: #7C7C70; line-height: 1; letter-spacing: -1px;">XX%</span>
+                                        style="font-size: 44px !important; font-weight: 800; color: #7C7C70; line-height: 1; letter-spacing: -1px;">XX%</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Organic
                                         search sessions, year on year</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -1px;">XX</span>
+                                        style="font-size: 44px !important; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -1px;">XX</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Appointment
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Appointment
                                         bookings through the site, current period</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -1px;">XX%</span>
+                                        style="font-size: 44px !important; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -1px;">XX%</span>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
+                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Of
                                         traffic landing on a specific service page</span>
                                 </div>
                             </div>
@@ -2138,9 +2572,10 @@
                                 <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        03 / The Challenge</p>
+                                        The Challenge</p>
                                     <h2 class="u-text-style-h2"
-                                        style="font-size: 32px; color: #FFFCE1; margin: 0; line-height: 1.3;">Eleven
+                                        style="font-size: clamp(32px, 4vw, 44px); color: #FFFCE1; margin: 0; line-height: 1.3;">
+                                        Eleven
                                         services. One family. Two very different kinds of visitor.</h2>
                                 </div>
                                 <div class="challenge_paragraphs"
@@ -2173,7 +2608,7 @@
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
                                 style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                05 / Across the site</p>
+                                Across the site</p>
 
                             <div data-xsmall-columns="2" data-large-columns="3" data-medium-columns="3"
                                 data-small-columns="2" class="project_gallery_layout u-grid u-order-first-small"
@@ -2185,9 +2620,7 @@
                                             alt="Homepage" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
-                                            class="n"
-                                            style="color: #FFE32A; margin-right: 8px;">01</span>Homepage</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Homepage</span>
                                 </div>
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
@@ -2197,9 +2630,7 @@
                                             alt="Services" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
-                                            class="n"
-                                            style="color: #FFE32A; margin-right: 8px;">02</span>Services</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Services</span>
                                 </div>
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
@@ -2209,8 +2640,7 @@
                                             alt="Gallery" style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
-                                            class="n" style="color: #FFE32A; margin-right: 8px;">03</span>Gallery</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Gallery</span>
                                 </div>
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
@@ -2221,8 +2651,8 @@
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
-                                            class="n" style="color: #FFE32A; margin-right: 8px;">04</span>Book an
+                                        style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Book
+                                        an
                                         Appointment</span>
                                 </div>
                             </div>
@@ -2238,15 +2668,14 @@
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
                                 style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                06 / What we did</p>
+                                What we did</p>
 
                             <div class="steps_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
                                 <div class="step_card"
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 11px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">01
-                                        / Structure</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Structure</span>
                                     <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">Emergency
                                         work given its own front door</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">Emergency
@@ -2258,8 +2687,7 @@
                                 <div class="step_card"
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 11px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">02
-                                        / Build</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Build</span>
                                     <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">WordPress,
                                         built in Elementor</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">A project
@@ -2271,8 +2699,7 @@
                                 <div class="step_card"
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 11px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">03
-                                        / Trust</span>
+                                        style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Trust</span>
                                     <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">Real
                                         names, not star ratings</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">
@@ -2348,14 +2775,14 @@
                         <div class="content_wrap u-column-span-12">
                             <p class="sec_label u-text-style-small"
                                 style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 48px;">
-                                08 / Everything delivered</p>
+                                Everything delivered</p>
 
                             <div class="scope_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
+                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Design &amp; build</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
@@ -2375,7 +2802,7 @@
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
+                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Structure &amp; search</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
@@ -2391,7 +2818,7 @@
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 12px; border-bottom: 1px solid #2A2B25;">
+                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Content</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
@@ -2399,7 +2826,8 @@
                                             &amp; service page copy</li>
                                         <li class="scope_item_premium"><span class="scope_item_dash">—</span> About
                                             &amp; family story copy</li>
-                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Blog, roofing guidance for Cork homeowners</li>
+                                        <li class="scope_item_premium"><span class="scope_item_dash">—</span> Blog,
+                                            roofing guidance for Cork homeowners</li>
                                         <li class="scope_item_premium"><span class="scope_item_dash">—</span>
                                             Testimonial collection &amp; display</li>
                                     </ul>
@@ -2896,7 +3324,8 @@
                                 grid-template-columns: 1.2fr 1fr 1fr 1.4fr;
                                 gap: 2rem;
                             }
-                            .footer_ref_grid > div:last-child {
+
+                            .footer_ref_grid>div:last-child {
                                 grid-column: span 2;
                             }
                         }
@@ -2907,7 +3336,7 @@
                                 gap: 2rem;
                             }
 
-                            .footer_ref_grid > div:last-child {
+                            .footer_ref_grid>div:last-child {
                                 grid-column: span 2;
                             }
 
@@ -2941,7 +3370,7 @@
                                 gap: 1.75rem;
                             }
 
-                            .footer_ref_grid > div:last-child {
+                            .footer_ref_grid>div:last-child {
                                 grid-column: auto;
                             }
 
@@ -3047,9 +3476,12 @@
                             <div class="footer_ref_col_title">GET IN TOUCH</div>
                             <ul class="footer_ref_links footer_ref_contact_list">
                                 <li>
-                                    <a href="https://maps.google.com/?q=12+Cook+Street,+Cork,+Ireland" target="_blank" rel="noopener noreferrer" class="footer_contact_item">
+                                    <a href="https://maps.google.com/?q=12+Cook+Street,+Cork,+Ireland" target="_blank"
+                                        rel="noopener noreferrer" class="footer_contact_item">
                                         <span class="footer_contact_icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                                 <circle cx="12" cy="10" r="3"></circle>
                                             </svg>
@@ -3058,29 +3490,39 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" class="footer_contact_item" aria-label="WhatsApp: 0899858730">
+                                    <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer"
+                                        class="footer_contact_item" aria-label="WhatsApp: 0899858730">
                                         <span class="footer_contact_icon" aria-hidden="true">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                                                <path
+                                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                                             </svg>
                                         </span>
                                         <span class="footer_contact_text">0899858730</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:0212033042" class="footer_contact_item" aria-label="Landline: 021 203 3042">
+                                    <a href="tel:0212033042" class="footer_contact_item"
+                                        aria-label="Landline: 021 203 3042">
                                         <span class="footer_contact_icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path
+                                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                </path>
                                             </svg>
                                         </span>
                                         <span class="footer_contact_text">021 203 3042</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailto:info@bwdigitalmarketing.ie" class="footer_contact_item" aria-label="Email: info@bwdigitalmarketing.ie">
+                                    <a href="mailto:info@bwdigitalmarketing.ie" class="footer_contact_item"
+                                        aria-label="Email: info@bwdigitalmarketing.ie">
                                         <span class="footer_contact_icon" aria-hidden="true">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
                                                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                             </svg>
@@ -3120,12 +3562,14 @@
                                     box-sizing: border-box;
                                     width: 100%;
                                 }
+
                                 .footer_g_reviews_widget:hover {
                                     border-color: #3E4034;
                                     background: #181B1A;
                                     transform: translateY(-2px);
                                     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
                                 }
+
                                 .footer_g_reviews_icon {
                                     display: flex;
                                     align-items: center;
@@ -3137,17 +3581,20 @@
                                     background: #181B1A;
                                     border: 1px solid #2A2B25;
                                 }
+
                                 .footer_g_reviews_content {
                                     display: flex;
                                     flex-direction: column;
                                     gap: 2px;
                                     min-width: 0;
                                 }
+
                                 .footer_g_reviews_top {
                                     display: flex;
                                     align-items: center;
                                     gap: 6px;
                                 }
+
                                 .footer_g_reviews_score {
                                     font-family: 'Inter', sans-serif;
                                     font-size: 15px;
@@ -3155,16 +3602,19 @@
                                     color: #FFFCE1;
                                     line-height: 1;
                                 }
+
                                 .footer_g_reviews_stars {
                                     display: flex;
                                     align-items: center;
                                     gap: 2px;
                                 }
+
                                 .footer_g_reviews_stars svg {
                                     width: 13px;
                                     height: 13px;
                                     display: block;
                                 }
+
                                 .footer_g_reviews_count {
                                     font-family: 'Inter', sans-serif;
                                     font-size: 11.5px;
@@ -3173,6 +3623,7 @@
                                     margin-left: 2px;
                                     line-height: 1;
                                 }
+
                                 .footer_g_reviews_label {
                                     display: flex;
                                     align-items: center;
@@ -3184,13 +3635,16 @@
                                     line-height: 1.2;
                                     transition: color 0.2s ease;
                                 }
+
                                 .footer_g_reviews_widget:hover .footer_g_reviews_label {
                                     color: #FFFCE1;
                                 }
+
                                 .footer_g_reviews_arrow {
                                     font-size: 11px;
                                     transition: transform 0.2s ease, color 0.2s ease;
                                 }
+
                                 .footer_g_reviews_widget:hover .footer_g_reviews_arrow {
                                     transform: translateX(3px);
                                     color: #FFE32A;
@@ -3200,21 +3654,45 @@
                                 class="footer_g_reviews_widget" data-barba-prevent aria-label="Review us on Google">
                                 <div class="footer_g_reviews_icon">
                                     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
-                                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z"/>
-                                        <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
-                                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                                        <path fill="#4285F4"
+                                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
+                                        <path fill="#34A853"
+                                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" />
+                                        <path fill="#FBBC05"
+                                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
+                                        <path fill="#EA4335"
+                                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
                                     </svg>
                                 </div>
                                 <div class="footer_g_reviews_content">
                                     <div class="footer_g_reviews_top">
                                         <span class="footer_g_reviews_score" id="g-reviews-score">5.0</span>
                                         <div class="footer_g_reviews_stars" aria-label="5 out of 5 stars rating">
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
+                                                aria-hidden="true">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                            </svg>
                                         </div>
                                         <span class="footer_g_reviews_count" id="g-reviews-count">(8)</span>
                                     </div>
@@ -3232,14 +3710,14 @@
                                         .then(function (data) {
                                             if (data && data.reviewCount !== undefined) {
                                                 var countEls = document.querySelectorAll('.footer_g_reviews_count');
-                                                countEls.forEach(function(el) { el.textContent = '(' + data.reviewCount + ')'; });
+                                                countEls.forEach(function (el) { el.textContent = '(' + data.reviewCount + ')'; });
                                             }
                                             if (data && data.rating !== undefined) {
                                                 var scoreEls = document.querySelectorAll('.footer_g_reviews_score');
-                                                scoreEls.forEach(function(el) { el.textContent = Number(data.rating).toFixed(1); });
+                                                scoreEls.forEach(function (el) { el.textContent = Number(data.rating).toFixed(1); });
                                             }
                                         })
-                                        .catch(function () {});
+                                        .catch(function () { });
                                 })();
                             </script>
                         </div>
@@ -3325,10 +3803,14 @@
 
     <!-- WhatsApp Floating Button -->
     <div id="whatsapp-button" class="wa_floating_wrap">
-        <a href="https://wa.me/353899858730?text=Hi%20there!" target="_blank" rel="noopener noreferrer" class="wa_floating_btn" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp" data-barba-prevent>
+        <a href="https://wa.me/353899858730?text=Hi%20there!" target="_blank" rel="noopener noreferrer"
+            class="wa_floating_btn" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp"
+            data-barba-prevent>
             <span class="wa_floating_tooltip">Chat with us</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff"
+                aria-hidden="true">
+                <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
             </svg>
         </a>
     </div>
@@ -3341,11 +3823,14 @@
                 <span class="cookie_consent_title">We value your privacy</span>
             </div>
             <p class="cookie_consent_desc">
-                We use cookies to enhance your browsing experience and analyze our traffic. Read our <a href="/privacy-policy#website-data" class="cookie_consent_link" data-barba-prevent>Cookie Policy</a>.
+                We use cookies to enhance your browsing experience and analyze our traffic. Read our <a
+                    href="/privacy-policy#website-data" class="cookie_consent_link" data-barba-prevent>Cookie
+                    Policy</a>.
             </p>
             <div class="cookie_consent_actions">
                 <button type="button" class="cookie_btn cookie_btn_accept" id="cookie-accept-btn">Accept All</button>
-                <button type="button" class="cookie_btn cookie_btn_decline" id="cookie-decline-btn">Essential Only</button>
+                <button type="button" class="cookie_btn cookie_btn_decline" id="cookie-decline-btn">Essential
+                    Only</button>
             </div>
         </div>
     </div>
