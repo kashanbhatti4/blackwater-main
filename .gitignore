@@ -5,3 +5,4 @@ env-production.*
 .DS_Store
 Thumbs.db
 *.log
+backup-hidden-slides.html
