@@ -116,6 +116,249 @@
         }
     </style>
 
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR ER DESIGN ARCHITECTS */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+            padding-bottom: 10px;
+        }
+
+        /* Results Numbers Parity */
+        .results_number {
+            font-size: 44px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 400 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+            padding-bottom: 10px;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels */
+        .results_grid .stat_card span[style*="#FFE32A"],
+        .stat_card span[style*="#FFE32A"],
+        .step_card span[style*="#FFE32A"] {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #7C7C70 !important;
+        }
+
+        /* 10. Across The Site Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+        }
+
+        .cta_paragraph {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #FFFCE1 !important;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
+        @media screen and (max-width: 767px) {
+
+            .project_hero_heading,
+            h1.project_hero_heading,
+            h1 {
+                font-size: clamp(38px, 9.5vw, 54px) !important;
+                margin-bottom: 10px !important;
+            }
+
+            .project_hero_client {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .project_hero_tag,
+            .project_hero_tag p,
+            .project_details_label,
+            .project_details_value,
+            .u-text-style-small-medium {
+                font-size: 14px !important;
+            }
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            h3,
+            .process_card_heading,
+            .scope_card_premium h3 {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            .sec_label {
+                font-size: 14px !important;
+            }
+
+            .results_grid .stat_card span[style*="#FFE32A"],
+            .stat_card span[style*="#FFE32A"],
+            .step_card span[style*="#FFE32A"] {
+                font-size: 14px !important;
+            }
+
+            .lede,
+            .lede_text,
+            p.lede,
+            .challenge_paragraphs p,
+            .results_page_caption {
+                font-size: clamp(16px, 4.5vw, 18px) !important;
+            }
+
+            p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+            .process_card_body,
+            p.process_card_body,
+            .mobile_build_body,
+            .results_page_body,
+            .scope_item_premium {
+                font-size: 14px !important;
+            }
+
+            .gallery_card span,
+            .gallery_card_caption,
+            .browser_url,
+            figcaption,
+            .image_caption {
+                font-size: 14px !important;
+            }
+
+            .cta_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .cta_paragraph {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+
     <script type="text/javascript">
         _linkedin_partner_id = "8716850";
         window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
@@ -2163,15 +2406,15 @@
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        01 — Before &amp; after
+                                        Before &amp; after
                                     </p>
                                     <h2 class="u-text-style-h2"
-                                        style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Inter', sans-serif ; font-weight: 500;">
                                         From a description of the work to the work itself.
                                     </h2>
                                 </div>
                                 <div style="flex: 1.2 1 450px; color: #7C7C70; font-family: 'Inter', sans-serif;">
-                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #7C7C70;">
                                         The old homepage opened with a paragraph about the practice. The new one opens
                                         with buildings: full-bleed photography, immediate sector filtering, and clear
                                         project narratives without distracting decoration. Drag the handle to compare.
@@ -2222,8 +2465,7 @@
                                     style="background: #131615; border: 1px solid #2A2B25; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 10px;">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Before</span>
-                                    <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                    <h3 style="color: #FFFCE1; margin: 0;  ">
                                         Text-Led Homepage</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #7C7C70; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2235,8 +2477,7 @@
                                     style="background: #181B1A; border: 1px solid #FFE32A; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 10px;">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">After</span>
-                                    <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                    <h3 style="color: #FFFCE1; margin: 0; ">
                                         Projects-First Platform</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #FFFCE1; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2259,17 +2500,18 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 36px;">
                             <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: start;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: center;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">02
-                                        — Projects first</span>
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        Projects first
+                                    </p>
                                     <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Outfit', sans-serif; color: #0E100F;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Inter', sans-serif ; color: #0E100F;">
                                         The portfolio runs the site.</h2>
                                 </div>
                                 <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #4A4B40; font-family: 'Inter', sans-serif;">
+                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                     Clients hire an architect after seeing buildings like theirs. So we built the site
                                     around the projects: sector filtering that responds instantly, large-format imagery
                                     that shows detailing, and a clean grid that steps out of the way of the work.
@@ -2326,18 +2568,19 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 32px;">
                             <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: end;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: start;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">03
-                                        — The project page</span>
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        The project page
+                                    </p>
                                     <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1;">
                                         Every building gets its own page.</h2>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
                                     <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         One template, laid out like a printed monograph: a full-width lead image, the
                                         key facts (sector, location, scale), a short narrative about the design problem,
                                         and a gallery of drawings and photographs that shows how the building came
@@ -2390,15 +2633,16 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: end;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">04
-                                        — Custom built</span>
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        Custom built
+                                    </p>
                                     <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1;">
                                         No theme. Designed and built to order.</h2>
                                 </div>
                                 <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                     Architects notice proportion, grids and detail, and they expect their website to
                                     show the same care. Every breakpoint was designed in Figma and coded cleanly, with
                                     no bloated theme code or off-the-shelf templates.
@@ -2425,30 +2669,27 @@
                             <!-- 3 Features Underneath -->
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 10px;">
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">
+                                        Proportion and grid</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        Proportion and grid</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70 ; font-family: 'Inter', sans-serif;">
                                         Typography and spacing set on a consistent scale, so the site feels as
                                         considered as the practice's drawings.</div>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">
+                                        Speed on mobile</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        Speed on mobile</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70 ; font-family: 'Inter', sans-serif;">
                                         Architecture sites are notoriously slow. Images are served in modern formats,
                                         sized to the screen and lazy-loaded.</div>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">
+                                        Easy to update</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        Easy to update</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70 ; font-family: 'Inter', sans-serif;">
                                         A clean CMS structure lets the team add new projects, photographs and sectors
                                         without needing a developer.</div>
                                 </div>
@@ -2467,14 +2708,15 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">05
-                                        — Responsive</span>
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        Responsive
+                                    </p>
                                     <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1;">
                                         A portfolio that fits in a pocket.</h2>
                                     <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         On mobile, project galleries become swipeable, the sector filters sit in one
                                         scrollable row, and the navigation stays out of the way until needed.
                                         Prospective clients often browse on their phone before a first meeting.</p>
@@ -2525,18 +2767,20 @@
                         <div class="content_wrap u-column-span-12">
                             <div
                                 style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px;">
-                                <span
-                                    style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">Client</span>
+                                <p class="sec_label u-text-style-small"
+                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                    Client testimonial
+                                </p>
                                 <blockquote
-                                    style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.25; letter-spacing: -0.025em; color: #FFFCE1;">
+                                    style="margin: 0; font-family: 'Inter', sans-serif ; font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.25; letter-spacing: -0.025em; color: #FFFCE1;">
                                     “Waiting on the client's quote. We'll add it here once it's approved.”</blockquote>
                                 <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px;">
                                     <div
-                                        style="width: 48px; height: 48px; border-radius: 50%; background: #2A2B25; border: 1px solid #3E4038; display: grid; place-items: center; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFE32A;">
+                                        style="width: 48px; height: 48px; border-radius: 50%; background: #2A2B25; border: 1px solid #3E4038; display: grid; place-items: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16px; color: #FFE32A;">
                                         ER</div>
                                     <div>
                                         <div
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 17px; color: #FFFCE1;">
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 17px; color: #FFFCE1;">
                                             E.R. Design Architects</div>
                                         <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;">
                                             Architecture &amp; Planning</div>
@@ -2556,20 +2800,20 @@
                         <div class="content_wrap u-column-span-12"
                             style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; text-align: center; align-items: center;">
                             <h2
-                                style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.035em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.035em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1;">
                                 Is your website hiding your best work?</h2>
                             <p
-                                style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif; max-width: 660px;">
+                                style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #7C7C70 ; font-family: 'Inter', sans-serif; max-width: 660px;">
                                 We redesign sites so they lead with what you've delivered. Send us your current site and
                                 we'll show you how it could look.</p>
                             <div
                                 style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
                                 <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
                                     onmouseover="this.style.transform='scale(1.04)'"
                                     onmouseout="this.style.transform='scale(1)'">Start a project</a>
                                 <a href="https://erarch.net" target="_blank" rel="noopener" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
                                     the live site ↗</a>

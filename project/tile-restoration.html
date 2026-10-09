@@ -147,6 +147,203 @@
         }
     </style>
 
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR TILE RESTORATION */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+            padding-bottom: 10px;
+        }
+
+        /* Mobile specific H2 & Results number clamp overrides */
+        @media screen and (max-width: 767px) {
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .results_number {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .stat_card span:not(.results_number),
+            .section_results .stat_card span:not(.results_number) {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Results Numbers Parity (Matching Fuseguard & Windmill System) */
+        .results_number {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        .stat_card span:not(.results_number),
+        .section_results .stat_card span:not(.results_number) {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            line-height: 1.5 !important;
+            letter-spacing: 0 !important;
+            text-transform: none !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 400 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+            padding-bottom: 10px;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .sec_label,
+            p.sec_label {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels (Excluding .results_number counter spans) */
+        .results_grid .stat_card span[style*="#FFE32A"]:not(.results_number),
+        .stat_card span[style*="#FFE32A"]:not(.results_number),
+        .step_card span[style*="#FFE32A"]:not(.results_number) {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #7C7C70 !important;
+        }
+
+        /* 10. Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.05 !important;
+            letter-spacing: -1.5px !important;
+            color: #FFFCE1 !important;
+        }
+    </style>
+
     <!--/$-->
 
 
@@ -1753,8 +1950,9 @@
                                         padding-bottom: 0 !important;
                                     }
 
-                                    .project_hero .u-section-spacer {
-                                        display: none !important;
+                                    .project_hero .project_reel_wrap {
+                                        height: 100% !important;
+                                        aspect-ratio: auto !important;
                                     }
 
                                     @media screen and (max-width: 1040px) {
@@ -1775,6 +1973,10 @@
                                             order: 3 !important;
                                             margin-top: 8px;
                                             width: 100%;
+                                        }
+
+                                        .project_hero .project_reel_wrap {
+                                            height: auto !important;
                                         }
                                     }
                                 </style>
@@ -2114,26 +2316,24 @@
                             <div class="content_wrap u-column-span-12"
                                 style="display: flex; flex-direction: column; gap: 32px;">
                                 <div
-                                    style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
+                                    style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
                                     <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
-                                        <p class="sec_label u-text-style-small"
-                                            style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        <p class="sec_label u-text-style-small">
                                             The Overview
                                         </p>
-                                        <h2 class="u-text-style-h2"
-                                            style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Tile, Grout &amp; Stone Specialists, Cork.
                                         </h2>
                                     </div>
                                     <div
-                                        style="flex: 1.2 1 450px; color: #A4A498; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; gap: 16px;">
-                                        <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                        style="flex: 1.2 1 450px; color: #7C7C70; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; gap: 16px;">
+                                        <p class="lede u-text-style-large" style="margin: 0; color: #7C7C70;">
                                             Tile Restoration cleans, repairs and seals tile, grout and natural stone
                                             across Cork, from kitchen ceramics to Victorian hallways. Cleaning is one of
                                             the most competitive local searches there is, and the business started with
                                             no website at all.
                                         </p>
-                                        <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                        <p class="lede u-text-style-large" style="margin: 0; color: #7C7C70;">
                                             We built the site from scratch and launched it with Google Ads, then started
                                             on search engine optimisation. The business now ranks organically for a
                                             range of searches and is listed first in Google's AI answer. A small ad
@@ -2155,50 +2355,39 @@
                             <div class="content_wrap u-column-span-12"
                                 style="display: flex; flex-direction: column; gap: 36px;">
                                 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">2026
-                                        so far</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.6vw, 44px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">2026 so far</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         A small ad budget, on top of strong organic rankings.</h2>
                                 </div>
                                 <div
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 24px;">
-                                    <div
+                                    <div class="stat_card"
                                         style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                        <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">#1</span>
-                                        <span
-                                            style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">specialist
-                                            listed in Google's AI answer for "tile cleaning services cork"</span>
+                                        <span class="results_number" style="color: #FFE32A;">#1</span>
+                                        <span>specialist listed in Google's AI answer for "tile cleaning services
+                                            cork"</span>
                                     </div>
-                                    <div
+                                    <div class="stat_card"
                                         style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                        <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">3,090</span>
-                                        <span
-                                            style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">ad
-                                            clicks, from 34,100 impressions</span>
+                                        <span class="results_number" style="color: #FFE32A;">3,090</span>
+                                        <span>ad clicks, from 34,100 impressions</span>
                                     </div>
-                                    <div
+                                    <div class="stat_card"
                                         style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                        <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">€1.02</span>
-                                        <span
-                                            style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">average
-                                            cost per click, in one of the most competitive local markets</span>
+                                        <span class="results_number" style="color: #FFE32A;">€1.02</span>
+                                        <span>average cost per click, in one of the most competitive local
+                                            markets</span>
                                     </div>
-                                    <div
+                                    <div class="stat_card"
                                         style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                        <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">€3.1K</span>
-                                        <span
-                                            style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">total
-                                            ad spend, roughly €350 a month</span>
+                                        <span class="results_number" style="color: #FFE32A;">€3.1K</span>
+                                        <span>total ad spend, roughly €350 a month</span>
                                     </div>
                                 </div>
-                                <span style="font-size: 13px; color: #7C7C70; font-family: 'Inter', sans-serif;">Google
-                                    Ads, 1 January – 6 October 2026.</span>
+                                <p class="footnote_text u-text-style-small"
+                                    style="color: #FFFCE1 !important; font-family: 'Inter', sans-serif;">Google Ads, 1
+                                    January – 6
+                                    October 2026.</p>
                             </div>
                         </div>
                     </div>
@@ -2213,15 +2402,15 @@
                                 <div
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: start; margin-bottom: 48px;">
                                     <div style="display: flex; flex-direction: column; gap: 12px;">
-                                        <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">01
-                                            — The strategy</span>
+
+                                        <p class="sec_label u-text-style-small"
+                                            style="font-family: 'Inter', sans-serif; ">
+                                            The strategy</p>
                                         <h2
-                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Outfit', sans-serif; color: #0E100F;">
+                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Inter', sans-serif ; color: #0E100F;">
                                             Launch on ads, build organic, keep both running.</h2>
                                     </div>
-                                    <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #4A4B40; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         We used the same approach as on our other launches: ads first so enquiries came
                                         in straight away, with SEO building underneath. Here, the cleaning market is
                                         crowded enough that a small ad budget is still worth running alongside the
@@ -2236,7 +2425,7 @@
                                         <span
                                             style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #B05D3B; font-weight: 700;">Launch</span>
                                         <h3
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #0E100F; margin: 0;">
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 20px; color: #0E100F !important; margin: 0;">
                                             New site + Google Ads</h3>
                                         <p
                                             style="font-size: 15px; line-height: 1.6; color: #5A5B50; margin: 0; font-family: 'Inter', sans-serif;">
@@ -2248,7 +2437,7 @@
                                         <span
                                             style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #B05D3B; font-weight: 700;">Next</span>
                                         <h3
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #0E100F; margin: 0;">
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 20px; color: #0E100F !important; margin: 0;">
                                             Search engine optimisation</h3>
                                         <p
                                             style="font-size: 15px; line-height: 1.6; color: #5A5B50; margin: 0; font-family: 'Inter', sans-serif;">
@@ -2261,10 +2450,9 @@
                                         <span
                                             style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 700;">Now</span>
                                         <h3
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
                                             Organic + a small ad budget</h3>
-                                        <p
-                                            style="font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0; font-family: 'Inter', sans-serif;">
+                                        <p style="margin: 0; color: #7C7C70;">
                                             Organic rankings bring in most of the visibility. A small ad budget keeps
                                             the business at the top of the page for the most competitive searches.</p>
                                     </div>
@@ -2283,20 +2471,15 @@
                                 <div
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                                        <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">02
-                                            — AI search</span>
-                                        <h2
-                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        <p class="sec_label u-text-style-small">AI search</p>
+                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             First name in Google's AI answer.</h2>
-                                        <p
-                                            style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        <p style="margin: 0; color: #7C7C70;">
                                             Ask Google's AI Mode for "tile cleaning services cork" and Tile Restoration
                                             is the first business recommended under Dedicated Tile &amp; Stone
                                             Restoration Specialists, ahead of a list of established carpet and floor
                                             cleaning firms.</p>
-                                        <p
-                                            style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        <p style="margin: 0; color: #7C7C70;">
                                             This isn't something you can buy with ads. It comes from a site that clearly
                                             says what the business does, where it works, and which surfaces it handles.
                                         </p>
@@ -2336,21 +2519,17 @@
                                             style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;" />
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 20px;">
-                                        <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">03
-                                            — Google Ads</span>
-                                        <h2
-                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        <p class="sec_label u-text-style-small">Google Ads</p>
+                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Paid search kept lean.</h2>
-                                        <p
-                                            style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        <p style="margin: 0; color: #7C7C70;">
                                             One tightly focused Cork search campaign for tile, grout and stone, with
                                             manual bidding and the keyword list narrowed to the jobs the business
                                             actually does. The average click costs about a euro, and clicks rose by 230
                                             in the latest month after we refined the targeting.
                                         </p>
                                         <ul
-                                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 15.5px; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-size: 15.5px; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                             <li
                                                 style="display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start;">
                                                 <span style="color: #FFE32A; font-weight: 600;">—</span>
@@ -2386,11 +2565,8 @@
                                 <div
                                     style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
                                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                                        <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">04
-                                            — The full page</span>
-                                        <h2
-                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        <p class="sec_label u-text-style-small">The full page</p>
+                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Homepage, top to bottom.</h2>
                                     </div>
                                     <span
@@ -2438,14 +2614,10 @@
                                 <div
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                                        <span
-                                            style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">05
-                                            — Responsive</span>
-                                        <h2
-                                            style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                        <p class="sec_label u-text-style-small">Responsive</p>
+                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Before-and-after photos, on a phone.</h2>
-                                        <p
-                                            style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        <p style="margin: 0; color: #7C7C70;">
                                             Most of these ad clicks happen on a phone. The mobile site leads with
                                             before-and-after photos of real jobs, then a quote button and a tap-to-call
                                             number.</p>
@@ -2509,17 +2681,15 @@
                                         </video>
                                     </div>
                                     <div style="display: flex; flex-direction: column; gap: 20px;">
-                                        <p class="sec_label u-text-style-small"
-                                            style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                            06 / Client testimonial</p>
+                                        <p class="sec_label u-text-style-small">Client testimonial</p>
                                         <blockquote
-                                            style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Outfit', sans-serif;">
+                                            style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Inter', sans-serif ;">
                                             <p style="margin: 0; font-style: italic;">“Waiting on the client's quote.
                                                 We'll add it here once it's approved.”</p>
                                         </blockquote>
                                         <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
                                             <div
-                                                style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 15px;">
+                                                style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 15px;">
                                                 TR</div>
                                             <cite
                                                 style="display: block; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #0E100F; font-style: normal;">
@@ -2540,22 +2710,20 @@
                         <div class="content_layout u-grid-custom">
                             <div class="content_wrap u-column-span-12"
                                 style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; text-align: center; align-items: center;">
-                                <h2
-                                    style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.035em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                     In a crowded market? Show up everywhere they look.</h2>
-                                <p
-                                    style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif; max-width: 660px;">
+                                <p style="margin: 0; color: #7C7C70; max-width: 660px;">
                                     Paid ads, organic search and AI answers, planned together. Tell us what you do and
                                     where, and we'll show you how to reach people searching for it.</p>
                                 <div
                                     style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
                                     <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                        style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
+                                        style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
                                         onmouseover="this.style.transform='scale(1.04)'"
                                         onmouseout="this.style.transform='scale(1)'">Start a project</a>
                                     <a href="https://tilerestoration.ie" target="_blank" rel="noopener"
                                         class="btn w-inline-block"
-                                        style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
+                                        style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
                                         onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
                                         onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
                                         the live site ↗</a>

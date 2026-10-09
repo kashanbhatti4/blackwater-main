@@ -86,7 +86,7 @@
         .scope_card_premium h3 {
             font-family: 'Inter', sans-serif !important;
             font-size: clamp(18px, 2vw, 24px) !important;
-            font-weight: 800 !important;
+            font-weight: 400 !important;
             line-height: 1.3 !important;
             letter-spacing: -0.5px !important;
             color: #FFFCE1 !important;
@@ -108,7 +108,7 @@
         .stat_card span[style*="#FFE32A"],
         .step_card span[style*="#FFE32A"] {
             font-family: 'Inter', sans-serif !important;
-            font-size: clamp(14px, 1.5vw, 16px) !important;
+            /* font-size: clamp(14px, 1.5vw, 16px) !important; */
             letter-spacing: 1px !important;
         }
 
@@ -166,7 +166,7 @@
             font-family: 'Inter', sans-serif !important;
             font-size: 16px !important;
             line-height: 1.6 !important;
-            color: #FFFCE1 !important;
+
         }
 
         /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
@@ -213,7 +213,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 14px !important;
+                /* font-size: 14px !important; */
             }
 
             .lede,
@@ -261,7 +261,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 16px !important;
+                /* font-size: 16px !important; */
             }
 
             .gallery_card span,
@@ -2432,11 +2432,11 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="lede u-text-style-large" style="color: #FFFCE1; margin: 0;">Revolution
+                                    <p class="lede u-text-style-large" style="color: #7C7C70 ; margin: 0;">Revolution
                                         Roofing is a family-run Cork City roofer, Roy and his father, working with a
                                         small team of licensed contractors, offering everything from new roof
                                         installation to emergency repairs, chimney work and insurance claim support.</p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; margin-top: 20px;">
+                                    <p class="lede u-text-style-large" style="margin: 0;  margin-top: 20px;">
                                         "Building Trust, One Roof at a Time" is already their own line, and it's the
                                         right one, in a trade where the buyer can't easily judge the quality of work
                                         themselves, the decision comes down to whether they trust the people doing it.
@@ -2452,41 +2452,101 @@
 
 
             <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_results"
                 style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_results .sec_label {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+
+                    .section_results .footnote_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #FFFCE1 !important;
+                        line-height: 1.45 !important;
+                        margin-top: 40px !important;
+                    }
+
+                    .section_results .results_number {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1 !important;
+                        letter-spacing: -1px !important;
+                    }
+
+                    .section_results .stat_card span:not(.results_number) {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: none !important;
+                        letter-spacing: 0 !important;
+                        line-height: 1.4 !important;
+                    }
+
+                    .section_results .stat_card span[style*="#FFE32A"],
+                    .results_grid .stat_card span[style*="#FFE32A"] {
+                        font-family: 'Inter', sans-serif !important;
+                        /* font-size: clamp(14px, 1.5vw, 16px) !important; */
+                        letter-spacing: 1px !important;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        .section_results .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+
+                        .section_results .footnote_text {
+                            font-size: 14px !important;
+                            margin-top: 24px !important;
+                        }
+
+                        .section_results .results_number {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+
+                        .section_results .stat_card span:not(.results_number) {
+                            font-size: 14px !important;
+                        }
+
+                        .section_results .stat_card span[style*="#FFE32A"],
+                        .results_grid .stat_card span[style*="#FFE32A"] {
+                            /* font-size: 14px !important; */
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
+                            <p class="sec_label u-text-style-small">
                                 Results</p>
 
                             <div class="results_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 44px !important; font-weight: 800; color: #7C7C70; line-height: 1; letter-spacing: -1px;">XX%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Organic
+                                    <span class="results_number" style="color: #7C7C70;">XX%</span>
+                                    <span>Organic
                                         search sessions, year on year</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 44px !important; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -1px;">XX</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Appointment
+                                    <span class="results_number" style="color: #FFFCE1;">XX</span>
+                                    <span>Appointment
                                         bookings through the site, current period</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 44px !important; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -1px;">XX%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;  line-height: 1.4;">Of
+                                    <span class="results_number" style="color: #FFE32A;">XX%</span>
+                                    <span>Of
                                         traffic landing on a specific service page</span>
                                 </div>
                             </div>
@@ -2578,15 +2638,15 @@
                                         Eleven
                                         services. One family. Two very different kinds of visitor.</h2>
                                 </div>
-                                <div class="challenge_paragraphs"
+                                <div class="challenge_paragraphs "
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">Revolution Roofing
+                                    <p class="lede u-text-style-large" style="margin: 0; ">Revolution Roofing
                                         genuinely does everything from tile installation to gutters to attic conversions
                                         , but not every visitor arrives the same way. One is planning a full re-roof
                                         months out and wants craftsmanship and a fair quote. The other has water coming
                                         through their ceiling right now and wants to know how fast someone can get
                                         there.</p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; margin-top: 20px;">The
+                                    <p class="lede u-text-style-large" style="margin: 0;  margin-top: 20px;">The
                                         build has to serve the second visitor without shortchanging the first: Emergency
                                         Roof Repairs and Insurance Work sit alongside the broader service range rather
                                         than buried in a long list, while the family story and real, named customer

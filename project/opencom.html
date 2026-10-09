@@ -147,6 +147,183 @@
         }
     </style>
 
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR OPENCOM */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+            padding-bottom: 10px;
+        }
+
+        /* Mobile specific H2 clamp overrides */
+        @media screen and (max-width: 767px) {
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+        }
+
+        /* Results Numbers Parity */
+        .results_number {
+            font-size: 44px !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 400 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+            padding-bottom: 10px;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .sec_label,
+            p.sec_label {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels */
+        .results_grid .stat_card span[style*="#FFE32A"],
+        .stat_card span[style*="#FFE32A"],
+        .step_card span[style*="#FFE32A"] {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #7C7C70 !important;
+        }
+
+        /* 10. Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.05 !important;
+            letter-spacing: -1.5px !important;
+            color: #FFFCE1 !important;
+        }
+    </style>
+
     <!--/$-->
 
 
@@ -2154,19 +2331,17 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 40px;">
                             <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; width: 100%;">
+                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        01 — Before &amp; after
+                                    <p class="sec_label u-text-style-small">
+                                        Before &amp; after
                                     </p>
-                                    <h2 class="u-text-style-h2"
-                                        style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         From a wall of text to a clear offer.
                                     </h2>
                                 </div>
                                 <div style="flex: 1.2 1 450px; color: #7C7C70; font-family: 'Inter', sans-serif;">
-                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         The old homepage explained everything at once. The new one opens with the
                                         promise (lower costs, better service), offers the free audit straight away and
                                         puts the services underneath in a form you can scan in seconds. Drag the handle
@@ -2219,7 +2394,7 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Before</span>
                                     <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Inter', sans-serif ; font-weight: 600;">
                                         Wall of Text</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #7C7C70; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2232,7 +2407,7 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">After</span>
                                     <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Inter', sans-serif ; font-weight: 600;">
                                         Clear Action</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #FFFCE1; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2255,15 +2430,11 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: start; margin-bottom: 48px;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">02
-                                        — Services</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Outfit', sans-serif; color: #0E100F;">
+                                    <p class="sec_label u-text-style-small">Services</p>
+                                    <h2 class="u-text-style-h2" style="color: #0E100F; margin: 0;">
                                         Seven services, readable at a glance.</h2>
                                 </div>
-                                <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #4A4B40; font-family: 'Inter', sans-serif;">
+                                <p style="margin: 0; color: #7C7C70;">
                                     A business owner arrives with one bill in mind: the mobiles, the broadband or the
                                     phone system. Each service now has a short title, a one-line benefit and a page of
                                     its own, so visitors find their problem first and read the detail only if they want
@@ -2285,7 +2456,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Fixed line</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2302,7 +2473,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Broadband</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2319,7 +2490,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Mobile</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2336,7 +2507,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 VoIP</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2353,7 +2524,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Data connectivity</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2370,7 +2541,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Inbound numbers</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2387,7 +2558,7 @@
                                         </svg>
                                         <div>
                                             <div
-                                                style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16.5px; color: #0E100F;">
+                                                style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16.5px; color: #0E100F;">
                                                 Phone systems</div>
                                             <div
                                                 style="font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.5; color: #5A5B50;">
@@ -2419,15 +2590,11 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: end;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">03
-                                        — The free audit</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">The free audit</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         One clear next step, offered everywhere.</h2>
                                 </div>
-                                <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                <p style="margin: 0; color: #7C7C70;">
                                     OpenCom's strongest offer is a free audit of a business's current telecoms. It used
                                     to sit in the middle of a paragraph. Now it's the main call to action on every page:
                                     a short form that asks only what a broker needs to start, with the freephone number
@@ -2455,30 +2622,24 @@
                             <!-- 3 Features Underneath -->
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 10px;">
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3>A short form</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        A short form</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Name, business, phone number and which services you're asking about. Nothing
                                         else stands between the visitor and an enquiry.</div>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3>Plain language</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        Plain language</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         We cut the jargon. "Hosted VoIP" sits next to what it does for your business, so
                                         nobody has to be a telecoms expert to understand the page.</div>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #FFE32A;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
+                                    <h3>Independence up front</h3>
                                     <div
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; color: #FFFCE1;">
-                                        Independence up front</div>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         OpenCom isn't a provider, it's a broker working for the customer. The design
                                         says so in the first screen, because that's the reason to trust them.</div>
                                 </div>
@@ -2498,11 +2659,8 @@
                             <div
                                 style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
                                 <div style="display: flex; flex-direction: column; gap: 10px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">04
-                                        — The full page</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">The full page</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Homepage, top to bottom.</h2>
                                 </div>
                                 <span
@@ -2550,14 +2708,10 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">05
-                                        — Responsive</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">Responsive</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Tap to call, from anywhere on the page.</h2>
-                                    <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         Many OpenCom enquiries are a phone call made between other jobs. On mobile, the
                                         freephone number and the audit button stay pinned to the bottom of the screen,
                                         and each service collapses to a single line you can tap to open.</p>
@@ -2609,18 +2763,17 @@
                         <div class="content_wrap u-column-span-12">
                             <div
                                 style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px;">
-                                <span
-                                    style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">Client</span>
+                                <p class="sec_label u-text-style-small">Client</p>
                                 <blockquote
-                                    style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.25; letter-spacing: -0.025em; color: #FFFCE1;">
+                                    style="margin: 0; font-family: 'Inter', sans-serif ; font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.25; letter-spacing: -0.025em; color: #FFFCE1;">
                                     “Waiting on the client's quote. We'll add it here once it's approved.”</blockquote>
                                 <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px;">
                                     <div
-                                        style="width: 48px; height: 48px; border-radius: 50%; background: #2A2B25; border: 1px solid #3E4038; display: grid; place-items: center; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 16px; color: #FFE32A;">
+                                        style="width: 48px; height: 48px; border-radius: 50%; background: #2A2B25; border: 1px solid #3E4038; display: grid; place-items: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16px; color: #FFE32A;">
                                         OC</div>
                                     <div>
                                         <div
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 17px; color: #FFFCE1;">
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 17px; color: #FFFCE1;">
                                             OpenCom</div>
                                         <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;">
                                             B2B Telecommunications</div>
@@ -2639,21 +2792,19 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
                             style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; text-align: center; align-items: center;">
-                            <h2
-                                style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.035em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                            <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                 Is your website making a simple offer look complicated?</h2>
-                            <p
-                                style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif; max-width: 660px;">
+                            <p style="margin: 0; color: #7C7C70; max-width: 660px;">
                                 We redesign sites so visitors understand what you offer and know what to do next. Send
                                 us your current site and we'll show you how it could work.</p>
                             <div
                                 style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
                                 <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
                                     onmouseover="this.style.transform='scale(1.04)'"
                                     onmouseout="this.style.transform='scale(1)'">Start a project</a>
                                 <a href="https://opencom.ie" target="_blank" rel="noopener" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
                                     the live site ↗</a>

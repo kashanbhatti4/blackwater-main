@@ -217,7 +217,7 @@
         .scope_card_premium h3 {
             font-family: 'Inter', sans-serif !important;
             font-size: clamp(18px, 2vw, 24px) !important;
-            font-weight: 800 !important;
+            font-weight: 400 !important;
             line-height: 1.3 !important;
             letter-spacing: -0.5px !important;
             color: #FFFCE1 !important;
@@ -297,7 +297,7 @@
             font-family: 'Inter', sans-serif !important;
             font-size: 16px !important;
             line-height: 1.6 !important;
-            color: #FFFCE1 !important;
+            color: #0e100f !important;
         }
 
         /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
@@ -2441,12 +2441,12 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="lede u-text-style-large" style="color: #FFFCE1; margin: 0;">
+                                    <p class="lede u-text-style-large" style="color: #7C7C70 ; margin: 0;">
                                         Electrical inspection isn't a service people browse for. They search for it
                                         once, usually because a landlord, an insurer or a sale has told them they need a
                                         certificate, and they call whoever answers first.
                                     </p>
-                                    <p style="margin: 0; font-size: 16px; line-height: 1.6; line-height: 1.65;">
+                                    <p class="lede u-text-style-large" style="margin: 0; ">
                                         We built the website and ran the search campaigns that feed it. That combination
                                         is the point: an ad is only as good as what it lands on, and a site is only
                                         worth building if the right people reach it. Both sides were ours, so neither
@@ -2462,55 +2462,113 @@
 
 
             <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_results"
                 style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_results .sec_label {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+
+                    .section_results .footnote_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #FFFCE1 !important;
+                        line-height: 1.45 !important;
+                        margin-top: 40px !important;
+                    }
+
+                    .section_results .results_number {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1 !important;
+                        letter-spacing: -1px !important;
+                    }
+
+                    .section_results .stat_card span:not(.results_number) {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: none !important;
+                        letter-spacing: 0 !important;
+                        line-height: 1.4 !important;
+                    }
+
+                    .section_results .stat_card span[style*="#FFE32A"],
+                    .results_grid .stat_card span[style*="#FFE32A"] {
+                        font-family: 'Inter', sans-serif !important;
+                        /* font-size: clamp(14px, 1.5vw, 16px) !important; */
+                        letter-spacing: 1px !important;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        .section_results .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+
+                        .section_results .footnote_text {
+                            font-size: 14px !important;
+                            margin-top: 24px !important;
+                        }
+
+                        .section_results .results_number {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+
+                        .section_results .stat_card span:not(.results_number) {
+                            font-size: 14px !important;
+                        }
+
+                        .section_results .stat_card span[style*="#FFE32A"],
+                        .results_grid .stat_card span[style*="#FFE32A"] {
+                            /* font-size: 14px !important; */
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
-                                Results
-                            </p>
+                            <p class="sec_label u-text-style-small">
+                                Results</p>
 
                             <div class="results_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--turquoise, #87BAB2); line-height: 1; letter-spacing: -1px;">&times;5</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70; line-height: 1.4;">Monthly
+                                        style="color: var(--swatch--turquoise, #87BAB2);">&times;5</span>
+                                    <span>Monthly
                                         enquiries, Jan to Apr</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--pink, #D56D88); line-height: 1; letter-spacing: -1px;">92</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;   line-height: 1.4;">Enquiries
+                                    <span class="results_number" style="color: var(--swatch--pink, #D56D88);">92</span>
+                                    <span>Enquiries
                                         submitted across period</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
                                     <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--orange, #F17752); line-height: 1; letter-spacing: -1px;">5.0%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70; line-height: 1.4;">Click-through
+                                        style="color: var(--swatch--orange, #F17752);">5.0%</span>
+                                    <span>Click-through
                                         rate on inspection</span>
                                 </div>
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: var(--swatch--yellow, #F1A650); line-height: 1; letter-spacing: -1px;">1m
+                                    <span class="results_number" style="color: var(--swatch--yellow, #F1A650);">1m
                                         45s</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: #7C7C70;  line-height: 1.4;">Average
+                                    <span>Average
                                         session length from paid search</span>
                                 </div>
                             </div>
 
-                            <p class="footnote_text u-text-style-small"
-                                style="color: #FFFCE1; font-family: 'Inter', sans-serif; margin-top: 24px;">
+                            <p class="footnote_text u-text-style-small">
                                 Google Analytics 4, property 511562820, and Google Ads account 658-606-9849. January –
                                 April 2026. Enquiries are completed form submissions.
                             </p>
@@ -3065,7 +3123,7 @@
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
                                 <div class="scope_card_premium">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style="color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Design & build</h3>
                                     <ul class="scope_list_premium">
                                         <li class="scope_item_premium"><span class="scope_item_dash">—</span> Website
@@ -3082,7 +3140,7 @@
                                 </div>
                                 <div class="scope_card_premium">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style=" color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Paid search</h3>
                                     <ul class="scope_list_premium">
                                         <li class="scope_item_premium"><span class="scope_item_dash">—</span> Account
@@ -3099,7 +3157,7 @@
                                 </div>
                                 <div class="scope_card_premium">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style=" color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Measurement</h3>
                                     <ul class="scope_list_premium">
                                         <li class="scope_item_premium"><span class="scope_item_dash">—</span> GA4

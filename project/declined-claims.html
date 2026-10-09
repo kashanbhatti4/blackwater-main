@@ -87,7 +87,7 @@
         .scope_card_premium h3 {
             font-family: 'Inter', sans-serif !important;
             font-size: clamp(18px, 2vw, 24px) !important;
-            font-weight: 800 !important;
+            font-weight: 400 !important;
             line-height: 1.3 !important;
             letter-spacing: -0.5px !important;
             color: #FFFCE1 !important;
@@ -109,7 +109,7 @@
         .stat_card span[style*="#FFE32A"],
         .step_card span[style*="#FFE32A"] {
             font-family: 'Inter', sans-serif !important;
-            font-size: clamp(14px, 1.5vw, 16px) !important;
+            /* font-size: clamp(14px, 1.5vw, 16px) !important; */
             letter-spacing: 1px !important;
         }
 
@@ -167,7 +167,7 @@
             font-family: 'Inter', sans-serif !important;
             font-size: 16px !important;
             line-height: 1.6 !important;
-            color: #FFFCE1 !important;
+
         }
 
         /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
@@ -214,7 +214,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 14px !important;
+                /* font-size: 14px !important; */
             }
 
             .lede,
@@ -262,7 +262,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 16px !important;
+                /* font-size: 16px !important; */
             }
 
             .gallery_card span,
@@ -2437,12 +2437,12 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="lede u-text-style-large" style="color: #FFFCE1; margin: 0;">Declined
+                                    <p class="lede u-text-style-large" style="color: #7c7c7c; margin: 0;">Declined
                                         Claims positions itself as an insurance advocacy company, independent insurance
                                         experts working with individuals, businesses and professional advisers whose
                                         insurance claims have been rejected, delayed or disputed. By their own
                                         description, they're the only company in Ireland doing this specific thing.</p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; margin-top: 20px;">That's
+                                    <p class="lede u-text-style-large" style="margin: 0; margin-top: 20px;">That's
                                         a genuine positioning asset and a genuine problem at the same time: most
                                         visitors have never heard of "insurance advocacy" and don't know how it differs
                                         from hiring a solicitor. The site has to teach that distinction fast, before
@@ -2457,41 +2457,89 @@
 
 
             <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_results"
                 style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_results .sec_label {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+
+                    .section_results .footnote_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #FFFCE1 !important;
+                        line-height: 1.45 !important;
+                        margin-top: 40px !important;
+                    }
+
+                    .section_results .results_number {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1 !important;
+                        letter-spacing: -1px !important;
+                    }
+
+                    .section_results .stat_card span:not(.results_number) {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: none !important;
+                        letter-spacing: 0 !important;
+                        line-height: 1.4 !important;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        .section_results .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+
+                        .section_results .footnote_text {
+                            font-size: 14px !important;
+                            margin-top: 24px !important;
+                        }
+
+                        .section_results .results_number {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+
+                        .section_results .stat_card span:not(.results_number) {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
+                            <p class="sec_label u-text-style-small">
                                 Results</p>
 
                             <div class="results_grid"
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: #7C7C70; line-height: 1; letter-spacing: -1px;">XX%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Organic
+                                    <span class="results_number" style="color: #7C7C70;">XX%</span>
+                                    <span>Organic
                                         search sessions, year on year</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 48px; font-weight: 800; color: #FFFCE1; line-height: 1; letter-spacing: -1px;">XX</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Consultation
+                                    <span class="results_number" style="color: #FFFCE1;">XX</span>
+                                    <span>Consultation
                                         enquiries through the site, current period</span>
                                 </div>
 
                                 <div class="stat_card"
                                     style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number"
-                                        style="font-size: 48px !important; font-weight: 800; color: #FFE32A; line-height: 1; letter-spacing: -1px;">XX%</span>
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4;">Of
+                                    <span class="results_number" style="color: #FFE32A;">XX%</span>
+                                    <span>Of
                                         traffic landing on a specific service page</span>
                                 </div>
                             </div>
@@ -2584,13 +2632,13 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">A homeowner whose flood
+                                    <p class="lede u-text-style-large" style="margin: 0; ">A homeowner whose flood
                                         claim was rejected is in crisis mode, searching in plain language, wanting to
                                         know if they have a case. A solicitor with a client's contested commercial
                                         policy is evaluating a specialist referral, and wants to see professional
                                         credibility, memberships, insurance-industry expertise, litigation support
                                         experience, before picking up the phone.</p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65; margin-top: 20px;">The
+                                    <p class="lede u-text-style-large" style="margin: 0;  margin-top: 20px;">The
                                         build serves both without forcing either through the other's content:
                                         plain-language "when you need us" framing for the consumer route, and a distinct
                                         Litigation Support for Solicitors &amp; Barristers page and Professional Adviser
@@ -2684,7 +2732,7 @@
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Structure</span>
-                                    <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">Split by
+                                    <h3 style=" color: #FFFCE1; margin: 0; ">Split by
                                         audience, not by service</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">Consumer
                                         and commercial claim journeys, plus a dedicated solicitor-referral path, each
@@ -2696,7 +2744,7 @@
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Build</span>
-                                    <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">WordPress,
+                                    <h3 style=" color: #FFFCE1; margin: 0; ">WordPress,
                                         built in Elementor</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">Individual
                                         service pages for each offering, from Early Expert Evaluation Reports to
@@ -2708,7 +2756,7 @@
                                     style="background: #1C1E1B; border: 1px solid #2A2B25; padding: 32px 24px; border-radius: 4px; display: flex; flex-direction: column; gap: 16px;">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.5vw, 16px); color: #FFE32A; text-transform: uppercase; letter-spacing: 1px;">Trust</span>
-                                    <h3 style="font-size: 18px; color: #FFFCE1; margin: 0; font-weight: 700;">
+                                    <h3 style=" color: #FFFCE1; margin: 0; ">
                                         Professional memberships doing the credibility work</h3>
                                     <p style="color: #7C7C70; font-size: 14px; line-height: 1.5; margin: 0;">Academy of
                                         Experts, Chartered Insurance Institute, Insurance Institute of Ireland, LIA and
@@ -2788,7 +2836,7 @@
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style=" color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Design &amp; build</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
@@ -2806,7 +2854,7 @@
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style="color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Structure &amp; search</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
@@ -2823,7 +2871,7 @@
                                 <div class="scope_card_premium"
                                     style="background-color: #131615; border: 1px solid #2A2B25; border-radius: 4px; padding: 32px 24px; display: flex; flex-direction: column; gap: 20px;">
                                     <h3
-                                        style="font-size: 18px; font-weight: 700; color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
+                                        style=" color: #FFFCE1; margin: 0; padding-bottom: 24px; border-bottom: 1px solid #2A2B25;">
                                         Content</h3>
                                     <ul class="scope_list_premium"
                                         style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">

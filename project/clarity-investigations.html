@@ -240,7 +240,7 @@
         .stat_card span[style*="#FFE32A"],
         .step_card span[style*="#FFE32A"] {
             font-family: 'Inter', sans-serif !important;
-            font-size: clamp(14px, 1.5vw, 16px) !important;
+            /* font-size: clamp(14px, 1.5vw, 16px) !important; */
             letter-spacing: 1px !important;
         }
 
@@ -298,7 +298,7 @@
             font-family: 'Inter', sans-serif !important;
             font-size: 16px !important;
             line-height: 1.6 !important;
-            color: #FFFCE1 !important;
+
         }
 
         /* RESPONSIVE MEDIA QUERIES (max-width: 767px) */
@@ -345,7 +345,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 14px !important;
+                /* font-size: 14px !important; */
             }
 
             .lede,
@@ -393,7 +393,7 @@
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
             .step_card span[style*="#FFE32A"] {
-                font-size: 16px !important;
+                /* font-size: 16px !important; */
             }
 
             .gallery_card span,
@@ -2435,12 +2435,12 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="lede u-text-style-large" style="color: #FFFCE1; margin: 0;">
+                                    <p class="lede u-text-style-large" style="color: #7C7C70; margin: 0;">
                                         Clarity Investigations is a private investigation practice built entirely on
                                         discretion, patience and noticing what other people miss. That is a difficult
                                         thing to put on a website.
                                     </p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">
+                                    <p class="lede u-text-style-large" style="margin: 0; ">
                                         Most firms in the sector don't try. They fall back on magnifying glasses, trench
                                         coats and CCTV grain, and end up looking like each other. She wanted the
                                         opposite of that, and she arrived with a clear picture in her head of what the
@@ -2456,13 +2456,67 @@
 
 
             <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section"
+            <section class="main-section_wrap u-section section_results"
                 style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
+                <style>
+                    .section_results .sec_label {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        margin-bottom: 40px !important;
+                    }
+
+                    .section_results .footnote_text {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #FFFCE1 !important;
+                        line-height: 1.45 !important;
+                        margin-top: 40px !important;
+                    }
+
+                    .section_results .results_number {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: clamp(38px, 4vw, 44px) !important;
+                        font-weight: 800 !important;
+                        line-height: 1 !important;
+                        letter-spacing: -1px !important;
+                    }
+
+                    .section_results .stat_card span:not(.results_number):not([style*="#FFE32A"]) {
+                        font-family: 'Inter', sans-serif !important;
+                        font-size: 16px !important;
+                        color: #7C7C70 !important;
+                        text-transform: none !important;
+                        letter-spacing: 0 !important;
+                        line-height: 1.4 !important;
+                    }
+
+                    @media screen and (max-width: 767px) {
+                        .section_results .sec_label {
+                            font-size: 14px !important;
+                            margin-bottom: 24px !important;
+                        }
+
+                        .section_results .footnote_text {
+                            font-size: 14px !important;
+                            margin-top: 24px !important;
+                        }
+
+                        .section_results .results_number {
+                            font-size: clamp(28px, 7vw, 32px) !important;
+                        }
+
+                        .section_results .stat_card span:not(.results_number):not([style*="#FFE32A"]) {
+                            font-size: 14px !important;
+                        }
+                    }
+                </style>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small"
-                                style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 40px;">
+                            <p class="sec_label u-text-style-small">
                                 The Engagement
                             </p>
 
@@ -2512,8 +2566,7 @@
                                 </div>
                             </div>
 
-                            <p class="footnote_text u-text-style-small"
-                                style="color: #FFFCE1; font-family: 'Inter', sans-serif; margin-top: 24px;">
+                            <p class="footnote_text u-text-style-small">
                                 Project delivered and sign-off completed in August, 2026.
                             </p>
                         </div>
@@ -2541,16 +2594,16 @@
                                 </div>
                                 <div class="challenge_paragraphs"
                                     style="flex: 1.2 1 450px; color: #7C7C70; display: flex; flex-direction: column; gap: 20px;">
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">
+                                    <p class="lede u-text-style-large" style="margin: 0; ">
                                         She had already commissioned design work once, spent real money on it, and come
                                         away with a site that didn't reflect her, and a lasting scepticism about web
                                         designers generally.
                                     </p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">
+                                    <p class="lede u-text-style-large" style="margin: 0; ">
                                         So the brief was never "build me a website." It was closer to: <em>prove this
                                             can be done properly.</em>
                                     </p>
-                                    <p style="margin: 0; font-size: 15.5px; line-height: 1.65;">
+                                    <p class="lede u-text-style-large" style="margin: 0; ">
                                         That changed how we ran the project. Rather than presenting a finished site and
                                         hoping it landed, we designed the whole thing in Figma first and walked her
                                         through it page by page, so nothing got built until she had seen it and agreed

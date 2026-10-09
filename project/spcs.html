@@ -147,6 +147,203 @@
         }
     </style>
 
+    <style data-typography="windmill-system-pure">
+        /* EXACT WINDMILL TYPOGRAPHY SYSTEM FOR SPCS */
+
+        /* 1. Base Typography Reset & Font Smoothing */
+        body {
+            font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 2. Hero Title (H1) */
+        .project_hero_heading,
+        h1.project_hero_heading,
+        h1 {
+            font-family: 'Plain', Arial, sans-serif !important;
+            font-size: clamp(48px, 8.5vw, 120px) !important;
+            font-weight: 800 !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.025em !important;
+            color: #FFFCE1 !important;
+            margin-top: 0 !important;
+            margin-bottom: 22px !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Hero Subtitle / Client */
+        .project_hero_client,
+        p.project_hero_client {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: #7C7C70 !important;
+            font-weight: 500 !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 4. Hero Details & Tags / Metadata (Image & Tag text) */
+        .project_hero_tag,
+        .project_hero_tag p,
+        .project_details_label,
+        .project_details_value,
+        .u-text-style-small-medium {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* 5. Section Headings (H2, Challenge, Mobile Build, Results Page Headings) */
+        .u-text-style-h2,
+        h2.u-text-style-h2,
+        h2,
+        .challenge_heading,
+        .mobile_build_heading,
+        .results_page_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            letter-spacing: -1px !important;
+            padding-bottom: 10px;
+        }
+
+        /* Mobile specific H2 clamp overrides */
+        @media screen and (max-width: 767px) {
+
+            .u-text-style-h2,
+            h2.u-text-style-h2,
+            h2,
+            .challenge_heading,
+            .mobile_build_heading,
+            .results_page_heading {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .results_number {
+                font-size: clamp(28px, 7vw, 32px) !important;
+            }
+
+            .stat_card span:not(.results_number),
+            .section_results .stat_card span:not(.results_number) {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Results Numbers Parity (Matching Fuseguard & Windmill System) */
+        .results_number {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(38px, 4vw, 44px) !important;
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            letter-spacing: -1px !important;
+        }
+
+        .stat_card span:not(.results_number),
+        .section_results .stat_card span:not(.results_number) {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            line-height: 1.5 !important;
+            letter-spacing: 0 !important;
+            text-transform: none !important;
+        }
+
+        /* 6. Section Subheadings & Cards (H3, Process Cards, Scope Cards) */
+        h3,
+        .process_card_heading,
+        .scope_card_premium h3 {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            font-weight: 400 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            color: #FFFCE1 !important;
+            padding-bottom: 10px;
+        }
+
+        /* 7. Section Eyebrow Labels */
+        .sec_label,
+        p.sec_label {
+            font-family: 'Inter', Arial, sans-serif !important;
+            font-size: 16px !important;
+            color: #7C7C70 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            font-weight: 500 !important;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .sec_label,
+            p.sec_label {
+                font-size: 14px !important;
+            }
+        }
+
+        /* Yellow Stat Card & Step Card Eyebrow Labels (Excluding .results_number counter spans) */
+        .results_grid .stat_card span[style*="#FFE32A"]:not(.results_number),
+        .stat_card span[style*="#FFE32A"]:not(.results_number),
+        .step_card span[style*="#FFE32A"]:not(.results_number) {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            letter-spacing: 1px !important;
+        }
+
+        /* 8. Lead Intro & Hero Paragraphs */
+        .lede,
+        .lede_text,
+        p.lede,
+        .challenge_paragraphs p,
+        .results_page_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(18px, 2vw, 24px) !important;
+            line-height: 1.45 !important;
+            font-weight: 400 !important;
+        }
+
+        /* 9. Standard Body Text, Cards, Mobile Build Body, Scope Items */
+        p:not(.btn-text-p):not(.sec_label):not(.lede):not(.project_hero_client),
+        .process_card_body,
+        p.process_card_body,
+        .mobile_build_body,
+        .results_page_body,
+        .scope_item_premium {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            color: #7C7C70 !important;
+        }
+
+        /* 10. Gallery Cards & Image Text / Mockup Labels */
+        .gallery_card span,
+        .gallery_card_caption,
+        .browser_url,
+        figcaption,
+        .image_caption {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(14px, 1.5vw, 16px) !important;
+            color: #7C7C70 !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gallery_card .n {
+            color: #FFE32A !important;
+            margin-right: 8px !important;
+        }
+
+        /* 11. CTA Section */
+        .cta_heading {
+            font-family: 'Inter', sans-serif !important;
+            font-size: clamp(46px, 5vw, 56px) !important;
+            font-weight: 800 !important;
+            line-height: 1.05 !important;
+            letter-spacing: -1.5px !important;
+            color: #FFFCE1 !important;
+        }
+    </style>
+
     <!--/$-->
 
 
@@ -1804,6 +2001,7 @@
                                             aspect-ratio: unset !important;
                                         }
 
+                                        .project_hero1 .project_reel_wrap img,
                                         .project_hero1 .project_reel_wrap video {
                                             position: absolute !important;
                                             top: 0 !important;
@@ -2151,26 +2349,24 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 32px;">
                             <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
+                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                    <p class="sec_label u-text-style-small">
                                         The Overview
                                     </p>
-                                    <h2 class="u-text-style-h2"
-                                        style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Polished concrete, engineered for search.
                                     </h2>
                                 </div>
                                 <div
-                                    style="flex: 1.2 1 450px; color: #A4A498; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; gap: 16px;">
-                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                    style="flex: 1.2 1 450px; color: #7C7C70; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; gap: 16px;">
+                                    <p class="lede u-text-style-large" style="margin: 0; color: #7C7C70;">
                                         SPCS installs polished concrete and terrazzo floors across Ireland. We
                                         redesigned their website from scratch, launched it with Google Ads to bring in
                                         enquiries straight away, then spent the next couple of months optimising it for
                                         organic search.
                                     </p>
-                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                    <p class="lede u-text-style-large" style="margin: 0; color: #7C7C70;">
                                         SPCS hasn't run a paid ad since. The site ranks in the top five for the searches
                                         that bring in business, and organic traffic alone now brings in 20 to 30
                                         enquiries a month.
@@ -2190,48 +2386,32 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 36px;">
                             <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
-                                <span
-                                    style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">The
-                                    result</span>
-                                <h2
-                                    style="font-size: clamp(28px, 3.6vw, 44px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                <p class="sec_label u-text-style-small">The result</p>
+                                <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                     Paid ads switched off. The enquiries kept coming.</h2>
                             </div>
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 24px;">
-                                <div
+                                <div class="stat_card"
                                     style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">20–30</span>
-                                    <span
-                                        style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">contact
-                                        form enquiries a month, all from organic search</span>
+                                    <span class="results_number" style="color: #FFE32A;">20–30</span>
+                                    <span>contact form enquiries a month, all from organic search</span>
                                 </div>
-                                <div
+                                <div class="stat_card"
                                     style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">€0</span>
-                                    <span
-                                        style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">spent
-                                        on ads since the first couple of months</span>
+                                    <span class="results_number" style="color: #FFE32A;">€0</span>
+                                    <span>spent on ads since the first couple of months</span>
                                 </div>
-                                <div
+                                <div class="stat_card"
                                     style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFFCE1;">Top
-                                        5</span>
-                                    <span
-                                        style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">for
-                                        most searches that bring in business, with #1 positions in Google's map
+                                    <span class="results_number" style="color: #FFFCE1;">Top 5</span>
+                                    <span>for most searches that bring in business, with #1 positions in Google's map
                                         results</span>
                                 </div>
-                                <div
+                                <div class="stat_card"
                                     style="padding-top: 20px; border-top: 1px solid rgba(255, 252, 225, 0.2); display: flex; flex-direction: column; gap: 8px;">
-                                    <span
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: clamp(38px, 4.5vw, 56px); line-height: 1; letter-spacing: -0.04em; color: #FFE32A;">26</span>
-                                    <span
-                                        style="font-size: 15px; color: #A4A498; font-family: 'Inter', sans-serif; line-height: 1.5;">keywords
-                                        ranking in Ireland (Semrush, October 2026)</span>
+                                    <span class="results_number" style="color: #FFE32A;">26</span>
+                                    <span>keywords ranking in Ireland (Semrush, October 2026)</span>
                                 </div>
                             </div>
                         </div>
@@ -2247,19 +2427,17 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 40px;">
                             <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; width: 100%;">
+                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
                                 <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        01 — Before &amp; after
+                                    <p class="sec_label u-text-style-small">
+                                        Before &amp; after
                                     </p>
-                                    <h2 class="u-text-style-h2"
-                                        style="font-size: clamp(28px, 3.4vw, 42px); color: #FFFCE1; margin: 0; line-height: 1.2; font-family: 'Outfit', sans-serif; font-weight: 500;">
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Rebuilt from scratch, with search in mind.
                                     </h2>
                                 </div>
                                 <div style="flex: 1.2 1 450px; color: #7C7C70; font-family: 'Inter', sans-serif;">
-                                    <p style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #A4A498;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         We didn't keep anything from the old site. The new structure gives each service,
                                         such as polished concrete and terrazzo, its own page built around what people
                                         actually search for, with finished floors shown up front and an enquiry form on
@@ -2311,7 +2489,7 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Before</span>
                                     <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Inter', sans-serif ; font-weight: 600;">
                                         Old Structure</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #7C7C70; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2324,7 +2502,7 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">After</span>
                                     <h3
-                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600;">
+                                        style="font-size: 19px; color: #FFFCE1; margin: 0; font-family: 'Inter', sans-serif ; font-weight: 600;">
                                         Built for Search</h3>
                                     <p
                                         style="margin: 0; font-size: 15px; color: #FFFCE1; line-height: 1.6; font-family: 'Inter', sans-serif;">
@@ -2347,15 +2525,11 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: start; margin-bottom: 48px;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7C7C70; font-weight: 600;">02
-                                        — The strategy</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 600; font-family: 'Outfit', sans-serif; color: #0E100F;">
+                                    <p class="sec_label u-text-style-small">The strategy</p>
+                                    <h2 class="u-text-style-h2" style="color: #0E100F; margin: 0;">
                                         Paid to start, organic to stay.</h2>
                                 </div>
-                                <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #4A4B40; font-family: 'Inter', sans-serif;">
+                                <p style="margin: 0; color: #7C7C70;">
                                     A new site takes time to earn rankings. So we launched with Google Ads to bring in
                                     enquiries from day one, and worked on organic search at the same time. Once SPCS
                                     ranked well enough on its own, we switched the ads off.
@@ -2368,11 +2542,9 @@
                                     style="padding: 28px; border-radius: 14px; border: 1px solid #DDD8CE; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #B05D3B; font-weight: 700;">Launch</span>
-                                    <h3
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #0E100F; margin: 0;">
+                                    <h3 style="color: #0E100F !important; margin: 0;">
                                         New site + Google Ads</h3>
-                                    <p
-                                        style="font-size: 15px; line-height: 1.6; color: #5A5B50; margin: 0; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         The redesigned site went live with search ads on the main searches, so enquiries
                                         came in while the rankings were still building.</p>
                                 </div>
@@ -2381,11 +2553,9 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #B05D3B; font-weight: 700;">First
                                         couple of months</span>
-                                    <h3
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #0E100F; margin: 0;">
+                                    <h3 style="color: #0E100F !important; margin: 0;">
                                         Organic optimisation</h3>
-                                    <p
-                                        style="font-size: 15px; line-height: 1.6; color: #5A5B50; margin: 0; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         Service pages written around real searches, on-page SEO, and the Google Business
                                         Profile set up to appear in map results across Ireland.</p>
                                 </div>
@@ -2394,11 +2564,9 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 700;">Since
                                         then</span>
-                                    <h3
-                                        style="font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 20px; color: #FFFCE1; margin: 0;">
+                                    <h3 style="color: #FFFCE1; margin: 0;">
                                         Ads off, organic only</h3>
-                                    <p
-                                        style="font-size: 15px; line-height: 1.6; color: #A4A498; margin: 0; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         No paid ads at all. Every enquiry now comes through organic search, at no cost
                                         per click.</p>
                                 </div>
@@ -2418,15 +2586,11 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: end;">
                                 <div style="display: flex; flex-direction: column; gap: 12px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">03
-                                        — Rankings</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">Rankings</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Ranking for the searches that bring in work.</h2>
                                 </div>
-                                <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                <p style="margin: 0; color: #7C7C70;">
                                     These are the searches people make when they're ready to get a quote. SPCS shows up
                                     in Google's map results for the main searches and in the top five organic results
                                     for most of the rest. The biggest, "polished concrete floors", is searched about
@@ -2449,82 +2613,83 @@
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">polished
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">polished
                                             concrete floors</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">Map
                                             pack · #5</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">1,600</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">1,600</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">polished
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">polished
                                             concrete</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">Map
                                             pack</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">590</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">590</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">polished
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">polished
                                             concrete floors ireland</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">Map
                                             pack</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">210</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">210</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">concrete
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">concrete
                                             floor</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">Map
                                             pack · #3</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">260</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">260</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">terrazzo
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">terrazzo
                                             floor</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid #FFE32A; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">#4</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">170</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">170</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">terrazzo
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">terrazzo
                                             flooring ireland</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); color: #FFFCE1; font-family: 'Inter', sans-serif; font-weight: 500;">#15</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">140</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">140</span>
                                     </div>
                                     <div
                                         style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 80px; gap: 16px; align-items: center; padding: 13px 0; font-size: 14.5px;">
                                         <span
-                                            style="font-family: 'Outfit', sans-serif; font-weight: 500; color: #FFFCE1;">terrazzo
+                                            style="font-family: 'Inter', sans-serif ; font-weight: 500; color: #FFFCE1;">terrazzo
                                             flooring</span>
                                         <span
                                             style="justify-self: start; white-space: nowrap; font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); color: #FFFCE1; font-family: 'Inter', sans-serif; font-weight: 500;">#16</span>
                                         <span
-                                            style="text-align: right; color: #A4A498; font-family: 'Inter', sans-serif;">590</span>
+                                            style="text-align: right; color: #7C7C70 ; font-family: 'Inter', sans-serif;">590</span>
                                     </div>
 
-                                    <span
-                                        style="font-size: 12px; color: #7C7C70; font-family: 'Inter', sans-serif; padding-top: 14px; border-top: 1px solid #2A2B25;">Source:
+                                    <p class="footnote_text u-text-style-small"
+                                        style="color: #FFFCE1 !important; font-family: 'Inter', sans-serif; padding-top: 14px; border-top: 1px solid #2A2B25; margin: 0;">
+                                        Source:
                                         Semrush organic positions, google.ie, October 2026. Map pack = Google's map
-                                        results.</span>
+                                        results.</p>
                                 </div>
 
                                 <!-- Semrush Screenshot Card -->
@@ -2550,19 +2715,14 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: center;">
                                 <div style="display: flex; flex-direction: column; gap: 18px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">04
-                                        — AI Overviews</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">AI Overviews</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Google's AI answer cites SPCS first.</h2>
-                                    <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         When someone asks Google AI about "polished concrete floors cork", the answer
                                         opens with a sentence taken from the SPCS site, and spcs.ie is the first source
                                         listed beside it, ahead of Facebook and a regional concrete supplier.</p>
-                                    <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         More people now read the AI answer before they look at the links below it.
                                         Because the service pages give clear, factual answers, SPCS gets quoted in that
                                         answer as well as ranking underneath it.</p>
@@ -2597,11 +2757,8 @@
                             <div
                                 style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
                                 <div style="display: flex; flex-direction: column; gap: 10px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">05
-                                        — The full page</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">The full page</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Homepage, top to bottom.</h2>
                                 </div>
                                 <span
@@ -2649,14 +2806,10 @@
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFE32A; font-weight: 600;">06
-                                        — Responsive</span>
-                                    <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                                    <p class="sec_label u-text-style-small">Responsive</p>
+                                    <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         Easy to enquire from a phone.</h2>
-                                    <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif;">
+                                    <p style="margin: 0; color: #7C7C70;">
                                         People searching from a phone see photos of finished floors first and can reach
                                         the quote form in one tap. A fast mobile site also helps keep those rankings.
                                     </p>
@@ -2717,11 +2870,9 @@
                                     </video>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
-                                    <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                        07 / Client testimonial</p>
+                                    <p class="sec_label u-text-style-small">Client testimonial</p>
                                     <blockquote
-                                        style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Outfit', sans-serif;">
+                                        style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Inter', sans-serif ;">
                                         <p style="margin: 0; font-style: italic;">“Waiting on the client's quote. We'll
                                             add it here once it's approved.”</p>
                                     </blockquote>
@@ -2744,21 +2895,19 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12"
                             style="max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; text-align: center; align-items: center;">
-                            <h2
-                                style="font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.035em; margin: 0; font-weight: 500; font-family: 'Outfit', sans-serif; color: #FFFCE1;">
+                            <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                 Still paying for every click?</h2>
-                            <p
-                                style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #A4A498; font-family: 'Inter', sans-serif; max-width: 660px;">
+                            <p style="margin: 0; color: #7C7C70; max-width: 660px;">
                                 We build sites that start with paid ads and end up bringing in enquiries through search
                                 alone. Tell us what you sell and we'll show you which searches could bring you work.</p>
                             <div
                                 style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
                                 <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
                                     onmouseover="this.style.transform='scale(1.04)'"
                                     onmouseout="this.style.transform='scale(1)'">Start a project</a>
                                 <a href="https://spcs.ie" target="_blank" rel="noopener" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Outfit', sans-serif; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
+                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
                                     onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
                                     onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
                                     the live site ↗</a>
