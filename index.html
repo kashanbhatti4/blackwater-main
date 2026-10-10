@@ -4329,17 +4329,52 @@
                                 gap: 0.5rem !important;
                             }
                         }
+                    
+                        .decisions_heading_wrap {
+                            grid-column: 1 / -1 !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            display: flex !important;
+                            flex-direction: column !important;
+                            gap: 24px !important;
+                        }
+
+                        .decisions_heading_custom {
+                            font-size: clamp(2.3rem, 3.4vw, 4.2rem) !important;
+                            font-size: calc(var(--_extra-variables---services-headings) * 0.7) !important;
+                            line-height: 1.05 !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            margin: 0 !important;
+                            padding: 0 !important;
+                            text-align: left !important;
+                        }
+
+                        .decisions_paragraph_custom {
+                            width: 100% !important;
+                            max-width: 100% !important;
+                            margin: 0 !important;
+                            color: #7C7C70 !important;
+                            text-align: left !important;
+                        }
+
+                        @media screen and (max-width: 991px) {
+                            .decisions_heading_custom {
+                                font-size: 2rem !important;
+                                line-height: 1.15 !important;
+                            }
+
+                            .decisions_heading_wrap {
+                                gap: 20px !important;
+                            }
+                        }
                     </style>
                 </div>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom" style="margin-bottom: 2rem;">
-                        <div class="content_wrap u-column-span-10" style="grid-column-end: span 12;">
-                            <h2 class="u-text-style-h2" style="margin-bottom: 1.5rem; color: #FFFCE1;">Two decisions
-                                most<br>businesses get wrong.</h2>
-                            <p class="u-text-style-main" style="max-width: 700px; color: #7C7C70;">Where the budget
-                                goes, and what the site gets built on.
-                                Get either wrong and you'll be paying for it for three years.
-                                Both take under two minutes.</p>
+                        <div class="content_wrap u-column-span-12 decisions_heading_wrap" style="grid-column: 1 / -1; width: 100%; display: flex; flex-direction: column; gap: 24px;">
+                            <h2 class="u-text-style-h2 decisions_heading_custom" style="margin: 0; color: #FFFCE1; width: 100%; max-width: 100%;">Two decisions most businesses get wrong.</h2>
+                            <p class="u-text-style-main decisions_paragraph_custom" style="margin: 0; width: 100%; max-width: 100%; color: #7C7C70;">Where the budget goes, and what the site gets built on. Get either wrong and you'll be paying for it for three years. Both take under two minutes.</p>
                         </div>
                     </div>
 
