@@ -3914,14 +3914,26 @@
 
             <!--$We've already made the mistake-->
             <style>
-                .about_heading_custom {
+                .home_about_content .service_intro_text_group {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    gap: 24px !important;
+                }
 
+                .about_heading_custom {
                     margin-bottom: 0 !important;
                     padding-bottom: 0 !important;
+                    line-height: 1.05 !important;
+                }
+
+                .about_paragraph_custom {
+                    margin-top: 0 !important;
                 }
 
                 @media screen and (min-width: 992px) {
                     .about_heading_custom {
+                        font-size: clamp(2.3rem, 3.4vw, 4.2rem) !important;
+                        font-size: calc(var(--_extra-variables---services-headings) * 0.7) !important;
                         max-width: 70%;
                         margin-bottom: 0 !important;
                         padding-bottom: 0 !important;
@@ -3941,6 +3953,7 @@
 
                     .home_about_content .service_intro_text_group {
                         order: 1 !important;
+                        gap: 24px !important;
                     }
 
                     .home_about_content .u-button-wrapper {
