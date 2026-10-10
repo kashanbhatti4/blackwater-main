@@ -17,22 +17,77 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
     
-    const { name, email, service, message } = req.body;
-    
-    if (!name || !email || !service || !message) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
-    
-    const resendApiKey = process.env.RESEND_API_KEY;
+    const isAudit = req.body.type === 'audit' || Boolean(req.body.company && req.body.website);
+
+    const resendApiKey = process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.replace(/^['"]|['"]$/g, '') : null;
     if (!resendApiKey) {
         return res.status(500).json({ error: 'Resend API key is not configured on the server' });
     }
     
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Blackwater Digital <info@blackwaterdigital.ie>';
-    const toEmailRaw = process.env.CONTACT_TO_EMAIL || 'info@blackwaterdigital.ie, admin@blackwaterdigital.ie';
+    let fromEmail = process.env.RESEND_FROM_EMAIL || 'Blackwater Digital <info@blackwaterdigital.ie>';
+    fromEmail = fromEmail.replace(/^['"]|['"]$/g, '');
+    let toEmailRaw = process.env.CONTACT_TO_EMAIL || 'info@blackwaterdigital.ie, admin@blackwaterdigital.ie';
+    toEmailRaw = toEmailRaw.replace(/^['"]|['"]$/g, '');
     const toList = toEmailRaw.includes(',')
         ? toEmailRaw.split(',').map(e => e.trim()).filter(Boolean)
         : toEmailRaw.trim();
+
+    let emailSubject = '';
+    let emailHtml = '';
+    let replyToEmail = '';
+
+    if (isAudit) {
+        const company = (req.body.company || req.body.company_name || req.body.name || '').trim();
+        const email = (req.body.email || '').trim();
+        const website = (req.body.website || req.body.website_url || req.body.url || '').trim();
+
+        if (!company || !email || !website) {
+            return res.status(400).json({ error: 'Company name, work email, and website URL are all required.' });
+        }
+
+        const formattedWebsite = website.startsWith('http://') || website.startsWith('https://') ? website : `https://${website}`;
+        replyToEmail = email;
+        emailSubject = `New Website Audit Request: ${company} (${website})`;
+        emailHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #2A2B25; border-radius: 8px; background-color: #0E100F; color: #FFFCE1;">
+                <div style="border-bottom: 2px solid #FFE32A; padding-bottom: 14px; margin-bottom: 20px;">
+                    <h2 style="color: #FFE32A; margin: 0; font-size: 22px; letter-spacing: 0.5px;">New Website Audit Request</h2>
+                    <p style="color: #7C7C70; margin: 6px 0 0 0; font-size: 13px;">Received via Blackwater Digital free audit section</p>
+                </div>
+                <div style="background-color: #171918; padding: 18px; border-radius: 6px; margin-bottom: 20px;">
+                    <p style="font-size: 15px; margin: 0 0 12px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Company Name</strong>${company}</p>
+                    <p style="font-size: 15px; margin: 0 0 12px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Work Email</strong><a href="mailto:${email}" style="color: #FFE32A; text-decoration: none;">${email}</a></p>
+                    <p style="font-size: 15px; margin: 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Website URL</strong><a href="${formattedWebsite}" target="_blank" rel="noopener noreferrer" style="color: #FFE32A; text-decoration: underline;">${website}</a></p>
+                </div>
+            </div>
+        `;
+    } else {
+        const { name, email, service, message } = req.body;
+        
+        if (!name || !email || !service || !message) {
+            return res.status(400).json({ error: 'All fields are required' });
+        }
+        
+        replyToEmail = email;
+        emailSubject = `New Lead: ${service} from ${name}`;
+        emailHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #2A2B25; border-radius: 8px; background-color: #0E100F; color: #FFFCE1;">
+                <div style="border-bottom: 2px solid #FFE32A; padding-bottom: 14px; margin-bottom: 20px;">
+                    <h2 style="color: #FFE32A; margin: 0; font-size: 22px; letter-spacing: 0.5px;">New Website Lead Submission</h2>
+                    <p style="color: #7C7C70; margin: 6px 0 0 0; font-size: 13px;">Received via Blackwater Digital contact form</p>
+                </div>
+                <div style="background-color: #171918; padding: 18px; border-radius: 6px; margin-bottom: 20px;">
+                    <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Name</strong>${name}</p>
+                    <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Email</strong><a href="mailto:${email}" style="color: #FFE32A; text-decoration: none;">${email}</a></p>
+                    <p style="font-size: 15px; margin: 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Service Requested</strong>${service}</p>
+                </div>
+                <div style="padding: 18px; background-color: #171918; border-left: 3px solid #FFE32A; border-radius: 4px;">
+                    <strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 8px;">Message</strong>
+                    <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #FFFCE1; white-space: pre-wrap;">${message}</p>
+                </div>
+            </div>
+        `;
+    }
 
     try {
         const response = await fetch('https://api.resend.com/emails', {
@@ -44,25 +99,9 @@ export default async function handler(req, res) {
             body: JSON.stringify({
                 from: fromEmail,
                 to: toList,
-                reply_to: email,
-                subject: `New Lead: ${service} from ${name}`,
-                html: `
-                    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #2A2B25; border-radius: 8px; background-color: #0E100F; color: #FFFCE1;">
-                        <div style="border-bottom: 2px solid #FFE32A; padding-bottom: 14px; margin-bottom: 20px;">
-                            <h2 style="color: #FFE32A; margin: 0; font-size: 22px; letter-spacing: 0.5px;">New Website Lead Submission</h2>
-                            <p style="color: #7C7C70; margin: 6px 0 0 0; font-size: 13px;">Received via Blackwater Digital contact form</p>
-                        </div>
-                        <div style="background-color: #171918; padding: 18px; border-radius: 6px; margin-bottom: 20px;">
-                            <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Name</strong>${name}</p>
-                            <p style="font-size: 15px; margin: 0 0 10px 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Email</strong><a href="mailto:${email}" style="color: #FFE32A; text-decoration: none;">${email}</a></p>
-                            <p style="font-size: 15px; margin: 0; color: #FFFCE1;"><strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Service Requested</strong>${service}</p>
-                        </div>
-                        <div style="padding: 18px; background-color: #171918; border-left: 3px solid #FFE32A; border-radius: 4px;">
-                            <strong style="color: #7C7C70; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; display: block; margin-bottom: 8px;">Message</strong>
-                            <p style="font-size: 15px; line-height: 1.6; margin: 0; color: #FFFCE1; white-space: pre-wrap;">${message}</p>
-                        </div>
-                    </div>
-                `
+                reply_to: replyToEmail,
+                subject: emailSubject,
+                html: emailHtml
             })
         });
         
