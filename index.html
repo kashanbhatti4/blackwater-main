@@ -5661,7 +5661,7 @@
 
                         .audit_form_row_bottom {
                             display: flex;
-                            align-items: flex-end;
+                            align-items: center;
                             gap: 20px;
                             width: 100%;
                         }
@@ -5680,7 +5680,7 @@
                         .audit_btn_wrap {
                             flex-shrink: 0;
                             display: flex;
-                            align-items: flex-end;
+                            align-items: center;
                         }
 
                         .audit_input {
@@ -5711,19 +5711,49 @@
                         }
 
                         .audit_submit_btn {
-                            border: none;
-                            background: transparent;
-                            padding: 0;
-                            margin: 0;
-                            cursor: pointer;
-                            font: inherit;
-                            text-decoration: none;
-                            display: inline-block;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #FFE32A !important;
+                            color: #0E100F !important;
+                            border: 1px solid #FFE32A !important;
+                            border-radius: 9999px !important;
+                            padding: 15px 36px !important;
+                            font-size: 1rem !important;
+                            font-weight: 700 !important;
+                            font-family: inherit;
+                            cursor: pointer !important;
+                            text-decoration: none !important;
+                            white-space: nowrap !important;
+                            line-height: 1.2;
+                            box-shadow: 0 4px 18px rgba(255, 227, 42, 0.25) !important;
+                            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                        }
+
+                        .audit_submit_btn span,
+                        .audit_submit_btn p {
+                            color: #0E100F !important;
+                            margin: 0 !important;
+                            font-weight: 700 !important;
+                        }
+
+                        .audit_submit_btn:hover {
+                            background-color: #FFFCE1 !important;
+                            border-color: #FFFCE1 !important;
+                            color: #0E100F !important;
+                            transform: translateY(-2px) !important;
+                            box-shadow: 0 8px 24px rgba(255, 227, 42, 0.4) !important;
+                        }
+
+                        .audit_submit_btn:active {
+                            transform: translateY(0) !important;
+                            box-shadow: 0 2px 10px rgba(255, 227, 42, 0.2) !important;
                         }
 
                         .audit_submit_btn:disabled {
-                            opacity: 0.6;
-                            cursor: not-allowed;
+                            opacity: 0.6 !important;
+                            cursor: not-allowed !important;
+                            transform: none !important;
                         }
 
                         .audit_form_status {
@@ -6032,17 +6062,8 @@
                                                 placeholder="yourcompany.ie" required autocomplete="url">
                                         </div>
                                         <div class="audit_btn_wrap">
-                                            <button type="submit" id="audit-submit-btn" data-theme="dark" data-btn-hover=""
-                                                class="btn w-inline-block audit_submit_btn">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap">
-                                                    <div class="btn__circle">
-                                                        <div class="before__100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="btn__text u-text-style-main-medium">
-                                                    <p class="btn-text-p" id="audit-btn-text">Audit My Site</p>
-                                                </div>
+                                            <button type="submit" id="audit-submit-btn" class="audit_submit_btn">
+                                                <span id="audit-btn-text">Audit My Site</span>
                                             </button>
                                         </div>
                                     </div>
