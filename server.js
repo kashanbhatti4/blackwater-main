@@ -211,8 +211,8 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    // Redirect any *.html to clean URL (exclude iframe embeds in /animations/)
-    if (pathname.endsWith('.html') && !pathname.startsWith('/animations/')) {
+    // Redirect any *.html to clean URL (exclude iframe embeds in /animations/ and component templates in /components/)
+    if (pathname.endsWith('.html') && !pathname.startsWith('/animations/') && !pathname.startsWith('/components/')) {
         const cleanPath = pathname.slice(0, -5);
         res.writeHead(301, { 'Location': `${cleanPath}${searchString}` });
         res.end();

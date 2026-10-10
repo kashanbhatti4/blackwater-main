@@ -161,8 +161,8 @@
         h1.project_hero_heading,
         h1 {
             font-family: 'Plain', Arial, sans-serif !important;
-            font-size: clamp(48px, 8.5vw, 120px) !important;
-            font-weight: 800 !important;
+            font-size: clamp(40px, 5.56vw, 80px) !important;
+            font-weight: 600 !important;
             line-height: 1.02 !important;
             letter-spacing: -0.025em !important;
             color: #FFFCE1 !important;
@@ -1926,8 +1926,9 @@
             <div class="project_hero_wrap">
                 <!--$-->
 
-                <!-- SECTION 0: HERO (Exact SPCS / Blackbird structure) -->
-                <section id="" class="main-section_wrap u-section project_hero" style="margin-bottom: 0;">
+
+                <!--$-->
+                <section id="" class="main-section_wrap u-section project_hero">
                     <div class="main-section_contain u-container project_hero">
                         <div class="content_layout u-grid-custom project_hero is-menu">
                             <div class="content_wrap u-column-span-12 u-grid-subgrid project_hero1">
@@ -1935,8 +1936,8 @@
                                     .main-section_wrap.project_hero {
                                         min-height: auto !important;
                                         height: auto !important;
-                                        padding-top: clamp(40px, 6vw, 50px) !important;
-                                        padding-bottom: clamp(30px, 4vw, 70px) !important;
+                                        padding-top: clamp(60px, 8vw, 100px) !important;
+                                        padding-bottom: clamp(40px, 5vw, 70px) !important;
                                     }
 
                                     .content_layout.project_hero.is-menu {
@@ -1950,39 +1951,160 @@
                                         padding-bottom: 0 !important;
                                     }
 
-                                    .project_hero .project_reel_wrap {
-                                        height: 100% !important;
-                                        aspect-ratio: auto !important;
+                                    .project_hero .u-section-spacer {
+                                        display: none !important;
                                     }
 
-                                    @media screen and (max-width: 1040px) {
-                                        .main-section_wrap.project_hero {
-                                            padding-top: 0px !important;
-                                            padding-bottom: clamp(47px, 5.5vw, 51px) !important;
+                                    /* 3 Main Groups Container: Equal spacing between groups */
+                                    .project_hero_content {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        text-align: center !important;
+                                        max-width: 1200px !important;
+                                        margin: 0 auto !important;
+                                        gap: 60px !important;
+                                        /* Equal spacing between Group 1, Group 2, Group 3 */
+                                        width: 100% !important;
+                                    }
+
+                                    /* GROUP 1: Heading + Subtitle */
+                                    .project_hero_title {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important;
+                                        /* No extra gap between heading and body text */
+                                    }
+
+                                    .project_hero_heading {
+                                        font-family: 'Plain', Arial, sans-serif !important;
+                                        font-size: clamp(48px, 8.5vw, 120px) !important;
+                                        line-height: 1.02 !important;
+                                        font-weight: 800 !important;
+                                        letter-spacing: -0.025em !important;
+                                        text-align: center !important;
+                                        color: #FFFCE1 !important;
+                                        margin: 0 0 22px 0 !important;
+                                        /* Spacing between heading and body text set to 22px */
+                                        padding: 0 !important;
+                                    }
+
+                                    @media (min-width: 1200px) {
+                                        .project_hero_heading {
+                                            font-size: 120px !important;
                                         }
                                     }
 
+                                    .project_hero_client_wrap {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        flex-wrap: wrap !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important;
+                                    }
+
+                                    .project_hero_client {
+                                        font-family: 'Inter', sans-serif !important;
+                                        font-size: clamp(18px, 2vw, 24px) !important;
+                                        color: #7C7C70 !important;
+                                        font-weight: 500 !important;
+                                        line-height: 1.3 !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    /* GROUP 2: Tags */
+                                    .project_hero_description {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_tags_wrap {
+                                        display: flex !important;
+                                        flex-wrap: wrap !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        gap: 8px 10px !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_tag {
+                                        font-size: 16px !important;
+                                    }
+
+                                    .project_hero_tag p {
+                                        font-family: 'Inter', Arial, sans-serif !important;
+                                        font-size: 16px !important;
+                                        line-height: 1.4 !important;
+                                    }
+
+                                    /* GROUP 3: Button */
                                     .project_hero_cta_wrap {
-                                        margin-top: 12px;
-                                        display: flex;
-                                        align-items: center;
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        /* Zero margin so gap on parent creates equal spacing */
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_cta_wrap .btn-wrap {
+                                        display: inline-flex !important;
+                                        justify-content: center !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero1 .project_reel_wrap {
+                                        display: none !important;
                                     }
 
                                     @media screen and (max-width: 767px) {
-                                        .project_hero_cta_wrap {
-                                            order: 3 !important;
-                                            margin-top: 8px;
-                                            width: 100%;
+                                        .main-section_wrap.project_hero {
+                                            padding-top: 24px !important;
+                                            padding-bottom: 32px !important;
                                         }
 
-                                        .project_hero .project_reel_wrap {
-                                            height: auto !important;
+                                        .project_hero_content {
+                                            gap: 24px !important;
+                                            /* Equal spacing for mobile */
+                                        }
+
+                                        .project_hero_heading {
+                                            font-size: clamp(38px, 9.5vw, 54px) !important;
+                                            margin-bottom: 10px !important;
+                                        }
+
+                                        .project_hero_client {
+                                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                                        }
+
+                                        .project_hero_tag,
+                                        .project_hero_tag p {
+                                            font-size: 14px !important;
                                         }
                                     }
                                 </style>
+                                <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
+                                    STYLE="--span-lg: 12; --span-md: 12; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
                                     class="project_hero_content u-display-contents-small">
+                                    <!--$-->
                                     <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
                                         style="margin-bottom: 0;">
                                         <h1 class="project_hero_heading u-text-style-h1">Tile Restoration</h1>
@@ -1991,7 +2113,10 @@
                                             <p class="project_hero_client u-text-style-large">Tile Restoration</p>
                                         </div>
                                     </div>
-                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small">
+                                    <!--/$-->
+                                    <!--$-->
+                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small"
+                                        style="margin-top: 0; padding-top: 0;">
                                         <div class="w-dyn-list">
                                             <div role="list"
                                                 class="project_hero_tags_wrap u-order-last-small w-dyn-items">
@@ -2001,7 +2126,7 @@
                                                 </div>
                                                 <div role="listitem"
                                                     class="project_hero_tag u-text-style-small-medium w-dyn-item">
-                                                    <p>UX &amp; UI</p>
+                                                    <p>UX & UI</p>
                                                 </div>
                                                 <div role="listitem"
                                                     class="project_hero_tag u-text-style-small-medium w-dyn-item">
@@ -2018,6 +2143,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--/$-->
 
                                     <!-- View Live Website Button -->
                                     <div class="project_hero_cta_wrap">
@@ -2047,10 +2173,10 @@
                                                     }
                                                 </style>
                                             </div>
-                                            <a href="https://tilerestoration.ie" target="_blank"
+                                            <a href="https://tilerestoration.ie/" target="_blank"
                                                 rel="noopener noreferrer" data-theme="dark" data-btn-hover=""
                                                 data-barba-prevent class="btn w-inline-block"
-                                                aria-label="Visit Tile Restoration live website">
+                                                aria-label="Visit OpenCom live website">
                                                 <div class="btn__bg"></div>
                                                 <div class="btn__circle-wrap">
                                                     <div class="btn__circle">
@@ -2064,19 +2190,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
-                                    class="project_reel_wrap">
-                                    <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Tile Restoration - Hero Visual" loading="eager"
-                                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px; display: block;" />
-                                </div>
+                                <!--/$-->
                             </div>
                         </div>
                     </div>
                     <div data-wf--spacer--variant="small"
                         class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
                 </section>
+                <!--/$-->
+
+
+
 
 
                 <style>
@@ -2248,10 +2372,53 @@
                         position: relative;
                         height: 720px;
                         max-height: 75vh;
-                        overflow-y: auto;
+                        overflow-y: hidden;
                         overflow-x: hidden;
                         scroll-behavior: smooth;
                         background: #0E100F;
+                    }
+
+                    .browser_scroll_container.is-active {
+                        overflow-y: auto !important;
+                    }
+
+                    .browser_scroll_overlay {
+                        position: absolute;
+                        inset: 0;
+                        background: rgba(14, 16, 15, 0.45);
+                        backdrop-filter: blur(2px);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10;
+                        transition: opacity 0.25s ease, visibility 0.25s ease;
+                        cursor: pointer;
+                    }
+
+                    .browser_scroll_overlay.is-hidden {
+                        opacity: 0;
+                        visibility: hidden;
+                        pointer-events: none;
+                    }
+
+                    .browser_scroll_prompt {
+                        background: rgba(14, 16, 15, 0.92);
+                        border: 1px solid #FFE32A;
+                        color: #FFFCE1;
+                        padding: 12px 24px;
+                        border-radius: 999px;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+                        transition: transform 0.2s ease;
+                    }
+
+                    .browser_scroll_overlay:hover .browser_scroll_prompt {
+                        transform: scale(1.04);
                     }
 
                     .browser_scroll_container::-webkit-scrollbar {
@@ -2316,8 +2483,8 @@
                             <div class="content_wrap u-column-span-12"
                                 style="display: flex; flex-direction: column; gap: 32px;">
                                 <div
-                                    style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 100%;">
-                                    <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px;">
+                                    style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: start; width: 100%;">
+                                    <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 40px;">
                                         <p class="sec_label u-text-style-small">
                                             The Overview
                                         </p>
@@ -2354,7 +2521,7 @@
                         <div class="content_layout u-grid-custom">
                             <div class="content_wrap u-column-span-12"
                                 style="display: flex; flex-direction: column; gap: 36px;">
-                                <div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px;">
+                                <div style="display: flex; flex-direction: column; gap: 40px; max-width: 780px;">
                                     <p class="sec_label u-text-style-small">2026 so far</p>
                                     <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                         A small ad budget, on top of strong organic rankings.</h2>
@@ -2400,8 +2567,8 @@
                         <div class="content_layout u-grid-custom">
                             <div class="content_wrap u-column-span-12">
                                 <div
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: start; margin-bottom: 48px;">
-                                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 40px; align-items: center; margin-bottom: 48px;">
+                                    <div style="display: flex; flex-direction: column; gap: 40px;">
 
                                         <p class="sec_label u-text-style-small"
                                             style="font-family: 'Inter', sans-serif; ">
@@ -2470,7 +2637,7 @@
                             <div class="content_wrap u-column-span-12">
                                 <div
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
-                                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                                    <div style="display: flex; flex-direction: column; gap: 40px;">
                                         <p class="sec_label u-text-style-small">AI search</p>
                                         <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             First name in Google's AI answer.</h2>
@@ -2496,7 +2663,7 @@
                                         style="border-radius: 14px; overflow: hidden; background: #0E100F; border: 1px solid #2A2B25; box-shadow: 0 16px 36px rgba(0,0,0,0.4);">
                                         <img src="https://blackwatercdn.b-cdn.net/TILE%20RESTORATION/02%20ai%20search.png"
                                             alt="Google AI answer citing Tile Restoration first"
-                                            style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;" />
+                                            style="width: 100%; height: auto; object-fit: contain; display: block;" />
                                     </div>
                                 </div>
                             </div>
@@ -2516,9 +2683,9 @@
                                         style="border-radius: 14px; overflow: hidden; background: #0E100F; border: 1px solid #2A2B25; box-shadow: 0 16px 36px rgba(0,0,0,0.4);">
                                         <img src="https://blackwatercdn.b-cdn.net/TILE%20RESTORATION/03%20Google%20ads.png"
                                             alt="Google Ads overview screenshot"
-                                            style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;" />
+                                            style="width: 100%; height: auto; object-fit: contain; display: block;" />
                                     </div>
-                                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                                    <div style="display: flex; flex-direction: column; gap: 40px;">
                                         <p class="sec_label u-text-style-small">Google Ads</p>
                                         <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Paid search kept lean.</h2>
@@ -2564,14 +2731,12 @@
                                 style="display: flex; flex-direction: column; gap: 24px;">
                                 <div
                                     style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                    <div style="display: flex; flex-direction: column; gap: 40px;">
                                         <p class="sec_label u-text-style-small">The full page</p>
                                         <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
                                             Homepage, top to bottom.</h2>
                                     </div>
-                                    <span
-                                        style="font-size: 14px; color: #FFE32A; font-family: 'Inter', sans-serif; font-weight: 500;">Scroll
-                                        inside the window ↓</span>
+
                                 </div>
 
                                 <!-- Chrome Browser Window Mockup Frame with Tall Scrollable Image -->
@@ -2594,12 +2759,40 @@
                                             style="font-size: 12px; color: #7C7C70; font-family: 'Inter', sans-serif;">Full
                                             Page</span>
                                     </div>
-                                    <div class="browser_scroll_container">
+                                    <div class="browser_scroll_container" id="mockup-scroll-container">
+                                        <div class="browser_scroll_overlay" id="mockup-scroll-overlay">
+                                            <div class="browser_scroll_prompt">
+                                                <span>Click to scroll inside window</span>
+                                                <span style="color: #FFE32A;">↓</span>
+                                            </div>
+                                        </div>
                                         <img src="https://blackwatercdn.b-cdn.net/TILE%20RESTORATION/04%20homepage%20scroll.png"
                                             alt="Tile Restoration full-page homepage capture"
-                                            style="width: 100%; height: auto; min-height: 2200px; object-fit: cover; display: block;" />
+                                            style="width: 100%; height: auto; min-height: 2200px; object-fit: contain; display: block;" />
                                     </div>
                                 </div>
+                                <script>
+                                    (function () {
+                                        var mockupWindow = document.querySelector('.browser_mockup_window');
+                                        var container = document.getElementById('mockup-scroll-container');
+                                        var overlay = document.getElementById('mockup-scroll-overlay');
+
+                                        if (!mockupWindow || !container || !overlay) return;
+
+                                        function activate() {
+                                            container.classList.add('is-active');
+                                            overlay.classList.add('is-hidden');
+                                        }
+
+                                        function deactivate() {
+                                            container.classList.remove('is-active');
+                                            overlay.classList.remove('is-hidden');
+                                        }
+
+                                        overlay.addEventListener('click', activate);
+                                        mockupWindow.addEventListener('mouseleave', deactivate);
+                                    })();
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -2615,7 +2808,8 @@
                                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
                                     <div style="display: flex; flex-direction: column; gap: 16px;">
                                         <p class="sec_label u-text-style-small">Responsive</p>
-                                        <h2 class="u-text-style-h2" style="color: #FFFCE1; margin: 0;">
+                                        <h2 class="u-text-style-h2"
+                                            style="color: #FFFCE1; margin: 0; padding-top: 20px;">
                                             Before-and-after photos, on a phone.</h2>
                                         <p style="margin: 0; color: #7C7C70;">
                                             Most of these ad clicks happen on a phone. The mobile site leads with
@@ -2628,7 +2822,7 @@
                                             <div class="phone_mockup_screen">
                                                 <div class="phone_mockup_notch"></div>
                                                 <video preload="auto" playsinline muted loop autoplay
-                                                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                                    style="width: 100%; height: 100%; object-fit: contain; display: block;">
                                                     <source
                                                         src="https://vz-5d3a8c6b-e14.b-cdn.net/48ea91bc-5a6d-442d-92fb-565cf494b0e0/playlist.m3u8"
                                                         type="application/x-mpegURL" />
@@ -2637,55 +2831,14 @@
                                             <p
                                                 style="text-align: center; font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin: 12px 0 0 0;">
                                                 Mobile homepage</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SECTION 8: 06 / CLIENT TESTIMONIAL (Exact SPCS / Blackbird structure) -->
-                <section class="main-section_wrap u-section" style="padding-block: 80px; background-color: #FFFCE1;">
-                    <div class="main-section_contain u-container">
-                        <div class="content_layout u-grid-custom">
-                            <div class="content_wrap u-column-span-12"
-                                style="display: grid; grid-template-columns: 1fr; gap: 48px;">
-                                <div class="split_layout"
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
-                                    <div
-                                        style="border: 2px solid #2A2B25; aspect-ratio: 9/16; width: 100%; max-width: 340px; margin: 0 auto; overflow: hidden; background: #131615; position: relative; border-radius: 8px;">
-                                        <video controls preload="metadata" playsinline
-                                            style="width: 100%; height: 100%; object-fit: cover;">
-                                            <source
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/playlist.m3u8"
-                                                type="application/x-mpegURL">
-                                            <source
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/playlist.m3u8"
-                                                type="video/mp4">
-                                        </video>
-                                    </div>
-                                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                                        <p class="sec_label u-text-style-small">Client testimonial</p>
-                                        <blockquote
-                                            style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Inter', sans-serif ;">
-                                            <p style="margin: 0; font-style: italic;">“Waiting on the client's quote.
-                                                We'll add it here once it's approved.”</p>
-                                        </blockquote>
-                                        <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
-                                            <div
-                                                style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 15px;">
-                                                TR</div>
-                                            <cite
-                                                style="display: block; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #0E100F; font-style: normal;">
-                                                Tile Restoration, Cork
-                                            </cite>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </section>
+
+
 
                 <!-- SECTION 9: 07 / CTA (Exact SPCS / Blackbird structure, without next project button) -->
                 <section class="main-section_wrap u-section"
@@ -2701,16 +2854,45 @@
                                     where, and we'll show you how to reach people searching for it.</p>
                                 <div
                                     style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
-                                    <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                        style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
-                                        onmouseover="this.style.transform='scale(1.04)'"
-                                        onmouseout="this.style.transform='scale(1)'">Start a project</a>
-                                    <a href="https://tilerestoration.ie" target="_blank" rel="noopener"
-                                        class="btn w-inline-block"
-                                        style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
-                                        onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
-                                        onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
-                                        the live site ↗</a>
+                                    <div class="btn-wrap">
+                                        <div class="u-embed-css w-embed">
+                                            <style>
+                                                .btn .btn__text {
+                                                    transition: color 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+                                                }
+
+                                                .btn .btn__circle {
+                                                    transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+                                                    transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
+                                                    background-color: #FFFCE1;
+                                                }
+
+                                                .btn:hover .btn__circle {
+                                                    transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+                                                }
+
+                                                .btn[data-theme="dark"] .btn__circle {
+                                                    background-color: var(--_theme---text);
+                                                }
+
+                                                .btn[data-theme="dark"]:hover .btn__text {
+                                                    color: var(--_theme---background);
+                                                }
+                                            </style>
+                                        </div>
+                                        <a href="/contact" data-theme="dark" data-btn-hover=""
+                                            class="btn w-inline-block" aria-label="Start a project">
+                                            <div class="btn__bg"></div>
+                                            <div class="btn__circle-wrap">
+                                                <div class="btn__circle">
+                                                    <div class="before__100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="btn__text u-text-style-main-medium">
+                                                <p class="btn-text-p">Start a project</p>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
