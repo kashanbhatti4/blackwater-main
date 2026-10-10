@@ -3380,10 +3380,34 @@
                             animation: fade-in 0.8s cubic-bezier(0.18, 0.66, 0.25, 0.75) 0s both;
                         }
 
+                        /* 1. Remove 100vh, sticky, and overlap on all 4 service cards */
+                        .main-section_wrap.u-section.service_wrap {
+                            min-height: auto !important;
+                            height: auto !important;
+                            position: relative !important;
+                            top: auto !important;
+                            padding-top: clamp(48px, 6vw, 84px) !important;
+                            padding-bottom: clamp(48px, 6vw, 84px) !important;
+                        }
+
+                        /* 2. Hide artificial spacers */
+                        .services_spacer,
+                        .space-services-sections {
+                            display: none !important;
+                        }
+
+                        /* 3. Eliminate large vertical gap inside service content */
+                        .service_content_wrap {
+                            display: flex !important;
+                            flex-direction: column !important;
+                            justify-content: flex-start !important;
+                            gap: clamp(24px, 3.5vw, 36px) !important;
+                        }
+
                         .service_intro_text_group {
                             display: flex;
                             flex-direction: column;
-                            gap: 25px;
+                            gap: 20px;
                         }
 
                         .service_media_wrap {
@@ -3392,6 +3416,7 @@
                             justify-content: center;
                             width: 100%;
                             height: 100%;
+                            min-height: 440px;
                             border-radius: 0;
                             overflow: hidden;
                             position: relative;
@@ -3408,6 +3433,25 @@
                             overflow: hidden;
                         }
 
+                        /* 4. Switch Title + Learn More above Tags on DESKTOP */
+                        .service_content_bottom_wrap {
+                            display: flex !important;
+                            flex-direction: column !important;
+                        }
+
+                        @media screen and (min-width: 992px) {
+                            .service_title_action_group {
+                                order: 1 !important;
+                                margin-bottom: 24px !important;
+                            }
+
+                            .service_content_tags_wrap {
+                                order: 2 !important;
+                                margin-bottom: 0 !important;
+                            }
+                        }
+
+                        /* 5. Keep Tags first, then Title + Learn More on MOBILE & TABLET */
                         @media screen and (max-width: 991px) {
                             .service_wrapper {
                                 display: flex !important;
@@ -3429,6 +3473,7 @@
                                 width: 100% !important;
                                 max-width: 100% !important;
                                 height: auto !important;
+                                min-height: 0 !important;
                                 max-height: 230px !important;
                                 aspect-ratio: 16 / 9 !important;
                                 margin-top: 1.75rem !important;
@@ -3443,6 +3488,16 @@
                                 flex-direction: column !important;
                             }
 
+                            .service_content_tags_wrap {
+                                order: 1 !important;
+                                margin-bottom: 1.75rem !important;
+                            }
+
+                            .service_title_action_group {
+                                order: 2 !important;
+                                margin-bottom: 0 !important;
+                            }
+
                             .service_card_video,
                             .service_media_iframe {
                                 width: 100% !important;
@@ -3455,12 +3510,6 @@
                         }
 
                         @media screen and (min-width: 768px) and (max-width: 991px) {
-
-                            .services_spacer,
-                            .space-services-sections {
-                                display: none !important;
-                            }
-
                             .service_wrap {
                                 padding-top: 2rem !important;
                                 padding-bottom: 2rem !important;
@@ -3538,33 +3587,35 @@
                                                 <p>Mobile Responsive Design</p>
                                             </div>
                                         </div>
-                                        <h2 class="service_content_heading u-text-style-h2">Web Design</h2>
-                                        <div class="service_content_bottom_line"></div>
-                                        <div data-trigger="hover focus" class="service_content_button">
-                                            <!--$-->
-                                            <div class="clickable_wrap u-cover-absolute"><a
-                                                    aria-label="Web Design Services" target=""
-                                                    href="/services-detailed/web-design"
-                                                    class="clickable_link w-inline-block"></a>
-                                            </div>
-                                            <!--/$-->
-                                            <div class="service_button_text_wrap">
-                                                <div class="service_content_button_text u-text-style-large">Learn More
+                                        <div class="service_title_action_group">
+                                            <h2 class="service_content_heading u-text-style-h2">Web Design</h2>
+                                            <div class="service_content_bottom_line"></div>
+                                            <div data-trigger="hover focus" class="service_content_button">
+                                                <!--$-->
+                                                <div class="clickable_wrap u-cover-absolute"><a
+                                                        aria-label="Web Design Services" target=""
+                                                        href="/services-detailed/web-design"
+                                                        class="clickable_link w-inline-block"></a>
                                                 </div>
-                                                <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        preserveAspectRatio="xMidYMid meet">
-                                                        <g clip-path="url(#clip0_2633_2547)">
-                                                            <path
-                                                                d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                                fill="currentColor" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2633_2547">
-                                                                <rect width="38" height="38" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg></div>
+                                                <!--/$-->
+                                                <div class="service_button_text_wrap">
+                                                    <div class="service_content_button_text u-text-style-large">Learn More
+                                                    </div>
+                                                    <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            preserveAspectRatio="xMidYMid meet">
+                                                            <g clip-path="url(#clip0_2633_2547)">
+                                                                <path
+                                                                    d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
+                                                                    fill="currentColor" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_2633_2547">
+                                                                    <rect width="38" height="38" fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -3627,33 +3678,35 @@
                                                 <p>Link Building</p>
                                             </div>
                                         </div>
-                                        <h2 class="service_content_heading u-text-style-h2">SEO & AI Search</h2>
-                                        <div class="service_content_bottom_line"></div>
-                                        <div data-trigger="hover focus" class="service_content_button">
-                                            <!--$-->
-                                            <div class="clickable_wrap u-cover-absolute"><a
-                                                    aria-label="SEO & AI Search Services" target=""
-                                                    href="/services-detailed/seo-ai-search"
-                                                    class="clickable_link w-inline-block"></a>
-                                            </div>
-                                            <!--/$-->
-                                            <div class="service_button_text_wrap">
-                                                <div class="service_content_button_text u-text-style-large">Learn More
+                                        <div class="service_title_action_group">
+                                            <h2 class="service_content_heading u-text-style-h2">SEO & AI Search</h2>
+                                            <div class="service_content_bottom_line"></div>
+                                            <div data-trigger="hover focus" class="service_content_button">
+                                                <!--$-->
+                                                <div class="clickable_wrap u-cover-absolute"><a
+                                                        aria-label="SEO & AI Search Services" target=""
+                                                        href="/services-detailed/seo-ai-search"
+                                                        class="clickable_link w-inline-block"></a>
                                                 </div>
-                                                <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        preserveAspectRatio="xMidYMid meet">
-                                                        <g clip-path="url(#clip0_2633_2547)">
-                                                            <path
-                                                                d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                                fill="currentColor" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2633_2547">
-                                                                <rect width="38" height="38" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg></div>
+                                                <!--/$-->
+                                                <div class="service_button_text_wrap">
+                                                    <div class="service_content_button_text u-text-style-large">Learn More
+                                                    </div>
+                                                    <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            preserveAspectRatio="xMidYMid meet">
+                                                            <g clip-path="url(#clip0_2633_2547)">
+                                                                <path
+                                                                    d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
+                                                                    fill="currentColor" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_2633_2547">
+                                                                    <rect width="38" height="38" fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -3717,33 +3770,35 @@
                                                 <p>Monthly Reporting</p>
                                             </div>
                                         </div>
-                                        <h2 class="service_content_heading u-text-style-h2">Paid Advertising</h2>
-                                        <div class="service_content_bottom_line"></div>
-                                        <div data-trigger="hover focus" class="service_content_button">
-                                            <!--$-->
-                                            <div class="clickable_wrap u-cover-absolute"><a
-                                                    aria-label="Paid Advertising Services" target=""
-                                                    href="/services-detailed/paid-ads"
-                                                    class="clickable_link w-inline-block"></a>
-                                            </div>
-                                            <!--/$-->
-                                            <div class="service_button_text_wrap">
-                                                <div class="service_content_button_text u-text-style-large">Learn More
+                                        <div class="service_title_action_group">
+                                            <h2 class="service_content_heading u-text-style-h2">Paid Advertising</h2>
+                                            <div class="service_content_bottom_line"></div>
+                                            <div data-trigger="hover focus" class="service_content_button">
+                                                <!--$-->
+                                                <div class="clickable_wrap u-cover-absolute"><a
+                                                        aria-label="Paid Advertising Services" target=""
+                                                        href="/services-detailed/paid-ads"
+                                                        class="clickable_link w-inline-block"></a>
                                                 </div>
-                                                <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        preserveAspectRatio="xMidYMid meet">
-                                                        <g clip-path="url(#clip0_2633_2547)">
-                                                            <path
-                                                                d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                                fill="currentColor" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2633_2547">
-                                                                <rect width="38" height="38" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg></div>
+                                                <!--/$-->
+                                                <div class="service_button_text_wrap">
+                                                    <div class="service_content_button_text u-text-style-large">Learn More
+                                                    </div>
+                                                    <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            preserveAspectRatio="xMidYMid meet">
+                                                            <g clip-path="url(#clip0_2633_2547)">
+                                                                <path
+                                                                    d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
+                                                                    fill="currentColor" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_2633_2547">
+                                                                    <rect width="38" height="38" fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -3803,33 +3858,35 @@
                                                 <p>Analytics &amp; Reporting</p>
                                             </div>
                                         </div>
-                                        <h2 class="service_content_heading u-text-style-h2">Social Media</h2>
-                                        <div class="service_content_bottom_line"></div>
-                                        <div data-trigger="hover focus" class="service_content_button">
-                                            <!--$-->
-                                            <div class="clickable_wrap u-cover-absolute"><a
-                                                    aria-label="Social Media Services" target=""
-                                                    href="/services-detailed/social-media"
-                                                    class="clickable_link w-inline-block"></a>
-                                            </div>
-                                            <!--/$-->
-                                            <div class="service_button_text_wrap">
-                                                <div class="service_content_button_text u-text-style-large">Learn More
+                                        <div class="service_title_action_group">
+                                            <h2 class="service_content_heading u-text-style-h2">Social Media</h2>
+                                            <div class="service_content_bottom_line"></div>
+                                            <div data-trigger="hover focus" class="service_content_button">
+                                                <!--$-->
+                                                <div class="clickable_wrap u-cover-absolute"><a
+                                                        aria-label="Social Media Services" target=""
+                                                        href="/services-detailed/social-media"
+                                                        class="clickable_link w-inline-block"></a>
                                                 </div>
-                                                <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg"
-                                                        preserveAspectRatio="xMidYMid meet">
-                                                        <g clip-path="url(#clip0_2633_2547)">
-                                                            <path
-                                                                d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
-                                                                fill="currentColor" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2633_2547">
-                                                                <rect width="38" height="38" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg></div>
+                                                <!--/$-->
+                                                <div class="service_button_text_wrap">
+                                                    <div class="service_content_button_text u-text-style-large">Learn More
+                                                    </div>
+                                                    <div class="arrow_up_svg is-services w-embed"><svg viewBox="0 0 38 38"
+                                                            fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                            preserveAspectRatio="xMidYMid meet">
+                                                            <g clip-path="url(#clip0_2633_2547)">
+                                                                <path
+                                                                    d="M4.09231 37.9268L0 33.8344L28.0615 5.77291H2.92308V-0.0732422H38V35.0037H32.1539V9.86522L4.09231 37.9268Z"
+                                                                    fill="currentColor" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_2633_2547">
+                                                                    <rect width="38" height="38" fill="white" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
