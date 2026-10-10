@@ -3396,12 +3396,11 @@
                             display: none !important;
                         }
 
-                        /* 3. Eliminate large vertical gap inside service content */
+                        /* 3. Set exactly 100px gap on desktop between intro text and bottom content */
                         .service_content_wrap {
                             display: flex !important;
                             flex-direction: column !important;
                             justify-content: flex-start !important;
-                            gap: clamp(24px, 3.5vw, 36px) !important;
                         }
 
                         .service_intro_text_group {
@@ -3433,13 +3432,17 @@
                             overflow: hidden;
                         }
 
-                        /* 4. Switch Title + Learn More above Tags on DESKTOP */
+                        /* 4. Switch Title + Learn More above Tags & set 100px gap on DESKTOP */
                         .service_content_bottom_wrap {
                             display: flex !important;
                             flex-direction: column !important;
                         }
 
                         @media screen and (min-width: 992px) {
+                            .service_content_wrap {
+                                gap: 100px !important;
+                            }
+
                             .service_title_action_group {
                                 order: 1 !important;
                                 margin-bottom: 24px !important;
