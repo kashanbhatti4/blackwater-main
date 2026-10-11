@@ -142,7 +142,7 @@ function initGoogleReviewsWidget(root) {
         scoreEls.forEach(el => { el.textContent = Number(data.rating).toFixed(1); });
       }
     })
-    .catch(() => {});
+    .catch(() => { });
 }
 
 // -----------------------------------------
@@ -1168,10 +1168,17 @@ function initBunnyPlayerBackground() {
     if (autoplay) {
       video.muted = true;
       video.loop = true;
+      video.setAttribute('muted', '');
     }
-    else { video.muted = initialMuted; }
-
-    video.setAttribute('muted', '');
+    else {
+      video.muted = initialMuted;
+      video.loop = false;
+      if (initialMuted) {
+        video.setAttribute('muted', '');
+      } else {
+        video.removeAttribute('muted');
+      }
+    }
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.playsInline = true;
@@ -1435,6 +1442,9 @@ function initTestimonialsSlider() {
     isAnimating = true;
 
     const currentItem = items[currentIndex];
+    const currentVideo = currentItem.querySelector('video');
+    if (currentVideo && !currentVideo.paused) currentVideo.pause();
+
     currentItem.classList.add('is-falling');
     currentIndex = (currentIndex + 1) % items.length;
 
@@ -1447,6 +1457,10 @@ function initTestimonialsSlider() {
   function goPrev() {
     if (isAnimating) return;
     isAnimating = true;
+
+    const currentItem = items[currentIndex];
+    const currentVideo = currentItem.querySelector('video');
+    if (currentVideo && !currentVideo.paused) currentVideo.pause();
 
     currentIndex = (currentIndex - 1 + items.length) % items.length;
 
@@ -2020,7 +2034,7 @@ function initProcessLines() {
         let pathLength = 0;
         try {
           pathLength = path.getTotalLength();
-        } catch (e) {}
+        } catch (e) { }
         if (!pathLength || isNaN(pathLength) || pathLength === 0) {
           pathLength = 2500;
         }
@@ -2316,7 +2330,7 @@ async function renderJournalArticle(container) {
           };
         }
       }
-    } catch (e) {}
+    } catch (e) { }
 
     if (!article && typeof window.journalArticles !== 'undefined') {
       article = window.journalArticles.find(a => a.id === articleId || 'article-' + a.id === articleId || a.id.replace('article-', '') === articleId);
@@ -2382,7 +2396,7 @@ async function renderAllArticles(container) {
         }));
       }
     }
-  } catch (e) {}
+  } catch (e) { }
 
   if (articleList.length === 0 && typeof window.journalArticles !== 'undefined') {
     articleList = window.journalArticles.map(article => ({
