@@ -2271,102 +2271,143 @@
 
             <style>
                 /* Before & After Comparison Slider */
-                .ba_slider_container {
+                .slider_container {
                     position: relative;
                     width: 100%;
-                    aspect-ratio: 1920 / 958;
-                    border: 2px solid #2A2B25;
-                    background: #131615;
-                    border-radius: 8px;
+                    aspect-ratio: 16/10;
+                    border: 3px solid #2A2B25;
+                    background: #1E201B;
+                    border-radius: 4px;
                     overflow: hidden;
                     user-select: none;
-                    touch-action: none;
+                    -webkit-user-select: none;
                     cursor: ew-resize;
-                    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+                    touch-action: pan-y;
                 }
 
-                .ba_img {
+                .slider_container.is-dragging {
+                    cursor: grabbing;
+                }
+
+                .slider_img {
                     position: absolute;
                     top: 0;
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    object-fit: contain;
-                    display: block;
+                    object-fit: cover;
+                    pointer-events: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
                 }
 
-                .ba_overlay_before {
+                .slider_img_before {
+                    width: 100%;
+                    height: 100%;
+                    background: #131615;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 16px;
+                }
+
+                .slider_img_after {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    width: 50%;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    pointer-events: none;
+                }
+
+                .slider_overlay_before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
                     height: 100%;
                     overflow: hidden;
                     z-index: 2;
-                    border-right: 3px solid #FFE32A;
+                    pointer-events: none;
                 }
 
-                .ba_before_img {
+                .slider_handle {
                     position: absolute;
                     top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    max-width: none;
-                    filter: grayscale(85%) contrast(1.1) brightness(0.85);
-                    display: block;
+                    bottom: 0;
+                    width: 3px;
+                    background: #FFE32A;
+                    cursor: ew-resize;
+                    z-index: 10;
+                    touch-action: none;
                 }
 
-                .ba_handle {
+                .slider_handle_button {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    width: 48px;
-                    height: 48px;
+                    width: 56px;
+                    height: 56px;
                     border-radius: 50%;
                     background: #FFE32A;
-                    border: 3px solid #0E100F;
+                    border: 3px solid #2A2B25;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    cursor: ew-resize;
-                    z-index: 10;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-                    pointer-events: none;
+                    cursor: grab;
+                    touch-action: none;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+                    transition: transform 0.15s ease, background-color 0.15s ease;
                 }
 
-                .ba_label {
+                .slider_handle_button:hover {
+                    transform: translate(-50%, -50%) scale(1.06);
+                    background: #FFFCE1;
+                }
+
+                .slider_handle.is-dragging .slider_handle_button,
+                .slider_container.is-dragging .slider_handle_button {
+                    cursor: grabbing;
+                    transform: translate(-50%, -50%) scale(1.1);
+                    background: #FFFCE1;
+                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+                }
+
+                .slider_label {
                     position: absolute;
-                    top: 16px;
+                    top: 20px;
                     padding: 6px 14px;
                     border-radius: 4px;
                     font-family: 'Inter', sans-serif;
-                    font-size: 11px;
+                    font-size: 12px;
                     font-weight: 700;
                     text-transform: uppercase;
-                    letter-spacing: 0.8px;
+                    letter-spacing: 0.5px;
                     z-index: 5;
                     pointer-events: none;
+                    user-select: none;
                 }
 
-                .ba_label_before {
-                    left: 16px;
-                    background: rgba(14, 16, 15, 0.9);
+                .slider_label_before {
+                    left: 20px;
+                    background: rgba(19, 22, 21, 0.85);
                     color: #FFFCE1;
                     border: 1px solid #2A2B25;
                 }
 
-                .ba_label_after {
-                    right: 16px;
-                    background: rgba(255, 227, 42, 0.95);
+                .slider_label_after {
+                    right: 20px;
+                    background: rgba(255, 227, 42, 0.9);
                     color: #0E100F;
+                    border: 1px solid #2A2B25;
                 }
 
                 .range_slider_control {
                     width: 100%;
-                    margin-top: 16px;
+                    margin-top: 24px;
                     -webkit-appearance: none;
                     appearance: none;
                     background: #2A2B25;
@@ -2378,17 +2419,17 @@
                 .range_slider_control::-webkit-slider-thumb {
                     -webkit-appearance: none;
                     appearance: none;
-                    width: 22px;
-                    height: 22px;
+                    width: 24px;
+                    height: 24px;
                     border-radius: 50%;
                     background: #FFE32A;
-                    border: 2px solid #0E100F;
+                    border: 2px solid #2A2B25;
                     cursor: pointer;
                     transition: transform 0.1s;
                 }
 
                 .range_slider_control::-webkit-slider-thumb:hover {
-                    transform: scale(1.15);
+                    transform: scale(1.1);
                 }
 
                 /* Chrome Browser Window Frame */
@@ -2562,39 +2603,135 @@
 
                             <!-- Interactive Before / After Comparison Slider -->
                             <div style="width: 100%; margin: 10px 0 0 0;">
-                                <div class="ba_slider_container" id="ba-er">
-                                    <!-- After State (Base) -->
-                                    <img class="ba_img"
-                                        src="https://blackwatercdn.b-cdn.net/ER%20Arch%20Testimonial/01%20homepage%20hero%20(also%20use%20for%2003%20after).png"
-                                        alt="E.R. Design Architects after redesign — project-forward architecture" />
-                                    <span class="ba_label ba_label_after">After</span>
-
-                                    <!-- Before State (Clipped Overlay) -->
-                                    <div class="ba_overlay_before">
-                                        <img class="ba_before_img"
+                                <div class="slider_container" id="compareSlider-er">
+                                    <!-- Before State -->
+                                    <div class="slider_overlay_before" id="beforeOverlay-er">
+                                        <img id="beforeImg-er" class="slider_img"
                                             src="https://blackwatercdn.b-cdn.net/ER%20Arch%20Testimonial/02%20before.png"
-                                            alt="E.R. Design Architects before redesign — text-heavy intro" />
-                                        <span class="ba_label ba_label_before">Before</span>
+                                            alt="E.R. Design Architects before redesign — text-heavy intro"
+                                            style="max-width: none;">
                                     </div>
 
-                                    <!-- Center Drag Handle -->
-                                    <div class="ba_handle">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E100F"
-                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M18 8L22 12L18 16" />
-                                            <path d="M6 8L2 12L6 16" />
-                                        </svg>
+                                    <!-- After State -->
+                                    <div class="slider_img_after">
+                                        <img class="slider_img"
+                                            src="https://blackwatercdn.b-cdn.net/ER%20Arch%20Testimonial/01%20homepage%20hero%20(also%20use%20for%2003%20after).png"
+                                            alt="E.R. Design Architects after redesign — project-forward architecture">
+                                    </div>
+
+                                    <div class="slider_label slider_label_before">Before</div>
+                                    <div class="slider_label slider_label_after">After</div>
+
+                                    <!-- Handle -->
+                                    <div class="slider_handle" id="sliderHandle-er">
+                                        <div class="slider_handle_button" id="sliderHandleBtn-er"
+                                            aria-label="Drag to compare before and after">
+                                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E100F"
+                                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="8 7 3 12 8 17"></polyline>
+                                                <polyline points="16 7 21 12 16 17"></polyline>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 14px; margin-top: 14px;">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 11px; color: #7C7C70; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Before</span>
-                                    <input type="range" min="0" max="100" value="50" class="range_slider_control"
-                                        id="range-er" aria-label="Compare Before and After">
-                                    <span
-                                        style="font-family: 'Inter', sans-serif; font-size: 11px; color: #FFE32A; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">After</span>
-                                </div>
+
+                                <!-- Range Slider Control -->
+                                <input type="range" min="0" max="100" value="50" class="range_slider_control"
+                                    id="rangeControl-er" aria-label="Before after comparison slider">
                             </div>
+
+                            <script>
+                                (function () {
+                                    const range = document.getElementById('rangeControl-er');
+                                    const before = document.getElementById('beforeOverlay-er');
+                                    const handle = document.getElementById('sliderHandle-er');
+                                    const beforeImg = document.getElementById('beforeImg-er');
+                                    const container = document.getElementById('compareSlider-er');
+
+                                    if (!container || !before || !handle) return;
+
+                                    let isDragging = false;
+
+                                    function updateSlider(val) {
+                                        const clamped = Math.max(0, Math.min(100, Number(val)));
+                                        before.style.width = clamped + '%';
+                                        handle.style.left = clamped + '%';
+                                        if (beforeImg && container) {
+                                            beforeImg.style.width = container.offsetWidth + 'px';
+                                            beforeImg.style.minWidth = container.offsetWidth + 'px';
+                                        }
+                                        if (range && Number(range.value) !== Math.round(clamped)) {
+                                            range.value = Math.round(clamped);
+                                        }
+                                    }
+
+                                    function getPercentageFromEvent(e) {
+                                        const rect = container.getBoundingClientRect();
+                                        const clientX = (e.touches && e.touches.length) ? e.touches[0].clientX
+                                            : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0].clientX : e.clientX);
+                                        const offsetX = clientX - rect.left;
+                                        const pct = (offsetX / rect.width) * 100;
+                                        return Math.max(0, Math.min(100, pct));
+                                    }
+
+                                    function onDragStart(e) {
+                                        if (e.button && e.button !== 0) return;
+                                        isDragging = true;
+                                        container.classList.add('is-dragging');
+                                        handle.classList.add('is-dragging');
+                                        updateSlider(getPercentageFromEvent(e));
+                                        if (e.cancelable) e.preventDefault();
+                                    }
+
+                                    function onDragMove(e) {
+                                        if (!isDragging) return;
+                                        updateSlider(getPercentageFromEvent(e));
+                                        if (e.cancelable) e.preventDefault();
+                                    }
+
+                                    function onDragEnd() {
+                                        if (isDragging) {
+                                            isDragging = false;
+                                            container.classList.remove('is-dragging');
+                                            handle.classList.remove('is-dragging');
+                                        }
+                                    }
+
+                                    // Drag & click directly on container or handle
+                                    container.addEventListener('mousedown', onDragStart);
+                                    window.addEventListener('mousemove', onDragMove);
+                                    window.addEventListener('mouseup', onDragEnd);
+
+                                    // Touch gestures for mobile/tablet
+                                    container.addEventListener('touchstart', onDragStart, { passive: false });
+                                    window.addEventListener('touchmove', onDragMove, { passive: false });
+                                    window.addEventListener('touchend', onDragEnd);
+                                    window.addEventListener('touchcancel', onDragEnd);
+
+                                    // Range slider input sync
+                                    if (range) {
+                                        range.addEventListener('input', function (e) {
+                                            updateSlider(e.target.value);
+                                        });
+                                    }
+
+                                    // Window resize & image load handler
+                                    window.addEventListener('resize', function () {
+                                        const currentVal = range ? range.value : 50;
+                                        updateSlider(currentVal);
+                                    });
+
+                                    if (beforeImg) {
+                                        beforeImg.addEventListener('load', function () {
+                                            const currentVal = range ? range.value : 50;
+                                            updateSlider(currentVal);
+                                        });
+                                    }
+
+                                    // Initialize
+                                    updateSlider(50);
+                                })();
+                            </script>
 
                             <!-- Comparison Summary Cards -->
                             <div
@@ -3752,7 +3889,7 @@
                 }, 100);
             }
 
-            setupComparison('ba-er', 'range-er');
+            // setupComparison('ba-er', 'range-er');
         })();
     </script>
 
