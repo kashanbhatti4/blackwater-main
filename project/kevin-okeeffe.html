@@ -132,8 +132,8 @@
         h1.project_hero_heading,
         h1 {
             font-family: 'Plain', Arial, sans-serif !important;
-            font-size: clamp(48px, 8.5vw, 120px) !important;
-            font-weight: 800 !important;
+            font-size: clamp(40px, 5.56vw, 80px) !important;
+            font-weight: 600 !important;
             line-height: 1.02 !important;
             letter-spacing: -0.025em !important;
             color: #FFFCE1 !important;
@@ -177,7 +177,7 @@
             font-weight: 800 !important;
             line-height: 1.2 !important;
             letter-spacing: -1px !important;
-            padding-bottom: 10px;
+
         }
 
         /* Results Numbers Parity */
@@ -1981,8 +1981,8 @@
                                     .main-section_wrap.project_hero {
                                         min-height: auto !important;
                                         height: auto !important;
-                                        padding-top: clamp(40px, 6vw, 50px) !important;
-                                        padding-bottom: clamp(30px, 4vw, 70px) !important;
+                                        padding-top: clamp(60px, 8vw, 100px) !important;
+                                        padding-bottom: clamp(40px, 5vw, 70px) !important;
                                     }
 
                                     .content_layout.project_hero.is-menu {
@@ -2000,86 +2000,154 @@
                                         display: none !important;
                                     }
 
-                                    @media screen and (max-width: 1040px) {
-                                        .main-section_wrap.project_hero {
-                                            padding-top: 0px !important;
-                                            padding-bottom: clamp(47px, 5.5vw, 51px) !important;
-                                        }
+                                    /* 3 Main Groups Container: Equal spacing between groups */
+                                    .project_hero_content {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        justify-content: center !important;
+                                        text-align: center !important;
+                                        max-width: 1200px !important;
+                                        margin: 0 auto !important;
+                                        gap: 60px !important;
+                                        /* Equal spacing between Group 1, Group 2, Group 3 */
+                                        width: 100% !important;
                                     }
 
-                                    @media screen and (max-width: 768px) {
-                                        .main-section_wrap.project_hero {
-                                            padding-top: 0 !important;
-                                        }
+                                    /* GROUP 1: Heading + Subtitle */
+                                    .project_hero_title {
+                                        display: flex !important;
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important;
+                                        /* No extra gap between heading and body text */
                                     }
 
-                                    @media screen and (max-width: 767px) {
-                                        .project_hero_content {
-                                            display: flex !important;
-                                            flex-direction: column !important;
-                                            justify-content: flex-start !important;
-                                            gap: 16px !important;
-                                            height: auto !important;
-                                        }
-
-                                        .project_hero_description {
-                                            justify-content: flex-start !important;
-                                            margin-top: 0 !important;
-                                        }
-
-                                        .project_hero1 .project_reel_wrap {
-                                            margin-top: 24px !important;
-                                            margin-bottom: 0 !important;
-                                            aspect-ratio: 16/9 !important;
-                                            height: auto !important;
-                                        }
+                                    .project_hero_heading {
+                                        font-family: 'Plain', Arial, sans-serif !important;
+                                        font-size: clamp(40px, 5.56vw, 80px) !important;
+                                        line-height: 1.02 !important;
+                                        font-weight: 600 !important;
+                                        letter-spacing: -0.025em !important;
+                                        text-align: center !important;
+                                        color: #FFFCE1 !important;
+                                        margin: 0 0 22px 0 !important;
+                                        /* Spacing between heading and body text set to 22px */
+                                        padding: 0 !important;
                                     }
 
-                                    @media (min-width: 768px) {
-                                        .project_hero1 {
-                                            align-items: stretch !important;
+                                    /* @media (min-width: 1200px) {
+                                        .project_hero_heading {
+                                            font-size: 120px !important;
                                         }
+                                    } */
 
-                                        .project_hero1 .project_reel_wrap {
-                                            position: relative !important;
-                                            height: 100% !important;
-                                            min-height: 0 !important;
-                                            overflow: hidden !important;
-                                            border-radius: 4px !important;
-                                            aspect-ratio: unset !important;
-                                        }
-
-                                        .project_hero1 .project_reel_wrap video,
-                                        .project_hero1 .project_reel_wrap img {
-                                            position: absolute !important;
-                                            top: 0 !important;
-                                            left: 0 !important;
-                                            width: 100% !important;
-                                            height: 100% !important;
-                                            object-fit: contain !important;
-                                            object-position: center !important;
-                                            border-radius: 4px !important;
-                                            display: block !important;
-                                        }
+                                    .project_hero_client_wrap {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        text-align: center !important;
+                                        flex-wrap: wrap !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                        gap: 0 !important;
                                     }
 
+                                    .project_hero_client {
+                                        font-family: 'Inter', sans-serif !important;
+                                        font-size: clamp(18px, 2vw, 24px) !important;
+                                        color: #7C7C70 !important;
+                                        font-weight: 500 !important;
+                                        line-height: 1.3 !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    /* GROUP 2: Tags */
+                                    .project_hero_description {
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_tags_wrap {
+                                        display: flex !important;
+                                        flex-wrap: wrap !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        gap: 8px 10px !important;
+                                        margin: 0 auto !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_tag {
+                                        font-size: 16px !important;
+                                    }
+
+                                    .project_hero_tag p {
+                                        font-family: 'Inter', Arial, sans-serif !important;
+                                        font-size: 16px !important;
+                                        line-height: 1.4 !important;
+                                    }
+
+                                    /* GROUP 3: Button */
                                     .project_hero_cta_wrap {
-                                        margin-top: 12px;
-                                        display: flex;
-                                        align-items: center;
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                        width: 100% !important;
+                                        margin: 0 !important;
+                                        /* Zero margin so gap on parent creates equal spacing */
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero_cta_wrap .btn-wrap {
+                                        display: inline-flex !important;
+                                        justify-content: center !important;
+                                        margin: 0 !important;
+                                        padding: 0 !important;
+                                    }
+
+                                    .project_hero1 .project_reel_wrap {
+                                        display: none !important;
                                     }
 
                                     @media screen and (max-width: 767px) {
-                                        .project_hero_cta_wrap {
-                                            order: 3 !important;
-                                            margin-top: 8px;
-                                            width: 100%;
+                                        .main-section_wrap.project_hero {
+                                            padding-top: 24px !important;
+                                            padding-bottom: 32px !important;
+                                        }
+
+                                        .project_hero_content {
+                                            gap: 24px !important;
+                                            /* Equal spacing for mobile */
+                                        }
+
+                                        .project_hero_heading {
+                                            font-size: clamp(38px, 9.5vw, 54px) !important;
+                                            margin-bottom: 10px !important;
+                                        }
+
+                                        .project_hero_client {
+                                            font-size: clamp(16px, 4.5vw, 18px) !important;
+                                        }
+
+                                        .project_hero_tag,
+                                        .project_hero_tag p {
+                                            font-size: 14px !important;
                                         }
                                     }
                                 </style>
                                 <!--$-->
                                 <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
+                                    STYLE="--span-lg: 12; --span-md: 12; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
                                     class="project_hero_content u-display-contents-small">
                                     <!--$-->
                                     <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
@@ -2087,12 +2155,16 @@
                                         <h1 class="project_hero_heading u-text-style-h1">New Website Launch</h1>
                                         <div class="project_hero_client_wrap">
                                             <p class="project_hero_client u-text-style-large">for&nbsp;</p>
-                                            <p class="project_hero_client u-text-style-large">Kevin O'Keeffe</p>
+                                            <p class="project_hero_client u-text-style-large">
+
+                                                Kevin O'Keeffe
+                                            </p>
                                         </div>
                                     </div>
                                     <!--/$-->
                                     <!--$-->
-                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small">
+                                    <div id="" data-span-lg="" class="project_hero_description u-order-last-small"
+                                        style="margin-top: 0; padding-top: 0;">
                                         <div class="w-dyn-list">
                                             <div role="list"
                                                 class="project_hero_tags_wrap u-order-last-small w-dyn-items">
@@ -2102,7 +2174,11 @@
                                                 </div>
                                                 <div role="listitem"
                                                     class="project_hero_tag u-text-style-small-medium w-dyn-item">
-                                                    <p>SEO &amp; Paid Social</p>
+                                                    <p>UX & UI</p>
+                                                </div>
+                                                <div role="listitem"
+                                                    class="project_hero_tag u-text-style-small-medium w-dyn-item">
+                                                    <p>SEO & Paid Social</p>
                                                 </div>
                                                 <div role="listitem"
                                                     class="project_hero_tag u-text-style-small-medium w-dyn-item">
@@ -2116,6 +2192,7 @@
                                                     class="project_hero_tag u-text-style-small-medium w-dyn-item">
                                                     <p>LinkedIn Ads</p>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -2149,10 +2226,10 @@
                                                     }
                                                 </style>
                                             </div>
-                                            <a href="https://kevinokeeffebusinesscoach.com/" target="_blank"
-                                                rel="noopener noreferrer" data-theme="dark" data-btn-hover=""
-                                                data-barba-prevent class="btn w-inline-block"
-                                                aria-label="Visit Kevin O'Keeffe live website">
+                                            <a href="https://spcs.ie/" target="_blank" rel="noopener noreferrer"
+                                                data-theme="dark" data-btn-hover="" data-barba-prevent
+                                                class="btn w-inline-block"
+                                                aria-label="Visit Windmill Healthcare live website">
                                                 <div class="btn__bg"></div>
                                                 <div class="btn__circle-wrap">
                                                     <div class="btn__circle">
@@ -2171,9 +2248,16 @@
                                 <div id="" data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
                                     class="project_reel_wrap">
-                                    <img src="https://blackwatercdn.b-cdn.net/Kevin%20Case%20Study/01.%20Kevin%20O'Keeffe-Hero-Section.png"
-                                        alt="Kevin O'Keeffe - Hero Section" loading="eager"
-                                        style="width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 4px; display: block;" />
+                                    <!--$--><video preload="auto" playsinline="playsinline" muted="" loop=""
+                                        autoplay="">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/1ce8ff6d-5299-4a09-b508-7a117d53ce57/playlist.m3u8"
+                                            type="video/mp4">
+                                        <source
+                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/1ce8ff6d-5299-4a09-b508-7a117d53ce57/playlist.m3u8"
+                                            type="video/mp4">
+                                    </video>
+                                    <!--/$-->
                                 </div>
                                 <!--/$-->
                             </div>
@@ -2183,6 +2267,9 @@
                         class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
                 </section>
                 <!--/$-->
+
+
+
             </div>
 
 
@@ -2403,10 +2490,10 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 32px;">
                             <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: center;">
-                                <div style="display: flex; flex-direction: column; gap: 14px;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 28px; align-items: center;">
+                                <div style="display: flex; flex-direction: column; gap: 40px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        style="font-family: 'Inter', sans-serif;  text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
                                         The launch
                                     </p>
                                     <h2 class="u-text-style-h2"
@@ -2414,9 +2501,9 @@
                                         A new site, live and ready to be found.
                                     </h2>
                                 </div>
-                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="display: flex; flex-direction: column; ">
                                     <p
-                                        style="margin: 0; font-size: 16.5px; line-height: 1.65; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                        style="margin: 0;  line-height: 1.65; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         We took the new website from build to live — final content checks, redirects
                                         from old URLs, speed and mobile testing, and submitting the site to search
                                         engines. Kevin launched with a site that worked from day one.
@@ -2444,10 +2531,9 @@
                                         style="font-size: 12px; color: #7C7C70; font-family: 'Inter', sans-serif;">Live
                                         Site</span>
                                 </div>
-                                <div
-                                    style="position: relative; width: 100%; aspect-ratio: 16/9; background: #0E100F; overflow: hidden;">
+                                <div style="position: relative; width: 100%;  background: #0E100F; overflow: hidden;">
                                     <video preload="metadata" playsinline="playsinline" muted loop autoplay
-                                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                        style="width: 100%;  object-fit: contain; display: block;">
                                         <source
                                             src="https://vz-5d3a8c6b-e14.b-cdn.net/1d336e7e-8133-42a2-b641-8a684f585b08/playlist.m3u8"
                                             type="application/x-mpegURL">
@@ -2470,10 +2556,10 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 40px;">
                             <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: center;">
-                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 28px; align-items: center;">
+                                <div style="display: flex; flex-direction: column; gap: 40px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        style="font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
                                         SEO package
                                     </p>
                                     <h2
@@ -2481,7 +2567,7 @@
                                         The work nobody sees, so the site can be seen.</h2>
                                 </div>
                                 <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                    style=" line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                     We installed a complete SEO foundation at launch rather than bolting it on later.
                                     Every page went live with the structure search engines look for: clean titles and
                                     meta descriptions, schema markup for local search, fast-loading images, and
@@ -2494,7 +2580,7 @@
                                 style="border-radius: 14px; overflow: hidden; background: #0E100F; border: 2px solid #2A2B25; box-shadow: 0 16px 36px rgba(0,0,0,0.5);">
                                 <img src="https://blackwatercdn.b-cdn.net/Kevin%20Case%20Study/03.%20Google%20Analytics%20Dashboard%20Snapshot.png"
                                     alt="Google Analytics Dashboard Snapshot - Kevin O'Keeffe" loading="lazy"
-                                    style="width: 100%; height: auto; display: block; object-fit: cover;" />
+                                    style="width: 100%; height: auto; display: block; object-fit: contain;" />
                             </div>
 
                             <!-- 5 SEO Package Feature Pillars -->
@@ -2502,41 +2588,36 @@
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 10px;">
                                 <div
                                     style="background: #181B1A; border: 1px solid #2A2B25; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-                                    <h3 style="margin: 0; color: #FFE32A;">Search console verified</h3>
-                                    <div
-                                        style="font-size: 14.5px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
-                                        Site verified and submitted, sitemaps indexed, crawl errors checked.</div>
+                                    <h3 style="margin: 0;">Search console verified</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                        Site verified and submitted, sitemaps indexed, crawl errors checked.</p>
                                 </div>
                                 <div
                                     style="background: #181B1A; border: 1px solid #2A2B25; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-                                    <h3 style="margin: 0; color: #FFE32A;">Local schema markup</h3>
-                                    <div
-                                        style="font-size: 14.5px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                    <h3 style="margin: 0; ">Local schema markup</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Structured data so Google knows the business type, address and service area.
-                                    </div>
+                                    </p>
                                 </div>
                                 <div
                                     style="background: #181B1A; border: 1px solid #2A2B25; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-                                    <h3 style="margin: 0; color: #FFE32A;">Page-level metadata</h3>
-                                    <div
-                                        style="font-size: 14.5px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                    <h3 style="margin: 0; ">Page-level metadata</h3>
+                                    <p style="line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Every page with its own title tag, meta description and social preview card.
-                                    </div>
+                                    </p>
                                 </div>
                                 <div
                                     style="background: #181B1A; border: 1px solid #2A2B25; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-                                    <h3 style="margin: 0; color: #FFE32A;">Core Web Vitals</h3>
-                                    <div
-                                        style="font-size: 14.5px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
-                                        Images compressed, code minified, fast server response times.</div>
+                                    <h3 style="margin: 0; ">Core Web Vitals</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                        Images compressed, code minified, fast server response times.</p>
                                 </div>
                                 <div
                                     style="background: #181B1A; border: 1px solid #2A2B25; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
-                                    <h3 style="margin: 0; color: #FFE32A;">Analytics &amp; conversion tracking</h3>
-                                    <div
-                                        style="font-size: 14.5px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                    <h3 style="margin: 0; ">Analytics &amp; conversion tracking</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Site verified and submitted, GA4 installed, conversions tracked from launch day.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -2552,10 +2633,10 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 40px;">
                             <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 40px; align-items: center;">
-                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 28px; align-items: center;">
+                                <div style="display: flex; flex-direction: column; gap: 40px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        style="font-family: 'Inter', sans-serif;  text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
                                         Meta &amp; LinkedIn ads
                                     </p>
                                     <h2
@@ -2563,7 +2644,7 @@
                                         Two audiences, two platforms, one message.</h2>
                                 </div>
                                 <p
-                                    style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                    style=" line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                     The launch didn't wait for organic search to catch up. We ran Meta campaigns to
                                     reach people where they spend time, and LinkedIn campaigns for business-to-business
                                     credibility — both pointing to the new site, both tracked through the pixels
@@ -2578,12 +2659,12 @@
                                     style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; aspect-ratio: 1/1; box-shadow: 0 16px 36px rgba(0,0,0,0.4); position: relative;">
                                     <img src="https://blackwatercdn.b-cdn.net/Kevin%20Case%20Study/4.1.%20Meta%20%E2%80%94%20feed.png"
                                         alt="Meta feed ad creative - Kevin O'Keeffe" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                        style="width: 100%; height: 100%; object-fit: contain; display: block;" />
                                 </div>
                                 <div
                                     style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; aspect-ratio: 1/1; box-shadow: 0 16px 36px rgba(0,0,0,0.4); position: relative;">
                                     <video preload="metadata" playsinline="playsinline" muted loop autoplay
-                                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                        style="width: 100%;  object-fit: contain; display: block;">
                                         <source
                                             src="https://vz-5d3a8c6b-e14.b-cdn.net/773087cb-9440-4aea-a2f3-b5bd37f90a33/playlist.m3u8"
                                             type="application/x-mpegURL">
@@ -2596,33 +2677,30 @@
                                     style="border-radius: 14px; overflow: hidden; background: #181B1A; border: 1px solid #2A2B25; aspect-ratio: 1/1; box-shadow: 0 16px 36px rgba(0,0,0,0.4); position: relative;">
                                     <img src="https://blackwatercdn.b-cdn.net/Kevin%20Case%20Study/4.3.%20LinkedIn%20%E2%80%94%20sponsored%20content.png"
                                         alt="LinkedIn sponsored post creative - Kevin O'Keeffe" loading="lazy"
-                                        style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                                        style="width: 100%; height: 100%; object-fit: contain; display: block;" />
                                 </div>
                             </div>
 
                             <!-- 3 Strategy Pillars Underneath -->
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 10px;">
-                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
-                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">Tracking first</h3>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7c7c7061;">
+                                    <h3 style="margin-bottom: 10px; color: #FFFCE1;">Tracking first</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Meta Pixel and LinkedIn Insight Tag installed before any ad ran, so every visit
-                                        built an audience.</div>
+                                        built an audience.</p>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
-                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">Creative per platform</h3>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7c7c7061;">
+                                    <h3 style="margin-bottom: 10px; color: #FFFCE1;">Creative per platform</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Feed images sized for square, story video sized 9:16, LinkedIn creative built
-                                        with clean copy.</div>
+                                        with clean copy.</p>
                                 </div>
-                                <div style="padding-top: 20px; border-top: 2px solid #7C7C70;">
-                                    <h3 style="margin-bottom: 8px; color: #FFFCE1;">Retargeting loop</h3>
-                                    <div
-                                        style="font-size: 15px; line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                <div style="padding-top: 20px; border-top: 2px solid #7c7c7061;">
+                                    <h3 style="margin-bottom: 10px; color: #FFFCE1;">Retargeting loop</h3>
+                                    <p style=" line-height: 1.6; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         People who visited the site from search or social saw follow-up ads, keeping
-                                        Kevin top of mind.</div>
+                                        Kevin top of mind.</p>
                                 </div>
                             </div>
                         </div>
@@ -2638,16 +2716,16 @@
                         <div class="content_wrap u-column-span-12">
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr)); gap: 48px; align-items: center;">
-                                <div style="display: flex; flex-direction: column; gap: 16px;">
+                                <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #FFE32A; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
                                         Responsive
                                     </p>
                                     <h2
-                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1;">
+                                        style="font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -0.03em; margin: 0; font-weight: 500; font-family: 'Inter', sans-serif ; color: #FFFCE1; padding-top: 20px;">
                                         Built for where the ads land.</h2>
                                     <p
-                                        style="font-size: 16.5px; line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
+                                        style=" line-height: 1.65; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif;">
                                         Most paid social clicks arrive on a phone. The site was tested on mobile first,
                                         so the journey from ad to enquiry is short, fast and readable with one thumb.
                                     </p>
@@ -2657,7 +2735,7 @@
                                         <div class="phone_mockup_screen">
                                             <div class="phone_mockup_notch"></div>
                                             <video preload="metadata" playsinline="playsinline" muted loop autoplay
-                                                style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                                style="width: 100%; object-fit: contain; display: block;">
                                                 <source
                                                     src="https://vz-5d3a8c6b-e14.b-cdn.net/303a0616-2d59-4822-998e-5e3e56203872/playlist.m3u8"
                                                     type="application/x-mpegURL">
@@ -2732,18 +2810,46 @@
                                 style="font-size: 17.5px; line-height: 1.6; margin: 0; color: #7C7C70; font-family: 'Inter', sans-serif; max-width: 660px;">
                                 Website, SEO and paid social planned as one launch. Tell us what you're building and who
                                 it's for.</p>
-                            <div
-                                style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; justify-content: center;">
-                                <a href="mailto:hello@bwdigitalmarketing.ie" class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; background: #FFE32A; color: #0E100F; text-decoration: none; transition: transform 0.2s;"
-                                    onmouseover="this.style.transform='scale(1.04)'"
-                                    onmouseout="this.style.transform='scale(1)'">Start a project</a>
-                                <a href="https://kevinokeeffebusinesscoach.com/" target="_blank" rel="noopener"
-                                    class="btn w-inline-block"
-                                    style="font-size: 15px; font-family: 'Inter', sans-serif ; font-weight: 600; padding: 14px 30px; border-radius: 999px; border: 1px solid #2A2B25; color: #FFFCE1; background: transparent; text-decoration: none; transition: border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#FFE32A'; this.style.background='rgba(255,227,42,0.06)'"
-                                    onmouseout="this.style.borderColor='#2A2B25'; this.style.background='transparent'">Visit
-                                    the live site ↗</a>
+                            <div class="project_hero_cta_wrap" style="margin-top: 12px;">
+                                <div class="btn-wrap">
+                                    <div class="u-embed-css w-embed">
+                                        <style>
+                                            .btn .btn__text {
+                                                transition: color 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+                                            }
+
+                                            .btn .btn__circle {
+                                                transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+                                                transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
+                                                background-color: #FFFCE1;
+                                            }
+
+                                            .btn:hover .btn__circle {
+                                                transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+                                            }
+
+                                            .btn[data-theme="dark"] .btn__circle {
+                                                background-color: var(--_theme---text);
+                                            }
+
+                                            .btn[data-theme="dark"]:hover .btn__text {
+                                                color: var(--_theme---background);
+                                            }
+                                        </style>
+                                    </div>
+                                    <a href="mailto:hello@bwdigitalmarketing.ie" data-theme="dark" data-btn-hover=""
+                                        data-barba-prevent class="btn w-inline-block" aria-label="Start a project">
+                                        <div class="btn__bg"></div>
+                                        <div class="btn__circle-wrap">
+                                            <div class="btn__circle">
+                                                <div class="before__100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="btn__text u-text-style-main-medium">
+                                            <p class="btn-text-p">Start a project</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

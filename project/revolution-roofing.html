@@ -25,8 +25,8 @@
         h1.project_hero_heading,
         h1 {
             font-family: 'Plain', Arial, sans-serif !important;
-            font-size: clamp(48px, 8.5vw, 120px) !important;
-            font-weight: 800 !important;
+            font-size: clamp(40px, 5.56vw, 80px) !important;
+            font-weight: 600 !important;
             line-height: 1.02 !important;
             letter-spacing: -0.025em !important;
             color: #FFFCE1 !important;
@@ -252,11 +252,11 @@
 
         @media (min-width: 1200px) {
 
-            .project_hero_heading,
+            /* .project_hero_heading,
             h1.project_hero_heading,
             h1 {
                 font-size: 120px !important;
-            }
+            } */
 
             .results_grid .stat_card span[style*="#FFE32A"],
             .stat_card span[style*="#FFE32A"],
@@ -2389,10 +2389,9 @@
                                     <span class="browser_url"
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; margin-left: 12px; letter-spacing: 0.5px;">revolutionroofingltd.ie</span>
                                 </div>
-                                <div class="video_wrapper"
-                                    style="position: relative; aspect-ratio: 16/10; width: 100%;">
+                                <div class="video_wrapper" style="position: relative;  width: 100%;">
                                     <video preload="metadata" muted="" loop="" playsinline="" autoplay=""
-                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                        style="width: 100%;  object-fit: contain;">
                                         <source
                                             src="https://vz-5d3a8c6b-e14.b-cdn.net/b087943c-74f2-4b22-8013-f84f3acdc887/playlist.m3u8"
                                             type="application/x-mpegURL">
@@ -2420,8 +2419,8 @@
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
                             <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
-                                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
+                                style="display: flex; gap: 28px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
+                                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 40px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         The Brief</p>
@@ -2451,171 +2450,7 @@
             </section>
 
 
-            <!-- SECTION 4: Results Dashboard -->
-            <section class="main-section_wrap u-section section_results"
-                style="background-color: #1a1c18; padding-block: 80px; border-top: 1px solid #2A2B25; border-bottom: 1px solid #2A2B25;">
-                <style>
-                    .section_results .sec_label {
-                        font-family: 'Inter', sans-serif !important;
-                        font-size: 16px !important;
-                        color: #7C7C70 !important;
-                        text-transform: uppercase !important;
-                        letter-spacing: 1.5px !important;
-                        margin-bottom: 40px !important;
-                    }
 
-                    .section_results .footnote_text {
-                        font-family: 'Inter', sans-serif !important;
-                        font-size: 16px !important;
-                        color: #FFFCE1 !important;
-                        line-height: 1.45 !important;
-                        margin-top: 40px !important;
-                    }
-
-                    .section_results .results_number {
-                        font-family: 'Inter', sans-serif !important;
-                        font-size: clamp(38px, 4vw, 44px) !important;
-                        font-weight: 800 !important;
-                        line-height: 1 !important;
-                        letter-spacing: -1px !important;
-                    }
-
-                    .section_results .stat_card span:not(.results_number) {
-                        font-family: 'Inter', sans-serif !important;
-                        font-size: 16px !important;
-                        color: #7C7C70 !important;
-                        text-transform: none !important;
-                        letter-spacing: 0 !important;
-                        line-height: 1.4 !important;
-                    }
-
-                    .section_results .stat_card span[style*="#FFE32A"],
-                    .results_grid .stat_card span[style*="#FFE32A"] {
-                        font-family: 'Inter', sans-serif !important;
-                        /* font-size: clamp(14px, 1.5vw, 16px) !important; */
-                        letter-spacing: 1px !important;
-                    }
-
-                    @media screen and (max-width: 767px) {
-                        .section_results .sec_label {
-                            font-size: 14px !important;
-                            margin-bottom: 24px !important;
-                        }
-
-                        .section_results .footnote_text {
-                            font-size: 14px !important;
-                            margin-top: 24px !important;
-                        }
-
-                        .section_results .results_number {
-                            font-size: clamp(28px, 7vw, 32px) !important;
-                        }
-
-                        .section_results .stat_card span:not(.results_number) {
-                            font-size: 14px !important;
-                        }
-
-                        .section_results .stat_card span[style*="#FFE32A"],
-                        .results_grid .stat_card span[style*="#FFE32A"] {
-                            /* font-size: 14px !important; */
-                        }
-                    }
-                </style>
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-12">
-                            <p class="sec_label u-text-style-small">
-                                Results</p>
-
-                            <div class="results_grid"
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #2A2B25; border: 1px solid #2A2B25;">
-                                <div class="stat_card"
-                                    style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number" style="color: #7C7C70;">XX%</span>
-                                    <span>Organic
-                                        search sessions, year on year</span>
-                                </div>
-
-                                <div class="stat_card"
-                                    style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number" style="color: #FFFCE1;">XX</span>
-                                    <span>Appointment
-                                        bookings through the site, current period</span>
-                                </div>
-
-                                <div class="stat_card"
-                                    style="background: #131615; padding: 40px 32px; display: flex; flex-direction: column; gap: 16px;">
-                                    <span class="results_number" style="color: #FFE32A;">XX%</span>
-                                    <span>Of
-                                        traffic landing on a specific service page</span>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    (function () {
-                        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-
-                        function animateCounter(el, target, prefix, suffix, decimals, duration) {
-                            var start = null;
-                            function step(timestamp) {
-                                if (!start) start = timestamp;
-                                var progress = Math.min((timestamp - start) / duration, 1);
-                                var eased = easeOutCubic(progress);
-                                var current = Math.round(eased * target * Math.pow(10, decimals)) / Math.pow(10, decimals);
-                                var formatted = decimals > 0
-                                    ? current.toFixed(decimals)
-                                    : current.toLocaleString();
-                                el.textContent = prefix + formatted + suffix;
-                                if (progress < 1) requestAnimationFrame(step);
-                            }
-                            requestAnimationFrame(step);
-                        }
-
-                        function parseCounter(text) {
-                            var prefixMatch = text.match(/^([^d]*)/);
-                            var prefix = prefixMatch ? prefixMatch[1] : '';
-                            var rest = text.slice(prefix.length);
-                            var mMatch = rest.match(/^([d,.]+)m(s+d+s)?$/i);
-                            if (mMatch) {
-                                return { prefix: prefix, target: parseFloat(mMatch[1]), suffix: 'm 0s', decimals: 0 };
-                            }
-                            var numMatch = rest.match(/^([d,.]+)(.*)/);
-                            if (numMatch) {
-                                var num = parseFloat(numMatch[1].replace(/,/g, ''));
-                                var suffix = numMatch[2] || '';
-                                var decimals = (numMatch[1].indexOf('.') >= 0) ? numMatch[1].split('.')[1].length : 0;
-                                return { prefix: prefix, target: num, suffix: suffix, decimals: decimals };
-                            }
-                            return null;
-                        }
-
-                        var grid = document.querySelector('.results_grid');
-                        if (!grid) return;
-
-                        var numbers = grid.querySelectorAll('.results_number');
-                        var animated = false;
-
-                        var observer = new IntersectionObserver(function (entries) {
-                            if (entries[0].isIntersecting && !animated) {
-                                animated = true;
-                                numbers.forEach(function (el) {
-                                    var parsed = parseCounter(el.textContent.trim());
-                                    if (parsed) {
-                                        animateCounter(el, parsed.target, parsed.prefix, parsed.suffix, parsed.decimals, 2000);
-                                    }
-                                });
-                            }
-                        }, { threshold: 0.3 });
-
-                        observer.observe(grid);
-                    })();
-                </script>
-            </section>
 
 
             <!-- SECTION 5: Channel by Channel -->
@@ -2623,13 +2458,13 @@
 
 
             <!-- SECTION 6: The Challenge -->
-            <section class="main-section_wrap u-section" style="padding-block: 80px;">
+            <section class="main-section_wrap u-section" style="border-top: 1px solid #2A2B25; padding-block: 80px;">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-12">
                             <div
-                                style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
-                                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 16px;">
+                                style="display: flex; gap: 28px; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; width: 100%;">
+                                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 40px;">
                                     <p class="sec_label u-text-style-small"
                                         style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
                                         The Challenge</p>
@@ -2661,7 +2496,7 @@
             </section>
 
 
-            <!-- SECTION 7: What we did -->
+            <!-- SECTION 7: across the site-->
             <section class="main-section_wrap u-section" style="padding-block: 80px; border-top: 1px solid #2A2B25;">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
@@ -2675,9 +2510,9 @@
                                 style="gap: 24px;">
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
-                                        style="border: 2px solid #2A2B25; aspect-ratio: 4/3; overflow: hidden; background: #1a1c18; position: relative;">
+                                        style="border: 2px solid #2A2B25; aspect-ratio: unset; overflow: hidden; background: #1a1c18; position: relative;">
                                         <img src="https://blackwatercdn.b-cdn.net/Revolution%20Roofing%20Case%20Study/No.1%20Homepage.png"
-                                            alt="Homepage" style="width: 100%; height: 100%; object-fit: cover;">
+                                            alt="Homepage" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Homepage</span>
@@ -2685,9 +2520,9 @@
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
-                                        style="border: 2px solid #2A2B25; aspect-ratio: 4/3; overflow: hidden; background: #1a1c18; position: relative;">
+                                        style="border: 2px solid #2A2B25; aspect-ratio: unset; overflow: hidden; background: #1a1c18; position: relative;">
                                         <img src="https://blackwatercdn.b-cdn.net/Revolution%20Roofing%20Case%20Study/No.2%20Services.png"
-                                            alt="Services" style="width: 100%; height: 100%; object-fit: cover;">
+                                            alt="Services" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Services</span>
@@ -2695,9 +2530,9 @@
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
-                                        style="border: 2px solid #2A2B25; aspect-ratio: 4/3; overflow: hidden; background: #1a1c18; position: relative;">
+                                        style="border: 2px solid #2A2B25; aspect-ratio: unset; overflow: hidden; background: #1a1c18; position: relative;">
                                         <img src="https://blackwatercdn.b-cdn.net/Revolution%20Roofing%20Case%20Study/No.3%20Gallery.png"
-                                            alt="Gallery" style="width: 100%; height: 100%; object-fit: cover;">
+                                            alt="Gallery" style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Gallery</span>
@@ -2705,10 +2540,10 @@
 
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
-                                        style="border: 2px solid #2A2B25; aspect-ratio: 4/3; overflow: hidden; background: #1a1c18; position: relative;">
-                                        <img src="https://blackwatercdn.b-cdn.net/Revolution%20Roofing%20Case%20Study/No.6%20Mobile%20Contact.png"
+                                        style="border: 2px solid #2A2B25; aspect-ratio: unset; overflow: hidden; background: #1a1c18; position: relative;">
+                                        <img src="https://blackwatercdn.b-cdn.net/Revolution%20Roofing%20Case%20Study/revolutionroofing%20bookappointment.png"
                                             alt="Book an Appointment"
-                                            style="width: 100%; height: 100%; object-fit: cover;">
+                                            style="width: 100%; height: 100%; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;">Book
