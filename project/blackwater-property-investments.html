@@ -2159,6 +2159,8 @@
             </div>
         </div>
         <main id="main" data-barba="container" class="page_main">
+
+            <!--$-->
             <section id="" class="main-section_wrap u-section project_hero">
                 <div class="main-section_contain u-container project_hero">
                     <div class="content_layout u-grid-custom project_hero is-menu">
@@ -2167,8 +2169,8 @@
                                 .main-section_wrap.project_hero {
                                     min-height: auto !important;
                                     height: auto !important;
-                                    padding-top: clamp(40px, 6vw, 50px) !important;
-                                    padding-bottom: clamp(30px, 4vw, 70px) !important;
+                                    padding-top: clamp(60px, 8vw, 100px) !important;
+                                    padding-bottom: clamp(40px, 5vw, 70px) !important;
                                 }
 
                                 .content_layout.project_hero.is-menu {
@@ -2186,78 +2188,148 @@
                                     display: none !important;
                                 }
 
-                                @media screen and (max-width: 1040px) {
-                                    .main-section_wrap.project_hero {
-                                        padding-top: 0px !important;
-                                        padding-bottom: clamp(47px, 5.5vw, 51px) !important;
-                                    }
+                                /* 3 Main Groups Container: Equal spacing between groups */
+                                .project_hero_content {
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    align-items: center !important;
+                                    justify-content: center !important;
+                                    text-align: center !important;
+                                    max-width: 1200px !important;
+                                    margin: 0 auto !important;
+                                    gap: 60px !important;
+                                    /* Equal spacing between Group 1, Group 2, Group 3 */
+                                    width: 100% !important;
                                 }
 
-                                @media screen and (max-width: 768px) {
-                                    .main-section_wrap.project_hero {
-                                        padding-top: 0 !important;
-                                    }
+                                /* GROUP 1: Heading + Subtitle */
+                                .project_hero_title {
+                                    display: flex !important;
+                                    flex-direction: column !important;
+                                    align-items: center !important;
+                                    text-align: center !important;
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    gap: 0 !important;
+                                    /* No extra gap between heading and body text */
                                 }
 
-                                @media screen and (max-width: 767px) {
-                                    .project_hero_content {
-                                        display: flex !important;
-                                        flex-direction: column !important;
-                                        justify-content: flex-start !important;
-                                        gap: 16px !important;
-                                        height: auto !important;
-                                    }
-
-                                    .project_hero_description {
-                                        justify-content: flex-start !important;
-                                        margin-top: 0 !important;
-                                    }
-
-                                    .project_hero1 .project_reel_wrap {
-                                        margin-top: 24px !important;
-                                        margin-bottom: 0 !important;
-                                        aspect-ratio: 16/9 !important;
-                                        height: auto !important;
-                                    }
+                                .project_hero_heading {
+                                    font-family: 'Plain', Arial, sans-serif !important;
+                                    font-size: clamp(40px, 5.56vw, 80px) !important;
+                                    line-height: 1.02 !important;
+                                    font-weight: 600 !important;
+                                    letter-spacing: -0.025em !important;
+                                    text-align: center !important;
+                                    color: #FFFCE1 !important;
+                                    margin: 0 0 22px 0 !important;
+                                    /* Spacing between heading and body text set to 22px */
+                                    padding: 0 !important;
                                 }
 
-                                @media (min-width: 768px) {
-                                    .project_hero1 {
-                                        align-items: stretch !important;
-                                    }
+                                /* @media (min-width: 1200px) {
+                                        .project_hero_heading {
+                                            font-size: 120px !important;
+                                        }
+                                    } */
 
-                                    .project_hero1 .project_reel_wrap {
-                                        position: relative !important;
-                                        height: 100% !important;
-                                        min-height: 0 !important;
-                                        overflow: hidden !important;
-                                        border-radius: 4px !important;
-                                        aspect-ratio: unset !important;
-                                    }
-
-                                    .project_hero1 .project_reel_wrap video {
-                                        position: absolute !important;
-                                        top: 0 !important;
-                                        left: 0 !important;
-                                        width: 100% !important;
-                                        height: 100% !important;
-                                        object-fit: cover !important;
-                                        border-radius: 4px !important;
-                                        display: block !important;
-                                    }
+                                .project_hero_client_wrap {
+                                    display: flex !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    text-align: center !important;
+                                    flex-wrap: wrap !important;
+                                    margin: 0 auto !important;
+                                    padding: 0 !important;
+                                    gap: 0 !important;
                                 }
 
+                                .project_hero_client {
+                                    font-family: 'Inter', sans-serif !important;
+                                    font-size: clamp(18px, 2vw, 24px) !important;
+                                    color: #7C7C70 !important;
+                                    font-weight: 500 !important;
+                                    line-height: 1.3 !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+
+                                /* GROUP 2: Tags */
+                                .project_hero_description {
+                                    display: flex !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+
+                                .project_hero_tags_wrap {
+                                    display: flex !important;
+                                    flex-wrap: wrap !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    gap: 8px 10px !important;
+                                    margin: 0 auto !important;
+                                    padding: 0 !important;
+                                }
+
+                                .project_hero_tag {
+                                    font-size: 16px !important;
+                                }
+
+                                .project_hero_tag p {
+                                    font-family: 'Inter', Arial, sans-serif !important;
+                                    font-size: 16px !important;
+                                    line-height: 1.4 !important;
+                                }
+
+                                /* GROUP 3: Button */
                                 .project_hero_cta_wrap {
-                                    margin-top: 12px;
-                                    display: flex;
-                                    align-items: center;
+                                    display: flex !important;
+                                    justify-content: center !important;
+                                    align-items: center !important;
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                    /* Zero margin so gap on parent creates equal spacing */
+                                    padding: 0 !important;
+                                }
+
+                                .project_hero_cta_wrap .btn-wrap {
+                                    display: inline-flex !important;
+                                    justify-content: center !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                }
+
+                                .project_hero1 .project_reel_wrap {
+                                    display: none !important;
                                 }
 
                                 @media screen and (max-width: 767px) {
-                                    .project_hero_cta_wrap {
-                                        order: 3 !important;
-                                        margin-top: 8px;
-                                        width: 100%;
+                                    .main-section_wrap.project_hero {
+                                        padding-top: 24px !important;
+                                        padding-bottom: 32px !important;
+                                    }
+
+                                    .project_hero_content {
+                                        gap: 24px !important;
+                                        /* Equal spacing for mobile */
+                                    }
+
+                                    .project_hero_heading {
+                                        font-size: clamp(38px, 9.5vw, 54px) !important;
+                                        margin-bottom: 10px !important;
+                                    }
+
+                                    .project_hero_client {
+                                        font-size: clamp(16px, 4.5vw, 18px) !important;
+                                    }
+
+                                    .project_hero_tag,
+                                    .project_hero_tag p {
+                                        font-size: 14px !important;
                                     }
                                 }
                             </style>
@@ -2268,21 +2340,24 @@
                                 <!--$-->
                                 <div id="" data-span-lg="" class="project_hero_title u-order-first-small"
                                     style="margin-bottom: 0;">
-                                    <h1 class="project_hero_heading u-text-style-h1">Started at thirteen</h1>
+                                    <h1 class="project_hero_heading u-text-style-h1">Started at thirteen </h1>
                                     <div class="project_hero_client_wrap">
                                         <p class="project_hero_client u-text-style-large">for&nbsp;</p>
-                                        <p class="project_hero_client u-text-style-large">Blackwater Property
-                                            Investments</p>
+                                        <p class="project_hero_client u-text-style-large">
+
+                                            Blackwater Property Investments
+                                        </p>
                                     </div>
                                 </div>
                                 <!--/$-->
                                 <!--$-->
-                                <div id="" data-span-lg="" class="project_hero_description u-order-last-small">
+                                <div id="" data-span-lg="" class="project_hero_description u-order-last-small"
+                                    style="margin-top: 0; padding-top: 0;">
                                     <div class="w-dyn-list">
                                         <div role="list" class="project_hero_tags_wrap u-order-last-small w-dyn-items">
                                             <div role="listitem"
                                                 class="project_hero_tag u-text-style-small-medium w-dyn-item">
-                                                <p>Website design &amp; build</p>
+                                                <p>Website design & build</p>
                                             </div>
                                             <div role="listitem"
                                                 class="project_hero_tag u-text-style-small-medium w-dyn-item">
@@ -2290,7 +2365,11 @@
                                             </div>
                                             <div role="listitem"
                                                 class="project_hero_tag u-text-style-small-medium w-dyn-item">
-                                                <p>Investor &amp; homeowner dual audience</p>
+                                                <p>Technical SEO</p>
+                                            </div>
+                                            <div role="listitem"
+                                                class="project_hero_tag u-text-style-small-medium w-dyn-item">
+                                                <p>Investor & homeowner dual audience</p>
                                             </div>
                                             <div role="listitem"
                                                 class="project_hero_tag u-text-style-small-medium w-dyn-item">
@@ -2329,10 +2408,10 @@
                                                 }
                                             </style>
                                         </div>
-                                        <a href="https://bwpi.ie" target="_blank" rel="noopener noreferrer"
+                                        <a href="https://bwpi.ie/" target="_blank" rel="noopener noreferrer"
                                             data-theme="dark" data-btn-hover="" data-barba-prevent
                                             class="btn w-inline-block"
-                                            aria-label="Visit Blackwater Property Investments live website">
+                                            aria-label="Visit Windmill Healthcare live website">
                                             <div class="btn__bg"></div>
                                             <div class="btn__circle-wrap">
                                                 <div class="btn__circle">
@@ -2345,26 +2424,31 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!--/$-->
-                                <!--$-->
-                                <div id="" data-span-lg="" data-start-lg=""
-                                    STYLE="--span-lg: 12; --span-md: 12; --span-sm: 12; --span-xs: 12; --start-lg: 1; --start-md: 1; --start-sm: 1; --start-xs: 1;"
-                                    class="project_reel_wrap">
-                                    <!--$--><video preload="auto" playsinline="playsinline" muted="" loop=""
-                                        autoplay="">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/d965613f-0ee4-47f2-b9c3-e2c4a920b6fb/playlist.m3u8"
-                                            type="video/mp4" />
-                                    </video>
-                                    <!--/$-->
-                                </div>
+                            </div>
+                            <!--/$-->
+                            <!--$-->
+                            <div id="" data-span-lg="" data-start-lg=""
+                                STYLE="--span-lg: 5; --span-md: 6; --span-sm: 12; --span-xs: 12; --start-lg: 8; --start-md: 7; --start-sm: 1; --start-xs: 1;"
+                                class="project_reel_wrap">
+                                <!--$--><video preload="auto" playsinline="playsinline" muted="" loop="" autoplay="">
+                                    <source
+                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/1ce8ff6d-5299-4a09-b508-7a117d53ce57/playlist.m3u8"
+                                        type="video/mp4">
+                                    <source
+                                        src="https://vz-5d3a8c6b-e14.b-cdn.net/1ce8ff6d-5299-4a09-b508-7a117d53ce57/playlist.m3u8"
+                                        type="video/mp4">
+                                </video>
                                 <!--/$-->
                             </div>
+                            <!--/$-->
                         </div>
                     </div>
-                    <div data-wf--spacer--variant="small"
-                        class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
+                </div>
+                <div data-wf--spacer--variant="small"
+                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
             </section>
+            <!--/$-->
+
             <section class="main-section_wrap u-section">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
@@ -2597,7 +2681,8 @@
                                     <div class="project_deliverable_video_wrap"
                                         style="border: 2px solid #2A2B25; aspect-ratio: 1.938; overflow: hidden; background: #0E100F; position: relative;">
                                         <img src="https://blackwatercdn.b-cdn.net/Blackwater%20Property%20Investment%20Case%20Study/No.1%20Homepage.png"
-                                            alt="Shop" style="width: 100%; height: 100%; display: block; object-fit: contain;">
+                                            alt="Shop"
+                                            style="width: 100%; height: 100%; display: block; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
@@ -2614,13 +2699,14 @@
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
                                             class="n" style="color: #FFE32A; margin-right: 8px;">02</span>Property
-                                         Investment</span>
+                                        Investment</span>
                                 </div>
                                 <div class="gallery_card" style="display: flex; flex-direction: column; gap: 12px;">
                                     <div class="project_deliverable_video_wrap"
                                         style="border: 2px solid #2A2B25; aspect-ratio: 1.938; overflow: hidden; background: #0E100F; position: relative;">
                                         <img src="https://blackwatercdn.b-cdn.net/Blackwater%20Property%20Investment%20Case%20Study/beip%20case%20study.png"
-                                            alt="Category" style="width: 100%; height: 100%; display: block; object-fit: contain;">
+                                            alt="Category"
+                                            style="width: 100%; height: 100%; display: block; object-fit: contain;">
                                     </div>
                                     <span
                                         style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px;"><span
