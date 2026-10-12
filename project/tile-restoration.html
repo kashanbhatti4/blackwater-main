@@ -2438,6 +2438,18 @@
                         background: #FFE32A;
                     }
 
+                    @media (max-width: 767px) {
+                        .browser_scroll_container {
+                            height: 450px;
+                            max-height: 65vh;
+                        }
+
+                        .browser_scroll_prompt {
+                            padding: 10px 18px;
+                            font-size: 13px;
+                        }
+                    }
+
                     /* Phone Mockup Frame */
                     .phone_mockup_device {
                         width: 270px;
@@ -2724,7 +2736,7 @@
 
                 <!-- SECTION 6: 04 — THE FULL PAGE -->
                 <section class="main-section_wrap u-section"
-                    style="background-color: #0E100F; padding-block: 90px; color: #FFFCE1; border-top: 1px solid #2A2B25;">
+                    style="background-color: #0E100F; padding-block: clamp(48px, 6vw, 90px); color: #FFFCE1; border-top: 1px solid #2A2B25;">
                     <div class="main-section_contain u-container">
                         <div class="content_layout u-grid-custom">
                             <div class="content_wrap u-column-span-12"
@@ -2768,7 +2780,7 @@
                                         </div>
                                         <img src="https://blackwatercdn.b-cdn.net/TILE%20RESTORATION/04%20homepage%20scroll.png"
                                             alt="Tile Restoration full-page homepage capture"
-                                            style="width: 100%; height: auto; min-height: 2200px; object-fit: contain; display: block;" />
+                                            style="width: 100%; height: auto; display: block;" />
                                     </div>
                                 </div>
                                 <script>
