@@ -19,18 +19,25 @@ export default async function googleReviewsHandler(req, res) {
   // If Places API key and Place ID are provided, fetch dynamically from Google Places API
   if (apiKey && placeId) {
     try {
-      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${encodeURIComponent(placeId)}&fields=rating,user_ratings_total&key=${encodeURIComponent(apiKey)}`;
-      const response = await fetch(url);
+      // Places API (New) - the legacy Place Details endpoint can no longer be enabled on new Google Cloud projects
+      const url = `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}`;
+      const response = await fetch(url, {
+        headers: {
+          'X-Goog-Api-Key': apiKey,
+          'X-Goog-FieldMask': 'rating,userRatingCount'
+        }
+      });
       const data = await response.json();
-      if (data && data.result) {
+      if (response.ok && data && data.rating !== undefined) {
         const payload = {
-          rating: data.result.rating || defaultRating,
-          reviewCount: data.result.user_ratings_total || defaultCount,
+          rating: data.rating || defaultRating,
+          reviewCount: data.userRatingCount || defaultCount,
           source: 'google_places_api'
         };
         cache = { data: payload, timestamp: now };
         return res.status(200).json(payload);
       }
+      console.error('Google Places API error:', data && data.error ? data.error.message : response.status);
     } catch (err) {
       console.error('Error fetching Google Places API:', err);
     }

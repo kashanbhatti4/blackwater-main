@@ -2449,11 +2449,28 @@
                                 max-width: 50% !important;
                             }
 
+                            /* Intro layout and CTA column share one grid cell so the hero grows with
+                               whichever is taller (CTA column used to be absolute and got clipped) */
+                            .home_hero_new .main-section_contain {
+                                display: grid !important;
+                                grid-template-columns: minmax(0, 1fr);
+                                align-content: start;
+                            }
+
+                            .home_hero_new .home_intro_layout,
                             .home_hero_new .home_hero_content_under {
+                                grid-area: 1 / 1;
+                            }
+
+                            .home_hero_new .home_hero_content_under {
+                                position: relative !important;
+                                top: auto !important;
+                                align-self: start;
                                 width: 50% !important;
                                 max-width: 50% !important;
                                 padding-right: 2rem !important;
-                                top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px) !important;
+                                padding-bottom: 3rem;
+                                margin-top: calc(clamp(2rem, 6vw, 120px) * 0.9 + 30px + 3.2rem);
                             }
 
                             .home_hero_new .capabilities_wrap {
@@ -2666,6 +2683,123 @@
                             z-index: 10;
                             width: 100%;
                             font-size: var(--_text-style---font-size) !important;
+                        }
+
+                        /* Google Reviews widget inline with the hero CTA (sizes in em so it scales with the button) */
+                        .home_hero_new .home_hero_cta_row {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 0.75em 1em;
+                        }
+
+                        .hero_g_reviews {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 0.65em;
+                            padding: 0.5em 1.1em 0.5em 0.5em;
+                            background: #131615;
+                            border: 1px solid #2A2B25;
+                            border-radius: 999px;
+                            color: #FFFCE1;
+                            text-decoration: none;
+                            line-height: 1;
+                            white-space: nowrap;
+                            box-sizing: border-box;
+                            transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+                        }
+
+                        .hero_g_reviews:hover {
+                            border-color: #3E4034;
+                            background: #181B1A;
+                            transform: translateY(-2px);
+                        }
+
+                        .hero_g_reviews_icon {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-shrink: 0;
+                            width: 2.3em;
+                            height: 2.3em;
+                            border-radius: 50%;
+                            background: #181B1A;
+                            border: 1px solid #2A2B25;
+                        }
+
+                        .hero_g_reviews_icon svg {
+                            width: 1.3em;
+                            height: 1.3em;
+                            display: block;
+                        }
+
+                        .hero_g_reviews_content {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.3em;
+                        }
+
+                        .hero_g_reviews_top {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.4em;
+                        }
+
+                        .hero_g_reviews .footer_g_reviews_score {
+                            font-family: inherit;
+                            font-size: 0.95em;
+                            font-weight: 700;
+                            color: #FFFCE1;
+                            line-height: 1;
+                        }
+
+                        .hero_g_reviews_stars {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.1em;
+                        }
+
+                        .hero_g_reviews_stars svg {
+                            width: 0.8em;
+                            height: 0.8em;
+                            display: block;
+                        }
+
+                        .hero_g_reviews .footer_g_reviews_count {
+                            font-family: inherit;
+                            font-size: 0.72em;
+                            font-weight: 600;
+                            color: #A0A092;
+                            margin-left: 0;
+                            line-height: 1;
+                        }
+
+                        .hero_g_reviews_label {
+                            font-size: 0.72em;
+                            font-weight: 500;
+                            color: #8C8C80;
+                            line-height: 1.1;
+                            transition: color 0.2s ease;
+                        }
+
+                        .hero_g_reviews:hover .hero_g_reviews_label {
+                            color: #FFFCE1;
+                        }
+
+                        /* Phones: label + button stay on one row, widget drops to its own row below */
+                        @media (max-width: 767px) {
+                            .home_hero_new .home_hero_button_wrap {
+                                flex-wrap: wrap !important;
+                                row-gap: 1rem !important;
+                            }
+
+                            .home_hero_new .home_hero_cta_row {
+                                display: contents;
+                            }
+
+                            .hero_g_reviews {
+                                order: 3;
+                            }
                         }
 
                         @media (max-width: 1040px) {
@@ -2915,7 +3049,7 @@
                         <div class="home_hero_button_wrap">
                             <p class="home_hero_button_text u-text-style-main" style="margin: 0;">Ready to grow your
                                 business?</p>
-                            <div style="margin-top: 0 !important;" class="u-button-wrapper">
+                            <div style="margin-top: 0 !important;" class="u-button-wrapper home_hero_cta_row">
                                 <div class="u-display-contents">
                                     <div class="btn-wrap">
                                         <div class="u-embed-css w-embed">
@@ -2957,6 +3091,35 @@
                                         </a>
                                     </div>
                                 </div>
+                                <a href="https://share.google/MAAvyQ66KSrDkjbN4" target="_blank" rel="noopener noreferrer"
+                                    class="hero_g_reviews" data-barba-prevent aria-label="Read our Google reviews">
+                                    <span class="hero_g_reviews_icon">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path fill="#4285F4"
+                                                d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
+                                            <path fill="#34A853"
+                                                d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" />
+                                            <path fill="#FBBC05"
+                                                d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
+                                            <path fill="#EA4335"
+                                                d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
+                                        </svg>
+                                    </span>
+                                    <span class="hero_g_reviews_content">
+                                        <span class="hero_g_reviews_top">
+                                            <span class="footer_g_reviews_score">5.0</span>
+                                            <span class="hero_g_reviews_stars" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                                                <svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                                                <svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                                                <svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                                                <svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                                            </span>
+                                            <span class="footer_g_reviews_count">(8)</span>
+                                        </span>
+                                        <span class="hero_g_reviews_label">Google Reviews</span>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </div>
