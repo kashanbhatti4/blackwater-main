@@ -1929,19 +1929,24 @@
                         border: 1px solid #2A2B25;
                         border-radius: 4px;
                         overflow: hidden;
-                        aspect-ratio: 4/3;
+                        aspect-ratio: 3/4;
                         display: flex;
                         flex-direction: column;
+                        text-decoration: none;
+                        cursor: pointer;
                     }
 
-                    .content_wall_image {
+                    .content_wall_image,
+                    .content_wall_item video {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
                         transition: transform 0.3s ease;
+                        pointer-events: none;
                     }
 
-                    .content_wall_item:hover .content_wall_image {
+                    .content_wall_item:hover .content_wall_image,
+                    .content_wall_item:hover video {
                         transform: scale(1.05);
                     }
 
@@ -1958,6 +1963,7 @@
                         border-radius: 2px;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
+                        pointer-events: none;
                     }
 
                     @media (max-width: 991px) {
@@ -2011,21 +2017,12 @@
                             </div>
 
                             <div class="content_wall_grid">
-                                <div class="content_wall_item">
-                                    <video preload="metadata" muted loop playsinline autoplay
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/9c458bf8-0923-490b-bfbc-c306a16655fa/playlist.m3u8"
-                                            type="application/x-mpegURL">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/9c458bf8-0923-490b-bfbc-c306a16655fa/playlist.m3u8"
-                                            type="video/mp4">
-                                    </video>
-                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Frameless SPC Tiles" class="content_wall_image"> -->
+                                <a href="/project/fortis-financial-management" class="content_wall_item" aria-label="View Fortis Financial case study">
+                                    <img src="https://blackwatercdn.b-cdn.net/Case%20studies%20thumbnails/fortis-financial-3x4.png"
+                                        alt="Fortis Financial" class="content_wall_image" loading="lazy">
                                     <span class="content_wall_tag">Fortis Financial</span>
-                                </div>
-                                <div class="content_wall_item">
+                                </a>
+                                <a href="/project/clarity-investigations" class="content_wall_item" aria-label="View Clarity Investigations case study">
                                     <video preload="metadata" muted loop playsinline autoplay
                                         style="width: 100%; height: 100%; object-fit: cover;">
                                         <source
@@ -2035,25 +2032,13 @@
                                             src="https://vz-5d3a8c6b-e14.b-cdn.net/852ca485-edaf-459a-a14e-d081278870c7/playlist.m3u8"
                                             type="video/mp4">
                                     </video>
-                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Frameless sliding door" class="content_wall_image"> -->
                                     <span class="content_wall_tag">Clarity Investigations</span>
-                                </div>
-                                <div class="content_wall_item">
-                                    <video preload="metadata" muted loop playsinline autoplay
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/bdc36180-d7ae-4a9d-aba9-d99d4484e807/playlist.m3u8"
-                                            type="application/x-mpegURL">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/bdc36180-d7ae-4a9d-aba9-d99d4484e807/playlist.m3u8"
-                                            type="video/mp4">
-                                    </video>
-                                    <!-- <img src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/image-mockup.png"
-                                        alt="Showroom reel" class="content_wall_image"> -->
-                                    <span class="content_wall_tag">Frameless</span>
-                                </div>
-
+                                </a>
+                                <a href="/project/kevin-okeeffe" class="content_wall_item" aria-label="View Kevin O'Keeffe case study">
+                                    <img src="https://blackwatercdn.b-cdn.net/Case%20studies%20thumbnails/kevin-okeeffe-business-coach-3x4.png"
+                                        alt="Kevin O'Keeffe" class="content_wall_image" loading="lazy">
+                                    <span class="content_wall_tag">Kevin O'Keeffe</span>
+                                </a>
                             </div>
                         </div>
                     </div>
