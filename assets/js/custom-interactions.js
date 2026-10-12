@@ -1399,6 +1399,8 @@ function initTestimonialsSlider() {
   const nextBtn = nextPage.querySelector('[data-slider-next="testimonials"]');
 
   if (!sliderList || !prevBtn || !nextBtn) return;
+  if (sliderList._hasHandler) return;
+  sliderList._hasHandler = true;
 
   let items = Array.from(sliderList.children).filter(item => item.style.display !== 'none');
   if (items.length === 0) return;
