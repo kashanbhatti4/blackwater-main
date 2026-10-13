@@ -228,7 +228,7 @@
 
             .simple-navbar__logo-link {
                 display: block;
-                width: 3.75rem;
+                width: auto;
                 height: 3.75rem;
                 color: #FFFCE1;
                 transition: transform 0.3s ease;
@@ -237,7 +237,7 @@
 
 
             .simple-navbar__logo-svg {
-                width: 100%;
+                width: auto;
                 height: 100%;
                 display: block;
             }
@@ -377,7 +377,7 @@
                 }
 
                 .simple-navbar__logo-link {
-                    width: 2.5rem;
+                    width: auto;
                     height: 2.5rem;
                 }
 
@@ -426,7 +426,7 @@
             <!-- Logo Box -->
             <a href="/" class="simple-navbar__logo-box" aria-label="Blackwater Home">
                 <div class="simple-navbar__logo-link">
-                    <img src="/assets/images/logo-light.svg" class="simple-navbar__logo-svg" alt="Blackwater Logo">
+                    <img src="/assets/images/logo-white.webp" class="simple-navbar__logo-svg" alt="Blackwater Digital Marketing" width="550" height="302">
                 </div>
             </a>
 
@@ -3363,13 +3363,10 @@
                     <div class="footer_ref_grid">
                         <!-- Column 1: Brand & Tagline -->
                         <div>
-                            <div style="display: flex; align-items: stretch; gap: 1rem; margin-bottom: 1.25rem;">
-                                <div style="width: 4.5px; background-color: #FFE32A; border-radius: 3px;"></div>
-                                <div
-                                    style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.85rem; line-height: 1.08; color: #FFFCE1; letter-spacing: -0.015em;">
-                                    Black<br>Water<br>Digital
-                                </div>
-                            </div>
+                            <a href="/" aria-label="Blackwater Home" style="display: inline-block; margin-bottom: 1.25rem;">
+                                <img src="/assets/images/logo-white.webp" alt="Blackwater Digital Marketing" width="550" height="302"
+                                    style="display: block; height: 6rem; width: auto;">
+                            </a>
                             <p
                                 style="font-size: 0.88rem; color: #7C7C70; margin: 0; line-height: 1.5; max-width: 280px;">
                                 Strategic digital marketing for ambitious businesses.
@@ -3653,7 +3650,7 @@
 
                     <!-- Bottom Bar -->
                     <div class="footer_ref_bottom_bar">
-                        <div>&copy; 2026 Black Water Digital. All rights reserved.</div>
+                        <div>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</div>
 
                         <div class="footer_ref_socials_legal">
                             <!-- Social Icons -->
@@ -3760,6 +3757,25 @@
         </div>
     </div>
     <script src="/assets/js/cookie-consent.js"></script>
+    <!-- Calendly booking popup: last section of the page, hidden until the header "Book a free Consultation" button is clicked -->
+    <div id="bw-calendly-popup" class="bw-calendly-popup" role="dialog" aria-modal="true"
+        aria-label="Book a free Consultation" aria-hidden="true" inert data-lenis-prevent>
+        <div class="bw-calendly-popup__panel">
+            <button type="button" class="bw-calendly-popup__close" aria-label="Close booking popup">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget"
+                data-url="https://calendly.com/blackwater_digitalmarketing/30min?hide_gdpr_banner=1&amp;background_color=262928&amp;text_color=ffffff&amp;primary_color=ffe32a"
+                style="min-width:320px;height:100%;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+        </div>
+    </div>
     <script src="/assets/js/calendly-popup.js"></script>
 
     <script src="/components/cta-logo-grid.js"></script>

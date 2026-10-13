@@ -239,6 +239,13 @@
 
       if (!slides.length) return;
 
+      // Videos added through innerHTML don't always honour the autoplay attribute, so start them here
+      container.querySelectorAll('video[autoplay]').forEach((video) => {
+        video.muted = true;
+        const playAttempt = video.play();
+        if (playAttempt && playAttempt.catch) playAttempt.catch(() => {});
+      });
+
       const totalSlides = slides.length;
       if (totalElement) {
         totalElement.textContent = totalSlides < 10 ? `0${totalSlides}` : totalSlides;
@@ -300,11 +307,56 @@
         });
       });
 
-      nextButton?.addEventListener("click", () => goToIndex(currentIndex + 1));
-      prevButton?.addEventListener("click", () => goToIndex(currentIndex - 1));
+      // Auto slide: advances every few seconds, pauses while the mouse is over the cards
+      const AUTOPLAY_DELAY = 4000;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let autoplayTimer = null;
+      let isHovering = false;
+
+      function stopAutoplay() {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        if (reduceMotion || totalSlides < 2) return;
+        autoplayTimer = setInterval(() => {
+          if (isHovering || document.hidden || !container.isConnected) return;
+          goToIndex(currentIndex + 1);
+        }, AUTOPLAY_DELAY);
+      }
+
+      wrapper.addEventListener("pointerenter", (e) => {
+        if (e.pointerType === "mouse") isHovering = true;
+      });
+      wrapper.addEventListener("pointerleave", () => {
+        isHovering = false;
+        startAutoplay();
+      });
+      // Restart the countdown after a drag or tap so it doesn't jump straight away
+      wrapper.addEventListener("pointerdown", startAutoplay);
+
+      nextButton?.addEventListener("click", () => { goToIndex(currentIndex + 1); startAutoplay(); });
+      prevButton?.addEventListener("click", () => { goToIndex(currentIndex - 1); startAutoplay(); });
 
       if (slides[0]) {
         applyActive(slides[0], 0, false);
+      }
+
+      startAutoplay();
+
+      // Slide the strip in as soon as the section is on screen (also right after a refresh)
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            container.classList.add('is-inview');
+            revealObserver.disconnect();
+          }
+        }, { threshold: 0.15 });
+        revealObserver.observe(container);
+      } else {
+        container.classList.add('is-inview');
       }
     }
   }
