@@ -3530,6 +3530,25 @@
         </div>
     </div>
     <script src="/assets/js/cookie-consent.js"></script>
+    <!-- Calendly booking popup: last section of the page, hidden until the header "Book a free Consultation" button is clicked -->
+    <div id="bw-calendly-popup" class="bw-calendly-popup" role="dialog" aria-modal="true"
+        aria-label="Book a free Consultation" aria-hidden="true" inert data-lenis-prevent>
+        <div class="bw-calendly-popup__panel">
+            <button type="button" class="bw-calendly-popup__close" aria-label="Close booking popup">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget"
+                data-url="https://calendly.com/blackwater_digitalmarketing/30min?hide_gdpr_banner=1&amp;background_color=000000&amp;text_color=ffffff&amp;primary_color=ffe32a"
+                style="min-width:320px;height:100%;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+        </div>
+    </div>
     <script src="/assets/js/calendly-popup.js"></script>
 
 </body>
