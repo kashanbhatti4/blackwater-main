@@ -87,21 +87,41 @@
             border-radius: 24px !important;
         }
 
-        /* Default solid circle → dark olive */
-        .cta_grid_circle:not(.is-blank):not(.is-pink):not(.is-orange):not(.is-yellow) {
-            background-color: #2A2B25 !important;
-        }
-
-        /* Pink & yellow → bright yellow */
+        /* Every tile gets the same quiet card, so no logo floats on the page background */
+        .cta_grid_circle,
+        .cta_grid_circle.is-blank,
         .cta_grid_circle.is-pink,
+        .cta_grid_circle.is-orange,
         .cta_grid_circle.is-yellow {
-            background-color: #FFE32A !important;
+            background-color: #F2EED3 !important;
         }
 
-        /* Orange → dark olive */
-        .cta_grid_circle.is-orange {
-            background-color: #2A2B25 !important;
+        /* Each logo carries its own background, picked for contrast, so the colour
+           swaps together with the logo instead of being fixed per tile */
+        .cta_grid_circle_img {
+            background-color: #FFFFFF;
         }
+
+        /* Light or white artwork → dark */
+        .cta_grid_circle_img[src*="clientlogo2.png"],
+        .cta_grid_circle_img[src*="clientlogo4.png"],
+        .cta_grid_circle_img[src*="clientlogo5.png"],
+        .cta_grid_circle_img[src*="clientlogo9.png"],
+        .cta_grid_circle_img[src*="clientlogo10.png"],
+        .cta_grid_circle_img[src*="clientlogo12.png"],
+        .cta_grid_circle_img[src*="clientlogo16.png"] {
+            background-color: #2A2B25;
+        }
+
+        /* Outlined or dark-and-orange artwork → brand yellow */
+        .cta_grid_circle_img[src*="clientlogo3.png"],
+        .cta_grid_circle_img[src*="clientlogo8.png"],
+        .cta_grid_circle_img[src*="clientlogo14.png"] {
+            background-color: #FFE32A;
+        }
+
+        /* Navy, green and yellow artwork (Builders Fort, Windmill, Cork Safety, Action Coach,
+           Clarity) stays on the white default above */
 
         @media screen and (max-width: 767px) {
             .cta_circles_wrap {
@@ -147,7 +167,7 @@
                 data-url="https://revolutionroofingltd.ie/" loading="lazy" alt="revolutionroofingltd"
                 class="cta_grid_circle_img" /><img
                 src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo12.png"
-                data-url="https://corkdemolitions.ie" loading="lazy" alt="Smart Roofing" class="cta_grid_circle_img" />
+                data-url="https://corkdemolitions.ie" loading="lazy" alt="Cork Demolitions" class="cta_grid_circle_img" />
         </div>
         <div class="cta_grid_circle cd-3"><img
                 src="https://blackwatercdn.b-cdn.net/homepage/client%20logos/clientlogo5.png"

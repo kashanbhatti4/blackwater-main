@@ -8,7 +8,7 @@
   var BUTTON_LABEL = 'Book a free Consultation';
 
   var CALENDAR_ICON =
-    '<svg class="bw-calendly-btn__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<svg class="bw-calendly-btn__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
     '<path d="M8 2v4"/><path d="M16 2v4"/>' +
     '<path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/>' +
     '<path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/>' +
@@ -78,6 +78,11 @@
       var height = parseInt(e.data.payload && e.data.payload.height, 10);
       // Ignore the tiny heights Calendly reports while it is still loading
       if (height >= 500) panel.style.setProperty('--bw-calendly-height', height + 'px');
+    });
+
+    // Any other element marked data-calendly-open (e.g. the footer button) opens the popup too
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('[data-calendly-open]')) openPopup();
     });
 
     buildButton();

@@ -40,7 +40,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=66" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=76" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -483,74 +483,41 @@
     </div>
     <div data-barba="wrapper" class="page_wrap">
 
+
+
+<main id="main" data-barba="container" class="page_main">
 <style>
+  /* =========================================================
+     Privacy policy: reading-first layout
+     Narrow text column (~70 characters), calm type scale, sticky
+     contents with the current section highlighted, collapsible
+     contents on smaller screens.
+     ========================================================= */
   .bwd-privacy,
   .bwd-privacy * {
     box-sizing: border-box;
   }
 
   .bwd-privacy {
-    --bwd-bg: #080808;
-    --bwd-panel: #111111;
-    --bwd-panel-2: #151515;
-    --bwd-text: #f5f3ed;
-    --bwd-muted: #aaa79f;
-    --bwd-line: rgba(255,255,255,.14);
-    --bwd-yellow: #ffe100;
-    --bwd-black: #080808;
+    --bwd-bg: #0E100F;
+    --bwd-panel: #131615;
+    --bwd-panel-2: #181B1A;
+    --bwd-text: #FFFCE1;
+    --bwd-body: #CFCCC0;
+    --bwd-muted: #8C8A80;
+    --bwd-line: #2A2B25;
+    --bwd-line-soft: rgba(255, 252, 225, 0.07);
+    --bwd-yellow: #FFE32A;
+    --bwd-header: 100px;
 
     width: 100%;
     background: var(--bwd-bg);
-    color: var(--bwd-text);
-    font-family: inherit;
-    font-size: 17px;
-    line-height: 1.7;
+    color: var(--bwd-body);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-
-  .bwd-privacy a {
-    color: inherit;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-  }
-
-  .bwd-privacy a:hover {
-    color: var(--bwd-yellow);
-  }
-
-  .bwd-privacy__wrap {
-    width: min(100% - 48px, 1320px);
-    margin: 0 auto;
-  }
-
-  /* HERO */
-  .bwd-privacy__hero {
-    min-height: 62vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 140px 0 84px;
-    border-bottom: 1px solid var(--bwd-line);
-  }
-
-  .bwd-privacy__eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 26px;
-    color: var(--bwd-yellow);
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .bwd-privacy__eyebrow::before {
-    content: "";
-    width: 34px;
-    height: 2px;
-    background: var(--bwd-yellow);
   }
 
   .bwd-privacy h1,
@@ -560,308 +527,382 @@
     margin-top: 0;
   }
 
-  .bwd-privacy h1 {
-    max-width: 980px;
-    margin-bottom: 28px;
-    font-family: inherit;
-    font-size: clamp(56px, 9vw, 132px);
-    font-weight: 700;
-    line-height: .88;
-    letter-spacing: -.055em;
+  .bwd-privacy a {
     color: var(--bwd-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 227, 42, 0.5);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
 
-  .bwd-privacy__hero-copy {
-    display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
-    gap: 70px;
-    align-items: end;
+  .bwd-privacy a:hover {
+    color: var(--bwd-yellow);
+    text-decoration-color: var(--bwd-yellow);
+  }
+
+  .bwd-privacy__wrap {
+    width: min(100% - 48px, 1200px);
+    margin: 0 auto;
+  }
+
+  /* ---------- Hero ---------- */
+  .bwd-privacy__hero {
+    padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 64px);
+    border-bottom: 1px solid var(--bwd-line);
+    background:
+      radial-gradient(60% 120% at 100% 0%, rgba(255, 227, 42, 0.06), transparent 60%),
+      var(--bwd-bg);
+  }
+
+  .bwd-privacy__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    color: var(--bwd-yellow);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .bwd-privacy__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    background: var(--bwd-yellow);
+  }
+
+  .bwd-privacy h1 {
+    margin-bottom: 1.5rem;
+    color: var(--bwd-text);
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.035em;
   }
 
   .bwd-privacy__intro {
-    max-width: 760px;
-    margin-bottom: 0;
-    color: #d8d6d0;
-    font-size: clamp(20px, 2vw, 28px);
-    line-height: 1.42;
-    letter-spacing: -.02em;
+    max-width: 44rem;
+    margin-bottom: 2rem;
+    color: var(--bwd-body);
+    font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+    line-height: 1.6;
   }
 
-  .bwd-privacy__updated {
+  .bwd-privacy__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
     margin: 0;
-    padding-top: 18px;
-    border-top: 1px solid var(--bwd-line);
+    padding: 0;
+    list-style: none;
+  }
+
+  .bwd-privacy__meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--bwd-line);
+    border-radius: 999px;
+    background: var(--bwd-panel);
     color: var(--bwd-muted);
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 0.8125rem;
+    line-height: 1.3;
   }
 
-  .bwd-privacy__updated strong {
-    display: block;
-    margin-bottom: 5px;
+  .bwd-privacy__meta strong {
     color: var(--bwd-text);
-    font-size: 12px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+    font-weight: 600;
   }
 
-  /* CONTENT LAYOUT */
+  /* ---------- Layout ---------- */
   .bwd-privacy__content {
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    gap: 92px;
-    padding: 86px 0 120px;
-  }
-
-  .bwd-privacy__nav {
-    align-self: start;
-    position: sticky;
-    top: 32px;
-  }
-
-  .bwd-privacy__nav-title {
-    margin-bottom: 20px;
-    color: var(--bwd-muted);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-  }
-
-  .bwd-privacy__nav a {
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    gap: 10px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--bwd-line);
-    color: #cfcdc7;
-    font-size: 14px;
-    line-height: 1.35;
-    text-decoration: none;
-    transition: color .2s ease, padding-left .2s ease;
-  }
-
-  .bwd-privacy__nav a:hover {
-    padding-left: 6px;
-    color: var(--bwd-yellow);
-  }
-
-  .bwd-privacy__nav-num {
-    color: #6f6d68;
-    font-variant-numeric: tabular-nums;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: clamp(48px, 7vw, 112px);
+    padding: clamp(48px, 6vw, 88px) 0 clamp(72px, 8vw, 120px);
   }
 
   .bwd-privacy__main {
     min-width: 0;
+    max-width: 44rem; /* ~70 characters per line */
   }
 
-  .bwd-policy-section {
+  /* ---------- Contents (sticky on desktop) ---------- */
+  .bwd-privacy__nav {
+    align-self: start;
+    position: sticky;
+    top: calc(var(--bwd-header) + 32px);
+  }
+
+  .bwd-privacy__toc > summary {
+    list-style: none;
+    margin-bottom: 0.75rem;
+    color: var(--bwd-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .bwd-privacy__toc > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .bwd-privacy__progress {
+    height: 2px;
+    margin-bottom: 0.75rem;
+    background: var(--bwd-line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bwd-privacy__progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--bwd-yellow);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.15s linear;
+  }
+
+  .bwd-privacy__nav a {
     display: grid;
-    grid-template-columns: 92px minmax(0, 1fr);
-    gap: 32px;
-    padding: 0 0 68px;
-    margin: 0 0 68px;
+    grid-template-columns: 28px 1fr;
+    gap: 6px;
+    padding: 0.45rem 0 0.45rem 0.75rem;
+    border-left: 2px solid var(--bwd-line);
+    color: var(--bwd-muted);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .bwd-privacy__nav a:hover {
+    color: var(--bwd-text);
+  }
+
+  .bwd-privacy__nav a.is-active {
+    border-left-color: var(--bwd-yellow);
+    color: var(--bwd-text);
+  }
+
+  .bwd-privacy__nav-num {
+    color: #5E5D57;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bwd-privacy__nav a.is-active .bwd-privacy__nav-num {
+    color: var(--bwd-yellow);
+  }
+
+  /* ---------- Sections ---------- */
+  .bwd-policy-section {
+    padding: 0 0 clamp(40px, 5vw, 56px);
+    margin: 0 0 clamp(40px, 5vw, 56px);
     border-bottom: 1px solid var(--bwd-line);
-    scroll-margin-top: 40px;
+    scroll-margin-top: calc(var(--bwd-header) + 24px);
   }
 
   .bwd-policy-section:last-child {
     margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
   }
 
   .bwd-policy-section__number {
-    padding-top: 9px;
+    margin-bottom: 0.75rem;
     color: var(--bwd-yellow);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .1em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    font-variant-numeric: tabular-nums;
   }
 
   .bwd-policy-section h2 {
-    max-width: 900px;
-    margin-bottom: 26px;
+    margin-bottom: 1.25rem;
     color: var(--bwd-text);
-    font-size: clamp(34px, 4.6vw, 66px);
+    font-size: clamp(1.625rem, 2.4vw, 2.125rem);
     font-weight: 650;
-    line-height: .98;
-    letter-spacing: -.045em;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   .bwd-policy-section h3 {
-    margin: 34px 0 13px;
-    color: var(--bwd-yellow);
-    font-size: 15px;
-    font-weight: 700;
+    margin: 2rem 0 0.5rem;
+    color: var(--bwd-text);
+    font-size: 1.125rem;
+    font-weight: 600;
     line-height: 1.4;
-    letter-spacing: .06em;
-    text-transform: uppercase;
+    letter-spacing: -0.005em;
   }
 
   .bwd-policy-section p,
   .bwd-policy-section li {
-    max-width: 900px;
-    color: #c8c5be;
+    color: var(--bwd-body);
   }
 
   .bwd-policy-section p {
-    margin-bottom: 18px;
+    margin-bottom: 1.1rem;
   }
 
   .bwd-policy-section strong {
     color: var(--bwd-text);
-    font-weight: 650;
+    font-weight: 600;
   }
 
   .bwd-policy-section ul {
-    max-width: 900px;
-    margin: 18px 0 24px;
+    margin: 0.75rem 0 1.5rem;
     padding: 0;
     list-style: none;
   }
 
   .bwd-policy-section li {
     position: relative;
-    margin: 0;
-    padding: 10px 0 10px 25px;
-    border-bottom: 1px solid rgba(255,255,255,.075);
+    margin: 0 0 0.6rem;
+    padding-left: 1.5rem;
   }
 
   .bwd-policy-section li::before {
-    content: "→";
+    content: "";
     position: absolute;
-    left: 0;
-    top: 10px;
-    color: var(--bwd-yellow);
-  }
-
-  .bwd-policy-section li:last-child {
-    border-bottom: 0;
+    left: 0.25rem;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--bwd-yellow);
   }
 
   .bwd-privacy__note {
-    max-width: 900px;
-    margin: 32px 0;
-    padding: 24px 26px;
+    margin: 1.75rem 0;
+    padding: 1.1rem 1.35rem;
+    border: 1px solid var(--bwd-line);
     border-left: 3px solid var(--bwd-yellow);
+    border-radius: 0 12px 12px 0;
     background: var(--bwd-panel);
-    color: #d8d5cf;
+    color: var(--bwd-body);
+    font-size: 0.975rem;
   }
 
   .bwd-privacy__note p:last-child {
     margin-bottom: 0;
   }
 
-  /* CONTACT BLOCK */
+  /* ---------- Contact card ---------- */
   .bwd-privacy__contact {
-    margin-top: 8px;
-    padding: 34px;
-    background: var(--bwd-yellow);
-    color: var(--bwd-black);
+    margin: 1.75rem 0 2.25rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid var(--bwd-line);
+    border-radius: 18px;
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgba(255, 227, 42, 0.08), transparent 60%),
+      var(--bwd-panel);
   }
 
   .bwd-privacy__contact-label {
-    margin-bottom: 18px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .12em;
+    margin-bottom: 0.5rem;
+    color: var(--bwd-yellow);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .bwd-privacy__contact h3 {
-    margin: 0 0 24px;
-    color: var(--bwd-black);
-    font-size: clamp(30px, 4vw, 52px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -.04em;
-    text-transform: none;
+    margin: 0 0 1.25rem;
+    color: var(--bwd-text);
+    font-size: clamp(1.375rem, 2vw, 1.75rem);
+    font-weight: 650;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 
   .bwd-privacy__contact p {
-    margin: 6px 0;
-    color: var(--bwd-black);
+    margin: 0.35rem 0;
   }
 
   .bwd-privacy__contact a {
-    color: var(--bwd-black);
-    font-weight: 650;
+    font-weight: 500;
   }
 
+  /* ---------- Tablet and mobile ---------- */
   @media (max-width: 1024px) {
-    .bwd-privacy__hero-copy {
-      grid-template-columns: 1fr;
-      gap: 38px;
-    }
-
-    .bwd-privacy__updated {
-      max-width: 420px;
-    }
-
     .bwd-privacy__content {
       grid-template-columns: 1fr;
-      gap: 54px;
+      gap: 2rem;
     }
 
+    .bwd-privacy__main {
+      max-width: 46rem;
+    }
+
+    /* Contents become a collapsible card at the top */
     .bwd-privacy__nav {
       position: static;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 22px;
     }
 
-    .bwd-privacy__nav-title {
-      grid-column: 1 / -1;
+    .bwd-privacy__toc {
+      border: 1px solid var(--bwd-line);
+      border-radius: 14px;
+      background: var(--bwd-panel);
+      padding: 0 1.1rem;
+    }
+
+    .bwd-privacy__toc > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+      padding: 1rem 0;
+      color: var(--bwd-text);
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .bwd-privacy__toc > summary::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-3px);
+      transition: transform 0.2s ease;
+    }
+
+    .bwd-privacy__toc[open] > summary::after {
+      transform: rotate(-135deg) translateY(-1px);
+    }
+
+    .bwd-privacy__toc[open] {
+      padding-bottom: 0.9rem;
+    }
+
+    .bwd-privacy__progress {
+      display: none;
     }
   }
 
   @media (max-width: 700px) {
+    .bwd-privacy {
+      --bwd-header: 80px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
     .bwd-privacy__wrap {
-      width: min(100% - 30px, 1320px);
-    }
-
-    .bwd-privacy__hero {
-      min-height: auto;
-      padding: 92px 0 58px;
-    }
-
-    .bwd-privacy h1 {
-      font-size: clamp(52px, 17vw, 82px);
-    }
-
-    .bwd-privacy__intro {
-      font-size: 19px;
-    }
-
-    .bwd-privacy__content {
-      padding: 58px 0 80px;
-    }
-
-    .bwd-privacy__nav {
-      grid-template-columns: 1fr;
-    }
-
-    .bwd-policy-section {
-      grid-template-columns: 1fr;
-      gap: 15px;
-      padding-bottom: 48px;
-      margin-bottom: 48px;
-    }
-
-    .bwd-policy-section__number {
-      padding-top: 0;
-    }
-
-    .bwd-policy-section h2 {
-      font-size: clamp(34px, 11vw, 50px);
-    }
-
-    .bwd-privacy__contact {
-      padding: 28px 22px;
+      width: min(100% - 32px, 1200px);
     }
   }
 </style>
-
-<main id="main" data-barba="container" class="page_main bwd-privacy">
+<div class="bwd-privacy">
   <section class="bwd-privacy__hero">
     <div class="bwd-privacy__wrap">
       <div class="bwd-privacy__eyebrow">Privacy &amp; Data Protection</div>
@@ -874,10 +915,11 @@
           and communicate with you where we have a lawful reason to do so.
         </p>
 
-        <p class="bwd-privacy__updated">
-          <strong>Last updated</strong>
-          5 October 2026
-        </p>
+        <ul class="bwd-privacy__meta" aria-label="About this policy">
+          <li>Last updated <strong>5 October 2026</strong></li>
+          <li><strong>7 min</strong> read</li>
+          <li>GDPR &amp; Irish Data Protection Act 2018</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -886,7 +928,9 @@
     <div class="bwd-privacy__content">
 
       <aside class="bwd-privacy__nav" aria-label="Privacy policy contents">
-        <div class="bwd-privacy__nav-title">On this page</div>
+        <details class="bwd-privacy__toc" open>
+        <summary>On this page</summary>
+        <div class="bwd-privacy__progress" aria-hidden="true"><span></span></div>
         <a href="#who-we-are"><span class="bwd-privacy__nav-num">01</span><span>Who we are</span></a>
         <a href="#information"><span class="bwd-privacy__nav-num">02</span><span>Information we collect</span></a>
         <a href="#how-we-use"><span class="bwd-privacy__nav-num">03</span><span>How we use it</span></a>
@@ -899,6 +943,7 @@
         <a href="#marketing"><span class="bwd-privacy__nav-num">10</span><span>Marketing</span></a>
         <a href="#security"><span class="bwd-privacy__nav-num">11</span><span>Security</span></a>
         <a href="#contact"><span class="bwd-privacy__nav-num">12</span><span>Contact &amp; complaints</span></a>
+        </details>
       </aside>
 
       <div class="bwd-privacy__main">
@@ -1223,8 +1268,10 @@
               <p>
                 Phone:
                 <a href="tel:+353899858730">089 985 8730</a>
+                or
+                <a href="tel:0212032041">021 203 2041</a>
               </p>
-              <p>Cork, Ireland</p>
+              <p>12 Cook Street, Cork, Ireland</p>
             </div>
 
             <h3>Data Protection Commission</h3>
@@ -1240,7 +1287,60 @@
       </div>
     </div>
   </div>
-</main>
+</div>
+
+  <script>
+    // Contents: highlight the section in view, show reading progress, collapse on small screens
+    (function () {
+      var root = document.querySelector('.bwd-privacy');
+      if (!root) return;
+      var toc = root.querySelector('.bwd-privacy__toc');
+      var links = Array.prototype.slice.call(root.querySelectorAll('.bwd-privacy__nav a'));
+      var bar = root.querySelector('.bwd-privacy__progress span');
+      var main = root.querySelector('.bwd-privacy__main');
+      var small = window.matchMedia('(max-width: 1024px)');
+
+      function syncOpen() { if (toc) toc.open = !small.matches; }
+      syncOpen();
+      if (small.addEventListener) small.addEventListener('change', syncOpen);
+
+      var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+      function update() {
+        var line = window.innerHeight * 0.3;
+        var current = 0;
+        sections.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top <= line) current = i; });
+        links.forEach(function (a, i) {
+          a.classList.toggle('is-active', i === current);
+          if (i === current) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+        });
+        if (bar && main) {
+          var r = main.getBoundingClientRect();
+          var p = Math.min(1, Math.max(0, (window.innerHeight * 0.3 - r.top) / Math.max(1, r.height - window.innerHeight * 0.3)));
+          bar.style.transform = 'scaleX(' + p.toFixed(3) + ')';
+        }
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () { ticking = false; update(); });
+      }, { passive: true });
+      update();
+
+      // Smooth jump that respects the fixed header (Lenis when present)
+      links.forEach(function (a, i) {
+        a.addEventListener('click', function (e) {
+          var target = sections[i];
+          if (!target) return;
+          e.preventDefault();
+          if (typeof lenis !== 'undefined' && lenis && lenis.scrollTo) lenis.scrollTo(target, { offset: -110 });
+          else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', a.getAttribute('href'));
+          if (small.matches && toc) toc.open = false;
+        });
+      });
+    })();
+  </script>
 
 
 
@@ -1569,6 +1669,7 @@
                                 style="font-size: 0.88rem; color: #7C7C70; margin: 0; line-height: 1.5; max-width: 280px;">
                                 Strategic digital marketing for ambitious businesses.
                             </p>
+                            <button type="button" class="footer_cta_btn" data-calendly-open>Book a free consultation <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg></button>
                         </div>
 
                         <!-- Column 2: SERVICES -->
@@ -1610,23 +1711,23 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" class="footer_contact_item" aria-label="WhatsApp: 0899858730">
+                                    <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" class="footer_contact_item" aria-label="WhatsApp: 089 985 8730">
                                         <span class="footer_contact_icon" aria-hidden="true">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                                             </svg>
                                         </span>
-                                        <span class="footer_contact_text">0899858730</span>
+                                        <span class="footer_contact_text">089 985 8730</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:0212033042" class="footer_contact_item" aria-label="Landline: 021 203 3042">
+                                    <a href="tel:0212032041" class="footer_contact_item" aria-label="Landline: 021 203 2041">
                                         <span class="footer_contact_icon" aria-hidden="true">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                                             </svg>
                                         </span>
-                                        <span class="footer_contact_text">021 203 3042</span>
+                                        <span class="footer_contact_text">021 203 2041</span>
                                     </a>
                                 </li>
                                 <li>
@@ -1799,7 +1900,7 @@
 
                     <!-- Bottom Bar -->
                     <div class="footer_ref_bottom_bar">
-                        <div>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</div>
+                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
 
                         <div class="footer_ref_socials_legal">
                             <!-- Social Icons -->
@@ -1822,7 +1923,7 @@
                                 </a>
                                 <!-- Facebook -->
                                 <a href="https://www.facebook.com/p/BW-Digital-Marketing-61563139352780/"
-                                    target="_blank" rel="noopener" aria-label="X">
+                                    target="_blank" rel="noopener" aria-label="Facebook">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                         <path
                                             d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.024 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.974h-1.513c-1.49 0-1.956.931-1.956 1.887v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073z" />
@@ -1830,6 +1931,7 @@
                                 </a>
 
                             </div>
+                            <button type="button" class="footer_back_top" aria-label="Back to top" onclick="if (typeof lenis !== 'undefined' &amp;&amp; lenis &amp;&amp; lenis.scrollTo) { lenis.scrollTo(0); } else { window.scrollTo({ top: 0, behavior: 'smooth' }); }"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -1912,13 +2014,14 @@
             </button>
             <!-- Calendly inline widget begin -->
             <div class="calendly-inline-widget"
-                data-url="https://calendly.com/blackwater_digitalmarketing/30min?hide_gdpr_banner=1&amp;background_color=262928&amp;text_color=ffffff&amp;primary_color=ffe32a"
+                data-url="https://calendly.com/blackwater_digitalmarketing/15min?hide_gdpr_banner=1&amp;background_color=262928&amp;text_color=ffffff&amp;primary_color=ffe32a"
                 style="min-width:320px;height:100%;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             <!-- Calendly inline widget end -->
         </div>
     </div>
-    <script src="/assets/js/calendly-popup.js"></script>
+    <script src="/assets/js/calendly-popup.js?v=2"></script>
+    <script src="/assets/js/button-fill.js?v=1"></script>
 
 </body>
 

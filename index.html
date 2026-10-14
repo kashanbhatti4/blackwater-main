@@ -38,7 +38,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=66" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=76" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -3459,163 +3459,209 @@
             <!-- Counter Section -->
             <section class="u-section counter_section">
                 <style>
+                    /* Stats: four cards, numbers sized to their card so they never overflow */
                     .counter_section {
-                        background-color: #131615;
-                        padding: var(--_spacing---space--4) 0;
-                        border-top: 1px solid rgba(255, 252, 225, 0.1);
-                        border-bottom: 1px solid rgba(255, 252, 225, 0.1);
+                        background-color: #0E100F;
+                        padding: clamp(3rem, 6vw, 5.5rem) 0;
+                        border-top: 1px solid #2A2B25;
+                        border-bottom: 1px solid #2A2B25;
                         margin-bottom: 4rem;
                     }
 
+                    .counter_head {
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        gap: 0.75rem 2rem;
+                        margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
+                    }
+
+                    /* Same title + bracketed subtitle pattern as "See our results (Real clients Real growth.)" */
                     .counter_eyebrow {
+                        margin: 0 0 var(--_spacing---space--2);
                         color: #FFFCE1;
-                        font-size: var(--_typography---font-size--text-large);
-                        font-weight: 400;
-                        margin-bottom: var(--_spacing---space--6);
-                        letter-spacing: -0.01em;
-                        font-family: inherit;
+                    }
+
+                    .counter_subtitle {
+                        margin: 0;
+                        color: #7C7C70;
+                        font-size: clamp(0.95rem, 1.05vw, 1.25rem);
+                        line-height: 1.45;
                     }
 
                     .counter_grid {
                         display: grid;
-                        grid-template-columns: repeat(4, 1fr);
-                        gap: 0;
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                        gap: clamp(0.75rem, 1.4vw, 1.25rem);
                     }
 
                     .counter_card {
-                        padding: 0.25rem 2rem 0.25rem 2rem;
-                        border-left: 1px solid rgba(255, 252, 225, 0.15);
+                        position: relative;
+                        container-type: inline-size;
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
-                        min-height: 180px;
+                        gap: 1.25rem;
+                        min-width: 0;
+                        padding: clamp(1.25rem, 2vw, 1.75rem);
+                        border: 1px solid #2A2B25;
+                        border-radius: 18px;
+                        background:
+                            radial-gradient(120% 90% at 100% 0%, rgba(255, 227, 42, 0.06), transparent 55%),
+                            #131615;
+                        overflow: hidden;
+                        transition: border-color 0.3s ease, transform 0.3s ease;
                     }
 
-                    .counter_card:first-child {
-                        border-left: none;
-                        padding-left: 0;
+                    .counter_card::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 2px;
+                        background: #FFE32A;
+                        transform: scaleX(0);
+                        transform-origin: left center;
+                        transition: transform 0.5s cubic-bezier(0.625, 0.05, 0, 1);
                     }
 
-                    .counter_card_title {
-                        color: #7C7C70;
-                        font-size: var(--_typography---font-size--text-small);
-                        font-weight: 500;
-                        line-height: 1.4;
-                        letter-spacing: 0.04em;
-                        text-transform: uppercase;
-                        margin-bottom: var(--_spacing---space--4);
+                    @media (hover: hover) {
+                        .counter_card:hover {
+                            border-color: #3E4034;
+                            transform: translateY(-3px);
+                        }
+
+                        .counter_card:hover::after {
+                            transform: scaleX(1);
+                        }
+                    }
+
+                    .counter_card_icon {
+                        display: grid;
+                        place-items: center;
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 12px;
+                        background: rgba(255, 227, 42, 0.1);
+                        color: #FFE32A;
+                    }
+
+                    .counter_card_icon svg {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                        display: block;
                     }
 
                     .counter_card_number {
+                        margin-top: auto;
                         color: #FFFCE1;
-                        font-size: var(--_typography---font-size--h2);
+                        /* Sized from the card's own width so "€500k+" always fits */
+                        font-size: clamp(2.25rem, 21cqi, 4.75rem);
                         font-weight: 600;
                         line-height: 1;
-                        letter-spacing: -0.02em;
+                        letter-spacing: -0.03em;
+                        font-variant-numeric: tabular-nums;
+                        white-space: nowrap;
                         font-family: var(--_typography---font--neue-haas-display-pro-black), inherit;
                     }
 
-                    @media screen and (max-width: 1240px) {
+                    .counter_suffix {
+                        color: #FFE32A;
+                    }
+
+                    .counter_card_title {
+                        margin: 0;
+                        color: #8C8A80;
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        line-height: 1.4;
+                        letter-spacing: 0.01em;
+                    }
+
+                    /* Tablet: 2 x 2 */
+                    @media screen and (max-width: 1024px) {
                         .counter_section {
-                            padding: var(--_spacing---space--4) 0 !important;
-                            margin-bottom: 3.5rem !important;
+                            margin-bottom: 3rem;
                         }
 
                         .counter_grid {
-                            grid-template-columns: repeat(2, 1fr);
-                            row-gap: 3.5rem;
-                        }
-
-                        .counter_card {
-                            border-left: none;
-                            padding-left: 0;
-                            padding-right: 1.5rem;
-                            min-height: 140px;
-                        }
-                    }
-
-                    @media screen and (max-width: 1024px) {
-                        .counter_section {
-                            padding: var(--_spacing---space--4) 0 !important;
-                            margin-bottom: 3rem !important;
-                        }
-
-                        .counter_eyebrow {
-                            font-size: calc(var(--_typography---font-size--text-large) * 1.1) !important;
-                            margin-bottom: var(--_spacing---space--7) !important;
-                        }
-
-                        .counter_card_title {
-                            margin-bottom: var(--_spacing---space--2) !important;
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
                         }
 
                         .counter_card_number {
-                            font-size: calc(var(--_typography---font-size--h2) * 1.1) !important;
+                            font-size: clamp(2.5rem, 20cqi, 4.5rem);
                         }
                     }
 
+                    /* Phones: still 2 x 2, compact */
                     @media screen and (max-width: 479px) {
                         .counter_section {
-                            padding: var(--_spacing---space--4) 0 !important;
-                            margin-bottom: 2.5rem !important;
-                        }
-
-                        .counter_grid {
-                            display: flex !important;
-                            flex-direction: column;
-                            gap: 0.6rem;
+                            margin-bottom: 2.5rem;
                         }
 
                         .counter_card {
-                            min-height: auto;
-                            padding: 0;
-                            border-left: none !important;
-                            width: fit-content;
+                            gap: 0.9rem;
+                            padding: 1rem;
+                            border-radius: 14px;
                         }
 
-                        /* Diagonal: top-right â†’ bottom-left */
-                        .counter_card:nth-child(1) {
-                            align-self: flex-end;
-                            text-align: right;
+                        .counter_card_icon {
+                            width: 2.1rem;
+                            height: 2.1rem;
+                            border-radius: 10px;
                         }
 
-                        .counter_card:nth-child(2) {
-                            align-self: flex-end;
-                            margin-right: 18%;
-                            text-align: right;
+                        .counter_card_icon svg {
+                            width: 1.05rem;
+                            height: 1.05rem;
                         }
 
-                        .counter_card:nth-child(3) {
-                            align-self: flex-start;
-                            margin-left: 12%;
+                        .counter_card_number {
+                            font-size: clamp(1.75rem, 22cqi, 2.75rem);
                         }
 
-                        .counter_card:nth-child(4) {
-                            align-self: flex-start;
+                        .counter_card_title {
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        .counter_card,
+                        .counter_card::after {
+                            transition: none;
                         }
                     }
                 </style>
                 <div class="u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-10" style="grid-column-end: span 12;">
-                            <div class="counter_eyebrow">Since you've last seen us...</div>
+                            <div class="counter_head">
+                                <div>
+                                    <h2 class="counter_eyebrow u-text-style-h3">Since you've last seen us...</h2>
+                                    <p class="counter_subtitle">(By the numbers.)</p>
+                                </div>
+                            </div>
                             <div class="counter_grid">
                                 <div class="counter_card">
-                                    <div class="counter_card_title">CLIENTS SERVED</div>
-                                    <div class="counter_card_number">100+</div>
+                                    <div class="counter_card_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                                    <div class="counter_card_number">100<span class="counter_suffix">+</span></div>
+                                    <p class="counter_card_title">Clients served</p>
                                 </div>
                                 <div class="counter_card">
-                                    <div class="counter_card_title">AD SPEND MANAGED</div>
-                                    <div class="counter_card_number">€500k+
-                                    </div>
+                                    <div class="counter_card_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg></div>
+                                    <div class="counter_card_number">€500<span class="counter_suffix">k+</span></div>
+                                    <p class="counter_card_title">Ad spend managed</p>
                                 </div>
                                 <div class="counter_card">
-                                    <div class="counter_card_title">KEYWORDS RANKED</div>
-                                    <div class="counter_card_number">500+</div>
+                                    <div class="counter_card_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+                                    <div class="counter_card_number">500<span class="counter_suffix">+</span></div>
+                                    <p class="counter_card_title">Keywords ranked</p>
                                 </div>
                                 <div class="counter_card">
-                                    <div class="counter_card_title">CLIENT RETENTION RATE</div>
-                                    <div class="counter_card_number">92%</div>
+                                    <div class="counter_card_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M3 21v-5h5"/></svg></div>
+                                    <div class="counter_card_number">92<span class="counter_suffix">%</span></div>
+                                    <p class="counter_card_title">Client retention rate</p>
                                 </div>
                             </div>
                         </div>
@@ -3635,7 +3681,7 @@
                                 var formatted = decimals > 0
                                     ? current.toFixed(decimals)
                                     : current.toLocaleString();
-                                el.textContent = prefix + formatted + suffix;
+                                el.innerHTML = prefix + formatted + (suffix ? '<span class="counter_suffix">' + suffix + '</span>' : '');
                                 if (progress < 1) requestAnimationFrame(step);
                             }
                             requestAnimationFrame(step);
@@ -3948,7 +3994,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/web-design.html?v=21" class="service_media_iframe"
+                                    <iframe src="./animations/web-design.html?v=22" class="service_media_iframe"
                                         title="Web Design Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4041,7 +4087,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/seo-ai-overview.html?v=21" class="service_media_iframe"
+                                    <iframe src="./animations/seo-ai-overview.html?v=22" class="service_media_iframe"
                                         title="SEO & AI Search Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4135,7 +4181,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/paid-ads.html?v=21" class="service_media_iframe"
+                                    <iframe src="./animations/paid-ads.html?v=22" class="service_media_iframe"
                                         title="Paid Advertising Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4225,7 +4271,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/social-media.html?v=21" class="service_media_iframe"
+                                    <iframe src="./animations/social-media.html?v=22" class="service_media_iframe"
                                         title="Social Media Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4241,35 +4287,34 @@
 
             <!--$We've already made the mistake-->
             <style>
+                /* Same type scale as the hero ("Getting found is the easy part"):
+                   heading, muted paragraph, buttons, with even spacing between them */
                 .home_about_content .service_intro_text_group {
                     display: flex !important;
                     flex-direction: column !important;
-                    gap: 24px !important;
+                    gap: 0 !important;
                 }
 
                 .about_heading_custom {
-                    margin-bottom: 0 !important;
+                    max-width: 17em !important;
+                    /* The heading box is trimmed to its baseline, so the gap has to clear the descenders ("y", "p") too */
+                    margin: 0 0 calc(0.5em + 1.25rem) !important;
                     padding-bottom: 0 !important;
-                    line-height: 1.05 !important;
+                    font-size: clamp(2rem, 4.5vw, 66px) !important;
+                    line-height: 1.1 !important;
+                    letter-spacing: -0.01em;
                 }
 
                 .about_paragraph_custom {
-                    margin-top: 0 !important;
+                    max-width: 40rem !important;
+                    margin: 0 !important;
+                    color: #8C8A80 !important;
+                    font-size: clamp(1.05rem, 1.3vw, 1.3rem) !important;
+                    line-height: 1.6 !important;
                 }
 
-                @media screen and (min-width: 992px) {
-                    .about_heading_custom {
-                        font-size: clamp(2.3rem, 3.4vw, 4.2rem) !important;
-                        font-size: calc(var(--_extra-variables---services-headings) * 0.7) !important;
-                        max-width: 760px !important;
-                        margin-bottom: 0 !important;
-                        padding-bottom: 0 !important;
-                    }
-
-                    .about_paragraph_custom {
-                        font-size: 1.70rem !important;
-                        max-width: calc(50% - 140px) !important;
-                    }
+                .home_about_content .u-button-wrapper {
+                    margin-top: clamp(2rem, 3vw, 2.75rem) !important;
                 }
 
                 @media screen and (max-width: 991px) {
@@ -4280,20 +4325,10 @@
 
                     .home_about_content .service_intro_text_group {
                         order: 1 !important;
-                        gap: 24px !important;
                     }
 
                     .home_about_content .u-button-wrapper {
                         order: 2 !important;
-                        margin-top: 1.5rem !important;
-                    }
-
-                    .about_paragraph_custom {
-                        max-width: 100% !important;
-                    }
-
-                    .about_heading_custom {
-                        font-size: 2rem !important;
                     }
                 }
             </style>
@@ -4307,7 +4342,7 @@
                                         already made the mistake
                                         you're about to pay for.</h2>
                                     <p class="home_about_text u-text-style-main about_paragraph_custom">Fifty clients
-                                        across care, construction, legal, safety testing and retail. Different. sectors,
+                                        across care, construction, legal, safety testing and retail. Different sectors,
                                         same handful of expensive errors. We've watched all of them happen and we'll
                                         tell you which one you're walking into.</p>
                                 </div>
@@ -7433,6 +7468,7 @@
                                 style="font-size: 0.88rem; color: #7C7C70; margin: 0; line-height: 1.5; max-width: 280px;">
                                 Strategic digital marketing for ambitious businesses.
                             </p>
+                            <button type="button" class="footer_cta_btn" data-calendly-open>Book a free consultation <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/></svg></button>
                         </div>
 
                         <!-- Column 2: SERVICES -->
@@ -7478,19 +7514,19 @@
                                 </li>
                                 <li>
                                     <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer"
-                                        class="footer_contact_item" aria-label="WhatsApp: 0899858730">
+                                        class="footer_contact_item" aria-label="WhatsApp: 089 985 8730">
                                         <span class="footer_contact_icon" aria-hidden="true">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                                 <path
                                                     d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
                                             </svg>
                                         </span>
-                                        <span class="footer_contact_text">0899858730</span>
+                                        <span class="footer_contact_text">089 985 8730</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="tel:0212033042" class="footer_contact_item"
-                                        aria-label="Landline: 021 203 3042">
+                                    <a href="tel:0212032041" class="footer_contact_item"
+                                        aria-label="Landline: 021 203 2041">
                                         <span class="footer_contact_icon" aria-hidden="true">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -7500,7 +7536,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <span class="footer_contact_text">021 203 3042</span>
+                                        <span class="footer_contact_text">021 203 2041</span>
                                     </a>
                                 </li>
                                 <li>
@@ -7712,7 +7748,7 @@
 
                     <!-- Bottom Bar -->
                     <div class="footer_ref_bottom_bar">
-                        <div>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</div>
+                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
 
                         <div class="footer_ref_socials_legal">
                             <!-- Social Icons -->
@@ -7735,7 +7771,7 @@
                                 </a>
                                 <!-- Facebook -->
                                 <a href="https://www.facebook.com/p/BW-Digital-Marketing-61563139352780/"
-                                    target="_blank" rel="noopener" aria-label="X">
+                                    target="_blank" rel="noopener" aria-label="Facebook">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                         <path
                                             d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.099 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.024 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.974h-1.513c-1.49 0-1.956.931-1.956 1.887v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.099 24 12.073z" />
@@ -7743,6 +7779,7 @@
                                 </a>
 
                             </div>
+                            <button type="button" class="footer_back_top" aria-label="Back to top" onclick="if (typeof lenis !== 'undefined' &amp;&amp; lenis &amp;&amp; lenis.scrollTo) { lenis.scrollTo(0); } else { window.scrollTo({ top: 0, behavior: 'smooth' }); }"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button>
                         </div>
                     </div>
                 </div>
@@ -7768,8 +7805,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js"></script>
-    <script src="/components/case-study-slider.js"></script>
-    <script src="/components/cta-logo-grid.js"></script>
+    <script src="/components/case-study-slider.js?v=2"></script>
+    <script src="/components/cta-logo-grid.js?v=2"></script>
 
 
 
@@ -7834,13 +7871,14 @@
             </button>
             <!-- Calendly inline widget begin -->
             <div class="calendly-inline-widget"
-                data-url="https://calendly.com/blackwater_digitalmarketing/30min?hide_gdpr_banner=1&amp;background_color=262928&amp;text_color=ffffff&amp;primary_color=ffe32a"
+                data-url="https://calendly.com/blackwater_digitalmarketing/15min?hide_gdpr_banner=1&amp;background_color=262928&amp;text_color=ffffff&amp;primary_color=ffe32a"
                 style="min-width:320px;height:100%;"></div>
             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             <!-- Calendly inline widget end -->
         </div>
     </div>
-    <script src="/assets/js/calendly-popup.js"></script>
+    <script src="/assets/js/calendly-popup.js?v=2"></script>
+    <script src="/assets/js/button-fill.js?v=1"></script>
 
 </body>
 
