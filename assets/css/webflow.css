@@ -966,14 +966,14 @@ p, .paragraph, .body-text {
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
-  height: 3rem;
-  padding: 0 1.4rem;
+  height: 3.3rem;
+  padding: 0 1.6rem;
   border: 0;
   border-radius: 999px;
   background: #FFE32A;
   color: #0E100F;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
@@ -983,8 +983,7 @@ p, .paragraph, .body-text {
 }
 
 .bw-calendly-btn:hover {
-  background: #FFFCE1;
-  transform: translateY(-1px);
+  background: #FFE32A;
 }
 
 .bw-calendly-btn:focus-visible {
@@ -1280,5 +1279,540 @@ case-study-slider.is-inview .slider_film_strip {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .simple-navbar.simple-navbar::before {
     background-color: rgba(14, 16, 15, 0.94);
+  }
+}
+
+/* =========================================================
+   Service sections (home + services page): clearer hierarchy
+   Service name first, then the hook, supporting copy, what's
+   included as light tags, and a single clear button.
+   ========================================================= */
+.service_wrap { --svc-fg: #0E100F; --svc-bg: #FFFCE1; }
+.service_wrap.is-orange { --svc-fg: #FFFCE1; --svc-bg: #2A2B25; }
+.service_wrap.is-yellow { --svc-fg: #FFFCE1; --svc-bg: #131615; }
+.service_wrap.is-pink { --svc-fg: #0E100F; --svc-bg: #FAE421; }
+
+.service_wrap .service_content_wrap { color: var(--svc-fg); }
+
+/* Flatten the bottom block so its parts can be re-ordered with the intro */
+.service_wrap .service_content_bottom_wrap,
+.service_wrap .service_title_action_group {
+  display: contents !important;
+}
+
+/* 1. Service name */
+.service_wrap .service_title_action_group > .service_content_heading {
+  order: 1 !important;
+  /* em-based so the gap clears the descenders (the "g" in Design) at every size */
+  margin: 0 0 calc(0.24em + 0.9rem) !important;
+  padding-bottom: 0 !important;
+  font-size: clamp(2.5rem, 4.2vw, 4.75rem) !important;
+  line-height: 1 !important;
+}
+
+/* 2. Short accent bar under the name */
+.service_wrap .service_content_bottom_line {
+  order: 2 !important;
+  width: 3.5rem !important;
+  height: 3px !important;
+  margin-bottom: 2.25rem !important;
+  border-radius: 2px;
+}
+
+/* 3. Hook headline + supporting paragraph */
+.service_wrap .service_intro_text_group {
+  order: 3 !important;
+  gap: 1.6rem !important;
+  max-width: 40rem;
+}
+
+.service_wrap .service_intro_text_group .service_content_heading {
+  margin: 0 !important;
+  font-size: clamp(1.5rem, 2.1vw, 2.35rem) !important;
+  line-height: 1.15 !important;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.service_wrap .service_content_paragraph {
+  margin: 0 !important;
+  font-size: clamp(1rem, 1.15vw, 1.2rem) !important;
+  line-height: 1.55 !important;
+  opacity: 0.72;
+  max-width: 36em;
+}
+
+/* 4. What's included: light outline tags */
+.service_wrap .service_content_tags_wrap {
+  order: 4 !important;
+  margin: 2.25rem 0 0 !important;
+  gap: 0.5rem !important;
+  max-width: 40rem;
+}
+
+/* section…[class] outranks the per-colour rules earlier in this file */
+section.service_wrap[class] .service_content_tags_wrap .service_tag {
+  background-color: transparent !important;
+  border: 1px solid color-mix(in srgb, var(--svc-fg) 26%, transparent);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem !important;
+}
+
+section.service_wrap[class] .service_content_tags_wrap .service_tag p {
+  margin: 0;
+  color: var(--svc-fg) !important;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+section.service_wrap[class] .service_content_tags_wrap .service_tag {
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+section.service_wrap[class] .service_content_tags_wrap .service_tag p {
+  transition: color 0.25s ease;
+}
+
+/* Hover: the pill fills with the section's text colour and lifts slightly
+   (pointer devices only, so it doesn't stick after a tap on touch screens) */
+@media (hover: hover) {
+  section.service_wrap[class] .service_content_tags_wrap .service_tag:hover {
+    background-color: var(--svc-fg) !important;
+    border-color: var(--svc-fg);
+    transform: translateY(-2px);
+  }
+
+  section.service_wrap[class] .service_content_tags_wrap .service_tag:hover p {
+    color: var(--svc-bg) !important;
+  }
+}
+
+/* 5. One clear button */
+.service_wrap .service_content_button {
+  order: 5 !important;
+  align-self: flex-start;
+  margin-top: 2.5rem;
+  padding: 0 !important;
+  border-radius: 999px;
+  background-color: var(--svc-fg);
+  color: var(--svc-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.service_wrap .service_button_text_wrap {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.75rem !important;
+  padding: 1.3rem 2.25rem;
+}
+
+section.service_wrap[class] .service_content_button .service_content_button_text {
+  color: var(--svc-bg) !important;
+  font-size: 1.1875rem !important;
+  font-weight: 500;
+  line-height: 1 !important;
+}
+
+.service_wrap .service_content_button .arrow_up_svg.is-services {
+  flex: none;
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin: 0;
+  scale: 1 !important;
+  color: var(--svc-bg);
+  transition: transform 0.2s ease;
+}
+
+/* Webflow's .w-embed clearfix adds empty table rows around the icon, pushing it off-centre */
+.service_wrap .service_content_button .arrow_up_svg.is-services::before,
+.service_wrap .service_content_button .arrow_up_svg.is-services::after {
+  display: none !important;
+}
+
+.service_wrap .service_content_button .arrow_up_svg.is-services svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.service_wrap .service_content_button:hover .arrow_up_svg.is-services {
+  transform: translate(2px, -2px);
+}
+
+section.service_wrap[class] .service_content_button .arrow_up_svg.is-services svg {
+  color: var(--svc-bg) !important;
+}
+
+/* Desktop: the copy column sits centred next to the animation */
+@media screen and (min-width: 992px) {
+  .service_wrap .service_content_wrap {
+    gap: 0 !important;
+    justify-content: center !important;
+  }
+}
+
+/* Tablet and mobile: name, copy, animation, tags, button */
+@media screen and (max-width: 991px) {
+  .service_wrap .service_intro_text_group { order: 3 !important; }
+  .service_wrap .service_media_wrap { order: 4 !important; }
+  .service_wrap .service_content_tags_wrap { order: 5 !important; margin-top: 0 !important; }
+  .service_wrap .service_content_button { order: 6 !important; margin-top: 1.75rem; }
+  .service_wrap .service_content_bottom_line { margin-bottom: 1.5rem !important; }
+}
+
+/* =========================================================
+   Footer refinements
+   ========================================================= */
+/* Quieter column headings so the links lead */
+.footer_wrap .footer_ref_col_title {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.16em;
+  margin-bottom: 1.25rem;
+}
+
+/* Links nudge right on hover */
+.footer_wrap .footer_ref_links a {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer_wrap .footer_ref_links a:not(.footer_contact_item):hover {
+  transform: translateX(4px);
+}
+
+/* Booking button under the tagline */
+.footer_cta_btn {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: #FFE32A;
+  color: #0E100F;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer_cta_btn svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.footer_cta_btn:hover {
+  background: #FFE32A;
+}
+
+.footer_cta_btn:focus-visible,
+.footer_back_top:focus-visible {
+  outline: 2px solid #FFE32A;
+  outline-offset: 3px;
+}
+
+/* Google reviews badge sized to its content instead of stretching across the column */
+.footer_wrap .footer_g_reviews_widget {
+  width: auto;
+  padding-right: 1.1rem;
+}
+
+/* Bottom bar: copyright + privacy link on the left, socials + back-to-top on the right */
+.footer_ref_copyright {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.footer_wrap .footer_ref_legal_links a {
+  font-size: inherit;
+}
+
+.footer_back_top {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #2A2B25;
+  border-radius: 50%;
+  background: #131615;
+  color: #FFFCE1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer_back_top svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: block;
+}
+
+.footer_back_top:hover {
+  background: #FFE32A;
+  border-color: #FFE32A;
+  color: #0E100F;
+  transform: translateY(-2px);
+}
+
+/* Keep the back-to-top button clear of the floating WhatsApp button */
+@media screen and (min-width: 768px) {
+  .footer_wrap .footer_ref_socials_legal {
+    margin-right: 5rem;
+  }
+}
+
+/* Subscribe field: the pill's yellow border already shows focus, so drop the site-wide
+   input outline (it drew a white box inside the pill) and keep autofill on-brand */
+.footer_wrap .footer_ref_subscribe_input:focus,
+.footer_wrap .footer_ref_subscribe_input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.footer_wrap .footer_ref_subscribe_input:-webkit-autofill,
+.footer_wrap .footer_ref_subscribe_input:-webkit-autofill:hover,
+.footer_wrap .footer_ref_subscribe_input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFCE1;
+  -webkit-box-shadow: 0 0 0 1000px #131615 inset;
+  caret-color: #FFFCE1;
+  transition: background-color 9999s ease-out 0s;
+}
+
+@media screen and (max-width: 500px) {
+  .footer_wrap .footer_ref_subscribe_input:focus-visible {
+    border-color: #FFE32A !important;
+  }
+}
+
+/* =========================================================
+   Shared button hover (assets/js/button-fill.js)
+   Same motion as the hero .btn: a circle grows from the cursor.
+   Primary yellow buttons fill cream; dark/outline buttons fill yellow.
+   ========================================================= */
+.bw-fx {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --bw-fill: #FFFCE1;
+  --bw-fill-text: #0E100F;
+}
+
+.bw-fx-fill {
+  position: absolute;
+  /* Behind the button's text (including bare text nodes) but above its background,
+     because .bw-fx isolates its own stacking context */
+  z-index: -1;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--bw-fill);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
+  transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.bw-fx.is-hovered .bw-fx-fill {
+  transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+}
+
+/* Content above the fill; full-cover links stay on top so the button remains clickable */
+.bw-fx > :not(.bw-fx-fill):not(.clickable_wrap):not(.u-cover-absolute) {
+  position: relative;
+  z-index: 1;
+}
+
+.bw-fx > .clickable_wrap,
+.bw-fx > .u-cover-absolute {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-fx-fill { transition-duration: 0.01s; }
+}
+
+/* Service "Learn More": fills yellow (cream on the yellow section) with dark text */
+.service_wrap .service_content_button.bw-fx { --bw-fill: #FFE32A; }
+.service_wrap.is-pink .service_content_button.bw-fx { --bw-fill: #FFFCE1; }
+
+section.service_wrap[class] .service_content_button.is-hovered .service_content_button_text,
+section.service_wrap[class] .service_content_button.is-hovered .arrow_up_svg.is-services svg {
+  color: var(--bw-fill-text) !important;
+}
+
+section.service_wrap[class] .service_content_button .service_content_button_text {
+  transition: color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+/* "Case Studies" outline button: fills yellow with dark text */
+.button_main_element.bw-fx {
+  border-radius: 999px;
+  --bw-fill: #FFE32A;
+}
+
+.button_main_element.is-hovered {
+  border-color: #FFE32A !important;
+}
+
+.button_main_element.is-hovered .button_main_text {
+  color: var(--bw-fill-text) !important;
+}
+
+.button_main_element.bw-fx .button_main_line {
+  display: none;
+}
+
+/* Footer subscribe: keep the yellow base while the cream circle fills */
+.footer_wrap .footer_ref_subscribe_btn:hover {
+  background: #FFE32A;
+}
+
+/* Contact form: send button fills yellow, "Got it" fills cream; the old colour swap,
+   lift and offset shadow are replaced by the shared fill */
+#contact-form .form_submit_button:hover {
+  background-color: var(--swatch--cards-light, #FFFCE1);
+  transform: none;
+  box-shadow: none;
+}
+
+button.contact_modal_action_btn:hover {
+  background: #FFE32A;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Contact form: send button fills yellow, "Got it" fills cream */
+.form_submit_button.bw-fx { --bw-fill: #FFE32A; }
+.contact_modal_action_btn.bw-fx { --bw-fill: #FFFCE1; }
+
+/* =========================================================
+   Primary call-to-action (.btn: "Let's Talk", "Start a project", ...)
+   Its own look: a compact yellow pill with a dark arrow badge that
+   turns to ↗ on hover, on top of the existing cursor-fill animation.
+   ========================================================= */
+.btn.w-inline-block,
+.btn[data-btn-hover] {
+  gap: 1.1rem;
+  padding: 0.5rem 0.5rem 0.5rem 2.1rem;
+  text-decoration: none;
+}
+
+.btn.w-inline-block .btn-text-p,
+.btn[data-btn-hover] .btn-text-p {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: 0;
+}
+
+/* Arrow badge */
+.btn.w-inline-block::after,
+.btn[data-btn-hover]::after {
+  content: "";
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background-color: #0E100F;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFE32A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.3rem;
+  transition: transform 0.5s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s ease;
+}
+
+.btn.w-inline-block:hover::after,
+.btn[data-btn-hover]:hover::after {
+  transform: rotate(-45deg);
+}
+
+/* Dark-theme buttons fill dark on hover, so the badge flips to yellow with a dark arrow */
+.btn[data-theme="dark"]:hover::after {
+  background-color: #FFE32A;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E100F' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 767px) {
+  .btn.w-inline-block,
+  .btn[data-btn-hover] {
+    gap: 0.95rem;
+    padding: 0.45rem 0.45rem 0.45rem 1.7rem;
+  }
+
+  .btn.w-inline-block .btn-text-p,
+  .btn[data-btn-hover] .btn-text-p {
+    font-size: 1.125rem;
+  }
+
+  .btn.w-inline-block::after,
+  .btn[data-btn-hover]::after {
+    width: 3rem;
+    height: 3rem;
+    background-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn.w-inline-block::after,
+  .btn[data-btn-hover]::after {
+    transition: none;
+  }
+}
+
+/* Hero Google reviews badge: same height as the "Let's Talk" button beside it
+   (the badge is sized in em, so scaling its font scales the whole badge) */
+.home_hero_new .home_hero_cta_row .hero_g_reviews {
+  font-size: 0.99rem;
+}
+
+@media screen and (max-width: 767px) {
+  .home_hero_new .home_hero_cta_row .hero_g_reviews {
+    font-size: 0.86rem;
+  }
+}
+
+/* Secondary outline button ("About us", "Case Studies"): same height as the primary
+   button so the pair lines up, without competing with it */
+.button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.4rem;
+  padding: 0 2.3rem !important;
+  border-width: 1.5px !important;
+  border-radius: 999px;
+}
+
+.button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab .button_main_text {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab {
+    height: 3.9rem;
+    padding: 0 1.8rem !important;
+  }
+
+  .button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab .button_main_text {
+    font-size: 1.125rem;
+  }
+}
+
+/* Hero reviews badge tracks the larger primary button height */
+.home_hero_new .home_hero_cta_row .hero_g_reviews.hero_g_reviews {
+  font-size: 1.29rem;
+}
+
+@media screen and (max-width: 767px) {
+  .home_hero_new .home_hero_cta_row .hero_g_reviews.hero_g_reviews {
+    font-size: 1.13rem;
   }
 }

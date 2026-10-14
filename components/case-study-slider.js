@@ -211,7 +211,7 @@
 
       try {
         if (!cachedHtml) {
-          const res = await fetch('/components/case-study-slider.html');
+          const res = await fetch('/components/case-study-slider.html?v=2');
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           cachedHtml = await res.text();
         }
