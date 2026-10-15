@@ -307,11 +307,13 @@
         });
       });
 
-      // Auto slide: advances every few seconds, pauses while the mouse is over the cards
+      // Auto slide: advances every few seconds, but only while the slider is on screen, so a
+      // visitor who scrolls down late still starts on the first case study. Pauses on hover.
       const AUTOPLAY_DELAY = 4000;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let autoplayTimer = null;
       let isHovering = false;
+      let isInView = false;
 
       function stopAutoplay() {
         clearInterval(autoplayTimer);
@@ -322,7 +324,7 @@
         stopAutoplay();
         if (reduceMotion || totalSlides < 2) return;
         autoplayTimer = setInterval(() => {
-          if (isHovering || document.hidden || !container.isConnected) return;
+          if (!isInView || isHovering || document.hidden || !container.isConnected) return;
           goToIndex(currentIndex + 1);
         }, AUTOPLAY_DELAY);
       }
@@ -344,19 +346,24 @@
         applyActive(slides[0], 0, false);
       }
 
-      startAutoplay();
-
-      // Slide the strip in as soon as the section is on screen (also right after a refresh)
+      // Slide the strip in as soon as the section is on screen (also right after a refresh),
+      // and run the autoplay only while enough of it is visible
       if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            container.classList.add('is-inview');
-            revealObserver.disconnect();
-          }
-        }, { threshold: 0.15 });
-        revealObserver.observe(container);
+        const viewObserver = new IntersectionObserver((entries) => {
+          const entry = entries[entries.length - 1];
+          if (entry.intersectionRatio >= 0.15) container.classList.add('is-inview');
+          const visible = entry.intersectionRatio >= 0.35;
+          if (visible === isInView) return;
+          isInView = visible;
+          // Fresh countdown on arrival, so the first slide gets its full time on screen
+          if (isInView) startAutoplay();
+          else stopAutoplay();
+        }, { threshold: [0, 0.15, 0.35, 0.6] });
+        viewObserver.observe(container);
       } else {
         container.classList.add('is-inview');
+        isInView = true;
+        startAutoplay();
       }
     }
   }
