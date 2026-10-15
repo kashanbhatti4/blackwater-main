@@ -81,8 +81,12 @@
     });
 
     // Any other element marked data-calendly-open (e.g. the footer button) opens the popup too
+    // Links keep href="/contact" as a fallback, so cancel that navigation when the popup opens
     document.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('[data-calendly-open]')) openPopup();
+      var trigger = e.target.closest && e.target.closest('[data-calendly-open]');
+      if (!trigger) return;
+      e.preventDefault();
+      openPopup();
     });
 
     buildButton();

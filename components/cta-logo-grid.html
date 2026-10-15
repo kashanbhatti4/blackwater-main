@@ -51,12 +51,35 @@
             cursor: pointer;
         }
 
+        /* The schedule starts 8.8s into the cycle, so every tile already shows a logo on load
+           (the cd-1 … cd-5 offsets of up to 8s used to leave tiles empty that long). The swap
+           rhythm itself is unchanged: same cycle, same stagger between tiles. */
         .cta_grid_circle_img:nth-child(1) {
-            animation-delay: var(--circle-delay, 0s);
+            animation-delay: calc(var(--circle-delay, 0s) - 8.8s);
         }
 
         .cta_grid_circle_img:nth-child(2) {
-            animation-delay: calc(var(--circle-delay, 0s) + 9.6s);
+            animation-delay: calc(var(--circle-delay, 0s) + 0.8s);
+        }
+
+        /* First appearance: the tiles circle in one after another when the grid scrolls into view */
+        @keyframes ctaTileIntro {
+            from {
+                clip-path: circle(0% at 50% 50%);
+            }
+
+            to {
+                clip-path: circle(75% at 50% 50%);
+            }
+        }
+
+        .cta_circles_wrap.is-intro .cta_grid_circle {
+            clip-path: circle(0% at 50% 50%);
+        }
+
+        .cta_circles_wrap.is-intro.is-revealed .cta_grid_circle {
+            animation: ctaTileIntro 0.7s cubic-bezier(0.65, 0, 0.35, 1) both;
+            animation-delay: calc(var(--intro-i, 0) * 60ms);
         }
 
         /* Apply one of these as a combo class to each .cta_grid_circle */

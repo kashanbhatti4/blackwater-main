@@ -13,12 +13,13 @@
 
       try {
         if (!cachedHtml) {
-          const res = await fetch('/components/cta-logo-grid.html?v=2');
+          const res = await fetch('/components/cta-logo-grid.html?v=3');
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           cachedHtml = await res.text();
         }
         this.innerHTML = cachedHtml;
         this.initClickHandler();
+        this.initIntro();
         this.initUniqueLogos();
       } catch (err) {
         console.error('[CtaLogoGrid] Failed to load component HTML:', err);
@@ -37,6 +38,26 @@
           }
         });
       }
+    }
+
+    // Hide the tiles until the grid is on screen, then circle them in quickly with a short stagger
+    initIntro() {
+      const wrap = this.querySelector('.cta_circles_wrap');
+      if (!wrap || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const STAGGER_MS = 60;
+      const DURATION_MS = 700;
+      const tiles = Array.from(wrap.querySelectorAll('.cta_grid_circle')).filter((tile) => tile.offsetParent !== null);
+      tiles.forEach((tile, i) => tile.style.setProperty('--intro-i', i));
+      wrap.classList.add('is-intro');
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        wrap.classList.add('is-revealed');
+        // Drop the intro classes afterwards so nothing keeps clipping the tiles
+        setTimeout(() => wrap.classList.remove('is-intro', 'is-revealed'), tiles.length * STAGGER_MS + DURATION_MS + 100);
+      }, { threshold: 0.25 });
+      observer.observe(wrap);
     }
   }
 
@@ -95,11 +116,15 @@
         if (elapsed < 0) return;
         const cycle = Math.floor(elapsed / CYCLE_MS);
         if (cycleOf.get(img) === cycle) return;
+        const firstLook = !cycleOf.has(img);
         cycleOf.set(img, cycle);
         const intoCycle = elapsed % CYCLE_MS; // LEAD_MS here means "revealing right now"
-        // Only swap while the image is still hidden, just before its reveal; if we joined
-        // mid-cycle (first tick, or a backgrounded tab), just record what is showing
+        // Swap while the image is still hidden, just before its reveal
         if (intoCycle <= LEAD_MS) assign(img, now + (LEAD_MS - intoCycle), now);
+        // The schedule starts mid-cycle, so on the first look some images are already showing:
+        // give each a unique logo now, before the intro reveals the grid
+        else if (firstLook && intoCycle < VISIBLE_MS + LEAD_MS) assign(img, now - (intoCycle - LEAD_MS), now);
+        // Joined mid-cycle later on (a backgrounded tab): just record what is showing
         else revealAt.set(img, now - (intoCycle - LEAD_MS));
       });
     };

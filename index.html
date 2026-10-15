@@ -38,7 +38,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=76" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=81" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -339,9 +339,9 @@
                 align-items: baseline;
                 gap: 1rem;
                 text-decoration: none;
-                font-family: 'Plain', sans-serif;
+                font-family: 'Inter Tight', sans-serif;
                 font-size: 5rem;
-                font-weight: 900;
+                font-weight: 600;
                 color: #7C7C70;
                 transition: color 0.3s ease, transform 0.3s ease;
             }
@@ -1744,6 +1744,168 @@
             </div>
         </div>
         <main id="main" data-barba="container" class="page_main">
+            <style>
+                /* -----------------------------------------
+                   HOME PAGE RHYTHM
+                   Each section is its own band, so the page reads section by section when scrolling:
+                   base black, raised black (#131615) and light (cream) bands alternate, and every band
+                   uses the same vertical padding instead of stacked spacers.
+                   ----------------------------------------- */
+                #main {
+                    --bw-band-pad: clamp(3.5rem, 6vw, 5.25rem);
+                }
+
+                /* Four jobs (logo grid): one full-width cream band; the cream card that used to sit
+                   inside a black band is flattened into it, so the text lines up with the page grid */
+                section.home_jobs {
+                    padding-block: var(--bw-band-pad) !important;
+                    background-color: #FFFCE1;
+                }
+
+                section.home_jobs > .u-section-spacer {
+                    display: none;
+                }
+
+                section.home_jobs .cta_content_wrap {
+                    padding: 0 !important;
+                    background-color: transparent;
+                }
+
+                /* Desktop: text and logo wall share the width (5 / 7), so there is no gap between them */
+                @media screen and (min-width: 992px) {
+                    section.home_jobs .cta_content_wrap {
+                        display: grid !important;
+                        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+                        align-items: center !important;
+                        gap: clamp(2.5rem, 5vw, 6rem) !important;
+                    }
+                }
+
+                /* Tablet and phone: text first, then the logo wall at full width */
+                @media screen and (max-width: 991px) {
+                    section.home_jobs .cta_content_wrap {
+                        display: flex !important;
+                        flex-direction: column !important;
+                        align-items: stretch !important;
+                        gap: 2.5rem !important;
+                    }
+                }
+
+                section.home_jobs cta-logo-grid {
+                    flex: none;
+                    width: 100%;
+                }
+
+                /* On desktop the wall fills its column up to a comfortable size, aligned to the right edge */
+                @media screen and (min-width: 992px) {
+                    section.home_jobs cta-logo-grid {
+                        justify-self: end;
+                        max-width: 54rem;
+                    }
+                }
+
+                /* Logo wall: rounded squares (the logo reveal is a circle, which fits a square tile) */
+                section.home_jobs .cta_circles_wrap {
+                    display: flex !important;
+                    flex-direction: column;
+                    gap: clamp(0.6rem, 1.1vw, 1rem);
+                    width: 100%;
+                }
+
+                section.home_jobs .cta_circles_line {
+                    display: flex;
+                    gap: clamp(0.6rem, 1.1vw, 1rem);
+                    margin: 0;
+                }
+
+                section.home_jobs .cta_grid_circle {
+                    flex: 1 1 0;
+                    width: auto;
+                    height: auto;
+                    max-width: none;
+                    max-height: none;
+                    aspect-ratio: 1;
+                }
+
+                section.home_jobs .cta_grid_circle,
+                section.home_jobs .cta_grid_circle .cta_grid_circle_img {
+                    border-radius: clamp(14px, 1.7vw, 24px) !important;
+                }
+
+                /* Slightly less inner padding than before, so each logo uses more of its tile */
+                section.home_jobs .cta_grid_circle_img {
+                    padding: 12%;
+                }
+
+                /* Yellow text can't be read on cream: dark text on a yellow marker stroke instead */
+                section.home_jobs .cta_highlight {
+                    padding: 0 0.06em;
+                    color: #0E100F;
+                    background: linear-gradient(transparent 58%, rgba(255, 227, 42, 0.9) 58%, rgba(255, 227, 42, 0.9) 92%, transparent 92%);
+                    -webkit-box-decoration-break: clone;
+                    box-decoration-break: clone;
+                }
+
+                /* A hairline keeps white logo tiles from melting into the cream */
+                section.home_jobs .cta_grid_circle {
+                    box-shadow: 0 0 0 1px rgba(14, 16, 15, 0.08);
+                }
+
+                /* Stats: raised, cards one step lighter so they still read as cards */
+                section.counter_section {
+                    margin-bottom: 0 !important;
+                    padding-block: var(--bw-band-pad) !important;
+                    background-color: #131615 !important;
+                }
+
+                section.counter_section .counter_card {
+                    background:
+                        radial-gradient(120% 90% at 100% 0%, rgba(255, 227, 42, 0.06), transparent 55%),
+                        #1A1D1B;
+                }
+
+                /* Tools: light band, the dark tool panels sit on it */
+                section#entry-point {
+                    padding-block: var(--bw-band-pad) !important;
+                    border-radius: 0 !important;
+                    background-color: #FFFCE1 !important;
+                    color: #0E100F !important;
+                }
+
+                section#entry-point > .u-section-spacer {
+                    display: none;
+                }
+
+                section#entry-point .decisions_heading_custom {
+                    color: #0E100F !important;
+                }
+
+                section#entry-point .decisions_paragraph_custom {
+                    color: #5A5950 !important;
+                }
+
+                /* Audit: base */
+                section#free-audit {
+                    padding-block: var(--bw-band-pad) !important;
+                    border-bottom: 0 !important;
+                }
+
+                section#free-audit > .u-section-spacer {
+                    display: none;
+                }
+
+                /* Journal: raised */
+                section#journal {
+                    padding-block: var(--bw-band-pad) !important;
+                    background-color: #131615 !important;
+                }
+
+                /* Hero words (Found. Chosen. Booked. Kept.): bold, the one place heavier than the 600 headings */
+                .home_hero_new .home_intro_title_heading,
+                .home_hero_new .home_hero_title_new_heading {
+                    font-weight: 700 !important;
+                }
+            </style>
             <!--$-->
             <!-- New Hero Section -->
             <section class="main-section_wrap u-section home_hero_new">
@@ -2714,14 +2876,14 @@
 
                         .home_hero_new .capabilities_number_text {
                             font-size: clamp(3.2rem, 5.2vw, 5.5rem) !important;
-                            font-weight: 800 !important;
+                            font-weight: 600 !important;
                             line-height: 1 !important;
                             color: inherit !important;
                         }
 
                         .home_hero_new .capabilities_title {
                             font-size: clamp(3.6rem, 6vw, 6.2rem) !important;
-                            font-weight: 800 !important;
+                            font-weight: 600 !important;
                             color: #FFFCE1 !important;
                             line-height: 1 !important;
                             margin: 0 !important;
@@ -3366,7 +3528,7 @@
                     class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
             </div>
             <!--$CTA section  -->
-            <section id="" class="main-section_wrap u-section">
+            <section id="" class="main-section_wrap u-section home_jobs">
 
                 <div data-wf--spacer--variant="small"
                     class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
@@ -3375,12 +3537,12 @@
                         <div class="content_wrap u-column-span-10 cta_content_wrap"
                             style="grid-column-end: span 12; display: flex; justify-content: center; align-items: center; gap: 6vw;">
                             <div class="cta_text_wrap">
-                                <h2 class="cta_heading u-text-style-h3">Four jobs. One team</h2>
+                                <h2 class="cta_heading u-text-style-h3">Four jobs. One team.</h2>
                                 <p class="cta_paragraph u-text-style-main">
-                                    <span class="cta_highlight">Search,</span>
-                                    <span class="cta_highlight">site,</span>
+                                    <span class="cta_highlight">Search</span>,
+                                    <span class="cta_highlight">site</span>,
                                     <span class="cta_highlight">ads</span> and
-                                    <span class="cta_highlight">socials </span>
+                                    <span class="cta_highlight">socials</span>
                                     are the same job in four
                                     different outfits; get someone to you, then give them every reason to stay. Run them
                                     under one roof so they don't contradict each other.
@@ -3560,7 +3722,7 @@
                         font-size: clamp(2.25rem, 21cqi, 4.75rem);
                         font-weight: 600;
                         line-height: 1;
-                        letter-spacing: -0.03em;
+                        letter-spacing: -0.015em;
                         font-variant-numeric: tabular-nums;
                         white-space: nowrap;
                         font-family: var(--_typography---font--neue-haas-display-pro-black), inherit;
@@ -4614,18 +4776,6 @@
                                 padding: 2px 8px !important;
                             }
 
-                            /* Mobile responsive card button sizing & padding */
-                            .entry_card .btn {
-                                padding: 0.6rem 1.2rem !important;
-                                min-height: 2.75rem !important;
-                                height: auto !important;
-                            }
-
-                            .entry_card .btn .btn-text-p,
-                            .entry_card .btn .btn__text {
-                                font-size: 0.85rem !important;
-                            }
-
                             .entry_card button,
                             .entry_card a[style*="border-radius"] {
                                 padding: 0.55rem 0.95rem !important;
@@ -4669,16 +4819,6 @@
                             .entry_card h2,
                             .entry_card .u-text-style-h2 {
                                 font-size: 1.3rem !important;
-                            }
-
-                            .entry_card .btn {
-                                padding: 0.5rem 1rem !important;
-                                min-height: 2.5rem !important;
-                            }
-
-                            .entry_card .btn .btn-text-p,
-                            .entry_card .btn .btn__text {
-                                font-size: 0.8rem !important;
                             }
 
                             .entry_card button,
@@ -4734,6 +4874,204 @@
 
                             .decisions_heading_wrap {
                                 gap: 20px !important;
+                            }
+                        }
+
+                        /* ---------- Tools refresh: same card language and type scale as the rest of the home page ---------- */
+                        .decisions_heading_wrap {
+                            gap: 0 !important;
+                        }
+
+                        .decisions_heading_custom {
+                            /* clears the descenders before the paragraph */
+                            margin-bottom: calc(0.3em + 1rem) !important;
+                        }
+
+                        .decisions_paragraph_custom {
+                            max-width: 46rem !important;
+                            color: #8C8A80 !important;
+                            font-size: clamp(1.05rem, 1.3vw, 1.3rem) !important;
+                            line-height: 1.6 !important;
+                        }
+
+                        #entry-point .entry_card {
+                            border-radius: 20px;
+                            padding: clamp(1.5rem, 3vw, 2.75rem);
+                        }
+
+                        /* Meta row: tool number as a small yellow pill, timing muted */
+                        #entry-point .entry_meta {
+                            align-items: center;
+                            margin-bottom: 1.75rem !important;
+                            letter-spacing: 0.12em;
+                        }
+
+                        #entry-point .entry_meta > span:first-child {
+                            padding: 0.3rem 0.7rem;
+                            border: 1px solid rgba(255, 227, 42, 0.35);
+                            border-radius: 999px;
+                            color: #FFE32A;
+                        }
+
+                        /* Intro titles: the same scale as other section sub-titles, with room before the copy */
+                        #card-tool01-left h3,
+                        #card-tool02-left h3 {
+                            margin: 0 0 calc(0.3em + 0.9rem) !important;
+                            font-size: clamp(1.9rem, 2.8vw, 3rem) !important;
+                            line-height: 1.1 !important;
+                            letter-spacing: -0.02em;
+                        }
+
+                        #card-tool01-left > div > div > p,
+                        #card-tool02-left > div > div > p {
+                            max-width: 34rem;
+                            margin-bottom: 1.75rem !important;
+                            color: #8C8A80 !important;
+                            font-size: 1.05rem !important;
+                            line-height: 1.6 !important;
+                        }
+
+                        /* One panel per tool: intro on the left, live results on the right, divided by a hairline */
+                        #entry-point .content_layout.u-grid-custom:has(#card-tool01-left) {
+                            column-gap: 0 !important;
+                            row-gap: clamp(1.25rem, 2vw, 1.75rem) !important;
+                        }
+
+                        #entry-point #card-tool01-left,
+                        #entry-point #card-tool02-left {
+                            grid-column: span 5 !important;
+                            border-right: 0 !important;
+                            border-radius: 20px 0 0 20px !important;
+                        }
+
+                        #entry-point #card-budget-container,
+                        #entry-point #card-platform-container {
+                            grid-column: span 7 !important;
+                            border-radius: 0 20px 20px 0 !important;
+                            background-color: #101312 !important;
+                        }
+
+                        /* Results side: no boxes inside boxes */
+                        #entry-point #budget-diag-top,
+                        #entry-point #platform-diag-top {
+                            background: transparent !important;
+                            border: 0 !important;
+                            border-bottom: 1px solid #2A2B25 !important;
+                            border-radius: 0 !important;
+                            padding: 0 0 1.5rem !important;
+                            margin-bottom: 1.75rem !important;
+                        }
+
+                        #card-budget-bottom [style*="background: #0E100F"],
+                        #card-platform-bottom [style*="background: #0E100F"] {
+                            background: transparent !important;
+                            border: 0 !important;
+                            padding: 0 !important;
+                        }
+
+                        @media screen and (max-width: 991px) {
+                            #entry-point .content_layout.u-grid-custom:has(#card-tool01-left) {
+                                gap: 0 !important;
+                            }
+
+                            #entry-point #card-tool01-left,
+                            #entry-point #card-tool02-left {
+                                border-right: 1px solid #2A2B25 !important;
+                                border-bottom: 0 !important;
+                                border-radius: 20px 20px 0 0 !important;
+                            }
+
+                            #entry-point #card-budget-container,
+                            #entry-point #card-platform-container {
+                                border-radius: 0 0 20px 20px !important;
+                            }
+
+                            #entry-point #card-tool02-left {
+                                margin-top: 1.25rem !important;
+                            }
+                        }
+
+                        /* Result titles on the right: same scale and spacing as the intro titles */
+                        #card-budget-bottom h3,
+                        #card-platform-bottom h3 {
+                            margin: 0 0 calc(0.3em + 0.6rem) !important;
+                            font-size: clamp(1.6rem, 2.2vw, 2.25rem) !important;
+                            line-height: 1.15 !important;
+                            letter-spacing: -0.02em;
+                        }
+
+                        #card-budget-bottom p,
+                        #card-platform-bottom p {
+                            color: #8C8A80 !important;
+                            line-height: 1.6 !important;
+                        }
+
+                        /* "You'll get" checklist */
+                        .entry_gets {
+                            display: grid;
+                            gap: 0.7rem;
+                            margin: 0 0 2.5rem;
+                            padding: 0;
+                            list-style: none;
+                        }
+
+                        .entry_gets li {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.75rem;
+                            color: #FFFCE1;
+                            font-size: 1rem;
+                            line-height: 1.4;
+                        }
+
+                        .entry_gets_icon {
+                            display: grid;
+                            place-items: center;
+                            flex: none;
+                            width: 1.6rem;
+                            height: 1.6rem;
+                            border-radius: 50%;
+                            background: rgba(255, 227, 42, 0.12);
+                            color: #FFE32A;
+                        }
+
+                        .entry_gets_icon svg {
+                            width: 0.85rem;
+                            height: 0.85rem;
+                            display: block;
+                        }
+
+                        /* Right-hand diagnostic: softer panels and one badge style */
+                        #budget-diag-top,
+                        #platform-diag-top {
+                            border-radius: 14px !important;
+                            padding: 1.25rem 1.4rem !important;
+                        }
+
+                        #entry-point [id$="-badge"] {
+                            border-radius: 999px !important;
+                            padding: 0.3rem 0.75rem !important;
+                            font-size: 0.7rem !important;
+                            letter-spacing: 0.1em;
+                        }
+
+                        #card-budget-container [style*="border-radius"]:not([id$="-badge"]):not(#budget-diag-top),
+                        #card-platform-container [style*="border-radius"]:not([id$="-badge"]):not(#platform-diag-top) {
+                            border-radius: 12px !important;
+                        }
+
+                        @media screen and (max-width: 991px) {
+                            #card-tool01-left h3,
+                            #card-tool02-left h3 {
+                                font-size: clamp(1.6rem, 6vw, 2.1rem) !important;
+                            }
+
+                            .entry_gets {
+                                margin-bottom: 1.75rem;
+                            }
+
+                            .entry_gets li {
+                                font-size: 0.95rem;
                             }
                         }
                     </style>
@@ -5082,6 +5420,11 @@
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
                                                         Most marketing money is wasted on the right channel at the wrong time. This asks twelve questions about your business and gives you a budget split, a readiness score, and the fixes to make first.
                                                     </p>
+                                                    <ul class="entry_gets" aria-label="What you get">
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>A budget split across channels</li>
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>A marketing readiness score</li>
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>The fixes to make first</li>
+                                                    </ul>
                                                 </div>
 
                                                 <div class="u-button-wrapper">
@@ -5176,7 +5519,7 @@
                                                     <div class="entry_meta" style="margin-bottom: 1.25rem;">
                                                         <span style="color: #FFE32A; font-weight: 700;">DIAGNOSTIC COMPLETE</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700;">All 12 Questions Answered</h3>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 600;">All 12 Questions Answered</h3>
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
                                                         Your marketing readiness fit score and optimal channel allocations are updated on the right. You can retake or adjust anytime.
                                                     </p>
@@ -5186,13 +5529,10 @@
                                                     <button onclick="restartBudgetDiagnostic()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
                                                         Start Again
                                                     </button>
-                                                    <button onclick="window.print()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                    <button type="button" onclick="saveBudgetReport()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
                                                         Save as PDF
                                                     </button>
-                                                    <button id="budget-copy-btn" onclick="copyBudgetResults()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
-                                                        Copy Results
-                                                    </button>
-                                                    <a href="/contact" onmouseover="this.style.background='#FFFCE1'; this.style.borderColor='#FFFCE1'; this.style.color='#0E100F';" onmouseout="this.style.background='#FFE32A'; this.style.borderColor='#FFE32A'; this.style.color='#0E100F';" style="background: #FFE32A; border: 1px solid #FFE32A; color: #0E100F; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(255, 227, 42, 0.2);">
+                                                    <a href="/contact" data-calendly-open data-barba-prevent="self" onmouseover="this.style.background='#FFFCE1'; this.style.borderColor='#FFFCE1'; this.style.color='#0E100F';" onmouseout="this.style.background='#FFE32A'; this.style.borderColor='#FFE32A'; this.style.color='#0E100F';" style="background: #FFE32A; border: 1px solid #FFE32A; color: #0E100F; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(255, 227, 42, 0.2);">
                                                         Book a 15-Minute Call
                                                     </a>
                                                 </div>
@@ -5235,7 +5575,7 @@
                                                         <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">LIVE DIAGNOSTIC BENCHMARK</span>
                                                         <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">BENCHMARK FIT</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Where should your budget go?</h3>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Where should your budget go?</h3>
                                                     <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
                                                         Select options on Tool 01 to see your live marketing readiness curve and optimal channel allocation build progressively.
                                                     </p>
@@ -5309,7 +5649,7 @@
                                                     <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">${sectionTag}</span>
                                                     <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${badgeTag}</span>
                                                 </div>
-                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${hd.h}</h3>
+                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${hd.h}</h3>
                                                 <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
                                                     ${hd.p}
                                                 </p>
@@ -5328,6 +5668,89 @@
                                         </div>
                                     `;
                                 }
+
+
+                                // Printable one-page report (opens the print dialog, where "Save as PDF" is the destination).
+                                // Printed from a hidden iframe so the site's header, animations and dark theme stay out of it.
+                                window.bwPrintReport = window.bwPrintReport || function (report) {
+                                    const esc = (v) => String(v).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+                                    const date = new Date().toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' });
+                                    const stats = report.stats.map(([k, v]) => `<div class="stat"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div>`).join('');
+                                    const rows = report.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+                                    const head = report.columns.map((c) => `<th>${esc(c)}</th>`).join('');
+                                    const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(report.title)}</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, -apple-system, "Segoe UI", Arial, sans-serif; color: #0E100F; font-size: 12pt; line-height: 1.5; }
+  .bar { height: 6px; background: #FFE32A; margin-bottom: 18px; }
+  .brand { display: flex; justify-content: space-between; align-items: baseline; font-size: 10pt; color: #55554d; }
+  .brand strong { color: #0E100F; font-size: 11pt; }
+  h1 { margin: 22px 0 4px; font-size: 22pt; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em; }
+  .sub { margin: 0 0 20px; color: #55554d; }
+  .stats { display: flex; gap: 10px; margin-bottom: 22px; }
+  .stat { flex: 1; padding: 12px 14px; border: 1px solid #e3e1d2; border-radius: 10px; }
+  .stat .k { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #77776d; }
+  .stat .v { margin-top: 4px; font-size: 15pt; font-weight: 700; }
+  h2 { margin: 0 0 6px; font-size: 13pt; }
+  .rec { margin: 0 0 22px; padding: 14px 16px; border-left: 4px solid #FFE32A; background: #FBF8E4; }
+  .rec p { margin: 4px 0 0; color: #33332d; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 26px; }
+  th, td { padding: 9px 10px; border-bottom: 1px solid #e3e1d2; text-align: left; }
+  th { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.08em; color: #77776d; }
+  td:not(:first-child), th:not(:first-child) { text-align: right; }
+  .foot { padding-top: 14px; border-top: 1px solid #e3e1d2; font-size: 9.5pt; color: #55554d; }
+  .foot strong { color: #0E100F; }
+</style></head><body>
+  <div class="bar"></div>
+  <div class="brand"><strong>Blackwater Digital Marketing</strong><span>${esc(date)}</span></div>
+  <h1>${esc(report.title)}</h1>
+  <p class="sub">${esc(report.subtitle)}</p>
+  <div class="stats">${stats}</div>
+  <div class="rec"><h2>${esc(report.recTitle)}</h2><p>${esc(report.recText)}</p></div>
+  ${rows ? `<table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>` : ''}
+  <div class="foot"><strong>Want to talk it through?</strong> Book a free 15-minute call at calendly.com/blackwater_digitalmarketing/15min<br>
+  info@bwdigitalmarketing.ie &middot; 021 203 2041 &middot; 12 Cook Street, Cork &middot; bwdigitalmarketing.ie</div>
+</body></html>`;
+
+                                    const frame = document.createElement('iframe');
+                                    frame.setAttribute('aria-hidden', 'true');
+                                    frame.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden;';
+                                    document.body.appendChild(frame);
+                                    const doc = frame.contentWindow.document;
+                                    doc.open();
+                                    doc.write(html);
+                                    doc.close();
+                                    const go = () => {
+                                        frame.contentWindow.focus();
+                                        frame.contentWindow.print();
+                                        setTimeout(() => frame.remove(), 1000);
+                                    };
+                                    // Give the report a moment to lay out before opening the print dialog
+                                    setTimeout(go, 250);
+                                };
+
+                                function saveBudgetReport() {
+                                    const m = calculateBudgetMix();
+                                    const r = calculateBudgetReadiness();
+                                    const b = calculateBudgetBand(r.total);
+                                    const hd = calculateBudgetHeadline(m);
+                                    window.bwPrintReport({
+                                        title: 'Where should your marketing budget go?',
+                                        subtitle: 'Your marketing budget diagnostic results. ' + b.note,
+                                        stats: [
+                                            ['Readiness score', r.total + '/100'],
+                                            ['Stage', b.label],
+                                            ['Monthly budget', '€' + Number(m.spend).toLocaleString('en-IE') + '/mo'],
+                                            ['Demand split', m.create + '% create / ' + m.capture + '% capture']
+                                        ],
+                                        recTitle: hd.h,
+                                        recText: hd.p,
+                                        columns: ['Channel', 'Share', 'Per month'],
+                                        rows: m.pct.map(([k, pct]) => [CHANNELS[k]?.name || k, pct + '%', '≈ €' + Math.round(m.spend * pct / 100).toLocaleString('en-IE')])
+                                    });
+                                }
+                                window.saveBudgetReport = saveBudgetReport;
 
                                 function copyBudgetResults() {
                                     const m = calculateBudgetMix();
@@ -5648,6 +6071,11 @@
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 3rem; line-height: 1.6;">
                                                         A recommendation, a template-versus-bespoke call, and the real three-year cost &mdash; not the monthly sticker price.
                                                     </p>
+                                                    <ul class="entry_gets" aria-label="What you get">
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>A platform recommendation</li>
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>A template-versus-bespoke call</li>
+                                                        <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>The real three-year cost</li>
+                                                    </ul>
                                                 </div>
 
                                                 <div class="u-button-wrapper">
@@ -5709,7 +6137,7 @@
                                                         <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #FFE32A; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">${q.num.toUpperCase()} OF ${PLATFORM_QUESTIONS.length}</span>
                                                         <span style="font-size: 0.75rem; color: #7C7C70;">TOOL 02</span>
                                                     </div>
-                                                    <h4 class="u-text-style-main-medium" style="margin-bottom: 1.1rem; color: #FFFCE1; font-size: 1.8rem; font-weight: 700; line-height: 1.25;">${esc(q.title)}</h4>
+                                                    <h4 class="u-text-style-main-medium" style="margin-bottom: 1.1rem; color: #FFFCE1; font-size: 1.8rem; font-weight: 600; line-height: 1.25;">${esc(q.title)}</h4>
                                                     ${q.help ? `<p style="font-size: 0.85rem; color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">${esc(q.help)}</p>` : ''}
 
                                                     <div class="entry_options" style="margin-bottom: 1.25rem;">
@@ -5742,7 +6170,7 @@
                                                     <div class="entry_meta" style="margin-bottom: 1.25rem;">
                                                         <span style="color: #FFE32A; font-weight: 700;">DIAGNOSTIC COMPLETE</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 700;">All 10 Questions Answered</h3>
+                                                    <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1rem; font-size: 1.8rem; font-weight: 600;">All 10 Questions Answered</h3>
                                                     <p class="u-text-style-small" style="color: #7C7C70; margin-bottom: 2rem; line-height: 1.6;">
                                                         Your tailored platform fit score and 3-year total cost projection are updated on the right. You can retake or adjust anytime.
                                                     </p>
@@ -5752,13 +6180,10 @@
                                                     <button onclick="restartPlatformDiagnostic()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
                                                         Start Again
                                                     </button>
-                                                    <button onclick="window.print()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
+                                                    <button type="button" onclick="savePlatformReport()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
                                                         Save as PDF
                                                     </button>
-                                                    <button id="platform-copy-btn" onclick="copyPlatformResults()" onmouseover="this.style.borderColor='#FFE32A'; this.style.color='#FFE32A'; this.style.background='rgba(255, 227, 42, 0.08)';" onmouseout="this.style.borderColor='#2A2B25'; this.style.color='#FFFCE1'; this.style.background='rgba(255,255,255,0.03)';" style="background: rgba(255,255,255,0.03); border: 1px solid #2A2B25; color: #FFFCE1; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; font-family: Inter, sans-serif; cursor: pointer; transition: all 0.25s ease;">
-                                                        Copy Results
-                                                    </button>
-                                                    <a href="/contact" onmouseover="this.style.background='#FFFCE1'; this.style.borderColor='#FFFCE1'; this.style.color='#0E100F';" onmouseout="this.style.background='#FFE32A'; this.style.borderColor='#FFE32A'; this.style.color='#0E100F';" style="background: #FFE32A; border: 1px solid #FFE32A; color: #0E100F; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(255, 227, 42, 0.2);">
+                                                    <a href="/contact" data-calendly-open data-barba-prevent="self" onmouseover="this.style.background='#FFFCE1'; this.style.borderColor='#FFFCE1'; this.style.color='#0E100F';" onmouseout="this.style.background='#FFE32A'; this.style.borderColor='#FFE32A'; this.style.color='#0E100F';" style="background: #FFE32A; border: 1px solid #FFE32A; color: #0E100F; padding: 0.75rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 700; font-family: Inter, sans-serif; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(255, 227, 42, 0.2);">
                                                         Book a 15-Minute Call
                                                     </a>
                                                 </div>
@@ -5801,7 +6226,7 @@
                                                         <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">INITIAL BENCHMARK</span>
                                                         <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">HIGH FIT</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Webflow & Shopify Ecosystem</h3>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Webflow & Shopify Ecosystem</h3>
                                                     <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
                                                         A custom-engineered visual CMS with zero technical debt for brochure and lead capture, paired with Shopify for native checkout scalability.
                                                     </p>
@@ -5858,7 +6283,7 @@
                                                         <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">LIVE DIAGNOSTIC</span>
                                                         <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">ACTIVE</span>
                                                     </div>
-                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Select your answers to begin</h3>
+                                                    <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Select your answers to begin</h3>
                                                     <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
                                                         Select options on Tool 02 to see your live platform fit curve and 3-year total cost projection build progressively.
                                                     </p>
@@ -5917,7 +6342,7 @@
                                                     <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">${sectionTag}</span>
                                                     <span style="font-size: 0.75rem; font-weight: 700; color: #FFE32A; background: rgba(255, 227, 42, 0.1); border: 1px solid rgba(255, 227, 42, 0.2); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">${badgeTag}</span>
                                                 </div>
-                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 700; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${topPlatform.name}</h3>
+                                                <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">${topPlatform.name}</h3>
                                                 <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
                                                     ${topPlatform.blurb}
                                                 </p>
@@ -5936,6 +6361,29 @@
                                         </div>
                                     `;
                                 }
+
+
+                                function savePlatformReport() {
+                                    const scores = calculateScores();
+                                    const topKey = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, "wf");
+                                    const top = PLATFORMS[topKey] || PLATFORMS.wf;
+                                    const answeredCount = Object.keys(platformAnswers).length;
+                                    const fit = Math.round(Math.min(95, Math.max(50, 65 + answeredCount * 3)));
+                                    window.bwPrintReport({
+                                        title: 'Which platform should you build on?',
+                                        subtitle: 'Your platform finder results, based on your answers.',
+                                        stats: [
+                                            ['Recommended', top.name],
+                                            ['Fit score', fit + '%'],
+                                            ['Est. 3-year cost', top.est3Yr]
+                                        ],
+                                        recTitle: 'Why ' + top.name,
+                                        recText: top.blurb || '',
+                                        columns: ['Platform', 'Fit', 'Est. 3-year cost'],
+                                        rows: Object.entries(scores).sort((a, b) => b[1] - a[1]).map(([k, v]) => [PLATFORMS[k]?.name || k, Math.round(v) + '%', PLATFORMS[k]?.est3Yr || '-'])
+                                    });
+                                }
+                                window.savePlatformReport = savePlatformReport;
 
                                 function copyPlatformResults() {
                                     const scores = calculateScores();
@@ -6208,7 +6656,7 @@
 
                         .audit_modal_title {
                             font-size: 26px;
-                            font-weight: 700;
+                            font-weight: 600;
                             color: #FFFCE1;
                             margin: 0 0 12px 0;
                             letter-spacing: -0.02em;
@@ -6329,6 +6777,301 @@
                                 gap: 20px !important;
                             }
                         }
+                    
+                        /* ---------- Tool 03: pitch and checklist on the left, request card on the right ---------- */
+                        #free-audit .content_wrap {
+                            display: grid !important;
+                            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+                            align-items: center !important;
+                            column-gap: clamp(2.5rem, 6vw, 7rem) !important;
+                            row-gap: 2.5rem !important;
+                            text-align: left !important;
+                        }
+
+                        #free-audit .tool_section_head {
+                            display: flex;
+                            flex-direction: column;
+                            min-width: 0;
+                        }
+
+                        #free-audit .audit_heading_custom {
+                            margin: 0 0 calc(0.3em + 1rem) !important;
+                            text-align: left !important;
+                            color: #FFFCE1;
+                            font-size: calc(var(--_extra-variables---services-headings) * 0.7) !important;
+                            line-height: 1.05 !important;
+                        }
+
+                        /* One block per sentence so each wraps (and balances) on its own */
+                        #free-audit .audit_heading_line {
+                            display: block;
+                            text-wrap: balance;
+                        }
+
+                        #free-audit .audit_paragraph_custom {
+                            max-width: 40rem !important;
+                            margin: 0 !important;
+                            opacity: 1 !important;
+                            text-align: left !important;
+                            color: #8C8A80 !important;
+                            font-size: clamp(1.05rem, 1.3vw, 1.3rem) !important;
+                            line-height: 1.6 !important;
+                        }
+
+                        /* What we check: a quiet spec list under the intro */
+                        #free-audit .audit_checks_label {
+                            margin: clamp(1.75rem, 3vw, 2.5rem) 0 0.6rem;
+                            color: #7C7C70;
+                            font-size: 0.75rem;
+                            font-weight: 600;
+                            letter-spacing: 0.12em;
+                            text-transform: uppercase;
+                        }
+
+                        #free-audit .entry_gets {
+                            display: grid;
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                            border-top: 1px solid #2A2B25;
+                        }
+
+                        #free-audit .entry_gets li {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.75rem;
+                            padding: 0.8rem 0;
+                            border-bottom: 1px solid #2A2B25;
+                            color: #FFFCE1;
+                            font-size: 1rem;
+                            line-height: 1.4;
+                        }
+
+                        #free-audit .entry_gets_icon {
+                            display: grid;
+                            place-items: center;
+                            flex: none;
+                            width: 1.6rem;
+                            height: 1.6rem;
+                            border-radius: 50%;
+                            background: rgba(255, 227, 42, 0.12);
+                            color: #FFE32A;
+                        }
+
+                        #free-audit .entry_gets_icon svg {
+                            width: 0.85rem;
+                            height: 0.85rem;
+                            display: block;
+                        }
+
+                        #free-audit .audit_tag {
+                            margin-left: auto;
+                            padding: 0.2rem 0.55rem;
+                            border: 1px solid #2A2B25;
+                            border-radius: 999px;
+                            color: #7C7C70;
+                            font-size: 0.7rem;
+                            font-weight: 600;
+                            letter-spacing: 0.1em;
+                            text-transform: uppercase;
+                        }
+
+                        /* Request card */
+                        /* Fills its half of the section, so the gap between the columns stays the column gap */
+                        #free-audit .tool_panel {
+                            justify-self: end;
+                            width: 100%;
+                            max-width: 64rem;
+                            box-sizing: border-box;
+                            padding: clamp(1.5rem, 3vw, 2.5rem);
+                            border: 1px solid #2A2B25;
+                            border-radius: 20px;
+                            background: #131615;
+                            container-type: inline-size;
+                        }
+
+                        #free-audit .tool_meta {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 1rem;
+                            margin-bottom: 1.5rem;
+                            color: #7C7C70;
+                            font-size: 0.75rem;
+                            font-weight: 600;
+                            letter-spacing: 0.12em;
+                            text-transform: uppercase;
+                        }
+
+                        #free-audit .tool_meta > span:first-child {
+                            padding: 0.3rem 0.7rem;
+                            border: 1px solid rgba(255, 227, 42, 0.35);
+                            border-radius: 999px;
+                            color: #FFE32A;
+                        }
+
+                        #free-audit .tool_panel_title {
+                            margin: 0 0 1.5rem;
+                            color: #FFFCE1;
+                            font-size: clamp(1.6rem, 2.2vw, 2.25rem);
+                            font-weight: 600;
+                            line-height: 1.15;
+                            letter-spacing: -0.02em;
+                        }
+
+                        /* Form */
+                        #free-audit .audit_form_container {
+                            display: grid;
+                            grid-template-columns: repeat(2, minmax(0, 1fr));
+                            gap: 1.1rem 1.25rem;
+                            width: 100%;
+                            max-width: none;
+                            margin: 0;
+                        }
+
+                        #free-audit .audit_field--wide,
+                        #free-audit .audit_form_foot,
+                        #free-audit .audit_form_status {
+                            grid-column: 1 / -1;
+                        }
+
+                        #free-audit .audit_form_foot {
+                            display: flex;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            gap: 1rem 1.5rem;
+                            margin-top: 0.4rem;
+                        }
+
+                        #free-audit .audit_form_note {
+                            flex: 1 1 12rem;
+                            max-width: 20rem;
+                            margin: 0;
+                            color: #7C7C70;
+                            font-size: 0.85rem;
+                            line-height: 1.5;
+                        }
+
+                        #free-audit .audit_form_note a {
+                            color: #B5B3A7;
+                            text-decoration: underline;
+                            text-underline-offset: 2px;
+                            transition: color 0.2s ease;
+                        }
+
+                        #free-audit .audit_form_note a:hover {
+                            color: #FFFCE1;
+                        }
+
+                        #free-audit .audit_field {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.45rem;
+                        }
+
+                        #free-audit .audit_label {
+                            color: #8C8A80;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            letter-spacing: 0.02em;
+                        }
+
+                        #free-audit .audit_input {
+                            width: 100%;
+                            box-sizing: border-box;
+                            padding: 0.95rem 1.1rem;
+                            border: 1px solid #2A2B25;
+                            border-radius: 12px;
+                            background: #0E100F;
+                            color: #FFFCE1;
+                            font-family: 'Inter', sans-serif;
+                            font-size: 1rem;
+                            outline: none;
+                            transition: border-color 0.2s ease, background-color 0.2s ease;
+                        }
+
+                        #free-audit .audit_input::placeholder {
+                            color: #5E5D57;
+                        }
+
+                        #free-audit .audit_input:hover {
+                            border-color: #3E4034;
+                        }
+
+                        #free-audit .audit_input:focus,
+                        #free-audit .audit_input:focus-visible {
+                            border-color: #FFE32A;
+                            outline: none;
+                        }
+
+                        #free-audit .audit_input.is-invalid {
+                            border-color: #FF6B5A;
+                        }
+
+                        #free-audit .audit_input:-webkit-autofill {
+                            -webkit-text-fill-color: #FFFCE1;
+                            -webkit-box-shadow: 0 0 0 1000px #0E100F inset;
+                            caret-color: #FFFCE1;
+                        }
+
+                        #free-audit .audit_btn {
+                            flex: none;
+                            border: 0;
+                            background: transparent;
+                            font: inherit;
+                            color: inherit;
+                        }
+
+                        #free-audit .audit_btn > span {
+                            display: block;
+                        }
+
+                        #free-audit .audit_btn .btn__text {
+                            display: flex;
+                        }
+
+                        #free-audit .audit_btn:disabled {
+                            opacity: 0.6;
+                            cursor: wait;
+                        }
+
+                        #free-audit .audit_form_status {
+                            margin: 0;
+                            text-align: left;
+                        }
+
+                        @media screen and (max-width: 991px) {
+                            #free-audit .content_wrap {
+                                grid-template-columns: minmax(0, 1fr);
+                            }
+
+                            #free-audit .tool_panel {
+                                justify-self: stretch;
+                                max-width: none;
+                            }
+
+                            #free-audit .audit_heading_custom {
+                                font-size: 2rem !important;
+                                line-height: 1.15 !important;
+                            }
+                        }
+
+                        /* Stack the fields when the card itself is narrow */
+                        @container (max-width: 33rem) {
+                            #free-audit .audit_form_container {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+
+                        @media screen and (max-width: 479px) {
+                            #free-audit .tool_meta > span:last-child {
+                                display: none;
+                            }
+
+                            #free-audit .audit_tag {
+                                display: none;
+                            }
+                        }
                     </style>
                 </div>
                 <div class="main-section_contain u-container">
@@ -6336,109 +7079,52 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: flex; flex-direction: column; gap: 40px; grid-column: 1 / -1; align-items: center; text-align: center;">
 
-                            <!-- Eyebrow + Heading + Paragraph + Form -->
-                            <div class="audit_heading_group"
-                                style="display: flex; flex-direction: column; gap: 36px; align-items: center; text-align: center; width: 100%;">
-                                <h2 class="u-text-style-h2 audit_heading_custom"
-                                    style="color: #FFFCE1; margin: 0; font-weight: bold; width: 100%; max-width: 100%;">
-                                    Drop your website.<br>We'll tell you what's not working.
-                                </h2>
-                                <p class="u-text-style-main audit_paragraph_custom"
-                                    style="opacity: 0.7; color: #7C7C70; width: 100%; max-width: 100%; line-height: 1.6; margin: 0; text-align: center;">
-                                    A real person opens your site. We check the speed, indexation, tracking, the path
-                                    from landing to enquiry and then we come back to you. Nothing is automated, and
-                                    nothing is a sales pitch.
-                                </p>
+                            <!-- Left: the pitch and what we check. Right: the request card (Tool 03) -->
+                            <div class="tool_section_head">
+                                <h2 class="u-text-style-h2 audit_heading_custom"><span class="audit_heading_line">Drop your website.</span> <span class="audit_heading_line">We'll tell you what's not working.</span></h2>
+                                <p class="u-text-style-main audit_paragraph_custom">A real person opens your site. We check the speed,
+                                    indexation, tracking, the path from landing to enquiry and then we come back to you. Nothing is
+                                    automated, and nothing is a sales pitch.</p>
+                                <p class="audit_checks_label" id="audit-checks-label">What we check</p>
+                                <ul class="entry_gets audit_checks" aria-labelledby="audit-checks-label">
+                                    <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Core Web Vitals &amp; load speed</span><span class="audit_tag">Speed</span></li>
+                                    <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Technical SEO &amp; indexation</span><span class="audit_tag">Crawl</span></li>
+                                    <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Keyword &amp; competitor gap</span><span class="audit_tag">Search</span></li>
+                                    <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Conversion path &amp; forms</span><span class="audit_tag">CRO</span></li>
+                                    <li><span class="entry_gets_icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Tracking &amp; attribution setup</span><span class="audit_tag">Data</span></li>
+                                </ul>
+                            </div>
 
-                                <!-- Horizontal wrapping list styled like credits -->
-                                <div class="credits_wrapper"
-                                    style="padding-top: 60px; padding-bottom: 30px; column-gap: 36px; row-gap: 20px;">
-                                    <span class="role_wrap" style="gap: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
-                                            class="dot-svg is-green"
-                                            style="width: 8px; height: 8px; flex-shrink: 0; color: #D1FD88;">
-                                            <path
-                                                d="M0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 10.0899 10.0899 13 6.5 13C2.91015 13 0 10.0899 0 6.5Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span class="role u-text-style-main-medium" style="color: #FFFCE1;">Core Web
-                                            Vitals & load speed <span
-                                                style="font-family: 'Inter', sans-serif; opacity: 0.5; font-size: 0.8em; margin-left: 6px;">SPEED</span></span>
-                                    </span>
-                                    <span class="role_wrap" style="gap: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
-                                            class="dot-svg is-green"
-                                            style="width: 8px; height: 8px; flex-shrink: 0; color: #D1FD88;">
-                                            <path
-                                                d="M0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 10.0899 10.0899 13 6.5 13C2.91015 13 0 10.0899 0 6.5Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span class="role u-text-style-main-medium" style="color: #FFFCE1;">Technical
-                                            SEO & indexation <span
-                                                style="font-family: 'Inter', sans-serif; opacity: 0.5; font-size: 0.8em; margin-left: 6px;">CRAWL</span></span>
-                                    </span>
-                                    <span class="role_wrap" style="gap: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
-                                            class="dot-svg is-green"
-                                            style="width: 8px; height: 8px; flex-shrink: 0; color: #D1FD88;">
-                                            <path
-                                                d="M0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 10.0899 10.0899 13 6.5 13C2.91015 13 0 10.0899 0 6.5Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span class="role u-text-style-main-medium" style="color: #FFFCE1;">Keyword &
-                                            competitor gap <span
-                                                style="font-family: 'Inter', sans-serif; opacity: 0.5; font-size: 0.8em; margin-left: 6px;">SEARCH</span></span>
-                                    </span>
-                                    <span class="role_wrap" style="gap: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
-                                            class="dot-svg is-green"
-                                            style="width: 8px; height: 8px; flex-shrink: 0; color: #D1FD88;">
-                                            <path
-                                                d="M0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 10.0899 10.0899 13 6.5 13C2.91015 13 0 10.0899 0 6.5Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span class="role u-text-style-main-medium" style="color: #FFFCE1;">Conversion
-                                            path & forms <span
-                                                style="font-family: 'Inter', sans-serif; opacity: 0.5; font-size: 0.8em; margin-left: 6px;">CRO</span></span>
-                                    </span>
-                                    <span class="role_wrap" style="gap: 6px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13" fill="none"
-                                            class="dot-svg is-green"
-                                            style="width: 8px; height: 8px; flex-shrink: 0; color: #D1FD88;">
-                                            <path
-                                                d="M0 6.5C0 2.91015 2.91015 0 6.5 0C10.0899 0 13 2.91015 13 6.5C13 10.0899 10.0899 13 6.5 13C2.91015 13 0 10.0899 0 6.5Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span class="role u-text-style-main-medium" style="color: #FFFCE1;">Tracking &
-                                            attribution setup <span
-                                                style="font-family: 'Inter', sans-serif; opacity: 0.5; font-size: 0.8em; margin-left: 6px;">DATA</span></span>
-                                    </span>
-                                </div>
-
+                            <div class="tool_panel">
+                                <div class="tool_meta"><span>TOOL 03</span><span>FREE &middot; REVIEWED BY A PERSON</span></div>
+                                <h3 class="tool_panel_title">Get your free site audit</h3>
                                 <form id="audit-form" class="audit_form_container" novalidate>
-                                    <div class="audit_form_row_top">
-                                        <div class="audit_field_wrap">
-                                            <input type="text" id="audit-company" name="company" class="audit_input"
-                                                placeholder="Company Name" required autocomplete="organization">
-                                        </div>
-                                        <div class="audit_field_wrap">
-                                            <input type="email" id="audit-email" name="email" class="audit_input"
-                                                placeholder="Work Email" required autocomplete="email">
-                                        </div>
+                                    <div class="audit_field">
+                                        <label class="audit_label" for="audit-company">Company name</label>
+                                        <input type="text" id="audit-company" name="company" class="audit_input"
+                                            placeholder="Your company" required autocomplete="organization">
                                     </div>
-                                    <div class="audit_form_row_bottom">
-                                        <div class="audit_field_wrap audit_field_grow">
-                                            <input type="text" id="audit-website" name="website" class="audit_input"
-                                                placeholder="yourcompany.ie" required autocomplete="url">
-                                        </div>
-                                        <div class="audit_btn_wrap">
-                                            <button type="submit" id="audit-submit-btn" class="audit_submit_btn">
-                                                <span id="audit-btn-text">Audit My Site</span>
-                                            </button>
-                                        </div>
+                                    <div class="audit_field">
+                                        <label class="audit_label" for="audit-email">Work email</label>
+                                        <input type="email" id="audit-email" name="email" class="audit_input"
+                                            placeholder="you@yourcompany.ie" required autocomplete="email">
+                                    </div>
+                                    <div class="audit_field audit_field--wide">
+                                        <label class="audit_label" for="audit-website">Website</label>
+                                        <input type="text" id="audit-website" name="website" class="audit_input"
+                                            placeholder="yourcompany.ie" required autocomplete="url">
+                                    </div>
+                                    <div class="audit_form_foot">
+                                        <button type="submit" id="audit-submit-btn" class="btn audit_btn" data-btn-hover="" data-theme="dark">
+                                            <span class="btn__bg"></span>
+                                            <span class="btn__circle-wrap"><span class="btn__circle"><span class="before__100"></span></span></span>
+                                            <span class="btn__text u-text-style-main-medium"><span class="btn-text-p" id="audit-btn-text">Audit My Site</span></span>
+                                        </button>
+                                        <p class="audit_form_note">Free, with no obligation. See how we handle your details in our <a href="/privacy-policy">privacy policy</a>.</p>
                                     </div>
                                     <div id="audit-form-status" class="audit_form_status"></div>
                                 </form>
+                            </div>
 
                                 <!-- Audit Success Confirmation Modal -->
                                 <div id="audit-success-modal" class="audit_modal_overlay" aria-hidden="true"
@@ -6464,7 +7150,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <div data-wf--spacer--variant="small"
                     class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
 
@@ -6606,123 +7291,181 @@
                             }
                         }
 
-                        .journal_row {
-                            display: grid;
-                            grid-template-columns: 80px 1fr 50px;
-                            gap: 32px;
-                            align-items: center;
-                            padding-block: 32px;
+                        /* Article list: number | title | category + read time | arrow badge */
+                        .journal_list {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
                             border-top: 1px solid #2A2B25;
-                            text-decoration: none;
                         }
 
-                        .journal_row:last-child {
+                        .journal_row {
+                            display: grid;
+                            grid-template-columns: 3.5rem minmax(0, 1fr) auto 2.75rem;
+                            align-items: center;
+                            column-gap: clamp(1rem, 2.5vw, 2.5rem);
+                            padding-block: clamp(1.25rem, 2vw, 1.75rem);
                             border-bottom: 1px solid #2A2B25;
+                            color: #FFFCE1;
+                            text-decoration: none;
                         }
 
                         .journal_num {
+                            color: #5E5D57;
                             font-family: 'Inter', sans-serif;
-                            font-size: 16px;
-                            color: #7C7C70;
-                            font-weight: 700;
-                        }
-
-                        .journal_title {
-                            font-size: 24px;
-                            font-weight: 500;
-                            color: #7C7C70;
+                            font-size: 0.95rem;
+                            font-weight: 600;
+                            font-variant-numeric: tabular-nums;
                             transition: color 0.3s ease;
                         }
 
-                        .journal_row:hover .journal_title,
-                        .journal_title:hover {
+                        .journal_title {
+                            min-width: 0;
                             color: #FFFCE1;
+                            font-size: clamp(1.15rem, 1.55vw, 1.5rem);
+                            font-weight: 500;
+                            line-height: 1.3;
+                            letter-spacing: -0.01em;
+                            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
                         }
 
-
-
                         .journal_meta {
+                            display: flex;
+                            align-items: center;
+                            gap: 1.25rem;
                             font-family: 'Inter', sans-serif;
-                            font-size: 14px;
+                        }
+
+                        .journal_cat {
+                            padding: 0.3rem 0.8rem;
+                            border: 1px solid #2A2B25;
+                            border-radius: 999px;
+                            color: #B5B3A7;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            white-space: nowrap;
+                            transition: border-color 0.3s ease, color 0.3s ease;
+                        }
+
+                        .journal_time {
+                            min-width: 5.5rem;
                             color: #7C7C70;
-                            font-weight: 600;
+                            font-size: 0.875rem;
+                            text-align: right;
+                            white-space: nowrap;
                         }
 
                         .journal_arrow {
-                            display: flex;
-                            justify-content: flex-end;
-                            color: #7C7C70;
-                            transform: rotate(-45deg);
-                            transition: color 0.3s ease, transform 0.3s ease;
-                        }
-
-                        .journal_row:hover .journal_arrow {
+                            display: grid;
+                            place-items: center;
+                            width: 2.75rem;
+                            height: 2.75rem;
+                            border: 1px solid #2A2B25;
+                            border-radius: 50%;
                             color: #FFFCE1;
-                            transform: rotate(-45deg) translateX(6px);
+                            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
                         }
 
-                        .journal_link {
-                            color: #7C7C70;
-                            font-family: 'Inter', sans-serif;
-                            font-size: 16px;
-                            text-transform: uppercase;
-                            letter-spacing: 1.5px;
-                            text-decoration: none;
-                            border-bottom: 1px solid #7C7C70;
-                            padding-bottom: 4px;
-                            margin-bottom: 10px;
-                            transition: color 0.3s ease, border-color 0.3s ease;
+                        .journal_arrow svg {
+                            width: 1.1rem;
+                            height: 1.1rem;
+                            transform: rotate(-45deg);
+                            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                         }
 
-                        .journal_link:hover {
-                            color: #FFE32A;
-                            border-color: #FFE32A;
-                        }
-
-                        @media (max-width: 991px) {
-                            .journal_row {
-                                grid-template-columns: 50px 1fr 40px;
-                                gap: 16px;
+                        @media (hover: hover) {
+                            .journal_row:hover .journal_num {
+                                color: #FFE32A;
                             }
 
-                            .journal_title {
-                                font-size: 18px;
+                            .journal_row:hover .journal_title {
+                                transform: translateX(0.5rem);
+                            }
+
+                            .journal_row:hover .journal_cat {
+                                border-color: #3E4034;
+                                color: #FFFCE1;
+                            }
+
+                            .journal_row:hover .journal_arrow {
+                                border-color: #FFE32A;
+                                background-color: #FFE32A;
+                                color: #0E100F;
+                            }
+
+                            .journal_row:hover .journal_arrow svg {
+                                transform: rotate(0deg);
                             }
                         }
 
+                        .journal_row:focus-visible {
+                            outline: 2px solid #FFE32A;
+                            outline-offset: 4px;
+                        }
+
+                        /* Phone: title on top, category and read time underneath, arrow on the right */
                         @media (max-width: 767px) {
                             .journal_row {
-                                grid-template-columns: 1fr 40px;
-                                gap: 8px;
-                                padding-block: 24px;
+                                grid-template-columns: minmax(0, 1fr) 2.5rem;
+                                grid-template-areas: "title arrow" "meta arrow";
+                                row-gap: 0.75rem;
                             }
 
                             .journal_num {
                                 display: none;
                             }
+
+                            .journal_title {
+                                grid-area: title;
+                            }
+
+                            .journal_meta {
+                                grid-area: meta;
+                                gap: 0.85rem;
+                            }
+
+                            .journal_time {
+                                min-width: 0;
+                                text-align: left;
+                            }
+
+                            .journal_arrow {
+                                grid-area: arrow;
+                                width: 2.5rem;
+                                height: 2.5rem;
+                            }
+                        }
+
+                        .journal_subtitle {
+                            margin: 0;
+                            color: #7C7C70;
+                            font-size: clamp(0.95rem, 1.05vw, 1.25rem);
+                            line-height: 1.45;
                         }
 
                         .journal_heading_custom {
                             font-size: clamp(2.3rem, 3.4vw, 4.2rem) !important;
                             font-size: calc(var(--_extra-variables---services-headings) * 0.7) !important;
                             line-height: 1.1 !important;
+                            /* The heading box is trimmed to its baseline, so clear the descenders ("g") first */
+                            margin-bottom: calc(0.3em + 0.15rem) !important;
                         }
                     </style>
                 </div>
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
                         <div class="content_wrap u-column-span-10"
-                            style="display: flex; flex-direction: column; gap: 70px; grid-column-end: span 12;">
+                            style="display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 3rem); grid-column-end: span 12;">
 
                             <!-- Header Info -->
                             <div
                                 style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px;">
-                                <div style="display: flex; flex-direction: column; gap: 16px;">
-
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                                     <h2 class="u-text-style-h2 journal_heading_custom"
-                                        style="color: #FFFCE1; margin: 0; margin-top: 1rem;">
-                                        What we've been<br>figuring out
+                                        style="color: #FFFCE1; margin: 0;">
+                                        What we've been<br>figuring out.
                                     </h2>
+                                    <p class="journal_subtitle">(Notes from the work.)</p>
                                 </div>
 
                                 <div data-wf--button-main--variant="secondary" data-button=" "
@@ -6743,84 +7486,31 @@
                             </div>
 
                             <!-- Journal Rows -->
-                            <div id="homepage-journal-rows" style="display: flex; flex-direction: column; width: 100%;">
-
-                                <!-- Row 1 -->
-                                <a href="/blog/why-irish-smes-waste-40-of-their-google-ads-budget" class="journal_row"
-                                    data-barba-prevent>
+                            <div id="homepage-journal-rows" class="journal_list">
+                                <a href="/blog/why-irish-smes-waste-40-of-their-google-ads-budget" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">01</span>
-                                    <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Why Irish SMEs Waste 40% of Their Google Ads
-                                            Budget</span>
-                                        <span class="journal_meta">Paid Ads &middot; 6 min</span>
-                                    </div>
-                                    <div class="journal_arrow">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </div>
+                                    <span class="journal_title">Why Irish SMEs Waste 40% of Their Google Ads Budget</span>
+                                    <span class="journal_meta"><span class="journal_cat">Paid Ads</span><span class="journal_time">6 min read</span></span>
+                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
                                 </a>
-
-                                <!-- Row 2 -->
-                                <a href="/blog/local-seo-ireland-2026-what-moves-the-map-pack" class="journal_row"
-                                    data-barba-prevent>
+                                <a href="/blog/local-seo-ireland-2026-what-moves-the-map-pack" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">02</span>
-                                    <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Local SEO Ireland 2026: What Moves the Map
-                                            Pack</span>
-                                        <span class="journal_meta">SEO &middot; 9 min</span>
-                                    </div>
-                                    <div class="journal_arrow">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </div>
+                                    <span class="journal_title">Local SEO Ireland 2026: What Moves the Map Pack</span>
+                                    <span class="journal_meta"><span class="journal_cat">SEO</span><span class="journal_time">9 min read</span></span>
+                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
                                 </a>
-
-                                <!-- Row 3 -->
-                                <a href="/blog/why-your-fast-website-still-needs-a-better-landing-page"
-                                    class="journal_row" data-barba-prevent>
+                                <a href="/blog/why-your-fast-website-still-needs-a-better-landing-page" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">03</span>
-                                    <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">Why Your Fast Website Still Needs a Better Landing
-                                            Page</span>
-                                        <span class="journal_meta">Web Design &middot; 5 min</span>
-                                    </div>
-                                    <div class="journal_arrow">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </div>
+                                    <span class="journal_title">Why Your Fast Website Still Needs a Better Landing Page</span>
+                                    <span class="journal_meta"><span class="journal_cat">Web Design</span><span class="journal_time">5 min read</span></span>
+                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
                                 </a>
-
-                                <!-- Row 4 -->
-                                <a href="/blog/ai-overview-how-search-changes-before-people-buy" class="journal_row"
-                                    data-barba-prevent>
+                                <a href="/blog/ai-overview-how-search-changes-before-people-buy" class="journal_row" data-barba-prevent>
                                     <span class="journal_num">04</span>
-                                    <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
-                                        <span class="journal_title">AI Overview: How Search Changes Before People
-                                            Buy</span>
-                                        <span class="journal_meta">AI Search &middot; 7 min</span>
-                                    </div>
-                                    <div class="journal_arrow">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            <polyline points="12 5 19 12 12 19"></polyline>
-                                        </svg>
-                                    </div>
+                                    <span class="journal_title">AI Overview: How Search Changes Before People Buy</span>
+                                    <span class="journal_meta"><span class="journal_cat">AI Search</span><span class="journal_time">7 min read</span></span>
+                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
                                 </a>
-
                             </div>
 
                             <script>
@@ -6836,12 +7526,15 @@
                                             const container = document.getElementById('homepage-journal-rows');
                                             if (!container) return;
 
-                                            const arrowSvg = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+                                            const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+                                            const arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
                                             const rowsHtml = blogs.slice(0, 4).map((blog, idx) => {
                                                 const num = String(idx + 1).padStart(2, '0');
                                                 const category = blog.category || 'General';
-                                                const readingTime = blog.reading_time || '5 min';
+                                                // "6", "6 min" or "6 min read" all become "6 min read"
+                                                const minutes = String(blog.reading_time || '5').replace(/\s*read\s*$/i, '').trim();
+                                                const readingTime = (/min/i.test(minutes) ? minutes : minutes + ' min') + ' read';
                                                 const slug = blog.slug || blog.id;
                                                 let title = blog.title || '';
                                                 if (title.length > 75) {
@@ -6849,11 +7542,9 @@
                                                 }
                                                 return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_row" data-barba-prevent>' +
                                                     '<span class="journal_num">' + num + '</span>' +
-                                                    '<div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">' +
-                                                    '<span class="journal_title">' + title + '</span>' +
-                                                    '<span class="journal_meta">' + category + ' &middot; ' + readingTime + '</span>' +
-                                                    '</div>' +
-                                                    '<div class="journal_arrow">' + arrowSvg + '</div>' +
+                                                    '<span class="journal_title">' + esc(title) + '</span>' +
+                                                    '<span class="journal_meta"><span class="journal_cat">' + esc(category) + '</span><span class="journal_time">' + esc(readingTime) + '</span></span>' +
+                                                    '<span class="journal_arrow">' + arrowSvg + '</span>' +
                                                     '</a>';
                                             }).join('');
 
@@ -7805,8 +8496,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js"></script>
-    <script src="/components/case-study-slider.js?v=2"></script>
-    <script src="/components/cta-logo-grid.js?v=2"></script>
+    <script src="/components/case-study-slider.js?v=3"></script>
+    <script src="/components/cta-logo-grid.js?v=3"></script>
 
 
 
@@ -7877,7 +8568,7 @@
             <!-- Calendly inline widget end -->
         </div>
     </div>
-    <script src="/assets/js/calendly-popup.js?v=2"></script>
+    <script src="/assets/js/calendly-popup.js?v=3"></script>
     <script src="/assets/js/button-fill.js?v=1"></script>
 
 </body>
