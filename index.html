@@ -16,6 +16,7 @@
     </script>
 
     <meta charset="utf-8" />
+    <meta name="facebook-domain-verification" content="n7gt9e7pi058anbd1yulhakrfxf865" />
     <!--$-->
 
     <!--/$-->
@@ -1892,6 +1893,12 @@
 
                 section#free-audit > .u-section-spacer {
                     display: none;
+                }
+
+                /* Journal: shown only once the blog API returns published posts (see loadLatestBlogs) */
+                section#journal[data-journal-state="loading"],
+                section#journal[data-journal-state="empty"] {
+                    display: none !important;
                 }
 
                 /* Journal: raised */
@@ -7280,7 +7287,7 @@
             </section>
 
             <!-- JOURNAL SECTION -->
-            <section id="journal" class="main-section_wrap u-section"
+            <section id="journal" class="main-section_wrap u-section" data-journal-state="loading"
                 style="background-color: #0E100F; padding-block: 100px;">
                 <div class="u-embed-css w-embed">
                     <style>
@@ -7486,45 +7493,24 @@
                             </div>
 
                             <!-- Journal Rows -->
-                            <div id="homepage-journal-rows" class="journal_list">
-                                <a href="/blog/why-irish-smes-waste-40-of-their-google-ads-budget" class="journal_row" data-barba-prevent>
-                                    <span class="journal_num">01</span>
-                                    <span class="journal_title">Why Irish SMEs Waste 40% of Their Google Ads Budget</span>
-                                    <span class="journal_meta"><span class="journal_cat">Paid Ads</span><span class="journal_time">6 min read</span></span>
-                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                                </a>
-                                <a href="/blog/local-seo-ireland-2026-what-moves-the-map-pack" class="journal_row" data-barba-prevent>
-                                    <span class="journal_num">02</span>
-                                    <span class="journal_title">Local SEO Ireland 2026: What Moves the Map Pack</span>
-                                    <span class="journal_meta"><span class="journal_cat">SEO</span><span class="journal_time">9 min read</span></span>
-                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                                </a>
-                                <a href="/blog/why-your-fast-website-still-needs-a-better-landing-page" class="journal_row" data-barba-prevent>
-                                    <span class="journal_num">03</span>
-                                    <span class="journal_title">Why Your Fast Website Still Needs a Better Landing Page</span>
-                                    <span class="journal_meta"><span class="journal_cat">Web Design</span><span class="journal_time">5 min read</span></span>
-                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                                </a>
-                                <a href="/blog/ai-overview-how-search-changes-before-people-buy" class="journal_row" data-barba-prevent>
-                                    <span class="journal_num">04</span>
-                                    <span class="journal_title">AI Overview: How Search Changes Before People Buy</span>
-                                    <span class="journal_meta"><span class="journal_cat">AI Search</span><span class="journal_time">7 min read</span></span>
-                                    <span class="journal_arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                                </a>
+                            <div id="homepage-journal-rows" class="journal_list" aria-live="polite">
                             </div>
 
                             <script>
                                 (function () {
+                                    // The latest published posts from the admin area. With none published (or if the
+                                    // API is unreachable) the whole section stays hidden instead of showing stale links.
                                     async function loadLatestBlogs() {
+                                        const section = document.getElementById('journal');
+                                        const container = document.getElementById('homepage-journal-rows');
+                                        if (!section || !container) return;
+                                        const setState = (state) => section.setAttribute('data-journal-state', state);
                                         try {
-                                            const res = await fetch('/api/blogs?limit=4');
-                                            if (!res.ok) return;
+                                            const res = await fetch('/api/blogs?limit=4', { cache: 'no-store' });
+                                            if (!res.ok) return setState('empty');
                                             const data = await res.json();
-                                            const blogs = data.blogs || [];
-                                            if (!blogs || blogs.length === 0) return;
-
-                                            const container = document.getElementById('homepage-journal-rows');
-                                            if (!container) return;
+                                            const blogs = Array.isArray(data.blogs) ? data.blogs : [];
+                                            if (blogs.length === 0) return setState('empty');
 
                                             const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
                                             const arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
@@ -7549,8 +7535,12 @@
                                             }).join('');
 
                                             container.innerHTML = rowsHtml;
+                                            setState('ready');
+                                            // The page just got taller: let smooth scroll and scroll animations re-measure
+                                            if (window.lenis && typeof window.lenis.resize === 'function') window.lenis.resize();
+                                            if (window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function') window.ScrollTrigger.refresh();
                                         } catch (err) {
-                                            // Keep fallback rows on error
+                                            setState('empty');
                                         }
                                     }
                                     if (document.readyState === 'loading') {
