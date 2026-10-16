@@ -7680,8 +7680,8 @@
                                 transform: translateX(-50%);
                             }
                         }
-                        /* Mouse: image only until hover; the hovered card widens and opens its arrow */
-                        @media (hover: hover) and (pointer: fine) {
+                        /* Desktop with a mouse: image only until hover; the hovered card widens and opens its arrow */
+                        @media (min-width: 1101px) and (hover: hover) and (pointer: fine) {
                             .journal_card:not(.is-cover) .journal_card_shade {
                                 opacity: 0;
                             }
@@ -7726,22 +7726,16 @@
                                 opacity: 0;
                             }
                         }
-                        /* Tablet: two by two, wider cards */
+                        /* Phones and tablets: a swipeable row. The card snapped to the start is
+                           active and shows everything (gradient, title, meta, "Read Article");
+                           the others show just the image and the arrow until swiped into place. */
                         @media (max-width: 1100px) {
-                            .journal_list {
-                                grid-template-columns: repeat(2, minmax(0, 1fr));
-                            }
-                            .journal_card {
-                                aspect-ratio: 5 / 4;
-                            }
-                        }
-                        /* Phone: a swipeable row */
-                        @media (max-width: 600px) {
                             .journal_list {
                                 grid-template-columns: none;
                                 grid-auto-flow: column;
-                                grid-auto-columns: 80%;
+                                grid-auto-columns: min(58%, 26rem);
                                 overflow-x: auto;
+                                overscroll-behavior-x: contain;
                                 scroll-snap-type: x mandatory;
                                 scrollbar-width: none;
                                 padding-bottom: 4px;
@@ -7752,6 +7746,30 @@
                             .journal_card {
                                 aspect-ratio: 4 / 5;
                                 scroll-snap-align: start;
+                            }
+                            .journal_card_shade,
+                            .journal_card_body {
+                                transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+                            }
+                            .journal_card:not(.is-active) .journal_card_shade,
+                            .journal_card:not(.is-active) .journal_card_body {
+                                opacity: 0;
+                            }
+                            .journal_card:not(.is-active) .journal_card_body {
+                                transform: translateY(12px);
+                            }
+                            .journal_card.is-active .journal_card_arrow {
+                                padding: 0 0.85rem 0 1.15rem;
+                            }
+                            .journal_card.is-active .journal_card_cta {
+                                max-width: 8rem;
+                                margin-right: 0.55rem;
+                                opacity: 1;
+                            }
+                        }
+                        @media (max-width: 600px) {
+                            .journal_list {
+                                grid-auto-columns: 84%;
                             }
                         }
                         @media (prefers-reduced-motion: reduce) {
@@ -7820,6 +7838,34 @@
                                 (function () {
                                     // The latest published posts from the admin area. With none published (or if the
                                     // API is unreachable) the whole section stays hidden instead of showing stale links.
+                                    // Phones and tablets: the card snapped to the start of the swipe row is
+                                    // "active" and shows its details; at the very end the last card is.
+                                    function trackActiveCard(list) {
+                                        const cards = Array.from(list.querySelectorAll('.journal_card'));
+                                        if (!cards.length) return;
+                                        let queued = false;
+                                        const update = () => {
+                                            queued = false;
+                                            const start = list.getBoundingClientRect().left;
+                                            const atEnd = list.scrollLeft >= list.scrollWidth - list.clientWidth - 2 && list.scrollLeft > 0;
+                                            let active = cards[0];
+                                            if (atEnd) {
+                                                active = cards[cards.length - 1];
+                                            } else {
+                                                let best = Infinity;
+                                                cards.forEach(card => {
+                                                    const distance = Math.abs(card.getBoundingClientRect().left - start);
+                                                    if (distance < best) { best = distance; active = card; }
+                                                });
+                                            }
+                                            cards.forEach(card => card.classList.toggle('is-active', card === active));
+                                        };
+                                        const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+                                        list.addEventListener('scroll', queue, { passive: true });
+                                        window.addEventListener('resize', queue);
+                                        update();
+                                    }
+
                                     async function loadLatestBlogs() {
                                         const section = document.getElementById('journal');
                                         const container = document.getElementById('homepage-journal-rows');
@@ -7857,6 +7903,7 @@
                                                     '</a>';
                                             }).join('');
                                             container.innerHTML = cardsHtml;
+                                            trackActiveCard(container);
                                             setState('ready');
                                             // The page just got taller: let smooth scroll and scroll animations re-measure
                                             if (window.lenis && typeof window.lenis.resize === 'function') window.lenis.resize();
