@@ -1779,6 +1779,36 @@ button.contact_modal_action_btn:hover {
   }
 }
 
+/* Inside the cream CTA card the theme colours are inverted, which made the hover fill black.
+   Same hover as every other yellow button (cream fill, dark text), plus a yellow outline so the
+   button reads as an outlined pill instead of disappearing into the cream card. The ring is a
+   layer above the button's own fill layers (an inset shadow on .btn is painted underneath them). */
+.cta_content_wrap .btn .btn__circle {
+  background-color: #FFFCE1 !important;
+}
+
+.cta_content_wrap .btn:hover .btn__text,
+.cta_content_wrap .btn:hover .btn-text-p {
+  color: #0E100F !important;
+}
+
+.cta_content_wrap .btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px #FFE32A;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+  pointer-events: none;
+}
+
+.cta_content_wrap .btn:hover::before,
+.cta_content_wrap .btn:focus-visible::before {
+  opacity: 1;
+}
+
 /* Secondary outline button ("About us", "Case Studies"): same height as the primary
    button so the pair lines up, without competing with it */
 .button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab {
@@ -1844,4 +1874,1034 @@ button.contact_modal_action_btn:hover {
 
 .simple-navbar .simple-navbar__burger-box {
   padding-right: 0;
+}
+
+/* -----------------------------------------
+   AMBIENT GLOW: slow, blurred light-yellow shapes behind a dark section
+   Usage: <div class="bw-ambient" aria-hidden="true"> with three .bw-ambient__orb and one
+   .bw-ambient__shape inside, as the first child of a section with position: relative and
+   overflow: hidden. Only transform is animated, so it stays smooth on the compositor.
+   ----------------------------------------- */
+.bw-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.bw-ambient__orb,
+.bw-ambient__shape {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.bw-ambient__orb.is-1 {
+  top: -20vmax;
+  right: -12vmax;
+  width: 50vmax;
+  height: 50vmax;
+  background: radial-gradient(circle, rgba(255, 227, 42, 0.22) 0%, rgba(255, 227, 42, 0.09) 34%, rgba(255, 227, 42, 0) 66%);
+  animation: bwOrbOne 26s ease-in-out infinite alternate;
+}
+
+.bw-ambient__orb.is-2 {
+  bottom: -18vmax;
+  left: -12vmax;
+  width: 38vmax;
+  height: 38vmax;
+  background: radial-gradient(circle, rgba(255, 240, 170, 0.15) 0%, rgba(255, 240, 170, 0.06) 36%, rgba(255, 240, 170, 0) 66%);
+  animation: bwOrbTwo 32s ease-in-out infinite alternate;
+}
+
+.bw-ambient__orb.is-3 {
+  top: 34%;
+  left: 40%;
+  width: 24vmax;
+  height: 24vmax;
+  background: radial-gradient(circle, rgba(255, 227, 42, 0.12) 0%, rgba(255, 227, 42, 0) 64%);
+  animation: bwOrbThree 22s ease-in-out infinite alternate;
+}
+
+/* A soft organic ring that turns very slowly */
+.bw-ambient__shape {
+  top: 12%;
+  right: 8%;
+  width: 34vmax;
+  height: 26vmax;
+  border: 1px solid rgba(255, 227, 42, 0.14);
+  border-radius: 42% 58% 61% 39% / 46% 41% 59% 54%;
+  filter: blur(1.5px);
+  animation: bwShapeTurn 70s linear infinite;
+}
+
+@keyframes bwOrbOne {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-7vmax, 5vmax, 0) scale(1.08); }
+  100% { transform: translate3d(-13vmax, 2vmax, 0) scale(0.94); }
+}
+
+@keyframes bwOrbTwo {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(11vmax, -7vmax, 0) scale(1.14); }
+}
+
+@keyframes bwOrbThree {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(-9vmax, -5vmax, 0) scale(1.16); }
+  66% { transform: translate3d(7vmax, -9vmax, 0) scale(0.9); }
+  100% { transform: translate3d(3vmax, 4vmax, 0) scale(1.05); }
+}
+
+@keyframes bwShapeTurn {
+  from { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.08); }
+  to { transform: rotate(360deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-ambient__orb,
+  .bw-ambient__shape {
+    animation: none;
+  }
+}
+
+/* -----------------------------------------
+   SERVICE CARD STACKS: the same frame in every service section, so the cards
+   (sized from the frame inside animations/service-cards.js) match everywhere
+   ----------------------------------------- */
+.service_wrap .service_media_wrap {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 9 / 8 !important;
+  align-self: center;
+}
+
+.service_wrap .service_media_iframe {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+}
+
+@media screen and (max-width: 991px) {
+  .service_wrap .service_media_wrap {
+    max-width: 34rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .service_wrap .service_media_wrap {
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
+/* -----------------------------------------
+   HERO FX: orbit rings with travelling signal dots, plus (on desktop) a cursor spotlight,
+   a dot grid that lights up around the cursor and gentle parallax. Lives inside .bw-ambient;
+   cursor handling is in assets/js/hero-fx.js.
+   ----------------------------------------- */
+.bw-fx-depth {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.bw-orbit {
+  position: absolute;
+  left: 76%;
+  top: 52%;
+  border: 1px solid rgba(255, 227, 42, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bw-orbit.is-1 { width: 24vmax; height: 24vmax; }
+.bw-orbit.is-2 { width: 38vmax; height: 38vmax; border-color: rgba(255, 227, 42, 0.075); }
+.bw-orbit.is-3 { width: 54vmax; height: 54vmax; border-color: rgba(255, 227, 42, 0.05); }
+
+/* The ring itself rotates; its ::before is the signal dot riding the top edge */
+.bw-orbit > i {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  animation: bwOrbit 26s linear infinite;
+}
+
+.bw-orbit > i::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #FFE32A;
+  box-shadow: 0 0 14px 3px rgba(255, 227, 42, 0.55);
+}
+
+.bw-orbit.is-2 > i { animation-duration: 40s; animation-direction: reverse; }
+.bw-orbit.is-2 > i::before { width: 6px; height: 6px; margin-left: -3px; top: -3px; opacity: 0.85; }
+.bw-orbit.is-3 > i { animation-duration: 64s; }
+.bw-orbit.is-3 > i::before { width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px; opacity: 0.7; }
+
+@keyframes bwOrbit { to { transform: rotate(360deg); } }
+
+/* Cursor layers: invisible until the mouse is over the hero */
+.bw-fx-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 252, 225, 0.4) 1px, transparent 1.6px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(240px circle at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0.45) 45%, transparent 75%);
+  mask-image: radial-gradient(240px circle at var(--mx, -999px) var(--my, -999px), #000 0%, rgba(0, 0, 0, 0.45) 45%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.bw-fx-spot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 560px;
+  height: 560px;
+  margin: -280px 0 0 -280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 227, 42, 0.16) 0%, rgba(255, 227, 42, 0.06) 35%, rgba(255, 227, 42, 0) 65%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+
+.bw-hero-fx.is-active .bw-fx-grid,
+.bw-hero-fx.is-active .bw-fx-spot {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-orbit > i { animation: none; }
+}
+
+/* -----------------------------------------
+   TOOL PAGES (/tools/*): hero, how it works, FAQ and related tools.
+   Bands alternate base / raised / cream like the home page.
+   ----------------------------------------- */
+.tp_band {
+  --bw-band-pad: clamp(3.5rem, 6vw, 5.25rem);
+  position: relative;
+  padding-block: var(--bw-band-pad);
+  color: #FFFCE1;
+}
+
+.tp_band--base { background-color: #0E100F; }
+
+/* .u-container adds a large row gap between its children; these sections space their
+   heading and content themselves (.tp_head), so drop it */
+.tp_band > .u-container,
+.tp_hero > .u-container { row-gap: 0; }
+.tp_band--raised { background-color: #131615; }
+
+/* The tool itself sits on a cream band so the dark panels stand out (as on the home page) */
+section#entry-point.tp_tool_band {
+  padding-block: clamp(3.5rem, 6vw, 5.25rem) !important;
+  border-radius: 0 !important;
+  background-color: #FFFCE1 !important;
+  scroll-margin-top: 90px;
+}
+
+section#entry-point.tp_tool_band > .u-section-spacer { display: none; }
+
+section#free-audit.tp_tool_band {
+  padding-block: clamp(3.5rem, 6vw, 5.25rem) !important;
+  border-bottom: 0 !important;
+  background-color: #131615 !important;
+  scroll-margin-top: 90px;
+}
+
+section#free-audit.tp_tool_band > .u-section-spacer { display: none; }
+
+/* Hero */
+.tp_hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 6vw, 6rem) clamp(3.5rem, 6vw, 5.5rem);
+  background-color: #0E100F;
+  color: #FFFCE1;
+}
+
+.tp_hero_grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 6rem);
+}
+
+.tp_crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+  color: #7C7C70;
+  font-size: 0.875rem;
+}
+
+.tp_crumbs a { color: #B5B3A7; text-decoration: none !important; transition: color 0.2s ease; }
+.tp_crumbs a:hover { color: #FFE32A; }
+.tp_crumbs li + li::before { content: "/"; margin-right: 0.5rem; color: #3E4034; }
+
+.tp_meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  color: #7C7C70;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tp_pill {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(255, 227, 42, 0.35);
+  border-radius: 999px;
+  color: #FFE32A;
+}
+
+.tp_title {
+  max-width: 14em;
+  margin: 0 0 calc(0.25em + 1.25rem);
+  color: #FFFCE1;
+  font-family: var(--_typography---font--neue-haas-display-pro-black);
+  font-size: clamp(2.5rem, 5.2vw, 5rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.tp_lead {
+  max-width: 36rem;
+  margin: 0 0 clamp(2rem, 3vw, 2.75rem);
+  color: #8C8A80;
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.tp_actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+}
+
+/* Secondary pill: the same outline button as "Case Studies" / "All Blogs" (size, border and
+   type), with the shared yellow fill from the cursor (assets/js/button-fill.js) */
+.tp_ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  height: 4.4rem;
+  padding: 0 2.3rem;
+  border: 1.5px solid #FFFCE1;
+  border-radius: 999px;
+  background: transparent;
+  color: #FFFCE1;
+  font: 500 1.25rem/1 "Inter", sans-serif;
+  cursor: pointer;
+  transition: border-color 0.4s ease, color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.tp_ghost svg { width: 18px; height: 18px; flex: none; }
+.tp_ghost.bw-fx { --bw-fill: #FFE32A; }
+.tp_ghost.is-hovered { border-color: #FFE32A; color: #0E100F; }
+.tp_ghost:focus-visible { outline: 2px solid #FFE32A; outline-offset: 3px; }
+
+/* "What you get" card beside the hero text */
+.tp_card {
+  position: relative;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid #2A2B25;
+  border-radius: 20px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(255, 227, 42, 0.07), transparent 55%),
+    #131615;
+}
+
+.tp_card_label {
+  margin: 0 0 1.25rem;
+  color: #7C7C70;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tp_list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tp_list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #FFFCE1;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.tp_check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: -0.05rem;
+  border-radius: 50%;
+  background: rgba(255, 227, 42, 0.12);
+  color: #FFE32A;
+}
+
+.tp_check svg { width: 0.85rem; height: 0.85rem; display: block; }
+
+.tp_note {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid #2A2B25;
+  color: #7C7C70;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Section heading: title plus bracketed subtitle, as elsewhere on the site */
+.tp_head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.tp_h2 {
+  margin: 0 0 calc(0.3em + 0.15rem);
+  color: #FFFCE1;
+  font-family: var(--_typography---font--neue-haas-display-pro-black);
+  font-size: calc(var(--_extra-variables---services-headings) * 0.7);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.tp_sub {
+  margin: 0;
+  color: #7C7C70;
+  font-size: clamp(0.95rem, 1.05vw, 1.25rem);
+  line-height: 1.45;
+}
+
+/* How it works */
+.tp_steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tp_step {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border: 1px solid #2A2B25;
+  border-radius: 18px;
+  background: #0E100F;
+}
+
+.tp_band--base .tp_step { background: #131615; }
+
+.tp_step_num {
+  margin-bottom: 1.25rem;
+  color: #FFE32A;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.tp_step h3 {
+  margin: 0 0 0.75rem;
+  color: #FFFCE1;
+  font-family: var(--_typography---font--neue-haas-display-pro-black);
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.tp_step p { margin: 0; color: #8C8A80; font-size: 1rem; line-height: 1.55; }
+
+/* FAQ */
+.tp_faq_grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.tp_faq_grid .tp_head { margin: 0; }
+.tp_faq { border-top: 1px solid #2A2B25; }
+.tp_faq details { border-bottom: 1px solid #2A2B25; }
+
+.tp_faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 0;
+  color: #FFFCE1;
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tp_faq summary::-webkit-details-marker { display: none; }
+.tp_faq summary:hover { color: #FFE32A; }
+.tp_faq summary:focus-visible { outline: 2px solid #FFE32A; outline-offset: 4px; }
+
+.tp_faq_icon {
+  position: relative;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #2A2B25;
+  border-radius: 50%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.tp_faq_icon::before,
+.tp_faq_icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.8rem;
+  height: 1.5px;
+  margin: -0.75px 0 0 -0.4rem;
+  background: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.tp_faq_icon::after { transform: rotate(90deg); }
+.tp_faq details[open] .tp_faq_icon { border-color: #FFE32A; background: #FFE32A; color: #0E100F; }
+.tp_faq details[open] .tp_faq_icon::after { transform: rotate(0deg); }
+
+.tp_faq_answer {
+  max-width: 44rem;
+  margin: 0;
+  padding: 0 0 1.5rem;
+  color: #8C8A80;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+/* Other free tools */
+.tp_tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.tp_tool_link {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 1px solid #2A2B25;
+  border-radius: 20px;
+  background: #0E100F;
+  color: #FFFCE1;
+  text-decoration: none;
+  transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tp_tool_link .tp_meta { margin: 0 0 1.5rem; }
+
+.tp_tool_link h3 {
+  margin: 0 0 0.85rem;
+  font-family: var(--_typography---font--neue-haas-display-pro-black);
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.tp_tool_link p { max-width: 34rem; margin: 0 0 1.75rem; color: #8C8A80; font-size: 1rem; line-height: 1.55; }
+
+.tp_tool_go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  color: #FFE32A;
+  font: 500 1rem/1.2 "Inter", sans-serif;
+}
+
+.tp_tool_go svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
+
+@media (hover: hover) {
+  .tp_tool_link:hover { border-color: rgba(255, 227, 42, 0.45); transform: translateY(-4px); }
+  .tp_tool_link:hover .tp_tool_go svg { transform: translateX(4px); }
+}
+
+@media screen and (max-width: 991px) {
+  .tp_hero_grid,
+  .tp_faq_grid { grid-template-columns: minmax(0, 1fr); }
+  .tp_steps { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media screen and (max-width: 767px) {
+  .tp_tools { grid-template-columns: minmax(0, 1fr); }
+  .tp_ghost { height: 3.9rem; padding: 0 1.8rem; font-size: 1.125rem; }
+}
+
+/* Footer with the extra Free Tools column: brand | services | quick links | tools | contact | newsletter */
+footer .footer_ref_grid {
+  /* The three link columns take only the width their links need */
+  grid-template-columns: minmax(0, 1.4fr) auto auto auto minmax(0, 1.3fr) minmax(0, 1.5fr);
+  column-gap: clamp(1.5rem, 2.6vw, 2.75rem);
+}
+
+@media screen and (max-width: 1280px) {
+  footer .footer_ref_grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  footer .footer_ref_grid > div:last-child { grid-column: auto; }
+}
+
+@media screen and (max-width: 991px) {
+  footer .footer_ref_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 600px) {
+  footer .footer_ref_grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* =========================================================
+   FOOTER: newsletter strip on top, link columns, compact bottom bar
+   (markup is repeated in every page's <footer>; these rules override its inline styles)
+   ========================================================= */
+footer.footer_wrap {
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2.5rem, 4.5vw, 3.75rem) 0 1.75rem !important;
+  border-top: 0 !important;
+  background:
+    radial-gradient(55% 45% at 6% 0%, rgba(255, 227, 42, 0.075), rgba(255, 227, 42, 0) 70%),
+    radial-gradient(40% 45% at 100% 100%, rgba(255, 227, 42, 0.045), rgba(255, 227, 42, 0) 70%),
+    linear-gradient(180deg, #0F1211 0%, #0B0D0C 100%) !important;
+}
+
+/* Gold hairline along the top edge, brightest in the middle */
+footer.footer_wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 227, 42, 0) 0%, rgba(255, 227, 42, 0.32) 30%, rgba(255, 227, 42, 0.32) 70%, rgba(255, 227, 42, 0) 100%);
+}
+
+/* Faint dot grid that fades out towards the bottom */
+footer.footer_wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 252, 225, 0.07) 1px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 55%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 55%);
+}
+
+/* Spacing between strip, columns and bottom bar is set here, not by the container gap */
+footer.footer_wrap > .u-container {
+  row-gap: 0 !important;
+  grid-row-gap: 0 !important;
+}
+
+/* Newsletter strip */
+footer .footer_news {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2.5rem;
+  margin-bottom: clamp(2.75rem, 4.5vw, 3.75rem);
+  padding: clamp(1.15rem, 2vw, 1.5rem) clamp(1.15rem, 2.4vw, 1.85rem);
+  border: 1px solid #2A2B25;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(80% 170% at 0% 50%, rgba(255, 227, 42, 0.1), rgba(255, 227, 42, 0) 55%),
+    rgba(19, 22, 21, 0.88);
+}
+
+footer .footer_news_intro {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 22rem;
+  min-width: 0;
+}
+
+footer .footer_news_icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  background: #FFE32A;
+  color: #0E100F;
+  box-shadow: 0 0 0 6px rgba(255, 227, 42, 0.08);
+}
+
+footer .footer_news_icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+}
+
+/* Site paragraphs are trimmed to the letter height, so the gap is set wider than it looks */
+footer .footer_news_title {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #FFFCE1;
+}
+
+footer .footer_news_text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #9A9A8E;
+}
+
+footer .footer_news_form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 1 29rem;
+  min-width: 0;
+  padding: 5px 5px 5px 1.3rem;
+  border: 1px solid #2A2B25;
+  border-radius: 999px;
+  background: #0E100F;
+  transition: border-color 0.2s ease;
+}
+
+footer .footer_news_form:focus-within {
+  border-color: #FFE32A;
+}
+
+footer .footer_news_input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.55rem 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #FFFCE1;
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+footer .footer_news_input::placeholder {
+  color: #7C7C70;
+}
+
+footer .footer_news_input:focus,
+footer .footer_news_input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+footer .footer_news_input:-webkit-autofill,
+footer .footer_news_input:-webkit-autofill:hover,
+footer .footer_news_input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFCE1;
+  -webkit-box-shadow: 0 0 0 1000px #0E100F inset;
+  caret-color: #FFFCE1;
+  transition: background-color 9999s ease-out 0s;
+}
+
+footer .footer_news_btn {
+  flex: none;
+  padding: 0.8rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: #FFE32A;
+  color: #0E100F;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+footer .footer_news_btn:focus-visible {
+  outline: 2px solid #FFE32A;
+  outline-offset: 3px;
+}
+
+/* Link columns: brand | services | quick links | free tools | get in touch */
+footer .footer_ref_grid {
+  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)) minmax(15.5rem, 1.3fr);
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: 2.5rem;
+  margin-bottom: clamp(2.5rem, 4vw, 3.25rem);
+}
+
+footer .footer_ref_grid > div:last-child {
+  grid-column: auto;
+}
+
+/* Column headings: small caps label led by a short yellow rule */
+footer .footer_ref_col_title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.35rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #B4B4A6;
+}
+
+footer .footer_ref_col_title::before {
+  content: "";
+  flex: none;
+  width: 0.9rem;
+  height: 2px;
+  border-radius: 2px;
+  background: #FFE32A;
+}
+
+/* Links and contact details one pixel smaller than before (16px -> 15px) */
+footer .footer_ref_links a,
+footer .footer_contact_item {
+  font-size: 0.9375rem !important;
+}
+
+/* Tagline: larger and lighter so it reads as a line, not small print */
+footer .footer_ref_grid > div:first-child > p {
+  max-width: 19rem !important;
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+  color: #A3A396 !important;
+}
+
+footer .footer_cta_btn {
+  font-size: 0.9375rem;
+}
+
+/* Bottom bar: copyright a touch smaller */
+footer .footer_ref_bottom_bar {
+  padding-top: 1.6rem;
+  font-size: 0.875rem !important;
+}
+
+/* Google reviews: small pill next to the social icons */
+footer .footer_reviews_mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.5rem;
+  padding: 0 0.95rem 0 0.75rem;
+  border: 1px solid #2A2B25;
+  border-radius: 999px;
+  background: #131615;
+  color: #FFFCE1;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+footer .footer_reviews_mini:hover {
+  border-color: #3E4034;
+  background: #181B1A;
+  transform: translateY(-2px);
+}
+
+footer .footer_reviews_mini:focus-visible {
+  outline: 2px solid #FFE32A;
+  outline-offset: 3px;
+}
+
+footer .footer_reviews_mini_g {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+  display: block;
+}
+
+footer .footer_reviews_mini .footer_g_reviews_score {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #FFFCE1;
+}
+
+footer .footer_reviews_mini_stars {
+  display: inline-flex;
+  gap: 1px;
+}
+
+footer .footer_reviews_mini_stars svg {
+  width: 0.72rem;
+  height: 0.72rem;
+  display: block;
+}
+
+footer .footer_reviews_mini .footer_g_reviews_count {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #A0A092;
+}
+
+/* Tablet: brand across the top, the three link lists in a row, contact details below */
+@media screen and (max-width: 1199px) {
+  footer .footer_ref_grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  footer .footer_ref_grid > div:first-child,
+  footer .footer_ref_grid > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  footer .footer_ref_grid > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2.5rem;
+  }
+
+  footer .footer_ref_grid > div:first-child > a:first-child {
+    margin-bottom: 0 !important;
+  }
+
+  footer .footer_ref_grid > div:first-child .footer_cta_btn {
+    margin-top: 0;
+  }
+
+  footer .footer_ref_contact_list {
+    display: grid !important;
+    grid-template-columns: repeat(2, max-content);
+    gap: 0.85rem 3rem !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  footer .footer_ref_links a,
+  footer .footer_contact_item {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Phones: brand on top, link lists in two columns, contact details full width */
+@media screen and (max-width: 767px) {
+  footer .footer_ref_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 2rem;
+  }
+
+  footer .footer_ref_grid > div:first-child {
+    display: block;
+  }
+
+  footer .footer_ref_grid > div:first-child > a:first-child {
+    margin-bottom: 1rem !important;
+  }
+
+  footer .footer_ref_grid > div:first-child .footer_cta_btn {
+    margin-top: 1.25rem;
+  }
+
+  footer .footer_ref_contact_list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  footer .footer_ref_col_title {
+    margin-bottom: 1rem !important;
+  }
+
+  footer .footer_news_intro,
+  footer .footer_news_form {
+    flex: 1 1 100%;
+  }
+
+  footer .footer_news_btn {
+    padding: 0.75rem 1.2rem;
+  }
+
+  /* Copyright on one line, Privacy Policy under it (the divider only makes sense side by side) */
+  footer .footer_ref_copyright {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  footer .footer_ref_copyright .footer_ref_divider {
+    display: none;
+  }
+}
+
+/* Footer: one muted text colour for every secondary line, and a smaller logo */
+footer.footer_wrap .footer_ref_col_title,
+footer.footer_wrap .footer_news_text,
+footer.footer_wrap .footer_ref_grid > div:first-child > p,
+footer.footer_wrap .footer_ref_bottom_bar,
+footer.footer_wrap .footer_ref_legal_links a,
+footer.footer_wrap .footer_reviews_mini .footer_g_reviews_count {
+  color: #87877A !important;
+}
+
+footer.footer_wrap .footer_news_input::placeholder {
+  color: #87877A;
+}
+
+footer.footer_wrap .footer_ref_legal_links a:hover {
+  color: #FFFCE1 !important;
+}
+
+footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
+  height: 4.75rem !important;
+}
+
+@media screen and (max-width: 767px) {
+  footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
+    height: 4rem !important;
+  }
 }

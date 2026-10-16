@@ -39,7 +39,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=81" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=93" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -3091,19 +3091,39 @@
                             color: #FFFCE1;
                         }
 
-                        /* Phones: label + button stay on one row, widget drops to its own row below */
+                        /* Phones: the prompt sits above as a short label, then the button and the reviews
+                           badge share a row while they fit, and stack left-aligned at their own size on
+                           narrow phones */
                         @media (max-width: 767px) {
                             .home_hero_new .home_hero_button_wrap {
-                                flex-wrap: wrap !important;
-                                row-gap: 1rem !important;
+                                flex-direction: column !important;
+                                flex-wrap: nowrap !important;
+                                align-items: flex-start !important;
+                                gap: 0.9rem !important;
+                                margin-top: 0 !important;
+                            }
+
+                            /* Webflow caps this label at 13ch on small screens, which broke it over two lines */
+                            .home_hero_new .home_hero_button_text.u-text-style-main {
+                                max-width: none;
                             }
 
                             .home_hero_new .home_hero_cta_row {
-                                display: contents;
+                                display: flex;
+                                flex-wrap: wrap;
+                                justify-content: flex-start;
+                                align-content: flex-start;
+                                align-items: center;
+                                gap: 0.75rem;
+                                width: 100%;
                             }
+                        }
 
-                            .hero_g_reviews {
-                                order: 3;
+                        @media (max-width: 479px) {
+                            .home_hero_new .home_hero_cta_row {
+                                flex-direction: column;
+                                flex-wrap: nowrap;
+                                align-items: flex-start;
                             }
                         }
 
@@ -3255,7 +3275,164 @@
                                 height: auto !important;
                             }
                         }
+
+                        /* team / plan / goal: one even diagonal. Every size comes from --cap (the circle),
+                           so circles, numbers, words and steps stay in proportion at every width. The circles
+                           build from an outline (team) to a tint (plan) to solid yellow (goal). */
+                        section.home_hero_new .capabilities_numbers_wrap {
+                            --cap: clamp(6rem, 8.2vw, 9.25rem);
+                            --cap-gap: calc(var(--cap) * 0.16);
+                            --cap-step: calc(var(--cap) * 0.62);
+                            --cap-delay: 3.75s;
+                            position: relative;
+                            width: fit-content !important;
+                            max-width: 100%;
+                            margin-inline: auto;
+                            gap: var(--cap-gap) !important;
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap > .capabilities_number_wrap:nth-child(n) {
+                            align-self: flex-start !important;
+                            margin: 0 !important;
+                            gap: calc(var(--cap) * 0.2) !important;
+                            animation: cap-row-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) var(--cap-delay) both;
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap > .capabilities_number_wrap:nth-child(1) {
+                            margin-left: calc(var(--cap-step) * 2) !important;
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap > .capabilities_number_wrap:nth-child(2) {
+                            margin-left: var(--cap-step) !important;
+                            animation-delay: calc(var(--cap-delay) + 0.15s);
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap > .capabilities_number_wrap:nth-child(3) {
+                            animation-delay: calc(var(--cap-delay) + 0.3s);
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap .capabilities_number {
+                            position: relative;
+                            width: var(--cap) !important;
+                            height: var(--cap) !important;
+                            border: 1.5px solid rgba(255, 227, 42, 0.5);
+                            background: radial-gradient(circle at 32% 26%, rgba(255, 227, 42, 0.14), rgba(255, 227, 42, 0) 62%), #121412 !important;
+                            box-shadow: inset 0 1px 0 rgba(255, 252, 225, 0.06), 0 16px 36px -18px rgba(0, 0, 0, 0.85);
+                            color: #FFFCE1 !important;
+                        }
+
+                        section.home_hero_new .capabilities_number_wrap:nth-child(2) .capabilities_number {
+                            border-color: rgba(255, 227, 42, 0.85);
+                            background: radial-gradient(circle at 32% 26%, rgba(255, 227, 42, 0.34), rgba(255, 227, 42, 0.12) 70%), #16170F !important;
+                            color: #FFE32A !important;
+                        }
+
+                        section.home_hero_new .capabilities_number_wrap:nth-child(3) .capabilities_number {
+                            border-color: #FFE32A;
+                            background: #FFE32A !important;
+                            color: #0E100F !important;
+                            box-shadow: 0 0 0 calc(var(--cap) * 0.08) rgba(255, 227, 42, 0.12), 0 18px 48px -14px rgba(255, 227, 42, 0.55);
+                        }
+
+                        /* Goal: a soft ring that keeps pulsing out of the yellow circle */
+                        section.home_hero_new .capabilities_number_wrap:nth-child(3) .capabilities_number::after {
+                            content: "";
+                            position: absolute;
+                            inset: -1.5px;
+                            border-radius: 50%;
+                            border: 1.5px solid rgba(255, 227, 42, 0.65);
+                            pointer-events: none;
+                            animation: cap-goal-pulse 2.8s cubic-bezier(0.2, 0.7, 0.3, 1) calc(var(--cap-delay) + 0.9s) infinite both;
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap .capabilities_number_text {
+                            font-size: calc(var(--cap) * 0.46) !important;
+                            font-weight: 600 !important;
+                            line-height: 1 !important;
+                            font-variant-numeric: tabular-nums;
+                        }
+
+                        section.home_hero_new .capabilities_numbers_wrap .capabilities_title {
+                            font-size: calc(var(--cap) * 0.64) !important;
+                            line-height: 1 !important;
+                            letter-spacing: -0.02em;
+                        }
+
+                        @keyframes cap-row-in {
+                            from {
+                                opacity: 0;
+                                transform: translateX(1.25rem);
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: none;
+                            }
+                        }
+
+                        @keyframes cap-goal-pulse {
+                            0% {
+                                transform: scale(1);
+                                opacity: 0.8;
+                            }
+
+                            70%,
+                            100% {
+                                transform: scale(1.5);
+                                opacity: 0;
+                            }
+                        }
+
+                        /* Tablet and phone: the hero loads without the 3.7s intro, and the diagonal sits
+                           centred under the buttons, sized up so it still reads as the hero's visual */
+                        @media (max-width: 1040px) {
+                            section.home_hero_new .capabilities_numbers_wrap {
+                                --cap: clamp(4.25rem, 11vw, 6.75rem);
+                                --cap-delay: 0.2s;
+                            }
+                        }
+
+                        @media (max-width: 767px) {
+                            section.home_hero_new .capabilities_numbers_wrap {
+                                --cap: clamp(4.25rem, 19vw, 6rem);
+                            }
+                        }
+
+                        /* The site-wide 5vw top padding on <main> at tablet size left a band above the hero
+                           where the glow and rings were cut off. The space now sits inside the hero instead. */
+                        @media (max-width: 1024px) {
+                            .page_main:has(> section.home_hero_new) {
+                                padding-top: 0 !important;
+                            }
+
+                            section.home_hero_new {
+                                padding-top: clamp(1.25rem, 3vw, 2rem) !important;
+                            }
+                        }
+
+                        @media (prefers-reduced-motion: reduce) {
+                            section.home_hero_new .capabilities_numbers_wrap > .capabilities_number_wrap:nth-child(n),
+                            section.home_hero_new .capabilities_number_wrap:nth-child(3) .capabilities_number::after {
+                                animation: none;
+                            }
+                        }
                     </style>
+                </div>
+                <!-- Hero background: drifting glows, orbit rings with signal dots, and a cursor spotlight
+                     with a dot-grid reveal (styles: .bw-ambient / .bw-fx-* in webflow.css, script: hero-fx.js) -->
+                <div class="bw-ambient bw-hero-fx" aria-hidden="true">
+                    <div class="bw-fx-depth" data-depth="-28">
+                        <span class="bw-ambient__orb is-1"></span>
+                        <span class="bw-ambient__orb is-2"></span>
+                        <span class="bw-ambient__orb is-3"></span>
+                    </div>
+                    <div class="bw-fx-grid"></div>
+                    <div class="bw-fx-spot"></div>
+                    <div class="bw-fx-depth" data-depth="18">
+                        <span class="bw-orbit is-1"><i></i></span>
+                        <span class="bw-orbit is-2"><i></i></span>
+                        <span class="bw-orbit is-3"><i></i></span>
+                    </div>
                 </div>
                 <div class="main-section_contain u-container">
                     <div class="home_intro_layout">
@@ -4163,7 +4340,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/web-design.html?v=22" class="service_media_iframe"
+                                    <iframe src="./animations/web-design.html?v=27" class="service_media_iframe"
                                         title="Web Design Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4256,7 +4433,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/seo-ai-overview.html?v=22" class="service_media_iframe"
+                                    <iframe src="./animations/seo-ai-overview.html?v=27" class="service_media_iframe"
                                         title="SEO & AI Search Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4350,7 +4527,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/paid-ads.html?v=22" class="service_media_iframe"
+                                    <iframe src="./animations/paid-ads.html?v=27" class="service_media_iframe"
                                         title="Paid Advertising Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -4440,7 +4617,7 @@
                                 <div data-span-lg="" data-start-lg=""
                                     STYLE="--span-lg: 5; --start-lg: 8; --span-md: 5; --start-md: 8; --span-sm: 12; --start-sm: 1; --span-xs: 12; --start-xs: 1;"
                                     class="service_media_wrap">
-                                    <iframe src="./animations/social-media.html?v=22" class="service_media_iframe"
+                                    <iframe src="./animations/social-media.html?v=27" class="service_media_iframe"
                                         title="Social Media Animation" loading="lazy" frameborder="0"></iframe>
                                 </div>
                             </div>
@@ -8137,7 +8314,24 @@
                 </div>
 
                 <div class="main-section_contain u-container">
-                    <!-- Top 5 Columns Grid -->
+                    <!-- Newsletter: a slim strip that opens the footer -->
+                    <div class="footer_news">
+                        <div class="footer_news_intro">
+                            <span class="footer_news_icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                            </span>
+                            <div>
+                                <p class="footer_news_title">Stay in the loop</p>
+                                <p class="footer_news_text">Practical marketing insights for growing businesses. No spam.</p>
+                            </div>
+                        </div>
+                        <form class="footer_news_form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); return false;">
+                            <input type="email" name="email" placeholder="Your email address" required autocomplete="email"
+                                aria-label="Email address" class="footer_news_input">
+                            <button type="submit" class="footer_news_btn">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- Link columns -->
                     <div class="footer_ref_grid">
                         <!-- Column 1: Brand & Tagline -->
                         <div>
@@ -8175,7 +8369,17 @@
                             </ul>
                         </div>
 
-                        <!-- Column 4: GET IN TOUCH -->
+                        <!-- Column 4: FREE TOOLS -->
+                        <div>
+                            <div class="footer_ref_col_title">FREE TOOLS</div>
+                            <ul class="footer_ref_links">
+                                <li><a href="/tools/budget-planner">Budget Planner</a></li>
+                                <li><a href="/tools/platform-finder">Platform Finder</a></li>
+                                <li><a href="/tools/website-audit">Website Audit</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 5: GET IN TOUCH -->
                         <div>
                             <div class="footer_ref_col_title">GET IN TOUCH</div>
                             <ul class="footer_ref_links footer_ref_contact_list">
@@ -8237,176 +8441,21 @@
                             </ul>
                         </div>
 
-                        <!-- Column 5: STAY IN THE LOOP -->
-                        <div>
-                            <div class="footer_ref_col_title">STAY IN THE LOOP</div>
-                            <p style="font-size: 0.88rem; color: #7C7C70; margin-bottom: 1.25rem; line-height: 1.4;">
-                                Get practical insights, not spam.
-                            </p>
-                            <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); return false;"
-                                class="footer_ref_subscribe_box">
-                                <input type="email" placeholder="Your email address" required
-                                    class="footer_ref_subscribe_input">
-                                <button type="submit" class="footer_ref_subscribe_btn">Subscribe</button>
-                            </form>
+                    </div>
 
-                            <!-- Google Reviews Widget -->
-                            <style>
-                                .footer_g_reviews_widget {
-                                    margin-top: 1.25rem;
-                                    display: inline-flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    background: #131615;
-                                    border: 1px solid #2A2B25;
-                                    border-radius: 8px;
-                                    padding: 10px 14px;
-                                    text-decoration: none;
-                                    transition: all 0.25s ease;
-                                    box-sizing: border-box;
-                                    width: 100%;
-                                }
+                    <!-- Bottom Bar -->
+                    <div class="footer_ref_bottom_bar">
+                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
 
-                                .footer_g_reviews_widget:hover {
-                                    border-color: #3E4034;
-                                    background: #181B1A;
-                                    transform: translateY(-2px);
-                                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-                                }
-
-                                .footer_g_reviews_icon {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    flex-shrink: 0;
-                                    width: 36px;
-                                    height: 36px;
-                                    border-radius: 50%;
-                                    background: #181B1A;
-                                    border: 1px solid #2A2B25;
-                                }
-
-                                .footer_g_reviews_content {
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 2px;
-                                    min-width: 0;
-                                }
-
-                                .footer_g_reviews_top {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 6px;
-                                }
-
-                                .footer_g_reviews_score {
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 15px;
-                                    font-weight: 700;
-                                    color: #FFFCE1;
-                                    line-height: 1;
-                                }
-
-                                .footer_g_reviews_stars {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 2px;
-                                }
-
-                                .footer_g_reviews_stars svg {
-                                    width: 13px;
-                                    height: 13px;
-                                    display: block;
-                                }
-
-                                .footer_g_reviews_count {
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 11.5px;
-                                    font-weight: 600;
-                                    color: #A0A092;
-                                    margin-left: 2px;
-                                    line-height: 1;
-                                }
-
-                                .footer_g_reviews_label {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 4px;
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 11.5px;
-                                    font-weight: 500;
-                                    color: #8C8C80;
-                                    line-height: 1.2;
-                                    transition: color 0.2s ease;
-                                }
-
-                                .footer_g_reviews_widget:hover .footer_g_reviews_label {
-                                    color: #FFFCE1;
-                                }
-
-                                .footer_g_reviews_arrow {
-                                    font-size: 11px;
-                                    transition: transform 0.2s ease, color 0.2s ease;
-                                }
-
-                                .footer_g_reviews_widget:hover .footer_g_reviews_arrow {
-                                    transform: translateX(3px);
-                                    color: #FFE32A;
-                                }
-                            </style>
+                        <div class="footer_ref_socials_legal">
+                            <!-- Google reviews -->
                             <a href="https://share.google/MAAvyQ66KSrDkjbN4" target="_blank" rel="noopener noreferrer"
-                                class="footer_g_reviews_widget" data-barba-prevent aria-label="Review us on Google">
-                                <div class="footer_g_reviews_icon">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                        <path fill="#4285F4"
-                                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
-                                        <path fill="#34A853"
-                                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" />
-                                        <path fill="#FBBC05"
-                                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
-                                        <path fill="#EA4335"
-                                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
-                                    </svg>
-                                </div>
-                                <div class="footer_g_reviews_content">
-                                    <div class="footer_g_reviews_top">
-                                        <span class="footer_g_reviews_score" id="g-reviews-score">5.0</span>
-                                        <div class="footer_g_reviews_stars" aria-label="5 out of 5 stars rating">
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                        </div>
-                                        <span class="footer_g_reviews_count" id="g-reviews-count">(8)</span>
-                                    </div>
-                                    <div class="footer_g_reviews_label">
-                                        <span>Google Reviews</span>
-                                        <span class="footer_g_reviews_arrow">→</span>
-                                    </div>
-                                </div>
+                                class="footer_reviews_mini" data-barba-prevent aria-label="Read our Google reviews">
+                                <svg class="footer_reviews_mini_g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" /><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" /><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" /><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" /></svg>
+                                <span class="footer_g_reviews_score">5.0</span>
+                                <span class="footer_reviews_mini_stars" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg></span>
+                                <span class="footer_g_reviews_count">(8)</span>
                             </a>
-
                             <script type="text/javascript">
                                 (function () {
                                     fetch('/api/google-reviews')
@@ -8424,14 +8473,6 @@
                                         .catch(function () { });
                                 })();
                             </script>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Bar -->
-                    <div class="footer_ref_bottom_bar">
-                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
-
-                        <div class="footer_ref_socials_legal">
                             <!-- Social Icons -->
                             <div class="footer_ref_social_icons">
                                 <!-- LinkedIn -->
@@ -8485,7 +8526,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js"></script>
+    <script src="/assets/js/custom-interactions.js?v=2"></script>
     <script src="/components/case-study-slider.js?v=3"></script>
     <script src="/components/cta-logo-grid.js?v=3"></script>
 
@@ -8559,7 +8600,8 @@
         </div>
     </div>
     <script src="/assets/js/calendly-popup.js?v=3"></script>
-    <script src="/assets/js/button-fill.js?v=1"></script>
+    <script src="/assets/js/button-fill.js?v=3"></script>
+    <script src="/assets/js/hero-fx.js?v=1"></script>
 
 </body>
 
