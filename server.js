@@ -13,6 +13,7 @@ import googleReviewsHandler from './api/google-reviews.js';
 import turnstileConfigHandler from './api/turnstile-config.js';
 import { importPendingPosts } from './lib/content-import.js';
 import { UPLOADS_DIR } from './lib/upload-handler.js';
+import { loadMedia } from './lib/media-store.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -299,26 +300,42 @@ function liveImageUrl(filename, req) {
 function serveUpload(pathname, req, res) {
     const filename = path.basename(pathname);
     const filePath = path.join(UPLOADS_DIR, filename);
-    fs.stat(filePath, (err, stats) => {
-        if (err || !stats.isFile()) {
-            const live = liveImageUrl(filename, req);
-            if (live) {
-                res.writeHead(302, { Location: live, 'Cache-Control': 'no-store' });
-                res.end();
-                return;
-            }
-            res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-            res.end('Image not found');
+    const headers = (type, size) => ({
+        'Content-Type': type,
+        'Content-Length': size,
+        'Cache-Control': 'public, max-age=31536000, immutable'
+    });
+
+    fs.stat(filePath, async (err, stats) => {
+        if (!err && stats.isFile()) {
+            res.writeHead(200, headers(MIME_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream', stats.size));
+            if (req.method === 'HEAD') return res.end();
+            fs.createReadStream(filePath).pipe(res);
             return;
         }
-        const contentType = MIME_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
-        res.writeHead(200, {
-            'Content-Type': contentType,
-            'Content-Length': stats.size,
-            'Cache-Control': 'public, max-age=31536000, immutable'
-        });
-        if (req.method === 'HEAD') return res.end();
-        fs.createReadStream(filePath).pipe(res);
+
+        // The file is gone (deploys replace the uploads folder): use the database copy
+        try {
+            const media = await loadMedia(filename);
+            if (media) {
+                fs.promises.mkdir(UPLOADS_DIR, { recursive: true })
+                    .then(() => fs.promises.writeFile(filePath, media.data))
+                    .catch(() => { /* serving still works without the disk copy */ });
+                res.writeHead(200, headers(media.mime_type, media.data.length));
+                return res.end(req.method === 'HEAD' ? undefined : media.data);
+            }
+        } catch (dbError) {
+            console.error('Stored image lookup failed:', dbError.message);
+        }
+
+        const live = liveImageUrl(filename, req);
+        if (live) {
+            res.writeHead(302, { Location: live, 'Cache-Control': 'no-store' });
+            res.end();
+            return;
+        }
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('Image not found');
     });
 }
 

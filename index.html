@@ -7659,14 +7659,25 @@
                         /* Desktop: one row at a fixed height so cards can trade width */
                         @media (min-width: 1101px) {
                             .journal_list {
+                                --journal-gap: clamp(0.75rem, 1.3vw, 1.25rem);
                                 display: flex;
+                                gap: var(--journal-gap);
                                 height: clamp(380px, 30vw, 540px);
+                                container-type: inline-size;
                             }
                             .journal_card {
                                 flex: 1 1 0;
                                 height: 100%;
                                 aspect-ratio: auto;
                                 transition: flex-grow 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+                            }
+                            /* The photo keeps the size of a fully opened card (2.2 of 4.45 flex parts),
+                               centred: widening the card reveals more of it instead of scaling it up */
+                            .journal_card_img {
+                                left: 50%;
+                                width: calc((100cqw - 3 * var(--journal-gap)) * 2.2 / 4.45);
+                                max-width: none;
+                                transform: translateX(-50%);
                             }
                         }
                         /* Mouse: image only until hover; the hovered card widens and opens its arrow */

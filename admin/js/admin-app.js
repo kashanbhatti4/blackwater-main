@@ -806,6 +806,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ----------------------------------------------------
     function setFeaturedImage(url) {
         state.featuredImageUrl = url || null;
+        imageUploadPrompt.querySelector('p').textContent = 'Click or drop an image';
+        imageDropzone.classList.remove('is-missing');
+        // An image that no longer exists on the server: say so instead of a broken icon
+        imagePreview.onerror = () => {
+            imagePreview.style.display = 'none';
+            imageUploadPrompt.style.display = 'block';
+            imageUploadPrompt.querySelector('p').textContent = 'This image is missing. Click to upload it again.';
+            imageDropzone.classList.remove('has-image');
+            imageDropzone.classList.add('is-missing');
+        };
         if (url) {
             imagePreview.src = url;
             imagePreview.style.display = 'block';
@@ -859,7 +869,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             setFeaturedImage(upload.url);
             refreshAll();
             markChanged();
-            showToast('Featured image uploaded');
+            if (upload.stored === false) {
+                showToast('Image uploaded, but its backup copy failed, so it may disappear after the next deploy.', 'error');
+            } else {
+                showToast('Featured image uploaded');
+            }
         } catch (err) {
             showToast('Image upload failed: ' + err.message, 'error');
         } finally {
