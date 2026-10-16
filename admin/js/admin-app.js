@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const titleInput = $('blog-title-input');
     const slugInput = $('blog-slug-input');
     const slugResetBtn = $('slug-reset-btn');
-    const excerptInput = $('blog-excerpt-input');
-    const excerptCount = $('excerpt-count');
     const categorySelect = $('blog-category-select');
     const publishedAtInput = $('blog-published-at');
     const metaTitleInput = $('blog-meta-title');
@@ -385,7 +383,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     function fillEditor(values) {
         titleInput.value = values.title || '';
         slugInput.value = values.slug || '';
-        excerptInput.value = values.excerpt || '';
         editor.setHTML(values.content || '');
         categorySelect.value = values.category_id || '';
         metaTitleInput.value = values.meta_title || '';
@@ -429,7 +426,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ...blog,
                 // Older posts stored the post title / excerpt as meta fields; show those as "use default"
                 meta_title: blog.meta_title && blog.meta_title !== blog.title ? blog.meta_title : '',
-                meta_description: blog.meta_description && blog.meta_description !== blog.excerpt ? blog.meta_description : '',
+                meta_description: blog.meta_description
+                    && blog.meta_description !== blog.excerpt
+                    && blog.meta_description !== shorten(excerptFrom(blog.content), 158)
+                    ? blog.meta_description : '',
                 tags: (blog.tags || []).map(t => t.name)
             });
             takeSnapshot();
@@ -453,6 +453,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!isNew) viewLink.href = `/blog/${encodeURIComponent(slugInput.value.trim())}`;
         $('nav-blogs-btn').classList.toggle('active', !isNew);
         $('nav-create-btn').classList.toggle('active', isNew);
+        updateSlugReset();
         updateSaveState();
     }
 
@@ -464,6 +465,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         $('nav-create-btn').classList.toggle('active', viewName === 'editor' && !state.editingBlogId);
         document.body.classList.toggle('cms-editing', viewName === 'editor');
         if (viewName === 'list') editor.toggleFocus(false);
+        // The title box can only measure itself once the editor is on screen
+        if (viewName === 'editor') requestAnimationFrame(() => autoGrow(titleInput));
         window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
@@ -486,11 +489,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Change tracking, local backup and restore
     // ----------------------------------------------------
     function collectValues() {
+        const content = editor.getHTML();
         return {
             title: titleInput.value.trim(),
             slug: slugInput.value.trim(),
-            excerpt: excerptInput.value.trim(),
-            content: editor.getHTML(),
+            excerpt: excerptFrom(content),
+            content,
             category_id: categorySelect.value || '',
             meta_title: metaTitleInput.value.trim(),
             meta_description: metaDescInput.value.trim(),
@@ -585,9 +589,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         el.style.height = el.scrollHeight + 'px';
     }
 
+    // Offered only before publishing: changing a live article's address breaks links to it
     function updateSlugReset() {
         const generated = SeoAnalyzer.slugify(titleInput.value);
-        slugResetBtn.hidden = state.isAutoSlug || !generated || slugInput.value === generated;
+        slugResetBtn.hidden = state.isAutoSlug || !generated || slugInput.value === generated || state.editingStatus === 'published';
     }
 
     titleInput.addEventListener('input', () => {
@@ -629,21 +634,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         markChanged();
     });
 
-    $('excerpt-generate-btn').addEventListener('click', () => {
-        const first = Array.from(editor.area.querySelectorAll('p')).map(p => p.textContent.trim()).find(Boolean);
-        if (!first) { showToast('Write the first paragraph first', 'error'); return; }
-        let summary = first;
-        if (summary.length > 160) {
-            const cut = summary.slice(0, 160);
-            const sentenceEnd = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '), cut.lastIndexOf('! '));
-            summary = sentenceEnd > 80 ? cut.slice(0, sentenceEnd + 1) : cut.slice(0, cut.lastIndexOf(' ')) + '…';
-        }
-        excerptInput.value = summary;
-        refreshAll();
-        markChanged();
-    });
-
-    [excerptInput, metaTitleInput, metaDescInput, focusKeywordInput, publishedAtInput].forEach(el => {
+    [metaTitleInput, metaDescInput, focusKeywordInput, publishedAtInput].forEach(el => {
         el.addEventListener('input', () => { refreshAll(); markChanged(); });
     });
     categorySelect.addEventListener('change', markChanged);
@@ -660,8 +651,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         return metaTitleInput.value.trim() || titleInput.value.trim();
     }
 
-    function effectiveDescription() {
-        return metaDescInput.value.trim() || excerptInput.value.trim();
+    // The excerpt is the article's first paragraph: blog cards show it (cut to three lines),
+    // and it is the Google description unless one is written below
+    function excerptFrom(html) {
+        const box = document.createElement('div');
+        box.innerHTML = html || '';
+        const first = Array.from(box.querySelectorAll('p')).map(p => p.textContent.replace(/\s+/g, ' ').trim()).find(Boolean) || '';
+        return shorten(first, 220);
+    }
+
+    function shorten(text, max) {
+        if (!text || text.length <= max) return text || '';
+        const cut = text.slice(0, max - 1);
+        const space = cut.lastIndexOf(' ');
+        return (space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:.\-–]+$/, '') + '…';
+    }
+
+    function effectiveDescription(html) {
+        return metaDescInput.value.trim() || shorten(excerptFrom(html !== undefined ? html : editor.getHTML()), 158);
     }
 
     function refreshAll() {
@@ -673,7 +680,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const result = SeoAnalyzer.analyze({
             keyword: focusKeywordInput.value,
             seoTitle: effectiveSeoTitle(),
-            metaDescription: effectiveDescription(),
+            metaDescription: effectiveDescription(html),
             slug: slugInput.value,
             html,
             featuredImage: state.featuredImageUrl,
@@ -688,8 +695,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         $('editor-read-time').textContent = `${minutes} min read`;
         $('stat-words').textContent = words.toLocaleString();
         $('stat-read-time').textContent = `${minutes} min`;
-        excerptCount.textContent = `${excerptInput.value.trim().length} / 160`;
-        excerptCount.classList.toggle('is-over', excerptInput.value.trim().length > 160);
 
         renderSeo(result);
         renderPreview();
@@ -717,7 +722,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         $('seo-preview-title').textContent = truncate(fullTitle, 62);
         $('seo-preview-url').textContent = `bwdigitalmarketing.ie › blog › ${slug}`;
-        let descHtml = escapeHtml(truncate(desc || 'Add a summary or a meta description so Google shows a sentence you chose.', 160));
+        let descHtml = escapeHtml(truncate(desc || 'Write the first paragraph, or a meta description, so Google shows a sentence you chose.', 160));
         if (keyword) {
             const re = new RegExp('(' + escapeHtml(keyword).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
             descHtml = descHtml.replace(re, '<b>$1</b>');
@@ -728,7 +733,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         meter($('meta-title-count'), $('meta-title-meter'), title ? fullTitle.length : 0, 60, 30);
         meter($('meta-desc-count'), $('meta-desc-meter'), desc.length, 160, 120);
         metaTitleInput.placeholder = titleInput.value.trim() ? `Uses the title: ${titleInput.value.trim()}` : 'Uses the article title';
-        metaDescInput.placeholder = excerptInput.value.trim() ? 'Uses the summary' : 'Write the sentence Google should show (120-160 characters)';
+        metaDescInput.placeholder = excerptFrom(editor.area.innerHTML) ? 'Uses the first paragraph' : 'Write the sentence Google should show (120-160 characters)';
     }
 
     // SEO checklist: one collapsible group per category, kept open/closed across updates
@@ -940,7 +945,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             status,
             reading_time: `${result.stats.readingMinutes} min`,
             meta_title: values.meta_title || values.title,
-            meta_description: values.meta_description || values.excerpt,
+            meta_description: values.meta_description || shorten(values.excerpt, 158),
             focus_keyword: values.focus_keyword || null,
             seo_score: result.score,
             published_at: values.published_at ? new Date(values.published_at).toISOString() : null,

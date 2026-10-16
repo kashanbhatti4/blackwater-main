@@ -856,10 +856,12 @@
                 if (btn) btn.classList.toggle('is-active', !!on);
             };
             const inPre = !!this.closest('pre');
-            set('bold', !inPre && state('bold'));
-            set('italic', !inPre && state('italic'));
-            set('underline', !inPre && state('underline'));
-            set('strike', !inPre && state('strikeThrough'));
+            // Read inline formats from the tags themselves: links are underlined and headings
+            // are bold by style, which would otherwise light up those buttons
+            set('bold', !inPre && !!this.closest('strong, b'));
+            set('italic', !inPre && !!this.closest('em, i'));
+            set('underline', !inPre && !!this.closest('u'));
+            set('strike', !inPre && !!this.closest('s, strike, del'));
             set('ul', state('insertUnorderedList'));
             set('ol', state('insertOrderedList'));
             set('quote', !!this.closest('blockquote'));
