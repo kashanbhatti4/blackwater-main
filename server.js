@@ -12,6 +12,7 @@ import uploadHandler from './api/upload.js';
 import googleReviewsHandler from './api/google-reviews.js';
 import turnstileConfigHandler from './api/turnstile-config.js';
 import { importPendingPosts } from './lib/content-import.js';
+import { UPLOADS_DIR } from './lib/upload-handler.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -148,7 +149,7 @@ const server = http.createServer(async (req, res) => {
     // =========================================================
     if (pathname.startsWith('/uploads/blogs/')) {
         const filename = path.basename(pathname);
-        const filePath = path.join(__dirname, 'public/uploads/blogs', filename);
+        const filePath = path.join(UPLOADS_DIR, filename);
 
         fs.stat(filePath, (err, stats) => {
             if (err || !stats.isFile()) {
