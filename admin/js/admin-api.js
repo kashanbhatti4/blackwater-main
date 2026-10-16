@@ -53,10 +53,11 @@ const AdminAPI = {
     // ----------------------------------------------------
     // Auth Methods
     // ----------------------------------------------------
-    async login(username, password) {
+    async login(username, password, turnstileToken) {
         const data = await this.request('/api/auth/login', {
             method: 'POST',
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password, turnstileToken }),
+            skipAuthRedirect: true
         });
         if (data.token) {
             this.setToken(data.token);

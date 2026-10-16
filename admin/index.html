@@ -3,47 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog CMS Admin | Blackwater Digital</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    <title>Admin | Blackwater Digital Marketing</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/css/admin.css?v=8">
 </head>
 <body>
 
     <!-- ==================================================== -->
     <!-- 1. AUTH / LOGIN SCREEN                                -->
     <!-- ==================================================== -->
-    <div id="auth-screen" class="cms-auth-container" style="display: none;">
+    <div id="auth-screen" class="cms-auth" style="display: none;">
         <div class="cms-auth-card">
-            <div class="cms-auth-brand">
-                <img src="/logo.svg" alt="Blackwater Logo" onerror="this.style.display='none'">
-                <span>Blackwater CMS</span>
-            </div>
-            <h1 class="cms-auth-title">Admin Sign In</h1>
-            <p class="cms-auth-subtitle">Enter your credentials to manage blogs & publications</p>
+            <img src="/assets/images/logo-white.webp" alt="Blackwater Digital Marketing" class="cms-auth-logo" width="550" height="302">
+            <h1 class="cms-auth-title">Sign in</h1>
+            <p class="cms-auth-subtitle">Welcome back. Sign in to manage the Blackwater website.</p>
 
-            <div id="login-error" style="display:none; color: var(--danger); background: rgba(224, 82, 82, 0.1); border: 1px solid var(--danger); padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 20px;"></div>
+            <div id="login-error" class="cms-alert" role="alert" style="display: none;"></div>
 
-            <form id="login-form">
-                <div class="cms-form-group" style="text-align: left;">
-                    <label class="cms-label">Username or Email</label>
-                    <input type="text" id="login-username" class="cms-input" placeholder="admin" required autofocus autocomplete="username">
+            <form id="login-form" novalidate>
+                <div class="cms-form-group">
+                    <label class="cms-label" for="login-username">Username or email</label>
+                    <input type="text" id="login-username" class="cms-input" required autofocus autocomplete="username" autocapitalize="none" spellcheck="false">
                 </div>
-                <div class="cms-form-group" style="text-align: left;">
-                    <label class="cms-label">Password</label>
-                    <input type="password" id="login-password" class="cms-input" placeholder="••••••••••••" required autocomplete="current-password">
+                <div class="cms-form-group">
+                    <label class="cms-label" for="login-password">Password</label>
+                    <div class="cms-password">
+                        <input type="password" id="login-password" class="cms-input" required autocomplete="current-password">
+                        <button type="button" id="login-password-toggle" class="cms-password-toggle" aria-label="Show password" aria-pressed="false">
+                            <svg viewBox="0 0 24 24"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
                 </div>
-                <button type="submit" id="login-submit-btn" class="cms-btn cms-btn-primary" style="width: 100%; padding: 14px; margin-top: 8px;">
-                    Sign In to Dashboard
-                </button>
+                <!-- Cloudflare Turnstile (rendered by /assets/js/turnstile.js when keys are configured) -->
+                <div class="bw-turnstile" data-turnstile data-turnstile-action="admin-login"></div>
+                <button type="submit" id="login-submit-btn" class="cms-btn cms-btn-primary cms-btn-block">Sign in</button>
             </form>
-            <div style="margin-top: 24px; font-size: 12px; color: var(--text-muted);">
-                <a href="/" target="_blank" data-barba-prevent>← Return to Website</a>
-            </div>
+
+            <a href="/" class="cms-auth-back">
+                <svg viewBox="0 0 24 24" width="14" height="14"><path d="m15 18-6-6 6-6"/></svg>
+                Back to bwdigitalmarketing.ie
+            </a>
         </div>
+        <p class="cms-auth-foot">&copy; 2026 Blackwater Digital Marketing Ltd.</p>
     </div>
 
     <!-- ==================================================== -->
@@ -53,38 +59,41 @@
         <!-- Sidebar Navigation -->
         <aside class="cms-sidebar">
             <div class="cms-sidebar-header">
-                <a href="/admin" class="cms-sidebar-brand" data-barba-prevent>
-                    <img src="/logo.svg" alt="Blackwater" onerror="this.style.display='none'">
-                    <span>Blackwater</span>
+                <a href="/admin" class="cms-sidebar-brand">
+                    <img src="/assets/images/logo-white.webp" alt="Blackwater Digital Marketing" width="550" height="302">
+                    <span>Admin</span>
                 </a>
             </div>
 
             <nav class="cms-sidebar-nav">
+                <div class="cms-nav-label">Content</div>
                 <button type="button" id="nav-blogs-btn" class="cms-nav-item active">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                    <span>All Articles</span>
+                    <span>Articles</span>
                 </button>
                 <button type="button" id="nav-create-btn" class="cms-nav-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    <span>Write Article</span>
+                    <span>New article</span>
                 </button>
-                <a href="/blogs" target="_blank" class="cms-nav-item" data-barba-prevent>
+                <div class="cms-nav-label">Website</div>
+                <a href="/blogs" target="_blank" rel="noopener" class="cms-nav-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    <span>View Public Blog ↗</span>
+                    <span>Blog page ↗</span>
                 </a>
-                <a href="/" target="_blank" class="cms-nav-item" data-barba-prevent>
+                <a href="/" target="_blank" rel="noopener" class="cms-nav-item">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>Website Home ↗</span>
+                    <span>Home page ↗</span>
                 </a>
             </nav>
 
             <div class="cms-sidebar-footer">
+                <span id="current-user-avatar" class="cms-user-avatar" aria-hidden="true">A</span>
                 <div class="cms-user-info">
                     <span id="current-user-name" class="cms-user-name">Admin</span>
                     <span class="cms-user-role">Administrator</span>
                 </div>
-                <button type="button" id="logout-btn" class="cms-btn-icon" title="Logout">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <button type="button" id="logout-btn" class="cms-btn-icon" title="Sign out" aria-label="Sign out">
+                    <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                 </button>
             </div>
         </aside>
@@ -92,14 +101,11 @@
         <!-- Main Workspace -->
         <main class="cms-main">
             <header class="cms-header">
-                <div>
-                    <h2 style="font-family: var(--font-heading); font-size: 20px; font-weight: 600;">Blog Management Portal</h2>
-                </div>
-                <div>
-                    <button type="button" class="cms-btn cms-btn-primary" onclick="window.openNewBlogEditor()">
-                        + New Post
-                    </button>
-                </div>
+                <h1 class="cms-header-title">Articles</h1>
+                <button type="button" class="cms-btn cms-btn-primary" onclick="window.openNewBlogEditor()">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    New article
+                </button>
             </header>
 
             <div class="cms-content">
@@ -110,16 +116,16 @@
                     <!-- Metrics Summary -->
                     <div class="cms-metrics-grid">
                         <div class="cms-metric-card">
-                            <div class="cms-metric-label">Total Articles</div>
+                            <div class="cms-metric-label">All articles</div>
                             <div id="count-total" class="cms-metric-value">0</div>
                         </div>
                         <div class="cms-metric-card">
-                            <div class="cms-metric-label">Published Live</div>
+                            <div class="cms-metric-label">Published</div>
                             <div id="count-published" class="cms-metric-value" style="color: var(--success);">0</div>
                         </div>
                         <div class="cms-metric-card">
                             <div class="cms-metric-label">Drafts</div>
-                            <div id="count-drafts" class="cms-metric-value" style="color: var(--accent-gold);">0</div>
+                            <div id="count-drafts" class="cms-metric-value" style="color: var(--warning);">0</div>
                         </div>
                     </div>
 
@@ -127,8 +133,8 @@
                     <div class="cms-table-container">
                         <div class="cms-table-header-tools">
                             <div class="cms-search-box">
-                                <span class="cms-search-icon">🔍</span>
-                                <input type="text" id="blogs-search-input" class="cms-input" placeholder="Search articles by title...">
+                                <svg class="cms-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                <input type="text" id="blogs-search-input" class="cms-input" placeholder="Search title, URL or keyword…">
                             </div>
                             <div class="cms-filter-tabs">
                                 <button type="button" class="cms-filter-btn active" data-filter="all">All</button>
@@ -143,14 +149,15 @@
                                     <th>Article</th>
                                     <th>Category</th>
                                     <th>Status</th>
-                                    <th>Published Date</th>
+                                    <th>SEO</th>
+                                    <th>Published</th>
                                     <th style="text-align: right;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="blogs-table-body">
                                 <tr>
-                                    <td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted);">
-                                        Loading articles...
+                                    <td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted);">
+                                        Loading articles…
                                     </td>
                                 </tr>
                             </tbody>
@@ -161,158 +168,245 @@
                 <!-- ============================================ -->
                 <!-- VIEW 2: BLOG EDITOR (CREATE / EDIT)           -->
                 <!-- ============================================ -->
-                <div id="blog-editor-view" style="display: none;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
-                        <h2 id="editor-heading" style="font-family: var(--font-heading); font-size: 26px; font-weight: 600;">
-                            Create New Blog Post
-                        </h2>
-                        <div style="display: flex; gap: 12px;">
-                            <button type="button" id="editor-cancel-btn" class="cms-btn cms-btn-secondary">
-                                Cancel
+                <div id="blog-editor-view" class="cms-editor-view" style="display: none;">
+                    <!-- Sticky action bar -->
+                    <div class="cms-editor-bar">
+                        <div class="cms-editor-bar-left">
+                            <button type="button" id="editor-back-btn" class="cms-btn-ghost" title="Back to all articles">
+                                <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+                                <span>Articles</span>
                             </button>
-                            <button type="submit" form="blog-editor-form" id="editor-save-btn" class="cms-btn cms-btn-primary">
-                                Save Post
+                            <span class="cms-editor-bar-sep" aria-hidden="true"></span>
+                            <h2 id="editor-heading" class="cms-editor-heading">New article</h2>
+                            <span id="editor-status-chip" class="cms-badge cms-badge-draft">Draft</span>
+                            <span id="editor-save-state" class="cms-save-state" aria-live="polite"></span>
+                        </div>
+                        <div class="cms-editor-bar-right">
+                            <button type="button" id="editor-seo-badge" class="cms-seo-badge is-poor" title="SEO score: open the checklist">
+                                <span>SEO</span><b id="editor-seo-badge-score">0</b>
                             </button>
+                            <a id="editor-view-link" class="cms-btn cms-btn-secondary" target="_blank" rel="noopener" hidden>View ↗</a>
+                            <button type="button" id="editor-secondary-btn" class="cms-btn cms-btn-secondary">Save draft</button>
+                            <button type="submit" form="blog-editor-form" id="editor-save-btn" class="cms-btn cms-btn-primary">Publish</button>
                         </div>
                     </div>
 
-                    <form id="blog-editor-form">
+                    <!-- Unsaved work found in this browser -->
+                    <div id="editor-restore-banner" class="cms-restore-banner" hidden>
+                        <span id="editor-restore-text">You have unsaved changes from an earlier session.</span>
+                        <div>
+                            <button type="button" id="editor-restore-btn" class="cms-btn cms-btn-primary cms-btn-sm">Restore</button>
+                            <button type="button" id="editor-restore-discard" class="cms-btn cms-btn-secondary cms-btn-sm">Discard</button>
+                        </div>
+                    </div>
+
+                    <form id="blog-editor-form" novalidate>
                         <div class="cms-editor-grid">
-                            <!-- Left: Main Content Inputs -->
+                            <!-- Left: writing -->
                             <div class="cms-editor-main">
-                                <div class="cms-form-group">
-                                    <label class="cms-label">Post Title *</label>
-                                    <input type="text" id="blog-title-input" class="cms-input" placeholder="e.g. Why Irish SMEs Waste 40% of Their Google Ads Budget" required style="font-size: 18px; font-weight: 600;">
-                                </div>
+                                <div class="cms-write-card">
+                                    <textarea id="blog-title-input" class="cms-title-input" rows="1" placeholder="Article title" maxlength="255" aria-label="Article title"></textarea>
 
-                                <div class="cms-form-group">
-                                    <label class="cms-label">URL Slug *</label>
-                                    <input type="text" id="blog-slug-input" class="cms-input" placeholder="why-irish-smes-waste-budget" required>
-                                    <div class="cms-input-helper">The web address for this post: <code>/blog/<span>your-slug</span></code></div>
-                                </div>
-
-                                <div class="cms-form-group">
-                                    <label class="cms-label">Excerpt / Summary</label>
-                                    <textarea id="blog-excerpt-input" class="cms-textarea" rows="3" placeholder="Brief 1-2 sentence overview shown on blog cards and search engines..."></textarea>
-                                </div>
-
-                                <div class="cms-form-group">
-                                    <label class="cms-label">Article Body Content *</label>
-                                    <!-- WYSIWYG Toolbar -->
-                                    <div class="cms-toolbar">
-                                        <button type="button" class="cms-tool-btn" data-command="bold" title="Bold"><b>B</b></button>
-                                        <button type="button" class="cms-tool-btn" data-command="italic" title="Italic"><i>I</i></button>
-                                        <button type="button" class="cms-tool-btn" data-command="underline" title="Underline"><u>U</u></button>
-                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="h2" title="Heading 2">H2</button>
-                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="h3" title="Heading 3">H3</button>
-                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="p" title="Paragraph">¶</button>
-                                        <button type="button" class="cms-tool-btn" data-command="insertUnorderedList" title="Bullet List">• List</button>
-                                        <button type="button" class="cms-tool-btn" data-command="insertOrderedList" title="Numbered List">1. List</button>
-                                        <button type="button" class="cms-tool-btn" data-command="formatBlock" data-value="blockquote" title="Quote">❝ Quote</button>
-                                        <button type="button" class="cms-tool-btn" data-command="createLink" title="Add Link">🔗 Link</button>
-                                        <button type="button" class="cms-tool-btn" data-command="removeFormat" title="Clear Formatting">✕ Clear</button>
+                                    <div class="cms-permalink">
+                                        <span class="cms-permalink-base">bwdigitalmarketing.ie/blog/</span>
+                                        <input type="text" id="blog-slug-input" class="cms-permalink-input" placeholder="article-url" aria-label="URL slug" spellcheck="false">
+                                        <button type="button" id="slug-reset-btn" class="cms-link-btn" hidden>Match title</button>
                                     </div>
-                                    <!-- Rich text editable container -->
-                                    <div id="blog-content-editor" class="cms-content-editor" contenteditable="true">
-                                        <p>Write your article here...</p>
+
+                                    <div class="cms-summary">
+                                        <label class="cms-label" for="blog-excerpt-input">Summary</label>
+                                        <textarea id="blog-excerpt-input" class="cms-summary-input" rows="2" placeholder="One or two sentences that sell the article. Shown on blog cards and used as the Google description if you don't write one."></textarea>
+                                        <div class="cms-field-meta">
+                                            <button type="button" id="excerpt-generate-btn" class="cms-link-btn">Use the first paragraph</button>
+                                            <span id="excerpt-count" class="cms-count">0</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rich text editor -->
+                                    <div id="rich-editor" class="cms-rich">
+                                        <div class="cms-rich-toolbar" role="toolbar" aria-label="Formatting">
+                                            <select class="cms-tb-select" data-action-select="block" title="Text style" aria-label="Text style">
+                                                <option value="p">Paragraph</option>
+                                                <option value="h2">Heading 2</option>
+                                                <option value="h3">Heading 3</option>
+                                                <option value="h4">Heading 4</option>
+                                            </select>
+                                            <span class="cms-tb-sep"></span>
+                                            <button type="button" class="cms-tb" data-action="bold" title="Bold (⌘/Ctrl + B)"><svg viewBox="0 0 24 24"><path d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="italic" title="Italic (⌘/Ctrl + I)"><svg viewBox="0 0 24 24"><line x1="19" x2="10" y1="4" y2="4"/><line x1="14" x2="5" y1="20" y2="20"/><line x1="15" x2="9" y1="4" y2="20"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="underline" title="Underline (⌘/Ctrl + U)"><svg viewBox="0 0 24 24"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" x2="20" y1="20" y2="20"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="code" title="Inline code"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="link" title="Link (⌘/Ctrl + K)"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+                                            <span class="cms-tb-sep"></span>
+                                            <button type="button" class="cms-tb" data-action="ul" title="Bullet list (type - and a space)"><svg viewBox="0 0 24 24"><line x1="8" x2="21" y1="6" y2="6"/><line x1="8" x2="21" y1="12" y2="12"/><line x1="8" x2="21" y1="18" y2="18"/><line x1="3" x2="3.01" y1="6" y2="6"/><line x1="3" x2="3.01" y1="12" y2="12"/><line x1="3" x2="3.01" y1="18" y2="18"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="ol" title="Numbered list (type 1. and a space)"><svg viewBox="0 0 24 24"><line x1="10" x2="21" y1="6" y2="6"/><line x1="10" x2="21" y1="12" y2="12"/><line x1="10" x2="21" y1="18" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="quote" title="Quote (type > and a space)"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></button>
+                                            <span class="cms-tb-sep"></span>
+                                            <button type="button" class="cms-tb" data-action="image" title="Image (or paste / drop one)"><svg viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="codeblock" title="Code block (type ```)"><svg viewBox="0 0 24 24"><path d="m10 9-3 3 3 3"/><path d="m14 15 3-3-3-3"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="embed" title="Embed code (YouTube, Maps, Vimeo…)"><svg viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="m10 9 5 3-5 3z"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="hr" title="Divider (type --- and Enter)"><svg viewBox="0 0 24 24"><line x1="3" x2="21" y1="12" y2="12"/><polyline points="8 8 12 4 16 8"/><polyline points="16 16 12 20 8 16"/></svg></button>
+                                            <span class="cms-tb-sep"></span>
+                                            <button type="button" class="cms-tb" data-action="undo" title="Undo (⌘/Ctrl + Z) · Redo with ⌘/Ctrl + Shift + Z"><svg viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg></button>
+                                            <button type="button" class="cms-tb" data-action="clear" title="Clear formatting"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M5 20h6"/><path d="M13 4 8 20"/><path d="m15 15 5 5"/><path d="m20 15-5 5"/></svg></button>
+                                            <span class="cms-tb-spacer"></span>
+                                            <button type="button" class="cms-tb cms-tb-text" data-action="source" title="Edit the HTML directly"><svg viewBox="0 0 24 24"><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/></svg><span>HTML</span></button>
+                                            <button type="button" class="cms-tb" data-action="focus" title="Focus mode"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+                                        </div>
+                                        <div id="blog-content-editor" class="cms-rich-area" contenteditable="true" spellcheck="true"
+                                            data-placeholder="Start writing… Type ## and a space for a heading, - for a list, > for a quote, ``` for code. Paste from Google Docs or Word: formatting is cleaned automatically."></div>
+                                        <textarea id="blog-content-source" class="cms-rich-source" spellcheck="false" hidden aria-label="Article HTML"></textarea>
+                                        <div class="cms-rich-status">
+                                            <span id="editor-word-count">0 words</span>
+                                            <span id="editor-read-time">1 min read</span>
+                                            <span id="editor-hint" class="cms-rich-hint">Pasted text is cleaned automatically · ⌘/Ctrl + Shift + V pastes plain text</span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- SEO Settings Section -->
-                                <div style="margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border-color);">
-                                    <h3 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 20px;">Search Engine Optimization (SEO)</h3>
-                                    
+                                <!-- Search appearance -->
+                                <section class="cms-card">
+                                    <div class="cms-card-head">
+                                        <h3>Search appearance</h3>
+                                        <p>How this article shows up on Google. Leave blank to use the title and summary.</p>
+                                    </div>
+
+                                    <div class="cms-serp">
+                                        <div class="cms-serp-site">
+                                            <span class="cms-serp-favicon">B</span>
+                                            <div>
+                                                <div class="cms-serp-name">Blackwater Digital</div>
+                                                <div id="seo-preview-url" class="cms-serp-url">bwdigitalmarketing.ie › blog › your-slug</div>
+                                            </div>
+                                        </div>
+                                        <div id="seo-preview-title" class="cms-serp-title">Your article title | Blackwater Digital</div>
+                                        <div id="seo-preview-desc" class="cms-serp-desc">A compelling summary of this article will appear here.</div>
+                                    </div>
+
                                     <div class="cms-form-group">
-                                        <label class="cms-label">Meta Title</label>
-                                        <input type="text" id="blog-meta-title" class="cms-input" placeholder="Leave empty to use the post title">
+                                        <div class="cms-label-row">
+                                            <label class="cms-label" for="blog-meta-title">SEO title</label>
+                                            <span id="meta-title-count" class="cms-count">0 / 60</span>
+                                        </div>
+                                        <input type="text" id="blog-meta-title" class="cms-input" placeholder="Uses the article title">
+                                        <div class="cms-meter"><span id="meta-title-meter"></span></div>
+                                        <div class="cms-input-helper">“ | Blackwater Digital” is added automatically and counts towards the 60.</div>
                                     </div>
 
-                                    <div class="cms-form-group">
-                                        <label class="cms-label">Meta Description</label>
-                                        <textarea id="blog-meta-desc" class="cms-textarea" rows="2" placeholder="Leave empty to use the excerpt"></textarea>
+                                    <div class="cms-form-group" style="margin-bottom: 0;">
+                                        <div class="cms-label-row">
+                                            <label class="cms-label" for="blog-meta-desc">Meta description</label>
+                                            <span id="meta-desc-count" class="cms-count">0 / 160</span>
+                                        </div>
+                                        <textarea id="blog-meta-desc" class="cms-textarea" rows="3" placeholder="Uses the summary"></textarea>
+                                        <div class="cms-meter"><span id="meta-desc-meter"></span></div>
                                     </div>
-
-                                    <label class="cms-label" style="margin-top: 16px;">Search Result Preview</label>
-                                    <div class="cms-seo-preview">
-                                        <div id="seo-preview-url" class="cms-seo-preview-url">https://bwdigitalmarketing.ie/blog/your-slug</div>
-                                        <div id="seo-preview-title" class="cms-seo-preview-title">Your Blog Post Title</div>
-                                        <div id="seo-preview-desc" class="cms-seo-preview-desc">A compelling summary of this article will appear here in search engine results.</div>
-                                    </div>
-                                </div>
+                                </section>
                             </div>
 
-                            <!-- Right: Publishing & Media Sidebar -->
-                            <div class="cms-editor-sidebar">
-                                <!-- Status & Publish Panel -->
-                                <div class="cms-editor-panel">
-                                    <div class="cms-editor-panel-title">Publishing Options</div>
-                                    
-                                    <div class="cms-form-group">
-                                        <label class="cms-label">Status</label>
-                                        <select id="blog-status-select" class="cms-select">
-                                            <option value="draft">Draft (Private)</option>
-                                            <option value="published">Published (Live)</option>
-                                        </select>
+                            <!-- Right: settings -->
+                            <aside class="cms-editor-sidebar">
+                                <!-- SEO -->
+                                <div id="seo-panel" class="cms-editor-panel cms-seo-panel">
+                                    <div class="cms-editor-panel-title">SEO score</div>
+                                    <div class="cms-seo-summary">
+                                        <div id="seo-ring" class="cms-seo-ring is-poor" style="--score: 0">
+                                            <span id="seo-score">0</span>
+                                        </div>
+                                        <div>
+                                            <div id="seo-rating" class="cms-seo-rating">Poor</div>
+                                            <div id="seo-summary-text" class="cms-seo-summary-text">Add a focus keyword to start.</div>
+                                        </div>
                                     </div>
-
-                                    <div class="cms-form-group">
-                                        <label class="cms-label">Publish Date</label>
-                                        <input type="datetime-local" id="blog-published-at" class="cms-input">
+                                    <div class="cms-form-group" style="margin-bottom: 16px;">
+                                        <label class="cms-label" for="blog-focus-keyword">Focus keyword</label>
+                                        <input type="text" id="blog-focus-keyword" class="cms-input" placeholder="e.g. google ads budget" autocomplete="off">
+                                        <div class="cms-input-helper">The search phrase this article should rank for.</div>
                                     </div>
-
-                                    <div class="cms-form-group">
-                                        <label class="cms-label">Estimated Read Time</label>
-                                        <input type="text" id="blog-reading-time" class="cms-input" placeholder="5 min" value="5 min">
-                                    </div>
+                                    <div id="seo-checks" class="cms-seo-checks"></div>
                                 </div>
 
-                                <!-- Category Panel -->
+                                <!-- Publishing -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">Publishing</div>
+                                    <div class="cms-form-group">
+                                        <label class="cms-label" for="blog-published-at">Publish date</label>
+                                        <input type="datetime-local" id="blog-published-at" class="cms-input">
+                                    </div>
+                                    <div class="cms-stat-row">
+                                        <div class="cms-stat">
+                                            <span class="cms-stat-label">Reading time</span>
+                                            <span id="stat-read-time" class="cms-stat-value">1 min</span>
+                                        </div>
+                                        <div class="cms-stat">
+                                            <span class="cms-stat-label">Words</span>
+                                            <span id="stat-words" class="cms-stat-value">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="cms-input-helper">Reading time is worked out from the word count as you write.</div>
+                                </div>
+
+                                <!-- Category -->
                                 <div class="cms-editor-panel">
                                     <div class="cms-editor-panel-title">
                                         <span>Category</span>
-                                        <button type="button" id="add-category-btn" class="cms-btn cms-btn-secondary cms-btn-sm">+ New</button>
+                                        <button type="button" id="add-category-btn" class="cms-link-btn">+ New category</button>
                                     </div>
-
-                                    <select id="blog-category-select" class="cms-select">
-                                        <option value="">Select Category...</option>
+                                    <select id="blog-category-select" class="cms-select" aria-label="Category">
+                                        <option value="">Choose a category…</option>
                                     </select>
-                                </div>
-
-                                <!-- Featured Image Panel -->
-                                <div class="cms-editor-panel">
-                                    <div class="cms-editor-panel-title">Featured Image</div>
-                                    
-                                    <div id="image-dropzone" class="cms-upload-dropzone">
-                                        <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
-                                        
-                                        <div id="image-upload-prompt">
-                                            <div style="font-size: 28px; margin-bottom: 8px;">📷</div>
-                                            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 6px;">
-                                                Click or drag image here to upload
-                                            </p>
-                                            <span style="font-size: 11px; color: var(--text-muted);">JPG, PNG, or WebP up to 5MB</span>
-                                        </div>
-
-                                        <img id="image-preview" class="cms-upload-preview" alt="Featured Image Preview">
+                                    <div id="new-category-row" class="cms-inline-add" hidden>
+                                        <input type="text" id="new-category-input" class="cms-input" placeholder="Category name">
+                                        <button type="button" id="new-category-save" class="cms-btn cms-btn-primary cms-btn-sm">Add</button>
                                     </div>
-
-                                    <button type="button" id="image-remove-btn" class="cms-btn cms-btn-danger cms-btn-sm" style="display: none; width: 100%; margin-top: 10px;">
-                                        Remove Image
-                                    </button>
                                 </div>
 
-                                <!-- Tags Panel -->
+                                <!-- Featured image -->
+                                <div class="cms-editor-panel">
+                                    <div class="cms-editor-panel-title">Featured image</div>
+                                    <div id="image-dropzone" class="cms-upload-dropzone" tabindex="0" role="button" aria-label="Upload featured image">
+                                        <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                                        <div id="image-upload-prompt">
+                                            <svg class="cms-upload-icon" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                                            <p>Click or drop an image</p>
+                                            <span>JPG, PNG or WebP, up to 5MB · 1200 × 630 works best</span>
+                                        </div>
+                                        <img id="image-preview" class="cms-upload-preview" alt="Featured image preview">
+                                    </div>
+                                    <div id="image-actions" class="cms-image-actions" hidden>
+                                        <button type="button" id="image-replace-btn" class="cms-btn cms-btn-secondary cms-btn-sm">Replace</button>
+                                        <button type="button" id="image-remove-btn" class="cms-btn cms-btn-danger cms-btn-sm">Remove</button>
+                                    </div>
+                                </div>
+
+                                <!-- Tags -->
                                 <div class="cms-editor-panel">
                                     <div class="cms-editor-panel-title">Tags</div>
-                                    <input type="text" id="tag-input" class="cms-input" placeholder="Type tag & press Enter...">
+                                    <input type="text" id="tag-input" class="cms-input" placeholder="Type a tag and press Enter">
                                     <div id="tag-container" class="cms-tag-container"></div>
                                 </div>
-                            </div>
+                            </aside>
                         </div>
                     </form>
                 </div>
             </div>
         </main>
+    </div>
+
+    <!-- Dialog (links, images, code, embeds) -->
+    <div id="cms-dialog" class="cms-dialog" hidden>
+        <div class="cms-dialog-backdrop" data-dialog-close></div>
+        <form id="cms-dialog-form" class="cms-dialog-card" novalidate>
+            <h3 id="cms-dialog-title" class="cms-dialog-title"></h3>
+            <p id="cms-dialog-desc" class="cms-dialog-desc"></p>
+            <div id="cms-dialog-fields"></div>
+            <div class="cms-dialog-actions">
+                <button type="button" id="cms-dialog-extra" class="cms-btn cms-btn-danger" hidden></button>
+                <span class="cms-tb-spacer"></span>
+                <button type="button" class="cms-btn cms-btn-secondary" data-dialog-close>Cancel</button>
+                <button type="submit" id="cms-dialog-submit" class="cms-btn cms-btn-primary">Save</button>
+            </div>
+        </form>
     </div>
 
     <!-- Toast Notification -->
@@ -321,7 +415,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/admin/js/admin-api.js"></script>
-    <script src="/admin/js/admin-app.js"></script>
+    <script src="/assets/js/turnstile.js?v=1"></script>
+    <script src="/admin/js/admin-api.js?v=2"></script>
+    <script src="/admin/js/admin-ui.js?v=1"></script>
+    <script src="/admin/js/seo-analyzer.js?v=1"></script>
+    <script src="/admin/js/rich-editor.js?v=3"></script>
+    <script src="/admin/js/admin-app.js?v=3"></script>
 </body>
 </html>

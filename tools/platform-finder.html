@@ -40,7 +40,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=93" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=99" rel="stylesheet" type="text/css" />
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -1770,7 +1770,7 @@
                                 <li>Free tools</li>
                                 <li aria-current="page">Platform Finder</li>
                             </ol>
-                            <div class="tp_meta"><span class="tp_pill">Tool 02</span><span>10 questions &middot; 2 minutes &middot; Free</span></div>
+                            <div class="tp_meta"><span class="tp_pill">Platform Finder</span><span>10 questions &middot; 2 minutes &middot; Free</span></div>
                             <h1 class="tp_title">Which platform should you build on?</h1>
                             <p class="tp_lead">Webflow, Shopify, WordPress, Squarespace or a bespoke build. Answer ten questions and get a recommendation, a template-versus-bespoke call and the real three-year cost, not the monthly sticker price.</p>
                             <div class="tp_actions">
@@ -2607,7 +2607,7 @@
                                             <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between;">
                                                 <div>
                                                     <div class="entry_meta">
-                                                        <span>TOOL 02</span>
+                                                        <span>PLATFORM FINDER</span>
                                                         <span>10 QUESTIONS &middot; 2 MIN</span>
                                                     </div>
                                                     <h3 class="u-text-style-h3" style="color: #FFFCE1; margin-bottom: 1.2rem;">Which platform should<br>you build on?</h3>
@@ -2678,7 +2678,7 @@
                                                 <div>
                                                     <div class="entry_meta" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
                                                         <span style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #FFE32A; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">${q.num.toUpperCase()} OF ${PLATFORM_QUESTIONS.length}</span>
-                                                        <span style="font-size: 0.75rem; color: #7C7C70;">TOOL 02</span>
+                                                        <span style="font-size: 0.75rem; color: #7C7C70;">PLATFORM FINDER</span>
                                                     </div>
                                                     <h4 class="u-text-style-main-medium" style="margin-bottom: 1.1rem; color: #FFFCE1; font-size: 1.8rem; font-weight: 600; line-height: 1.25;">${esc(q.title)}</h4>
                                                     ${q.help ? `<p style="font-size: 0.85rem; color: #7C7C70; margin-bottom: 1.5rem; line-height: 1.5;">${esc(q.help)}</p>` : ''}
@@ -2828,7 +2828,7 @@
                                                     </div>
                                                     <h3 class="u-text-style-h2" style="color: #FFFCE1; margin: 0 0 1.2rem 0; font-size: 2.85rem; line-height: 1.2; font-weight: 600; font-family: Inter, sans-serif; letter-spacing: -0.02em;">Select your answers to begin</h3>
                                                     <p class="u-text-style-small" style="color: #8C8C7E; margin-bottom: 2rem; line-height: 1.75; font-size: 1.05rem;">
-                                                        Select options on Tool 02 to see your live platform fit curve and 3-year total cost projection build progressively.
+                                                        Select options in the finder to see your live platform fit curve and 3-year total cost projection build progressively.
                                                     </p>
                                                 </div>
 
@@ -2994,17 +2994,26 @@
                     </div>
                     <ol class="tp_steps">
                         <li class="tp_step">
-                            <span class="tp_step_num">01</span>
+                            <div class="tp_step_top">
+                                <span class="tp_step_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
+                                <span class="tp_step_num">01</span>
+                            </div>
                             <h3>Answer 10 questions</h3>
                             <p>What the site is for, your budget and launch date, how much you'll sell online and who updates it after launch.</p>
                         </li>
                         <li class="tp_step">
-                            <span class="tp_step_num">02</span>
+                            <div class="tp_step_top">
+                                <span class="tp_step_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                                <span class="tp_step_num">02</span>
+                            </div>
                             <h3>See your best fit</h3>
                             <p>A recommended platform with a fit score, how the others compare, and the real three-year cost.</p>
                         </li>
                         <li class="tp_step">
-                            <span class="tp_step_num">03</span>
+                            <div class="tp_step_top">
+                                <span class="tp_step_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></span>
+                                <span class="tp_step_num">03</span>
+                            </div>
                             <h3>Keep it or talk it through</h3>
                             <p>Save your result as a PDF, or book a free 15-minute call to go through it with us.</p>
                         </li>
@@ -3055,16 +3064,22 @@
                     </div>
                     <div class="tp_tools">
                         <a href="/tools/budget-planner" class="tp_tool_link">
-                            <div class="tp_meta"><span class="tp_pill">Tool 01</span><span>90 sec</span></div>
-                            <h3>Where should your marketing budget go?</h3>
-                            <p>A budget split, a readiness score and the fixes to make first.</p>
-                            <span class="tp_tool_go">Open the planner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                            <div class="tp_tool_body">
+                                <div class="tp_meta"><span class="tp_pill">Budget Planner</span><span>90 sec</span></div>
+                                <h3>Where should your marketing budget go?</h3>
+                                <p>A budget split, a readiness score and the fixes to make first.</p>
+                                <span class="tp_tool_go">Open the planner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                            </div>
+                            <span class="tp_tool_art" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="54" cy="56" r="34" stroke="#FFFCE1" stroke-opacity=".07" stroke-width="14"/><g transform="rotate(-90 54 56)" stroke-width="14"><circle cx="54" cy="56" r="34" stroke="#FFE32A" stroke-dasharray="103 214"/><circle cx="54" cy="56" r="34" stroke="#FFFCE1" stroke-opacity=".55" stroke-dasharray="58 214" stroke-dashoffset="-107"/><circle cx="54" cy="56" r="34" stroke="#FFFCE1" stroke-opacity=".22" stroke-dasharray="41 214" stroke-dashoffset="-169"/></g><circle cx="90" cy="88" r="17" fill="#FFE32A" stroke="#0E100F" stroke-width="4"/><path d="M95 82.5a7 7 0 1 0 0 11" stroke="#0E100F" stroke-width="2.6" stroke-linecap="round"/><path d="M82.5 86h8.5M82.5 90h8.5" stroke="#0E100F" stroke-width="2.2" stroke-linecap="round"/></svg></span>
                         </a>
                         <a href="/tools/website-audit" class="tp_tool_link">
-                            <div class="tp_meta"><span class="tp_pill">Tool 03</span><span>Free</span></div>
-                            <h3>Find out what's holding your website back.</h3>
-                            <p>A real person checks your speed, indexation, tracking and conversion path.</p>
-                            <span class="tp_tool_go">Request an audit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                            <div class="tp_tool_body">
+                                <div class="tp_meta"><span class="tp_pill">Website Audit</span><span>Free</span></div>
+                                <h3>Find out what's holding your website back.</h3>
+                                <p>A real person checks your speed, indexation, tracking and conversion path.</p>
+                                <span class="tp_tool_go">Request an audit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                            </div>
+                            <span class="tp_tool_art" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="20" width="86" height="68" rx="9" fill="#161917" stroke="#FFFCE1" stroke-opacity=".35" stroke-width="2"/><path d="M12 33h86" stroke="#FFFCE1" stroke-opacity=".18" stroke-width="2"/><circle cx="21" cy="26.5" r="2" fill="#FFE32A"/><circle cx="28" cy="26.5" r="2" fill="#FFFCE1" fill-opacity=".35"/><circle cx="35" cy="26.5" r="2" fill="#FFFCE1" fill-opacity=".35"/><path d="M24 72a20 20 0 0 1 40 0" stroke="#FFFCE1" stroke-opacity=".15" stroke-width="7" stroke-linecap="round"/><path d="M24 72a20 20 0 0 1 34.14-14.14" stroke="#FFE32A" stroke-width="7" stroke-linecap="round"/><path d="M44 72l9.5-8.5" stroke="#FFFCE1" stroke-width="2.5" stroke-linecap="round"/><circle cx="44" cy="72" r="3" fill="#FFFCE1"/><rect x="68" y="42" width="20" height="4" rx="2" fill="#FFFCE1" fill-opacity=".3"/><rect x="68" y="51" width="14" height="4" rx="2" fill="#FFFCE1" fill-opacity=".3"/><circle cx="88" cy="82" r="15" fill="#0E100F" stroke="#FFE32A" stroke-width="4"/><path d="M99 93l9 9" stroke="#FFE32A" stroke-width="5" stroke-linecap="round"/><path d="M81.5 82l4.5 4.5 8-8.5" stroke="#FFE32A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                         </a>
                     </div>
                 </div>
@@ -3863,7 +3878,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js?v=2"></script>
+    <script src="/assets/js/custom-interactions.js?v=3"></script>
     <script src="/components/case-study-slider.js?v=3"></script>
 
 
@@ -3938,6 +3953,7 @@
     <script src="/assets/js/calendly-popup.js?v=3"></script>
     <script src="/assets/js/button-fill.js?v=3"></script>
     <script src="/assets/js/hero-fx.js?v=1"></script>
+    <script src="/assets/js/turnstile.js?v=1"></script>
 
     <script src="/components/cta-logo-grid.js?v=3"></script>
     <script src="/components/testimonials-slider.js"></script>

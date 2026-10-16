@@ -45,6 +45,8 @@ CREATE TABLE IF NOT EXISTS `blogs` (
     `reading_time` VARCHAR(50) DEFAULT '5 min',
     `meta_title` VARCHAR(255) NULL,
     `meta_description` TEXT NULL,
+    `focus_keyword` VARCHAR(255) NULL,
+    `seo_score` TINYINT UNSIGNED NULL,
     `published_at` DATETIME NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
