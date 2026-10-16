@@ -1,5 +1,6 @@
 import { query } from '../lib/db.js';
 import { comparePassword, generateToken, authenticateAdmin } from '../lib/auth.js';
+import { verifyTurnstile } from '../lib/turnstile.js';
 
 export default async function authHandler(req, res, pathname) {
     if (pathname === '/api/auth/login' && req.method === 'POST') {
@@ -7,6 +8,12 @@ export default async function authHandler(req, res, pathname) {
 
         if (!username || !password) {
             return res.status(400).json({ error: 'Username and password are required' });
+        }
+
+        // Cloudflare Turnstile (skipped when the keys aren't configured)
+        const humanCheck = await verifyTurnstile(req.body.turnstileToken, req);
+        if (!humanCheck.success) {
+            return res.status(400).json({ error: 'The security check failed. Please try again.' });
         }
 
         try {

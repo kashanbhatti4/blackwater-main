@@ -1,3 +1,5 @@
+import { verifyTurnstile } from '../lib/turnstile.js';
+
 export default async function handler(req, res) {
     // Enable CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -15,6 +17,12 @@ export default async function handler(req, res) {
 
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    // Cloudflare Turnstile (skipped when the keys aren't configured)
+    const humanCheck = await verifyTurnstile(req.body && req.body.turnstileToken, req);
+    if (!humanCheck.success) {
+        return res.status(400).json({ error: 'Please complete the security check and try again.' });
     }
     
     const isAudit = req.body.type === 'audit' || Boolean(req.body.company && req.body.website);

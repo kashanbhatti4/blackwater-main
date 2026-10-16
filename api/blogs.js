@@ -3,6 +3,51 @@ import { authenticateAdmin } from '../lib/auth.js';
 import { getUniqueSlug, toSlug } from '../lib/slugify.js';
 import { deleteUploadedImage } from '../lib/upload-handler.js';
 
+// ---------------------------------------------------------
+// SEO columns (focus_keyword, seo_score) are added on first use, so an existing
+// database needs no manual migration. If the database user can't ALTER the table,
+// blogs still save without them (see database/migrations/2026-10-16-seo-fields.sql).
+// ---------------------------------------------------------
+let seoColumns = { ready: null, checkedAt: 0 };
+
+export async function hasSeoColumns() {
+    const retryAfterMs = 10 * 60 * 1000;
+    if (seoColumns.ready === true) return true;
+    if (seoColumns.ready === false && Date.now() - seoColumns.checkedAt < retryAfterMs) return false;
+    try {
+        const columns = await query("SHOW COLUMNS FROM blogs WHERE Field IN ('focus_keyword', 'seo_score')");
+        const have = new Set(columns.map(c => c.Field));
+        if (!have.has('focus_keyword')) {
+            await query('ALTER TABLE blogs ADD COLUMN focus_keyword VARCHAR(255) NULL AFTER meta_description');
+        }
+        if (!have.has('seo_score')) {
+            await query('ALTER TABLE blogs ADD COLUMN seo_score TINYINT UNSIGNED NULL AFTER focus_keyword');
+        }
+        seoColumns = { ready: true, checkedAt: Date.now() };
+    } catch (error) {
+        console.error('SEO columns unavailable (run database/migrations/2026-10-16-seo-fields.sql):', error.message);
+        seoColumns = { ready: false, checkedAt: Date.now() };
+    }
+    return seoColumns.ready;
+}
+
+function cleanKeyword(value) {
+    if (typeof value !== 'string') return null;
+    const keyword = value.trim().replace(/\s+/g, ' ').slice(0, 255);
+    return keyword || null;
+}
+
+function cleanScore(value) {
+    const score = parseInt(value, 10);
+    return Number.isFinite(score) ? Math.max(0, Math.min(100, score)) : null;
+}
+
+// "N min" from the article HTML (225 words a minute), used when the editor didn't send one
+function readingTimeFor(html) {
+    const words = String(html || '').replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').split(/\s+/).filter(Boolean).length;
+    return `${Math.max(1, Math.round(words / 225))} min`;
+}
+
 /**
  * Main blogs API dispatcher
  */
@@ -116,9 +161,11 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             category_id,
             category_name,
             status = 'draft',
-            reading_time = '5 min',
+            reading_time,
             meta_title,
             meta_description,
+            focus_keyword,
+            seo_score,
             published_at,
             tags = []
         } = req.body || {};
@@ -138,13 +185,12 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 ? (published_at ? new Date(published_at) : new Date())
                 : (published_at ? new Date(published_at) : null);
 
-            const result = await query(`
-                INSERT INTO blogs (
-                    title, slug, excerpt, content, featured_image,
-                    category_id, category_name, status, reading_time,
-                    meta_title, meta_description, published_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `, [
+            const columns = [
+                'title', 'slug', 'excerpt', 'content', 'featured_image',
+                'category_id', 'category_name', 'status', 'reading_time',
+                'meta_title', 'meta_description', 'published_at'
+            ];
+            const values = [
                 title.trim(),
                 finalSlug,
                 excerpt || null,
@@ -153,11 +199,20 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 category_id || null,
                 category_name || null,
                 finalStatus,
-                reading_time || '5 min',
+                reading_time || readingTimeFor(content),
                 meta_title || title.trim(),
                 meta_description || excerpt || null,
                 finalPublishedAt
-            ]);
+            ];
+            if (await hasSeoColumns()) {
+                columns.push('focus_keyword', 'seo_score');
+                values.push(cleanKeyword(focus_keyword), cleanScore(seo_score));
+            }
+
+            const result = await query(
+                `INSERT INTO blogs (${columns.join(', ')}) VALUES (${columns.map(() => '?').join(', ')})`,
+                values
+            );
 
             const blogId = result.insertId;
 
@@ -246,6 +301,8 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 reading_time,
                 meta_title,
                 meta_description,
+                focus_keyword,
+                seo_score,
                 published_at,
                 tags = [],
                 delete_previous_image
@@ -276,36 +333,31 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                     finalPublishedAt = new Date(published_at);
                 }
 
-                await query(`
-                    UPDATE blogs SET
-                        title = ?,
-                        slug = ?,
-                        excerpt = ?,
-                        content = ?,
-                        featured_image = ?,
-                        category_id = ?,
-                        category_name = ?,
-                        status = ?,
-                        reading_time = ?,
-                        meta_title = ?,
-                        meta_description = ?,
-                        published_at = ?
-                    WHERE id = ?
-                `, [
-                    title !== undefined ? title.trim() : oldBlog.title,
-                    finalSlug,
-                    excerpt !== undefined ? excerpt : oldBlog.excerpt,
-                    content !== undefined ? content : oldBlog.content,
-                    featured_image !== undefined ? featured_image : oldBlog.featured_image,
-                    category_id !== undefined ? category_id : oldBlog.category_id,
-                    category_name !== undefined ? category_name : oldBlog.category_name,
-                    finalStatus,
-                    reading_time !== undefined ? reading_time : oldBlog.reading_time,
-                    meta_title !== undefined ? meta_title : oldBlog.meta_title,
-                    meta_description !== undefined ? meta_description : oldBlog.meta_description,
-                    finalPublishedAt,
-                    blogId
-                ]);
+                const finalContent = content !== undefined ? content : oldBlog.content;
+                const assignments = {
+                    title: title !== undefined ? title.trim() : oldBlog.title,
+                    slug: finalSlug,
+                    excerpt: excerpt !== undefined ? excerpt : oldBlog.excerpt,
+                    content: finalContent,
+                    featured_image: featured_image !== undefined ? featured_image : oldBlog.featured_image,
+                    category_id: category_id !== undefined ? category_id : oldBlog.category_id,
+                    category_name: category_name !== undefined ? category_name : oldBlog.category_name,
+                    status: finalStatus,
+                    reading_time: reading_time || (content !== undefined ? readingTimeFor(finalContent) : oldBlog.reading_time),
+                    meta_title: meta_title !== undefined ? meta_title : oldBlog.meta_title,
+                    meta_description: meta_description !== undefined ? meta_description : oldBlog.meta_description,
+                    published_at: finalPublishedAt
+                };
+                if (await hasSeoColumns()) {
+                    if (focus_keyword !== undefined) assignments.focus_keyword = cleanKeyword(focus_keyword);
+                    if (seo_score !== undefined) assignments.seo_score = cleanScore(seo_score);
+                }
+
+                const fields = Object.keys(assignments);
+                await query(
+                    `UPDATE blogs SET ${fields.map(f => `${f} = ?`).join(', ')} WHERE id = ?`,
+                    [...fields.map(f => assignments[f]), blogId]
+                );
 
                 if (Array.isArray(tags)) {
                     await syncBlogTags(blogId, tags);
@@ -378,7 +430,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
 /**
  * Synchronize tags for a given blog ID
  */
-async function syncBlogTags(blogId, tags) {
+export async function syncBlogTags(blogId, tags) {
     await query('DELETE FROM blog_tags WHERE blog_id = ?', [blogId]);
 
     for (const rawTag of tags) {

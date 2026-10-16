@@ -2322,25 +2322,61 @@ section#free-audit.tp_tool_band > .u-section-spacer { display: none; }
 .tp_step {
   display: flex;
   flex-direction: column;
-  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  padding: clamp(1.6rem, 2.5vw, 2.25rem);
   border: 1px solid #2A2B25;
   border-radius: 18px;
   background: #0E100F;
+  transition: border-color 0.3s ease;
 }
 
 .tp_band--base .tp_step { background: #131615; }
 
-.tp_step_num {
-  margin-bottom: 1.25rem;
-  color: #FFE32A;
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.08em;
+@media (hover: hover) {
+  .tp_step:hover { border-color: rgba(255, 227, 42, 0.35); }
 }
 
+/* Icon tile on the left, outlined step number on the right */
+.tp_step_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+.tp_step_icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid rgba(255, 227, 42, 0.28);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 227, 42, 0.18), rgba(255, 227, 42, 0.04) 70%),
+    #121513;
+  color: #FFE32A;
+}
+
+.tp_step_icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.tp_step_num {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 252, 225, 0.3);
+  font-family: var(--_typography---font--neue-haas-display-pro-black);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Headings and paragraphs are trimmed to the letter height, so this gap is wider than it looks */
 .tp_step h3 {
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.25rem;
   color: #FFFCE1;
   font-family: var(--_typography---font--neue-haas-display-pro-black);
   font-size: clamp(1.25rem, 1.6vw, 1.5rem);
@@ -2349,7 +2385,7 @@ section#free-audit.tp_tool_band > .u-section-spacer { display: none; }
   letter-spacing: -0.01em;
 }
 
-.tp_step p { margin: 0; color: #8C8A80; font-size: 1rem; line-height: 1.55; }
+.tp_step p { margin: 0; color: #8C8A80; font-size: 1rem; line-height: 1.6; }
 
 /* FAQ */
 .tp_faq_grid {
@@ -2425,9 +2461,12 @@ section#free-audit.tp_tool_band > .u-section-spacer { display: none; }
   gap: clamp(1rem, 2vw, 1.5rem);
 }
 
+/* Copy on the left, the tool's illustration on the right */
 .tp_tool_link {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: clamp(1.25rem, 3vw, 2.5rem);
   padding: clamp(1.75rem, 3vw, 2.5rem);
   border: 1px solid #2A2B25;
   border-radius: 20px;
@@ -2461,9 +2500,49 @@ section#free-audit.tp_tool_band > .u-section-spacer { display: none; }
 
 .tp_tool_go svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
 
+.tp_tool_body {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+}
+
+.tp_tool_art {
+  display: grid;
+  place-items: center;
+  width: clamp(7.5rem, 11vw, 10.5rem);
+  aspect-ratio: 1;
+  border: 1px solid #22241F;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 227, 42, 0.13), rgba(255, 227, 42, 0) 66%),
+    #121513;
+  transition: border-color 0.3s ease;
+}
+
+.tp_tool_art svg {
+  width: 80%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @media (hover: hover) {
   .tp_tool_link:hover { border-color: rgba(255, 227, 42, 0.45); transform: translateY(-4px); }
   .tp_tool_link:hover .tp_tool_go svg { transform: translateX(4px); }
+  .tp_tool_link:hover .tp_tool_art { border-color: rgba(255, 227, 42, 0.3); }
+  .tp_tool_link:hover .tp_tool_art svg { transform: translateY(-3px) scale(1.05); }
+}
+
+@media screen and (max-width: 991px) {
+  .tp_tool_art { width: 6.5rem; border-radius: 14px; }
+}
+
+/* Where the cards are narrow (two-up tablet, small phones) the illustration sits above the copy */
+@media screen and (min-width: 768px) and (max-width: 991px), screen and (max-width: 479px) {
+  .tp_tool_link { grid-template-columns: minmax(0, 1fr); row-gap: 1.25rem; }
+  .tp_tool_art { order: -1; width: 5rem; border-radius: 12px; }
 }
 
 @media screen and (max-width: 991px) {
@@ -2878,8 +2957,24 @@ footer .footer_reviews_mini .footer_g_reviews_count {
   }
 }
 
-/* Footer: one muted text colour for every secondary line, and a smaller logo */
-footer.footer_wrap .footer_ref_col_title,
+/* Footer: links, contact details and every secondary line in one muted colour (#87877A);
+   column headings a step brighter so they read as headings. Icons stay yellow, hover goes yellow. */
+footer.footer_wrap .footer_ref_col_title {
+  color: #C4C2AE !important;
+}
+
+footer.footer_wrap .footer_ref_links a,
+footer.footer_wrap .footer_contact_item {
+  color: #87877A;
+}
+
+footer.footer_wrap .footer_ref_links a:hover,
+footer.footer_wrap .footer_ref_links a:focus-visible,
+footer.footer_wrap .footer_contact_item:hover,
+footer.footer_wrap .footer_contact_item:focus-visible {
+  color: #FFE32A;
+}
+
 footer.footer_wrap .footer_news_text,
 footer.footer_wrap .footer_ref_grid > div:first-child > p,
 footer.footer_wrap .footer_ref_bottom_bar,
@@ -2904,4 +2999,19 @@ footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
   footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
     height: 4rem !important;
   }
+}
+
+/* Cloudflare Turnstile (assets/js/turnstile.js): hidden until the widget renders, which only
+   happens once the keys are configured on the server */
+.bw-turnstile:not(.is-active) {
+  display: none;
+}
+
+.bw-turnstile.is-active {
+  width: 100%;
+  min-height: 65px;
+}
+
+.custom_contact_form .bw-turnstile.is-active {
+  margin-bottom: 1.5rem;
 }

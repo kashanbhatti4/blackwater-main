@@ -10,6 +10,8 @@ import blogsHandler from './api/blogs.js';
 import categoriesHandler from './api/categories.js';
 import uploadHandler from './api/upload.js';
 import googleReviewsHandler from './api/google-reviews.js';
+import turnstileConfigHandler from './api/turnstile-config.js';
+import { importPendingPosts } from './lib/content-import.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -118,6 +120,11 @@ const server = http.createServer(async (req, res) => {
                 // Blogs Routes
                 if (pathname.startsWith('/api/blogs')) {
                     return await blogsHandler(req, res, pathname, parsedUrl.searchParams);
+                }
+
+                // Cloudflare Turnstile public site key
+                if (pathname === '/api/turnstile-config') {
+                    return await turnstileConfigHandler(req, res);
                 }
 
                 // Google Reviews Dynamic Endpoint
@@ -289,6 +296,11 @@ function serveStaticFile(filePath, res) {
 }
 
 server.listen(PORT, () => {
+    // Publish any new posts from database/posts/ (each file only once)
+    importPendingPosts()
+        .then(({ imported }) => { if (imported) console.log(`Blog import: ${imported} new post(s) published`); })
+        .catch(error => console.error('Blog import skipped:', error.message));
+
     console.log(`Server running at http://localhost:${PORT}/`);
     console.log(`Blog Admin Dashboard: http://localhost:${PORT}/admin`);
     console.log(`Public Blogs: http://localhost:${PORT}/blogs`);

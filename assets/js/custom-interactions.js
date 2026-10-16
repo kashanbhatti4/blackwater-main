@@ -109,6 +109,7 @@ function initAfterEnterFunctions(next) {
   updateActiveNavLink();
   initWhatsAppButton();
   initGoogleReviewsWidget(nextPage);
+  if (window.bwTurnstile) window.bwTurnstile.mount(nextPage);
 
   if (typeof gtag === 'function') {
     gtag('config', 'G-RQ8PC99GKB', {

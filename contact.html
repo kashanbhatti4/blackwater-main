@@ -36,7 +36,7 @@
     <meta content="summary_large_image" name="twitter:card" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
-    <link href="/assets/css/webflow.css?v=93" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/webflow.css?v=99" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         ! function (o, c) {
             var n = c.documentElement,
@@ -2255,6 +2255,8 @@
                                             placeholder="Tell us about your project, goals, and budget..." rows="4"
                                             required></textarea>
                                     </div>
+                                    <!-- Cloudflare Turnstile (rendered by /assets/js/turnstile.js when keys are configured) -->
+                                    <div class="bw-turnstile" data-turnstile data-turnstile-action="contact"></div>
                                     <button type="submit" id="submit-btn" class="form_submit_button">
                                         <span class="btn_text">SEND MESSAGE</span>
                                         <span class="btn_icon">→</span>
@@ -2279,9 +2281,14 @@
                                 </div>
 
                                 <script type="text/javascript">
-                                    document.addEventListener('DOMContentLoaded', function () {
+                                    // Runs straight away when the page arrives through a page transition
+                                    (function (init) {
+                                        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+                                        else init();
+                                    })(function () {
                                         const form = document.getElementById('contact-form');
-                                        if (!form) return;
+                                        if (!form || form.dataset.bound) return;
+                                        form.dataset.bound = '1';
 
                                         // Modal elements & handlers
                                         const modal = document.getElementById('contact-success-modal');
@@ -2343,6 +2350,14 @@
                                             const status = document.getElementById('form-status');
                                             const btnText = btn.querySelector('.btn_text');
 
+                                            const turnstileToken = window.bwTurnstile ? window.bwTurnstile.token(form) : '';
+                                            if (window.bwTurnstile && window.bwTurnstile.required(form) && !turnstileToken) {
+                                                status.style.display = 'block';
+                                                status.textContent = 'Please complete the security check.';
+                                                status.className = 'form_status_msg is-error';
+                                                return;
+                                            }
+
                                             btnText.textContent = 'SENDING...';
                                             btn.disabled = true;
                                             status.style.display = 'none';
@@ -2352,7 +2367,8 @@
                                                 name: document.getElementById('name').value,
                                                 email: document.getElementById('email').value,
                                                 service: serviceInput.value,
-                                                message: document.getElementById('message').value
+                                                message: document.getElementById('message').value,
+                                                turnstileToken: turnstileToken
                                             };
 
                                             try {
@@ -2384,6 +2400,7 @@
                                             } finally {
                                                 btnText.textContent = 'SEND MESSAGE';
                                                 btn.disabled = false;
+                                                if (window.bwTurnstile) window.bwTurnstile.reset(form);
                                             }
                                         });
                                     });
@@ -2903,7 +2920,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js?v=2"></script>
+    <script src="/assets/js/custom-interactions.js?v=3"></script>
 
 
 
@@ -2970,6 +2987,7 @@
     <script src="/assets/js/calendly-popup.js?v=3"></script>
     <script src="/assets/js/button-fill.js?v=3"></script>
     <script src="/assets/js/hero-fx.js?v=1"></script>
+    <script src="/assets/js/turnstile.js?v=1"></script>
 
 </body>
 
