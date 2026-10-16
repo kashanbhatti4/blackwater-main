@@ -7494,9 +7494,10 @@
                             }
                         }
 
-                        /* Article grid: image-only cards; on hover a dark gradient rises with the
-                           title, category and read time. Touch screens show the details all the time.
-                           Posts without a featured image get a branded cover with the title. */
+                        /* Article cards. Desktop: four cards in a row at one height; hovering a card
+                           widens it while the others narrow, and the arrow opens into "Read Article".
+                           Image cards show the title and meta on a dark gradient on hover; touch screens
+                           always show them. Posts without a featured image get a branded cover. */
                         .journal_list {
                             display: grid;
                             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -7507,6 +7508,7 @@
                             position: relative;
                             display: block;
                             aspect-ratio: 4 / 5;
+                            min-width: 0;
                             overflow: hidden;
                             isolation: isolate;
                             border-radius: 18px;
@@ -7538,16 +7540,17 @@
                             display: flex;
                             flex-direction: column;
                             gap: 0.9rem;
-                            padding: clamp(1.1rem, 1.6vw, 1.5rem);
-                            transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                            padding: clamp(1.1rem, 1.6vw, 1.6rem);
+                            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                         }
                         .journal_card_title {
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
                             -webkit-line-clamp: 4;
                             overflow: hidden;
+                            max-width: 34rem;
                             color: #FFFCE1;
-                            font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+                            font-size: clamp(1.1rem, 1.35vw, 1.5rem);
                             font-weight: 600;
                             line-height: 1.25;
                             letter-spacing: -0.01em;
@@ -7575,21 +7578,34 @@
                             font-size: 0.8rem;
                             white-space: nowrap;
                         }
+                        /* Yellow arrow, always visible; opens into "Read Article" on hover */
                         .journal_card_arrow {
                             position: absolute;
                             top: clamp(0.9rem, 1.3vw, 1.2rem);
                             right: clamp(0.9rem, 1.3vw, 1.2rem);
-                            z-index: 2;
-                            display: grid;
-                            place-items: center;
-                            width: 2.6rem;
+                            z-index: 3;
+                            display: flex;
+                            align-items: center;
                             height: 2.6rem;
-                            border-radius: 50%;
+                            padding: 0 0.75rem;
+                            border-radius: 999px;
                             background: #FFE32A;
                             color: #0E100F;
-                            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+                            transition: padding 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                        }
+                        .journal_card_cta {
+                            max-width: 0;
+                            overflow: hidden;
+                            opacity: 0;
+                            font-family: 'Inter', sans-serif;
+                            font-size: 0.85rem;
+                            font-weight: 600;
+                            white-space: nowrap;
+                            transition: max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.6s cubic-bezier(0.16, 1, 0.3, 1);
                         }
                         .journal_card_arrow svg {
+                            flex: none;
                             width: 1.1rem;
                             height: 1.1rem;
                             transform: rotate(-45deg);
@@ -7597,33 +7613,6 @@
                         .journal_card:focus-visible {
                             outline: 2px solid #FFE32A;
                             outline-offset: 4px;
-                        }
-                        /* Mouse: only the image until hover (or keyboard focus) */
-                        @media (hover: hover) and (pointer: fine) {
-                            .journal_card:not(.is-cover) .journal_card_shade {
-                                opacity: 0;
-                            }
-                            .journal_card:not(.is-cover) .journal_card_body {
-                                opacity: 0;
-                                transform: translateY(14px);
-                            }
-                            .journal_card_arrow {
-                                opacity: 0;
-                                transform: scale(0.6);
-                            }
-                            .journal_card:hover .journal_card_img,
-                            .journal_card:focus-visible .journal_card_img {
-                                transform: scale(1.06);
-                            }
-                            .journal_card:hover .journal_card_shade,
-                            .journal_card:focus-visible .journal_card_shade,
-                            .journal_card:hover .journal_card_body,
-                            .journal_card:focus-visible .journal_card_body,
-                            .journal_card:hover .journal_card_arrow,
-                            .journal_card:focus-visible .journal_card_arrow {
-                                opacity: 1;
-                                transform: none;
-                            }
                         }
                         /* No featured image yet: a branded cover that always shows the title */
                         .journal_card.is-cover {
@@ -7656,9 +7645,66 @@
                             line-height: 1;
                             letter-spacing: -0.03em;
                         }
-                        @media (hover: hover) {
+                        /* Desktop: one row at a fixed height so cards can trade width */
+                        @media (min-width: 1101px) {
+                            .journal_list {
+                                display: flex;
+                                height: clamp(380px, 30vw, 540px);
+                            }
+                            .journal_card {
+                                flex: 1 1 0;
+                                height: 100%;
+                                aspect-ratio: auto;
+                                transition: flex-grow 0.75s cubic-bezier(0.65, 0, 0.35, 1), border-color 0.4s ease;
+                            }
+                        }
+                        /* Mouse: image only until hover; the hovered card widens and opens its arrow */
+                        @media (hover: hover) and (pointer: fine) {
+                            .journal_card:not(.is-cover) .journal_card_shade {
+                                opacity: 0;
+                            }
+                            .journal_card:not(.is-cover) .journal_card_body {
+                                opacity: 0;
+                                transform: translateY(14px);
+                            }
+                            .journal_card:hover .journal_card_img,
+                            .journal_card:focus-visible .journal_card_img {
+                                transform: scale(1.04);
+                            }
+                            .journal_card:hover .journal_card_shade,
+                            .journal_card:focus-visible .journal_card_shade,
+                            .journal_card:hover .journal_card_body,
+                            .journal_card:focus-visible .journal_card_body {
+                                opacity: 1;
+                                transform: none;
+                                transition-delay: 0.15s;
+                            }
+                            .journal_card:hover .journal_card_arrow,
+                            .journal_card:focus-visible .journal_card_arrow {
+                                padding: 0 0.85rem 0 1.15rem;
+                            }
+                            .journal_card:hover .journal_card_cta,
+                            .journal_card:focus-visible .journal_card_cta {
+                                max-width: 8rem;
+                                margin-right: 0.55rem;
+                                opacity: 1;
+                            }
                             .journal_card.is-cover:hover {
                                 border-color: rgba(255, 227, 42, 0.45);
+                            }
+                        }
+                        @media (min-width: 1101px) and (hover: hover) and (pointer: fine) {
+                            .journal_list:hover .journal_card,
+                            .journal_list:focus-within .journal_card {
+                                flex-grow: 0.75;
+                            }
+                            .journal_list .journal_card:hover,
+                            .journal_list .journal_card:focus-visible {
+                                flex-grow: 2.2;
+                            }
+                            /* Narrowed covers show just their number while another card is open */
+                            .journal_list:hover .journal_card.is-cover:not(:hover) .journal_card_body {
+                                opacity: 0;
                             }
                         }
                         /* Tablet: two by two, wider cards */
@@ -7687,6 +7733,15 @@
                             .journal_card {
                                 aspect-ratio: 4 / 5;
                                 scroll-snap-align: start;
+                            }
+                        }
+                        @media (prefers-reduced-motion: reduce) {
+                            .journal_card,
+                            .journal_card_img,
+                            .journal_card_body,
+                            .journal_card_arrow,
+                            .journal_card_cta {
+                                transition: none !important;
                             }
                         }
                         .journal_subtitle {
@@ -7773,7 +7828,7 @@
                                                 return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_card' + (blog.featured_image ? '' : ' is-cover') + '" data-barba-prevent>' +
                                                     image +
                                                     '<span class="journal_card_shade" aria-hidden="true"></span>' +
-                                                    '<span class="journal_card_arrow" aria-hidden="true">' + arrowSvg + '</span>' +
+                                                    '<span class="journal_card_arrow" aria-hidden="true"><span class="journal_card_cta">Read Article</span>' + arrowSvg + '</span>' +
                                                     '<span class="journal_card_body">' +
                                                     '<span class="journal_card_title">' + esc(blog.title || '') + '</span>' +
                                                     '<span class="journal_card_meta"><span class="journal_cat">' + esc(category) + '</span><span class="journal_time">' + esc(readingTime) + '</span></span>' +
