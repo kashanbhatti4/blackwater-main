@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/css/admin.css?v=8">
+    <link rel="stylesheet" href="/admin/css/admin.css?v=9">
 </head>
 <body>
 
@@ -213,15 +213,6 @@
                                         <button type="button" id="slug-reset-btn" class="cms-link-btn" hidden>Match title</button>
                                     </div>
 
-                                    <div class="cms-summary">
-                                        <label class="cms-label" for="blog-excerpt-input">Summary</label>
-                                        <textarea id="blog-excerpt-input" class="cms-summary-input" rows="2" placeholder="One or two sentences that sell the article. Shown on blog cards and used as the Google description if you don't write one."></textarea>
-                                        <div class="cms-field-meta">
-                                            <button type="button" id="excerpt-generate-btn" class="cms-link-btn">Use the first paragraph</button>
-                                            <span id="excerpt-count" class="cms-count">0</span>
-                                        </div>
-                                    </div>
-
                                     <!-- Rich text editor -->
                                     <div id="rich-editor" class="cms-rich">
                                         <div class="cms-rich-toolbar" role="toolbar" aria-label="Formatting">
@@ -268,7 +259,7 @@
                                 <section class="cms-card">
                                     <div class="cms-card-head">
                                         <h3>Search appearance</h3>
-                                        <p>How this article shows up on Google. Leave blank to use the title and summary.</p>
+                                        <p>How this article shows up on Google. Leave blank to use the title and the first paragraph.</p>
                                     </div>
 
                                     <div class="cms-serp">
@@ -298,7 +289,7 @@
                                             <label class="cms-label" for="blog-meta-desc">Meta description</label>
                                             <span id="meta-desc-count" class="cms-count">0 / 160</span>
                                         </div>
-                                        <textarea id="blog-meta-desc" class="cms-textarea" rows="3" placeholder="Uses the summary"></textarea>
+                                        <textarea id="blog-meta-desc" class="cms-textarea" rows="3" placeholder="Uses the first paragraph"></textarea>
                                         <div class="cms-meter"><span id="meta-desc-meter"></span></div>
                                     </div>
                                 </section>
@@ -419,7 +410,7 @@
     <script src="/admin/js/admin-api.js?v=2"></script>
     <script src="/admin/js/admin-ui.js?v=1"></script>
     <script src="/admin/js/seo-analyzer.js?v=1"></script>
-    <script src="/admin/js/rich-editor.js?v=3"></script>
-    <script src="/admin/js/admin-app.js?v=3"></script>
+    <script src="/admin/js/rich-editor.js?v=4"></script>
+    <script src="/admin/js/admin-app.js?v=5"></script>
 </body>
 </html>

@@ -1094,6 +1094,8 @@ body.cms-editing .cms-content {
 .cms-title-input {
     display: block;
     width: 100%;
+    min-height: 1.2em;
+    field-sizing: content;
     padding: 0;
     border: 0;
     background: transparent;

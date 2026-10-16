@@ -42,6 +42,28 @@ function cleanScore(value) {
     return Number.isFinite(score) ? Math.max(0, Math.min(100, score)) : null;
 }
 
+// Excerpt = the article's first paragraph (blog cards cut it to three lines)
+function decodeEntities(text) {
+    return text
+        .replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+        .replace(/&#0?39;|&#x27;|&apos;/g, "'").replace(/&amp;/g, '&');
+}
+
+function shorten(text, max) {
+    if (!text || text.length <= max) return text || '';
+    const cut = text.slice(0, max - 1);
+    const space = cut.lastIndexOf(' ');
+    return (space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:.\-–]+$/, '') + '…';
+}
+
+function excerptFor(html) {
+    for (const match of String(html || '').matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)) {
+        const text = decodeEntities(match[1].replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+        if (text) return shorten(text, 220);
+    }
+    return null;
+}
+
 // "N min" from the article HTML (225 words a minute), used when the editor didn't send one
 function readingTimeFor(html) {
     const words = String(html || '').replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').split(/\s+/).filter(Boolean).length;
@@ -193,7 +215,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             const values = [
                 title.trim(),
                 finalSlug,
-                excerpt || null,
+                excerpt || excerptFor(content),
                 content,
                 featured_image || null,
                 category_id || null,
@@ -201,7 +223,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 finalStatus,
                 reading_time || readingTimeFor(content),
                 meta_title || title.trim(),
-                meta_description || excerpt || null,
+                meta_description || shorten(excerpt || excerptFor(content) || '', 158) || null,
                 finalPublishedAt
             ];
             if (await hasSeoColumns()) {
@@ -337,7 +359,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 const assignments = {
                     title: title !== undefined ? title.trim() : oldBlog.title,
                     slug: finalSlug,
-                    excerpt: excerpt !== undefined ? excerpt : oldBlog.excerpt,
+                    excerpt: excerpt || (content !== undefined ? excerptFor(finalContent) : oldBlog.excerpt),
                     content: finalContent,
                     featured_image: featured_image !== undefined ? featured_image : oldBlog.featured_image,
                     category_id: category_id !== undefined ? category_id : oldBlog.category_id,

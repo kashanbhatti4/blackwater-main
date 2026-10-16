@@ -1107,10 +1107,6 @@
                     </div>
                 ` : '';
 
-                const excerptHtml = blog.excerpt ? `
-                    <div class="article_lead_excerpt">${escapeHtml(blog.excerpt)}</div>
-                ` : '';
-
                 const tagsHtml = (blog.tags && blog.tags.length > 0) ? `
                     <div class="article_tags_wrap">
                         ${blog.tags.map(t => `<span class="article_tag_item">#${escapeHtml(t.name)}</span>`).join('')}
@@ -1131,7 +1127,6 @@
                     <h1 class="article_h1">${escapeHtml(blog.title)}</h1>
 
                     ${heroImgHtml}
-                    ${excerptHtml}
 
                     <div class="article_divider"></div>
 
