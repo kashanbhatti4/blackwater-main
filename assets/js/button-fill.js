@@ -11,10 +11,12 @@
     { hover: '.bw-calendly-btn' },
     { hover: '.footer_cta_btn' },
     { hover: '.footer_ref_subscribe_btn' },
+    { hover: '.footer_news_btn' },
     { hover: '.service_content_button' },
     { hover: '.button_main_wrap', target: '.button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab' },
     { hover: '.form_submit_button' },
-    { hover: '.contact_modal_action_btn' }
+    { hover: '.contact_modal_action_btn' },
+    { hover: '.tp_ghost' }
   ];
   var HOVER_SELECTOR = BUTTONS.map(function (b) { return b.hover; }).join(',');
 

@@ -479,7 +479,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <!--$-->
-    <link href="/assets/css/webflow.css?v=81" rel="stylesheet" type="text/css">
+    <link href="/assets/css/webflow.css?v=93" rel="stylesheet" type="text/css">
     <!--/$-->
     <script type="text/javascript">
         ! function (o, c) {
@@ -3424,7 +3424,24 @@
                 </div>
 
                 <div class="main-section_contain u-container">
-                    <!-- Top 5 Columns Grid -->
+                    <!-- Newsletter: a slim strip that opens the footer -->
+                    <div class="footer_news">
+                        <div class="footer_news_intro">
+                            <span class="footer_news_icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                            </span>
+                            <div>
+                                <p class="footer_news_title">Stay in the loop</p>
+                                <p class="footer_news_text">Practical marketing insights for growing businesses. No spam.</p>
+                            </div>
+                        </div>
+                        <form class="footer_news_form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); return false;">
+                            <input type="email" name="email" placeholder="Your email address" required autocomplete="email"
+                                aria-label="Email address" class="footer_news_input">
+                            <button type="submit" class="footer_news_btn">Subscribe</button>
+                        </form>
+                    </div>
+                    <!-- Link columns -->
                     <div class="footer_ref_grid">
                         <!-- Column 1: Brand & Tagline -->
                         <div>
@@ -3462,7 +3479,17 @@
                             </ul>
                         </div>
 
-                        <!-- Column 4: GET IN TOUCH -->
+                        <!-- Column 4: FREE TOOLS -->
+                        <div>
+                            <div class="footer_ref_col_title">FREE TOOLS</div>
+                            <ul class="footer_ref_links">
+                                <li><a href="/tools/budget-planner">Budget Planner</a></li>
+                                <li><a href="/tools/platform-finder">Platform Finder</a></li>
+                                <li><a href="/tools/website-audit">Website Audit</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 5: GET IN TOUCH -->
                         <div>
                             <div class="footer_ref_col_title">GET IN TOUCH</div>
                             <ul class="footer_ref_links footer_ref_contact_list">
@@ -3524,176 +3551,21 @@
                             </ul>
                         </div>
 
-                        <!-- Column 5: STAY IN THE LOOP -->
-                        <div>
-                            <div class="footer_ref_col_title">STAY IN THE LOOP</div>
-                            <p style="font-size: 0.88rem; color: #7C7C70; margin-bottom: 1.25rem; line-height: 1.4;">
-                                Get practical insights, not spam.
-                            </p>
-                            <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); return false;"
-                                class="footer_ref_subscribe_box">
-                                <input type="email" placeholder="Your email address" required
-                                    class="footer_ref_subscribe_input">
-                                <button type="submit" class="footer_ref_subscribe_btn">Subscribe</button>
-                            </form>
+                    </div>
 
-                            <!-- Google Reviews Widget -->
-                            <style>
-                                .footer_g_reviews_widget {
-                                    margin-top: 1.25rem;
-                                    display: inline-flex;
-                                    align-items: center;
-                                    gap: 12px;
-                                    background: #131615;
-                                    border: 1px solid #2A2B25;
-                                    border-radius: 8px;
-                                    padding: 10px 14px;
-                                    text-decoration: none;
-                                    transition: all 0.25s ease;
-                                    box-sizing: border-box;
-                                    width: 100%;
-                                }
+                    <!-- Bottom Bar -->
+                    <div class="footer_ref_bottom_bar">
+                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
 
-                                .footer_g_reviews_widget:hover {
-                                    border-color: #3E4034;
-                                    background: #181B1A;
-                                    transform: translateY(-2px);
-                                    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-                                }
-
-                                .footer_g_reviews_icon {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    flex-shrink: 0;
-                                    width: 36px;
-                                    height: 36px;
-                                    border-radius: 50%;
-                                    background: #181B1A;
-                                    border: 1px solid #2A2B25;
-                                }
-
-                                .footer_g_reviews_content {
-                                    display: flex;
-                                    flex-direction: column;
-                                    gap: 2px;
-                                    min-width: 0;
-                                }
-
-                                .footer_g_reviews_top {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 6px;
-                                }
-
-                                .footer_g_reviews_score {
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 15px;
-                                    font-weight: 700;
-                                    color: #FFFCE1;
-                                    line-height: 1;
-                                }
-
-                                .footer_g_reviews_stars {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 2px;
-                                }
-
-                                .footer_g_reviews_stars svg {
-                                    width: 13px;
-                                    height: 13px;
-                                    display: block;
-                                }
-
-                                .footer_g_reviews_count {
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 11.5px;
-                                    font-weight: 600;
-                                    color: #A0A092;
-                                    margin-left: 2px;
-                                    line-height: 1;
-                                }
-
-                                .footer_g_reviews_label {
-                                    display: flex;
-                                    align-items: center;
-                                    gap: 4px;
-                                    font-family: 'Inter', sans-serif;
-                                    font-size: 11.5px;
-                                    font-weight: 500;
-                                    color: #8C8C80;
-                                    line-height: 1.2;
-                                    transition: color 0.2s ease;
-                                }
-
-                                .footer_g_reviews_widget:hover .footer_g_reviews_label {
-                                    color: #FFFCE1;
-                                }
-
-                                .footer_g_reviews_arrow {
-                                    font-size: clamp(14px, 1.5vw, 16px);
-                                    transition: transform 0.2s ease, color 0.2s ease;
-                                }
-
-                                .footer_g_reviews_widget:hover .footer_g_reviews_arrow {
-                                    transform: translateX(3px);
-                                    color: #FFE32A;
-                                }
-                            </style>
+                        <div class="footer_ref_socials_legal">
+                            <!-- Google reviews -->
                             <a href="https://share.google/MAAvyQ66KSrDkjbN4" target="_blank" rel="noopener noreferrer"
-                                class="footer_g_reviews_widget" data-barba-prevent aria-label="Review us on Google">
-                                <div class="footer_g_reviews_icon">
-                                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                                        <path fill="#4285F4"
-                                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" />
-                                        <path fill="#34A853"
-                                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" />
-                                        <path fill="#FBBC05"
-                                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" />
-                                        <path fill="#EA4335"
-                                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" />
-                                    </svg>
-                                </div>
-                                <div class="footer_g_reviews_content">
-                                    <div class="footer_g_reviews_top">
-                                        <span class="footer_g_reviews_score" id="g-reviews-score">5.0</span>
-                                        <div class="footer_g_reviews_stars" aria-label="5 out of 5 stars rating">
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC04"
-                                                aria-hidden="true">
-                                                <path
-                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                            </svg>
-                                        </div>
-                                        <span class="footer_g_reviews_count" id="g-reviews-count">(8)</span>
-                                    </div>
-                                    <div class="footer_g_reviews_label">
-                                        <span>Google Reviews</span>
-                                        <span class="footer_g_reviews_arrow">→</span>
-                                    </div>
-                                </div>
+                                class="footer_reviews_mini" data-barba-prevent aria-label="Read our Google reviews">
+                                <svg class="footer_reviews_mini_g" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" /><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.27 21.44 7.35 24 12 24z" /><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.03 0 12s.45 3.82 1.25 5.42l4.03-3.15z" /><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.56 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" /></svg>
+                                <span class="footer_g_reviews_score">5.0</span>
+                                <span class="footer_reviews_mini_stars" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg><svg viewBox="0 0 24 24" fill="#FBBC04" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg></span>
+                                <span class="footer_g_reviews_count">(8)</span>
                             </a>
-
                             <script type="text/javascript">
                                 (function () {
                                     fetch('/api/google-reviews')
@@ -3711,14 +3583,6 @@
                                         .catch(function () { });
                                 })();
                             </script>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Bar -->
-                    <div class="footer_ref_bottom_bar">
-                        <div class="footer_ref_copyright"><span>&copy; 2026 Blackwater Digital Marketing Ltd. All rights reserved.</span><span class="footer_ref_divider" aria-hidden="true"></span><nav class="footer_ref_legal_links" aria-label="Legal"><a href="/privacy-policy">Privacy Policy</a></nav></div>
-
-                        <div class="footer_ref_socials_legal">
                             <!-- Social Icons -->
                             <div class="footer_ref_social_icons">
                                 <!-- LinkedIn -->
@@ -3772,7 +3636,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js"></script>
+    <script src="/assets/js/custom-interactions.js?v=2"></script>
 
 
 
@@ -3847,7 +3711,8 @@
         </div>
     </div>
     <script src="/assets/js/calendly-popup.js?v=3"></script>
-    <script src="/assets/js/button-fill.js?v=1"></script>
+    <script src="/assets/js/button-fill.js?v=3"></script>
+    <script src="/assets/js/hero-fx.js?v=1"></script>
 
     <script src="/components/cta-logo-grid.js?v=3"></script>
 </body>

@@ -378,6 +378,12 @@ function debounceOnWidthChange(fn, ms) {
 // -----------------------------------------
 
 function initWhatsAppButton() {
+  // This script loads above the page's own WhatsApp markup, so wait for it to be parsed
+  // before checking; otherwise a second button gets added
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWhatsAppButton, { once: true });
+    return;
+  }
   if (document.getElementById('whatsapp-button')) return;
   const waWrap = document.createElement('div');
   waWrap.id = 'whatsapp-button';
