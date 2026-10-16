@@ -232,25 +232,41 @@ barba.hooks.afterLeave(() => {
 
 
 barba.hooks.afterEnter(data => {
-  // Run page functions
-  initAfterEnterFunctions(data.next.container);
+  // Run page functions. An error in one of them must not leave the page unable to scroll.
+  try {
+    initAfterEnterFunctions(data.next.container);
+  } catch (err) {
+    console.error('Page set-up error after transition:', err);
+  }
 
-  // Settle layout after fonts and render cycle settle
+  // Settle layout after fonts and render cycle settle (with a fallback if fonts never report ready)
+  let settled = false;
   const refreshLayout = () => {
-    if (hasLenis) {
+    if (settled) return;
+    settled = true;
+    if (hasLenis && lenis) {
       lenis.resize();
       lenis.start();
     }
     if (hasScrollTrigger) {
       ScrollTrigger.refresh();
     }
+    ensureScrollable();
   };
 
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(refreshLayout);
+    setTimeout(refreshLayout, 1500);
   } else {
     refreshLayout();
   }
+});
+
+// A page change always closes the mobile menu and releases its scroll lock
+barba.hooks.before(() => {
+  const navbar = document.querySelector('.simple-navbar');
+  if (navbar && navbar.classList.contains('is-open')) navbar.classList.remove('is-open');
+  document.body.classList.remove('no-scroll');
 });
 
 barba.init({
@@ -378,6 +394,51 @@ function debounceOnWidthChange(fn, ms) {
 // YOUR FUNCTIONS GO BELOW HERE
 // -----------------------------------------
 
+// -----------------------------------------
+// SCROLL SAFETY NET
+// The menu, the Calendly popup and the form confirmations lock page scrolling while open.
+// If a lock outlives what set it (a page change mid-way, an error), the page would freeze
+// on phones. This clears any lock nothing is holding: after page changes, when the tab is
+// shown again, and on the next touch.
+// -----------------------------------------
+function scrollLockHolders() {
+  return document.querySelector(
+    '.simple-navbar.is-open, .bw-calendly-popup.is-open, .contact_modal_overlay.is-open, .audit_modal_overlay.is-open'
+  );
+}
+
+function ensureScrollable() {
+  try {
+    if (scrollLockHolders()) return;
+    if (typeof barba !== 'undefined' && barba.transitions && barba.transitions.isRunning) return;
+    document.body.classList.remove('no-scroll');
+    if (document.body.style.overflow === 'hidden') document.body.style.overflow = '';
+    if (document.documentElement.style.overflow === 'hidden') document.documentElement.style.overflow = '';
+    // A page container left pinned by an interrupted transition
+    document.querySelectorAll('[data-barba="container"]').forEach(container => {
+      if (container.style.position === 'fixed') gsap.set(container, { clearProps: 'position,top,left,right' });
+    });
+    if (lenis && lenis.isStopped && typeof lenis.start === 'function') lenis.start();
+  } catch (err) {
+    console.error('ensureScrollable:', err);
+  }
+}
+
+(function initScrollSafetyNet() {
+  let last = 0;
+  const check = () => {
+    const now = Date.now();
+    if (now - last < 400) return;
+    last = now;
+    ensureScrollable();
+  };
+  document.addEventListener('touchstart', check, { passive: true, capture: true });
+  window.addEventListener('pageshow', ensureScrollable);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') ensureScrollable();
+  });
+})();
+
 function initWhatsAppButton() {
   // This script loads above the page's own WhatsApp markup, so wait for it to be parsed
   // before checking; otherwise a second button gets added
@@ -447,6 +508,11 @@ function initSimpleNavbar() {
   // Close when clicking nav links
   links.forEach(link => {
     link.addEventListener('click', closeMenu);
+  });
+
+  // ...and any other link in the navbar while the menu is open (logo, booking button)
+  navbar.addEventListener('click', e => {
+    if (navbar.classList.contains('is-open') && e.target.closest('a')) closeMenu();
   });
 }
 
