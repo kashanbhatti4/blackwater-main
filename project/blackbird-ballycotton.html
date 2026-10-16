@@ -2358,6 +2358,11 @@
                     pointer-events: none;
                 }
 
+                /* Up/down swipes on the before/after image scroll the page; sideways drags move the divider */
+                .slider_container {
+                    touch-action: pan-y;
+                }
+
                 .slider_handle {
                     position: absolute;
                     top: 0;
@@ -2366,7 +2371,7 @@
                     background: #FFE32A;
                     cursor: ew-resize;
                     z-index: 10;
-                    touch-action: none;
+                    touch-action: pan-y;
                 }
 
                 .slider_handle_button {
@@ -2383,7 +2388,7 @@
                     align-items: center;
                     justify-content: center;
                     cursor: grab;
-                    touch-action: none;
+                    touch-action: pan-y;
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
                     transition: transform 0.15s ease, background-color 0.15s ease;
                 }
@@ -2755,39 +2760,64 @@
                                         return Math.max(0, Math.min(100, pct));
                                     }
 
-                                    function onDragStart(e) {
-                                        if (e.button && e.button !== 0) return;
-                                        isDragging = true;
-                                        container.classList.add('is-dragging');
-                                        handle.classList.add('is-dragging');
-                                        updateSlider(getPercentageFromEvent(e));
-                                        if (e.cancelable) e.preventDefault();
-                                    }
+                                    // Pointer events with touch-action: pan-y on the slider: an up/down swipe scrolls the page
+                                    // as normal, a sideways drag moves the divider and a tap jumps it. Listeners sit on the slider
+                                    // itself (not the window), so they don't pile up across page transitions.
+                                    let activePointer = null;
+                                    let startX = 0;
+                                    let moved = false;
 
-                                    function onDragMove(e) {
-                                        if (!isDragging) return;
-                                        updateSlider(getPercentageFromEvent(e));
-                                        if (e.cancelable) e.preventDefault();
+                                    function percentAt(clientX) {
+                                        const rect = container.getBoundingClientRect();
+                                        return Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
                                     }
 
                                     function onDragEnd() {
-                                        if (isDragging) {
-                                            isDragging = false;
-                                            container.classList.remove('is-dragging');
-                                            handle.classList.remove('is-dragging');
-                                        }
+                                        activePointer = null;
+                                        isDragging = false;
+                                        container.classList.remove('is-dragging');
+                                        handle.classList.remove('is-dragging');
                                     }
 
-                                    // Drag & click directly on container or handle
-                                    container.addEventListener('mousedown', onDragStart);
-                                    window.addEventListener('mousemove', onDragMove);
-                                    window.addEventListener('mouseup', onDragEnd);
+                                    container.addEventListener('pointerdown', function (e) {
+                                        if (e.pointerType === 'mouse' && e.button !== 0) return;
+                                        activePointer = e.pointerId;
+                                        startX = e.clientX;
+                                        moved = false;
+                                        // A mouse drags straight away; a finger waits to see if it's a sideways drag or a scroll
+                                        if (e.pointerType === 'mouse') {
+                                            isDragging = true;
+                                            container.classList.add('is-dragging');
+                                            handle.classList.add('is-dragging');
+                                            updateSlider(percentAt(e.clientX));
+                                            try { container.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
+                                            e.preventDefault();
+                                        }
+                                    });
 
-                                    // Touch gestures for mobile/tablet
-                                    container.addEventListener('touchstart', onDragStart, { passive: false });
-                                    window.addEventListener('touchmove', onDragMove, { passive: false });
-                                    window.addEventListener('touchend', onDragEnd);
-                                    window.addEventListener('touchcancel', onDragEnd);
+                                    container.addEventListener('pointermove', function (e) {
+                                        if (e.pointerId !== activePointer) return;
+                                        if (!isDragging) {
+                                            if (Math.abs(e.clientX - startX) < 6) return;
+                                            isDragging = true;
+                                            container.classList.add('is-dragging');
+                                            handle.classList.add('is-dragging');
+                                            try { container.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
+                                        }
+                                        moved = true;
+                                        updateSlider(percentAt(e.clientX));
+                                    });
+
+                                    container.addEventListener('pointerup', function (e) {
+                                        if (e.pointerId !== activePointer) return;
+                                        if (!moved && e.pointerType !== 'mouse') updateSlider(percentAt(e.clientX)); // a tap
+                                        onDragEnd();
+                                    });
+                                    // The browser took the gesture over to scroll the page, or capture was lost
+                                    container.addEventListener('pointercancel', onDragEnd);
+                                    container.addEventListener('lostpointercapture', function (e) {
+                                        if (e.pointerId === activePointer) onDragEnd();
+                                    });
 
                                     // Range slider input sync
                                     if (range) {
@@ -3827,7 +3857,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
-    <script src="/assets/js/custom-interactions.js?v=3"></script>
+    <script src="/assets/js/custom-interactions.js?v=4"></script>
 
 
 
