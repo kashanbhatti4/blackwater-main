@@ -72,6 +72,11 @@ const server = http.createServer(async (req, res) => {
     // 1. API ROUTES
     // =========================================================
 
+    // Uploaded images, also reachable under /api/ (see lib/media.js)
+    if (pathname.startsWith('/api/uploads/blogs/') && (req.method === 'GET' || req.method === 'HEAD')) {
+        return serveUpload(pathname, req, res);
+    }
+
     // Special case: File Upload (must stream directly, do not buffer JSON body)
     if (pathname === '/api/upload') {
         if (req.method === 'POST') {
@@ -148,27 +153,7 @@ const server = http.createServer(async (req, res) => {
     // 2. PUBLIC UPLOADED ASSETS (/uploads/blogs/*)
     // =========================================================
     if (pathname.startsWith('/uploads/blogs/')) {
-        const filename = path.basename(pathname);
-        const filePath = path.join(UPLOADS_DIR, filename);
-
-        fs.stat(filePath, (err, stats) => {
-            if (err || !stats.isFile()) {
-                res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-                res.end('Image not found');
-                return;
-            }
-
-            const ext = path.extname(filePath).toLowerCase();
-            const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-            res.writeHead(200, {
-                'Content-Type': contentType,
-                'Cache-Control': 'public, max-age=86400, immutable'
-            });
-            const stream = fs.createReadStream(filePath);
-            stream.pipe(res);
-        });
-        return;
+        return serveUpload(pathname, req, res);
     }
 
     // =========================================================
@@ -293,6 +278,47 @@ function serveStaticFile(filePath, res) {
         res.writeHead(200, { 'Content-Type': contentType });
         const readStream = fs.createReadStream(filePath);
         readStream.pipe(res);
+    });
+}
+
+
+// Streams an uploaded image from UPLOADS_DIR (/uploads/blogs/<file> or /api/uploads/blogs/<file>).
+// When a local copy of the site uses the live database, images uploaded on the live site aren't
+// on this machine: with LIVE_SITE_URL set, those are fetched from the live site instead.
+function liveImageUrl(filename, req) {
+    const live = (process.env.LIVE_SITE_URL || '').replace(/^['"]|['"]$/g, '').trim().replace(/\/+$/, '');
+    if (!live) return null;
+    try {
+        if (new URL(live).host === req.headers.host) return null; // this is the live site
+    } catch (e) {
+        return null;
+    }
+    return `${live}/api/uploads/blogs/${encodeURIComponent(filename)}`;
+}
+
+function serveUpload(pathname, req, res) {
+    const filename = path.basename(pathname);
+    const filePath = path.join(UPLOADS_DIR, filename);
+    fs.stat(filePath, (err, stats) => {
+        if (err || !stats.isFile()) {
+            const live = liveImageUrl(filename, req);
+            if (live) {
+                res.writeHead(302, { Location: live, 'Cache-Control': 'no-store' });
+                res.end();
+                return;
+            }
+            res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+            res.end('Image not found');
+            return;
+        }
+        const contentType = MIME_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
+        res.writeHead(200, {
+            'Content-Type': contentType,
+            'Content-Length': stats.size,
+            'Cache-Control': 'public, max-age=31536000, immutable'
+        });
+        if (req.method === 'HEAD') return res.end();
+        fs.createReadStream(filePath).pipe(res);
     });
 }
 
