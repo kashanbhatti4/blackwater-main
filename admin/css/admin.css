@@ -1835,6 +1835,14 @@ body.cms-editing .cms-content {
     overflow: hidden;
 }
 
+.cms-upload-dropzone.is-missing {
+    border-color: rgba(240, 106, 90, 0.5);
+}
+
+.cms-upload-dropzone.is-missing #image-upload-prompt p {
+    color: #FFB4AA;
+}
+
 .cms-upload-dropzone.is-uploading {
     opacity: 0.6;
     pointer-events: none;
