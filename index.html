@@ -7494,151 +7494,201 @@
                             }
                         }
 
-                        /* Article list: number | title | category + read time | arrow badge */
+                        /* Article grid: image-only cards; on hover a dark gradient rises with the
+                           title, category and read time. Touch screens show the details all the time.
+                           Posts without a featured image get a branded cover with the title. */
                         .journal_list {
-                            display: flex;
-                            flex-direction: column;
-                            width: 100%;
-                            border-top: 1px solid #2A2B25;
-                        }
-
-                        .journal_row {
                             display: grid;
-                            grid-template-columns: 3.5rem minmax(0, 1fr) auto 2.75rem;
-                            align-items: center;
-                            column-gap: clamp(1rem, 2.5vw, 2.5rem);
-                            padding-block: clamp(1.25rem, 2vw, 1.75rem);
-                            border-bottom: 1px solid #2A2B25;
+                            grid-template-columns: repeat(4, minmax(0, 1fr));
+                            gap: clamp(0.75rem, 1.3vw, 1.25rem);
+                            width: 100%;
+                        }
+                        .journal_card {
+                            position: relative;
+                            display: block;
+                            aspect-ratio: 4 / 5;
+                            overflow: hidden;
+                            isolation: isolate;
+                            border-radius: 18px;
+                            background: #131615;
                             color: #FFFCE1;
                             text-decoration: none;
                         }
-
-                        .journal_num {
-                            color: #5E5D57;
-                            font-family: 'Inter', sans-serif;
-                            font-size: 0.95rem;
-                            font-weight: 600;
-                            font-variant-numeric: tabular-nums;
-                            transition: color 0.3s ease;
+                        .journal_card_img {
+                            position: absolute;
+                            inset: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
                         }
-
-                        .journal_title {
-                            min-width: 0;
+                        .journal_card_shade {
+                            position: absolute;
+                            inset: 0;
+                            z-index: 1;
+                            background: linear-gradient(180deg, rgba(14, 16, 15, 0) 28%, rgba(14, 16, 15, 0.55) 58%, rgba(14, 16, 15, 0.96) 100%);
+                            transition: opacity 0.45s ease;
+                        }
+                        .journal_card_body {
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            z-index: 2;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.9rem;
+                            padding: clamp(1.1rem, 1.6vw, 1.5rem);
+                            transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                        }
+                        .journal_card_title {
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 4;
+                            overflow: hidden;
                             color: #FFFCE1;
-                            font-size: clamp(1.15rem, 1.55vw, 1.5rem);
-                            font-weight: 500;
-                            line-height: 1.3;
+                            font-size: clamp(1.1rem, 1.3vw, 1.4rem);
+                            font-weight: 600;
+                            line-height: 1.25;
                             letter-spacing: -0.01em;
-                            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
                         }
-
-                        .journal_meta {
+                        .journal_card_meta {
                             display: flex;
                             align-items: center;
-                            gap: 1.25rem;
+                            flex-wrap: wrap;
+                            gap: 0.4rem 0.75rem;
                             font-family: 'Inter', sans-serif;
                         }
-
                         .journal_cat {
-                            padding: 0.3rem 0.8rem;
-                            border: 1px solid #2A2B25;
+                            padding: 0.28rem 0.75rem;
+                            border: 1px solid rgba(255, 252, 225, 0.28);
                             border-radius: 999px;
-                            color: #B5B3A7;
-                            font-size: 0.8rem;
+                            background: rgba(14, 16, 15, 0.35);
+                            color: #FFFCE1;
+                            font-size: 0.75rem;
                             font-weight: 500;
                             white-space: nowrap;
-                            transition: border-color 0.3s ease, color 0.3s ease;
+                            backdrop-filter: blur(6px);
                         }
-
                         .journal_time {
-                            min-width: 5.5rem;
-                            color: #7C7C70;
-                            font-size: 0.875rem;
-                            text-align: right;
+                            color: #C4C2AE;
+                            font-size: 0.8rem;
                             white-space: nowrap;
                         }
-
-                        .journal_arrow {
+                        .journal_card_arrow {
+                            position: absolute;
+                            top: clamp(0.9rem, 1.3vw, 1.2rem);
+                            right: clamp(0.9rem, 1.3vw, 1.2rem);
+                            z-index: 2;
                             display: grid;
                             place-items: center;
-                            width: 2.75rem;
-                            height: 2.75rem;
-                            border: 1px solid #2A2B25;
+                            width: 2.6rem;
+                            height: 2.6rem;
                             border-radius: 50%;
-                            color: #FFFCE1;
-                            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+                            background: #FFE32A;
+                            color: #0E100F;
+                            transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                         }
-
-                        .journal_arrow svg {
+                        .journal_card_arrow svg {
                             width: 1.1rem;
                             height: 1.1rem;
                             transform: rotate(-45deg);
-                            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
                         }
-
-                        @media (hover: hover) {
-                            .journal_row:hover .journal_num {
-                                color: #FFE32A;
-                            }
-
-                            .journal_row:hover .journal_title {
-                                transform: translateX(0.5rem);
-                            }
-
-                            .journal_row:hover .journal_cat {
-                                border-color: #3E4034;
-                                color: #FFFCE1;
-                            }
-
-                            .journal_row:hover .journal_arrow {
-                                border-color: #FFE32A;
-                                background-color: #FFE32A;
-                                color: #0E100F;
-                            }
-
-                            .journal_row:hover .journal_arrow svg {
-                                transform: rotate(0deg);
-                            }
-                        }
-
-                        .journal_row:focus-visible {
+                        .journal_card:focus-visible {
                             outline: 2px solid #FFE32A;
                             outline-offset: 4px;
                         }
-
-                        /* Phone: title on top, category and read time underneath, arrow on the right */
-                        @media (max-width: 767px) {
-                            .journal_row {
-                                grid-template-columns: minmax(0, 1fr) 2.5rem;
-                                grid-template-areas: "title arrow" "meta arrow";
-                                row-gap: 0.75rem;
+                        /* Mouse: only the image until hover (or keyboard focus) */
+                        @media (hover: hover) and (pointer: fine) {
+                            .journal_card:not(.is-cover) .journal_card_shade {
+                                opacity: 0;
                             }
-
-                            .journal_num {
-                                display: none;
+                            .journal_card:not(.is-cover) .journal_card_body {
+                                opacity: 0;
+                                transform: translateY(14px);
                             }
-
-                            .journal_title {
-                                grid-area: title;
+                            .journal_card_arrow {
+                                opacity: 0;
+                                transform: scale(0.6);
                             }
-
-                            .journal_meta {
-                                grid-area: meta;
-                                gap: 0.85rem;
+                            .journal_card:hover .journal_card_img,
+                            .journal_card:focus-visible .journal_card_img {
+                                transform: scale(1.06);
                             }
-
-                            .journal_time {
-                                min-width: 0;
-                                text-align: left;
-                            }
-
-                            .journal_arrow {
-                                grid-area: arrow;
-                                width: 2.5rem;
-                                height: 2.5rem;
+                            .journal_card:hover .journal_card_shade,
+                            .journal_card:focus-visible .journal_card_shade,
+                            .journal_card:hover .journal_card_body,
+                            .journal_card:focus-visible .journal_card_body,
+                            .journal_card:hover .journal_card_arrow,
+                            .journal_card:focus-visible .journal_card_arrow {
+                                opacity: 1;
+                                transform: none;
                             }
                         }
-
+                        /* No featured image yet: a branded cover that always shows the title */
+                        .journal_card.is-cover {
+                            border: 1px solid #2A2B25;
+                            background:
+                                radial-gradient(120% 85% at 0% 0%, rgba(255, 227, 42, 0.14), rgba(255, 227, 42, 0) 55%),
+                                linear-gradient(160deg, #1A1D1B 0%, #0F1211 100%);
+                            transition: border-color 0.4s ease;
+                        }
+                        .journal_card.is-cover::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            background-image: radial-gradient(rgba(255, 252, 225, 0.08) 1px, transparent 1.5px);
+                            background-size: 22px 22px;
+                            -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+                            mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+                        }
+                        .journal_card.is-cover .journal_card_shade {
+                            display: none;
+                        }
+                        .journal_card_num {
+                            position: absolute;
+                            top: clamp(1rem, 1.6vw, 1.5rem);
+                            left: clamp(1.1rem, 1.6vw, 1.5rem);
+                            color: transparent;
+                            -webkit-text-stroke: 1px rgba(255, 227, 42, 0.55);
+                            font-size: clamp(3rem, 4.5vw, 4.5rem);
+                            font-weight: 600;
+                            line-height: 1;
+                            letter-spacing: -0.03em;
+                        }
+                        @media (hover: hover) {
+                            .journal_card.is-cover:hover {
+                                border-color: rgba(255, 227, 42, 0.45);
+                            }
+                        }
+                        /* Tablet: two by two, wider cards */
+                        @media (max-width: 1100px) {
+                            .journal_list {
+                                grid-template-columns: repeat(2, minmax(0, 1fr));
+                            }
+                            .journal_card {
+                                aspect-ratio: 5 / 4;
+                            }
+                        }
+                        /* Phone: a swipeable row */
+                        @media (max-width: 600px) {
+                            .journal_list {
+                                grid-template-columns: none;
+                                grid-auto-flow: column;
+                                grid-auto-columns: 80%;
+                                overflow-x: auto;
+                                scroll-snap-type: x mandatory;
+                                scrollbar-width: none;
+                                padding-bottom: 4px;
+                            }
+                            .journal_list::-webkit-scrollbar {
+                                display: none;
+                            }
+                            .journal_card {
+                                aspect-ratio: 4 / 5;
+                                scroll-snap-align: start;
+                            }
+                        }
                         .journal_subtitle {
                             margin: 0;
                             color: #7C7C70;
@@ -7688,7 +7738,7 @@
                                 </div>
                             </div>
 
-                            <!-- Journal Rows -->
+                            <!-- Journal grid (latest four posts) -->
                             <div id="homepage-journal-rows" class="journal_list" aria-live="polite">
                             </div>
 
@@ -7711,26 +7761,26 @@
                                             const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
                                             const arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
-                                            const rowsHtml = blogs.slice(0, 4).map((blog, idx) => {
-                                                const num = String(idx + 1).padStart(2, '0');
+                                            const cardsHtml = blogs.slice(0, 4).map((blog, idx) => {
                                                 const category = blog.category || 'General';
                                                 // "6", "6 min" or "6 min read" all become "6 min read"
                                                 const minutes = String(blog.reading_time || '5').replace(/\s*read\s*$/i, '').trim();
                                                 const readingTime = (/min/i.test(minutes) ? minutes : minutes + ' min') + ' read';
                                                 const slug = blog.slug || blog.id;
-                                                let title = blog.title || '';
-                                                if (title.length > 75) {
-                                                    title = title.substring(0, 72).trim() + '...';
-                                                }
-                                                return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_row" data-barba-prevent>' +
-                                                    '<span class="journal_num">' + num + '</span>' +
-                                                    '<span class="journal_title">' + esc(title) + '</span>' +
-                                                    '<span class="journal_meta"><span class="journal_cat">' + esc(category) + '</span><span class="journal_time">' + esc(readingTime) + '</span></span>' +
-                                                    '<span class="journal_arrow">' + arrowSvg + '</span>' +
+                                                const image = blog.featured_image
+                                                    ? '<img class="journal_card_img" src="' + esc(blog.featured_image) + '" alt="" loading="lazy" decoding="async">'
+                                                    : '<span class="journal_card_num" aria-hidden="true">' + String(idx + 1).padStart(2, '0') + '</span>';
+                                                return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_card' + (blog.featured_image ? '' : ' is-cover') + '" data-barba-prevent>' +
+                                                    image +
+                                                    '<span class="journal_card_shade" aria-hidden="true"></span>' +
+                                                    '<span class="journal_card_arrow" aria-hidden="true">' + arrowSvg + '</span>' +
+                                                    '<span class="journal_card_body">' +
+                                                    '<span class="journal_card_title">' + esc(blog.title || '') + '</span>' +
+                                                    '<span class="journal_card_meta"><span class="journal_cat">' + esc(category) + '</span><span class="journal_time">' + esc(readingTime) + '</span></span>' +
+                                                    '</span>' +
                                                     '</a>';
                                             }).join('');
-
-                                            container.innerHTML = rowsHtml;
+                                            container.innerHTML = cardsHtml;
                                             setState('ready');
                                             // The page just got taller: let smooth scroll and scroll animations re-measure
                                             if (window.lenis && typeof window.lenis.resize === 'function') window.lenis.resize();
