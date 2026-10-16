@@ -7516,13 +7516,23 @@
                             color: #FFFCE1;
                             text-decoration: none;
                         }
+                        /* Very light outline so the cards read against the dark section */
+                        .journal_card::after {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            z-index: 4;
+                            border-radius: inherit;
+                            box-shadow: inset 0 0 0 1px rgba(255, 252, 225, 0.1);
+                            pointer-events: none;
+                            transition: box-shadow 0.4s ease;
+                        }
                         .journal_card_img {
                             position: absolute;
                             inset: 0;
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
-                            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
                         }
                         .journal_card_shade {
                             position: absolute;
@@ -7616,11 +7626,12 @@
                         }
                         /* No featured image yet: a branded cover that always shows the title */
                         .journal_card.is-cover {
-                            border: 1px solid #2A2B25;
                             background:
                                 radial-gradient(120% 85% at 0% 0%, rgba(255, 227, 42, 0.14), rgba(255, 227, 42, 0) 55%),
                                 linear-gradient(160deg, #1A1D1B 0%, #0F1211 100%);
-                            transition: border-color 0.4s ease;
+                        }
+                        .journal_card:not(.is-cover) .journal_card_num {
+                            display: none;
                         }
                         .journal_card.is-cover::before {
                             content: "";
@@ -7655,7 +7666,7 @@
                                 flex: 1 1 0;
                                 height: 100%;
                                 aspect-ratio: auto;
-                                transition: flex-grow 0.75s cubic-bezier(0.65, 0, 0.35, 1), border-color 0.4s ease;
+                                transition: flex-grow 0.75s cubic-bezier(0.65, 0, 0.35, 1);
                             }
                         }
                         /* Mouse: image only until hover; the hovered card widens and opens its arrow */
@@ -7666,10 +7677,6 @@
                             .journal_card:not(.is-cover) .journal_card_body {
                                 opacity: 0;
                                 transform: translateY(14px);
-                            }
-                            .journal_card:hover .journal_card_img,
-                            .journal_card:focus-visible .journal_card_img {
-                                transform: scale(1.04);
                             }
                             .journal_card:hover .journal_card_shade,
                             .journal_card:focus-visible .journal_card_shade,
@@ -7689,8 +7696,9 @@
                                 margin-right: 0.55rem;
                                 opacity: 1;
                             }
-                            .journal_card.is-cover:hover {
-                                border-color: rgba(255, 227, 42, 0.45);
+                            .journal_card:hover::after,
+                            .journal_card:focus-visible::after {
+                                box-shadow: inset 0 0 0 1px rgba(255, 227, 42, 0.4);
                             }
                         }
                         @media (min-width: 1101px) and (hover: hover) and (pointer: fine) {
@@ -7822,9 +7830,11 @@
                                                 const minutes = String(blog.reading_time || '5').replace(/\s*read\s*$/i, '').trim();
                                                 const readingTime = (/min/i.test(minutes) ? minutes : minutes + ' min') + ' read';
                                                 const slug = blog.slug || blog.id;
-                                                const image = blog.featured_image
-                                                    ? '<img class="journal_card_img" src="' + esc(blog.featured_image) + '" alt="" loading="lazy" decoding="async">'
-                                                    : '<span class="journal_card_num" aria-hidden="true">' + String(idx + 1).padStart(2, '0') + '</span>';
+                                                // If the image can't load, the card falls back to the branded cover
+                                                const image = (blog.featured_image
+                                                    ? '<img class="journal_card_img" src="' + esc(blog.featured_image) + '" alt="" loading="lazy" decoding="async" onerror="this.closest(\'.journal_card\').classList.add(\'is-cover\'); this.remove();">'
+                                                    : '') +
+                                                    '<span class="journal_card_num" aria-hidden="true">' + String(idx + 1).padStart(2, '0') + '</span>';
                                                 return '<a href="/blog/' + encodeURIComponent(slug) + '" class="journal_card' + (blog.featured_image ? '' : ' is-cover') + '" data-barba-prevent>' +
                                                     image +
                                                     '<span class="journal_card_shade" aria-hidden="true"></span>' +

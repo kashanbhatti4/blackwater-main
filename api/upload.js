@@ -1,5 +1,6 @@
 import { authenticateAdmin } from '../lib/auth.js';
 import { handleImageUpload, deleteUploadedImage } from '../lib/upload-handler.js';
+import { toServedUrl, toStoredUrl } from '../lib/media.js';
 
 export default async function uploadHandler(req, res) {
     const admin = authenticateAdmin(req);
@@ -12,7 +13,7 @@ export default async function uploadHandler(req, res) {
             const uploadedFile = await handleImageUpload(req);
             return res.status(200).json({
                 message: 'Image uploaded successfully',
-                url: uploadedFile.url,
+                url: toServedUrl(uploadedFile.url),
                 filename: uploadedFile.filename,
                 size: uploadedFile.size
             });
@@ -28,7 +29,7 @@ export default async function uploadHandler(req, res) {
             if (!url) {
                 return res.status(400).json({ error: 'Image URL is required' });
             }
-            const deleted = deleteUploadedImage(url);
+            const deleted = deleteUploadedImage(toStoredUrl(url));
             return res.status(200).json({ message: deleted ? 'Image deleted' : 'Image not found or not local' });
         } catch (error) {
             console.error('Image deletion error:', error);

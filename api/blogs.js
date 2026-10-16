@@ -2,6 +2,7 @@ import { query } from '../lib/db.js';
 import { authenticateAdmin } from '../lib/auth.js';
 import { getUniqueSlug, toSlug } from '../lib/slugify.js';
 import { deleteUploadedImage } from '../lib/upload-handler.js';
+import { servedBlog, toStoredUrl, toStoredHtml } from '../lib/media.js';
 
 // ---------------------------------------------------------
 // SEO columns (focus_keyword, seo_score) are added on first use, so an existing
@@ -97,7 +98,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             const draftCount = blogs.filter(b => b.status === 'draft').length;
 
             return res.status(200).json({
-                blogs,
+                blogs: blogs.map(servedBlog),
                 stats: { total, publishedCount, draftCount }
             });
         } catch (error) {
@@ -152,7 +153,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             `, blogParams);
 
             return res.status(200).json({
-                blogs,
+                blogs: blogs.map(servedBlog),
                 pagination: {
                     total,
                     page,
@@ -178,8 +179,8 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             title,
             slug: requestedSlug,
             excerpt,
-            content,
-            featured_image,
+            content: rawContent,
+            featured_image: rawFeaturedImage,
             category_id,
             category_name,
             status = 'draft',
@@ -191,6 +192,9 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
             published_at,
             tags = []
         } = req.body || {};
+
+        const content = toStoredHtml(rawContent);
+        const featured_image = toStoredUrl(rawFeaturedImage);
 
         if (!title || !title.trim()) {
             return res.status(400).json({ error: 'Blog title is required' });
@@ -293,7 +297,7 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 `, [blog.id]);
                 blog.tags = tagRows;
 
-                return res.status(200).json({ blog });
+                return res.status(200).json({ blog: servedBlog(blog) });
             } catch (error) {
                 console.error('Error fetching blog:', error);
                 return res.status(500).json({ error: 'Failed to retrieve blog' });
@@ -315,8 +319,8 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 title,
                 slug: requestedSlug,
                 excerpt,
-                content,
-                featured_image,
+                content: rawContent,
+                featured_image: rawFeaturedImage,
                 category_id,
                 category_name,
                 status,
@@ -329,6 +333,9 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 tags = [],
                 delete_previous_image
             } = req.body || {};
+
+            const content = rawContent !== undefined ? toStoredHtml(rawContent) : undefined;
+            const featured_image = rawFeaturedImage !== undefined ? toStoredUrl(rawFeaturedImage) : undefined;
 
             try {
                 // Fetch existing blog

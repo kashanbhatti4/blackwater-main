@@ -2,6 +2,10 @@
   RewriteEngine On
   RewriteBase /
 
+  # Uploaded blog images live in public/uploads/blogs
+  RewriteCond %{DOCUMENT_ROOT}/public/uploads/blogs/$1 -f
+  RewriteRule ^uploads/blogs/([^/]+)$ public/uploads/blogs/$1 [L]
+
   # Redirect /index.html, /index, or /index/ to /
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(?:\.html)?\ HTTP/ [NC]
   RewriteRule ^index(?:\.html)?$ / [R=301,L]
