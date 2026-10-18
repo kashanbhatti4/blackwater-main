@@ -148,11 +148,12 @@ const AdminAPI = {
     // ----------------------------------------------------
     // Image Upload & Delete
     // ----------------------------------------------------
-    async uploadImage(file) {
+    // folderId files the image straight into a Media folder
+    async uploadImage(file, folderId) {
         const formData = new FormData();
         formData.append('image', file);
 
-        return await this.request('/api/upload', {
+        return await this.request(folderId ? `/api/upload?folder=${encodeURIComponent(folderId)}` : '/api/upload', {
             method: 'POST',
             body: formData
         });
@@ -162,6 +163,45 @@ const AdminAPI = {
         return await this.request('/api/upload', {
             method: 'DELETE',
             body: JSON.stringify({ url })
+        });
+    },
+
+    // ----------------------------------------------------
+    // Media library
+    // ----------------------------------------------------
+    async getMedia() {
+        return await this.request('/api/media', { method: 'GET' });
+    },
+
+    async createMediaFolder(name) {
+        return await this.request('/api/media/folders', {
+            method: 'POST',
+            body: JSON.stringify({ name })
+        });
+    },
+
+    async renameMediaFolder(id, name) {
+        return await this.request(`/api/media/folders/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ name })
+        });
+    },
+
+    async deleteMediaFolder(id) {
+        return await this.request(`/api/media/folders/${id}`, { method: 'DELETE' });
+    },
+
+    async moveMedia(filenames, folderId) {
+        return await this.request('/api/media/move', {
+            method: 'POST',
+            body: JSON.stringify({ filenames, folder_id: folderId })
+        });
+    },
+
+    // force: delete even when articles still use it (otherwise that fails with the list of articles)
+    async deleteMedia(filename, force = false) {
+        return await this.request(`/api/media/files/${encodeURIComponent(filename)}${force ? '?force=1' : ''}`, {
+            method: 'DELETE'
         });
     }
 };

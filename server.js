@@ -9,11 +9,12 @@ import authHandler from './api/auth.js';
 import blogsHandler from './api/blogs.js';
 import categoriesHandler from './api/categories.js';
 import uploadHandler from './api/upload.js';
+import mediaHandler from './api/media.js';
 import googleReviewsHandler from './api/google-reviews.js';
 import turnstileConfigHandler from './api/turnstile-config.js';
 import { importPendingPosts } from './lib/content-import.js';
-import { UPLOADS_DIR } from './lib/upload-handler.js';
-import { loadMedia } from './lib/media-store.js';
+import { UPLOADS_DIR, UPLOADS_DIR_IN_PROJECT, LEGACY_UPLOADS_DIR } from './lib/upload-handler.js';
+import { loadMedia, backupUploads } from './lib/media-store.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -122,6 +123,11 @@ const server = http.createServer(async (req, res) => {
                 // Categories Routes
                 if (pathname === '/api/categories') {
                     return await categoriesHandler(req, res, pathname);
+                }
+
+                // Media library (admin)
+                if (pathname === '/api/media' || pathname.startsWith('/api/media/')) {
+                    return await mediaHandler(req, res, pathname, parsedUrl.searchParams);
                 }
 
                 // Blogs Routes
@@ -306,13 +312,19 @@ function serveUpload(pathname, req, res) {
         'Cache-Control': 'public, max-age=31536000, immutable'
     });
 
+    const sendFile = (diskPath, stats) => {
+        res.writeHead(200, headers(MIME_TYPES[path.extname(diskPath).toLowerCase()] || 'application/octet-stream', stats.size));
+        if (req.method === 'HEAD') return res.end();
+        fs.createReadStream(diskPath).pipe(res);
+    };
+
     fs.stat(filePath, async (err, stats) => {
-        if (!err && stats.isFile()) {
-            res.writeHead(200, headers(MIME_TYPES[path.extname(filePath).toLowerCase()] || 'application/octet-stream', stats.size));
-            if (req.method === 'HEAD') return res.end();
-            fs.createReadStream(filePath).pipe(res);
-            return;
-        }
+        if (!err && stats.isFile()) return sendFile(filePath, stats);
+
+        // Still in the old folder inside the project (from before the media folder)
+        const legacyPath = path.join(LEGACY_UPLOADS_DIR, filename);
+        const legacyStats = await fs.promises.stat(legacyPath).catch(() => null);
+        if (legacyStats && legacyStats.isFile()) return sendFile(legacyPath, legacyStats);
 
         // The file is gone (deploys replace the uploads folder): use the database copy
         try {
@@ -345,7 +357,17 @@ server.listen(PORT, () => {
         .then(({ imported }) => { if (imported) console.log(`Blog import: ${imported} new post(s) published`); })
         .catch(error => console.error('Blog import skipped:', error.message));
 
+    // Back up uploaded images that have no database copy yet, now and every hour
+    const backup = () => backupUploads([UPLOADS_DIR, LEGACY_UPLOADS_DIR], MIME_TYPES)
+        .then(saved => { if (saved) console.log(`Image backup: ${saved} image(s) copied to the database`); })
+        .catch(error => console.error('Image backup skipped:', error.message));
+    backup();
+    setInterval(backup, 60 * 60 * 1000).unref();
+
     console.log(`Server running at http://localhost:${PORT}/`);
     console.log(`Blog Admin Dashboard: http://localhost:${PORT}/admin`);
     console.log(`Public Blogs: http://localhost:${PORT}/blogs`);
+    console.log(`Uploaded images: ${UPLOADS_DIR}` + (UPLOADS_DIR_IN_PROJECT
+        ? ' (inside the project folder, so deploys can delete these files; set UPLOAD_DIR in .env to a folder outside it)'
+        : ''));
 });
