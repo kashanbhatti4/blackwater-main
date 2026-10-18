@@ -49,7 +49,13 @@
       }
 
       setTimeout(updateListHeight, 100);
-      window.addEventListener('resize', updateListHeight);
+      // Width only: phones fire resize when the address bar moves
+      let lastWidth = window.innerWidth;
+      window.addEventListener('resize', () => {
+        if (window.innerWidth === lastWidth) return;
+        lastWidth = window.innerWidth;
+        updateListHeight();
+      });
       if (document.fonts) {
         document.fonts.ready.then(() => setTimeout(updateListHeight, 100));
       }

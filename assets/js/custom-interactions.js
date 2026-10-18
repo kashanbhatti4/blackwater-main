@@ -17,7 +17,9 @@ const hasLenis = typeof window.Lenis !== "undefined";
 const hasScrollTrigger = typeof window.ScrollTrigger !== "undefined";
 
 if (hasScrollTrigger) {
-  ScrollTrigger.config({ autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
+  // Phones resize the viewport whenever the address bar slides in or out; re-measuring
+  // then makes the page jump mid-scroll
+  ScrollTrigger.config({ autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", ignoreMobileResize: true });
 }
 
 const rmMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -97,6 +99,7 @@ function initAfterEnterFunctions(next) {
   if (has('.tab_wrap')) initTabs();
   if (has('.process_section_wrap')) initProcessLines();
   if (has('.mwg016')) initServicesBenefitsScroll();
+  if (has('bw-service-cards')) loadServiceCards();
   if (has('.privacy_menu_item_wrap')) initPrivacyScrollSpy();
   if (has('.hb-p-67a28ee5727d8900071953b9-3')) initHoneyBookEmbed();
   if (has('#article-content') && typeof renderJournalArticle === 'function') renderJournalArticle(nextPage);
@@ -270,7 +273,7 @@ barba.hooks.before(() => {
 });
 
 barba.init({
-  debug: true, // Set to 'false' in production
+  debug: false,
   timeout: 7000,
   preventRunning: true,
   transitions: [
@@ -814,7 +817,8 @@ function horizontalLoop(items, config) {
         populateOffsets();
         deep && tl.draggable ? tl.time(times[curIndex], true) : tl.progress(progress, true);
       },
-      onResize = () => refresh(true),
+      // Width only: phones fire resize when the address bar moves, and rebuilding then makes the strip jump
+      onResize = debounceOnWidthChange(() => refresh(true), 100),
       proxy;
 
     gsap.set(items, { x: 0 });
@@ -1191,16 +1195,12 @@ function initEvolutionScroll() {
     window.removeEventListener('resize', window._evolutionResizeHandler);
   }
 
-  let resizeTimer;
-  window._evolutionResizeHandler = () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      handleResize();
-      if (checkScreenSize()) {
-        ScrollTrigger.refresh();
-      }
-    }, 250);
-  };
+  window._evolutionResizeHandler = debounceOnWidthChange(() => {
+    handleResize();
+    if (checkScreenSize()) {
+      ScrollTrigger.refresh();
+    }
+  }, 250);
 
   window.addEventListener('resize', window._evolutionResizeHandler);
 }
@@ -1449,11 +1449,7 @@ function initTestimonialsListHeight() {
 
   setTimeout(updateListHeight, 100);
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(updateListHeight, 150);
-  });
+  window.addEventListener('resize', debounceOnWidthChange(updateListHeight, 150));
 
   window.addEventListener('load', () => {
     setTimeout(updateListHeight, 200);
@@ -2181,7 +2177,19 @@ function initServicesBenefitsScroll() {
 
     if (!pinHeight || !container || !benefitsContent) return;
 
-    ScrollTrigger.create({
+    // Phones and tablets hold the text and the icon ring in a CSS sticky frame (webflow.css).
+    // Pinning with fixed positioning jumps at the start and end of the pin there.
+    const useSticky = window.matchMedia('(max-width: 991px), (hover: none)').matches &&
+      CSS.supports('overflow', 'clip');
+    root.classList.toggle('is-sticky', useSticky);
+    if (useSticky && !pinHeight.querySelector(':scope > .mwg016-sticky')) {
+      const frame = document.createElement('div');
+      frame.className = 'mwg016-sticky';
+      pinHeight.insertBefore(frame, benefitsContent);
+      frame.append(benefitsContent, container);
+    }
+
+    if (!useSticky) ScrollTrigger.create({
       trigger: pinHeight,
       start: 'top top',
       end: 'bottom bottom',
@@ -2190,7 +2198,7 @@ function initServicesBenefitsScroll() {
       pinReparent: false
     });
 
-    ScrollTrigger.create({
+    if (!useSticky) ScrollTrigger.create({
       trigger: pinHeight,
       start: 'top top',
       end: 'bottom bottom',
@@ -2238,6 +2246,15 @@ function initServicesBenefitsScroll() {
       stagger: 0.04,
     }, '<');
   });
+}
+
+// Service card stacks (<bw-service-cards>). index.html and services.html load the script
+// themselves; this covers arriving on them through a page transition.
+function loadServiceCards() {
+  if (window.customElements.get('bw-service-cards') || document.querySelector('script[src*="service-cards.js"]')) return;
+  const script = document.createElement('script');
+  script.src = '/animations/service-cards.js?v=6';
+  document.body.appendChild(script);
 }
 
 function initPrivacyScrollSpy() {

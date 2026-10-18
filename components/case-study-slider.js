@@ -100,7 +100,13 @@
           populateOffsets();
           deep && tl.draggable ? tl.time(times[curIndex], true) : tl.progress(progress, true);
         },
-        onResize = () => refresh(true),
+        // Width only: phones fire resize when the address bar moves, and rebuilding then makes the strip jump
+        lastWidth = window.innerWidth,
+        onResize = () => {
+          if (window.innerWidth === lastWidth) return;
+          lastWidth = window.innerWidth;
+          refresh(true);
+        },
         proxy;
 
       gsap.set(items, { x: 0 });
@@ -155,7 +161,8 @@
       if (config.draggable && typeof (Draggable) === "function") {
         proxy = document.createElement("div");
         let wrap = gsap.utils.wrap(0, 1),
-          ratio, startProgress, draggable;
+          ratio, startProgress, draggable, wasPlaying,
+          syncIndex = () => tl.closestIndex(true);
         draggable = Draggable.create(proxy, {
           trigger: items[0].parentNode,
           type: "x",

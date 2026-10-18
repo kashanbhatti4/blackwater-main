@@ -1,6 +1,7 @@
 /* Service card stack: <bw-service-cards service="web|seo|ads|social">
-   One shared component for the four service sections (loaded inside the iframes in
-   animations/*.html). Brand colours and type, the same card size in every section,
+   One shared component for the four service sections, placed straight in the page (no
+   iframe, which made phones scroll badly). animations/*.html wrap it for standalone
+   previews. Brand colours and type, the same card size in every section,
    autoplay while on screen, and drag / swipe with mouse, touch or pen. */
 (() => {
   const SERVICES = {
@@ -62,8 +63,10 @@
 
   const INTERVAL = 4500; // ms per card while autoplaying
   const DRAG_RATIO = 0.18; // drag this share of the card width to change card
+  // Blurred back cards only with a mouse: animating blur on phones makes the page scroll jerkily
+  const SOFT_BACK = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  // Shadow DOM can't declare fonts, so the iframe document gets the site's self-hosted ones
+  // Shadow DOM can't declare fonts, so the host document gets the site's self-hosted ones
   function ensureFonts() {
     if (document.getElementById('bw-service-cards-fonts')) return;
     const style = document.createElement('style');
@@ -263,7 +266,7 @@
 
       this.initDrag();
 
-      // Autoplay only while the stack is on screen (the observer sees the top page's viewport)
+      // Autoplay only while the stack is on screen
       this.observer = new IntersectionObserver((entries) => {
         this.inView = entries[entries.length - 1].isIntersecting;
         this.schedule();
@@ -311,7 +314,9 @@
         card.style.zIndex = String(10 - a);
         // Back cards sit softly out of focus behind the front one
         card.style.opacity = front ? '1' : a === 1 ? '0.92' : '0.85';
-        card.style.filter = front ? 'none' : `brightness(${a === 1 ? 0.7 : 0.6}) blur(${a === 1 ? 2.5 : 3.5}px)`;
+        card.style.filter = front ? 'none' : SOFT_BACK
+          ? `brightness(${a === 1 ? 0.7 : 0.6}) blur(${a === 1 ? 2.5 : 3.5}px)`
+          : `brightness(${a === 1 ? 0.55 : 0.45})`;
         card.classList.toggle('is-front', front);
         card.setAttribute('aria-hidden', String(!front));
       });
