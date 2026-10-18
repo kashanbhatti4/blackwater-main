@@ -3015,3 +3015,62 @@ footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
 .custom_contact_form .bw-turnstile.is-active {
   margin-bottom: 1.5rem;
 }
+
+/* -----------------------------------------
+   SMOOTH SCROLLING ON PHONES
+   ----------------------------------------- */
+
+/* Closed overlays are hidden, not only transparent, so the browser stops drawing them (and
+   blurring the page behind them) on every scroll frame. Visibility switches after the fade. */
+.bw-calendly-popup {
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.bw-calendly-popup.is-open {
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+.audit_modal_overlay:not(.is-open),
+.contact_modal_overlay:not(.is-open) {
+  visibility: hidden;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.simple-navbar .simple-navbar__menu-overlay {
+  visibility: hidden;
+  transition: clip-path 0.6s cubic-bezier(0.625, 0.05, 0, 1), visibility 0s linear 0.6s;
+}
+
+.simple-navbar.is-open .simple-navbar__menu-overlay {
+  visibility: visible;
+  transition: clip-path 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+/* The cookie card is near-opaque already; its blur only costs frames while scrolling */
+@media (hover: none) {
+  .cookie_consent_card {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Services "One trusted partner": on phones and tablets the text and icon ring sit in one
+   screen-tall sticky frame (.mwg016-sticky, added by initServicesBenefitsScroll) instead of
+   being pinned while scrolling. overflow: clip still hides the icons waiting off screen
+   without breaking sticky the way hidden does. */
+.mwg016.is-sticky,
+.mwg016.is-sticky .mwg016-pin-height {
+  overflow: clip;
+}
+
+.mwg016-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  /* Keeps the ring's top margin inside the frame */
+  display: flow-root;
+}
