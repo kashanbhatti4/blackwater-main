@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // State
     const state = {
-        currentView: 'list', // 'list' | 'editor'
+        currentView: 'list', // 'list' | 'editor' | 'media'
         editingBlogId: null,
         editingStatus: 'draft',
         blogs: [],
@@ -145,6 +145,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadCategories();
     }
 
+    CmsMedia.mount({ showToast, escapeHtml });
+
     // Show / hide password
     const passwordInput = $('login-password');
     const passwordToggle = $('login-password-toggle');
@@ -253,7 +255,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ? new Date(blog.published_at).toLocaleDateString('en-IE', { month: 'short', day: 'numeric', year: 'numeric' })
                 : 'Not published';
             const thumbImg = blog.featured_image
-                ? `<img src="${escapeHtml(blog.featured_image)}" class="cms-blog-thumb" alt="" onerror="this.style.visibility='hidden'">`
+                ? `<img src="${escapeHtml(blog.featured_image)}" class="cms-blog-thumb" alt="" onerror="this.outerHTML='<div class=&quot;cms-blog-thumb cms-blog-thumb-empty is-missing&quot; title=&quot;This image is no longer on the server. Open the article and upload it again.&quot;>Image missing</div>'">`
                 : `<div class="cms-blog-thumb cms-blog-thumb-empty">No image</div>`;
             const nextStatus = blog.status === 'published' ? 'draft' : 'published';
 
@@ -461,8 +463,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         state.currentView = viewName;
         blogsListView.style.display = viewName === 'list' ? 'block' : 'none';
         blogEditorView.style.display = viewName === 'editor' ? 'block' : 'none';
+        $('media-view').style.display = viewName === 'media' ? 'block' : 'none';
+        $('cms-header-title').textContent = viewName === 'media' ? 'Media' : 'Articles';
+        $('header-new-btn').hidden = viewName === 'media';
+        $('media-upload-btn').hidden = viewName !== 'media';
         $('nav-blogs-btn').classList.toggle('active', viewName === 'list' || (viewName === 'editor' && !!state.editingBlogId));
         $('nav-create-btn').classList.toggle('active', viewName === 'editor' && !state.editingBlogId);
+        $('nav-media-btn').classList.toggle('active', viewName === 'media');
         document.body.classList.toggle('cms-editing', viewName === 'editor');
         if (viewName === 'list') editor.toggleFocus(false);
         // The title box can only measure itself once the editor is on screen
@@ -483,6 +490,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     $('nav-blogs-btn').addEventListener('click', backToList);
     $('nav-create-btn').addEventListener('click', () => window.openNewBlogEditor());
+    $('nav-media-btn').addEventListener('click', () => {
+        if (!confirmLeave()) return;
+        switchView('media');
+        CmsMedia.show();
+    });
     $('editor-back-btn').addEventListener('click', backToList);
 
     // ----------------------------------------------------

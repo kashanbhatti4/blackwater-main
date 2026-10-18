@@ -1103,7 +1103,7 @@
 
                 const heroImgHtml = blog.featured_image ? `
                     <div class="article_hero_img_wrap">
-                        <img src="${blog.featured_image}" alt="${escapeHtml(blog.title)}" class="article_hero_img">
+                        <img src="${blog.featured_image}" alt="${escapeHtml(blog.title)}" class="article_hero_img" onerror="this.parentElement.remove()">
                     </div>
                 ` : '';
 

@@ -20,7 +20,9 @@ export default async function uploadHandler(req, res) {
             let stored = true;
             try {
                 const buffer = fs.readFileSync(path.join(UPLOADS_DIR, uploadedFile.filename));
-                await saveMedia(uploadedFile.filename, uploadedFile.mimeType, buffer);
+                // ?folder=<id> files it straight into a Media folder
+                const folder = parseInt(new URL(req.url, 'http://localhost').searchParams.get('folder'), 10);
+                await saveMedia(uploadedFile.filename, uploadedFile.mimeType, buffer, folder > 0 ? folder : null);
             } catch (storeError) {
                 stored = false;
                 console.error('Image saved to disk only (database copy failed):', storeError.message);

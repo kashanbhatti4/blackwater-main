@@ -3,6 +3,7 @@ import { authenticateAdmin } from '../lib/auth.js';
 import { getUniqueSlug, toSlug } from '../lib/slugify.js';
 import { deleteUploadedImage } from '../lib/upload-handler.js';
 import { servedBlog, toStoredUrl, toStoredHtml } from '../lib/media.js';
+import { isImageInUse } from '../lib/media-usage.js';
 
 // ---------------------------------------------------------
 // SEO columns (focus_keyword, seo_score) are added on first use, so an existing
@@ -345,11 +346,6 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                 }
                 const oldBlog = existing[0];
 
-                // Clean up previous image if replaced
-                if (delete_previous_image && oldBlog.featured_image && oldBlog.featured_image !== featured_image) {
-                    deleteUploadedImage(oldBlog.featured_image);
-                }
-
                 const finalSlug = requestedSlug
                     ? await getUniqueSlug(requestedSlug, blogId)
                     : oldBlog.slug;
@@ -392,6 +388,12 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
                     await syncBlogTags(blogId, tags);
                 }
 
+                // Clean up the replaced featured image, unless an article (this one included) still uses it
+                if (delete_previous_image && oldBlog.featured_image && oldBlog.featured_image !== assignments.featured_image &&
+                    !(await isImageInUse(oldBlog.featured_image))) {
+                    deleteUploadedImage(oldBlog.featured_image);
+                }
+
                 return res.status(200).json({
                     message: 'Blog updated successfully',
                     id: blogId,
@@ -416,11 +418,13 @@ export default async function blogsHandler(req, res, pathname, searchParams) {
 
             try {
                 const existing = await query('SELECT featured_image FROM blogs WHERE id = ?', [blogId]);
-                if (existing.length > 0 && existing[0].featured_image) {
-                    deleteUploadedImage(existing[0].featured_image);
-                }
-
                 await query('DELETE FROM blogs WHERE id = ?', [blogId]);
+
+                // Its featured image goes too, unless another article uses it
+                const image = existing.length > 0 ? existing[0].featured_image : null;
+                if (image && !(await isImageInUse(image))) {
+                    deleteUploadedImage(image);
+                }
                 return res.status(200).json({ message: 'Blog deleted successfully' });
             } catch (error) {
                 console.error('Error deleting blog:', error);

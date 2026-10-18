@@ -855,6 +855,14 @@ body.cms-editing .cms-content {
     letter-spacing: 0.06em;
 }
 
+/* Featured image that is no longer on the server */
+.cms-blog-thumb-empty.is-missing {
+    color: var(--danger);
+    border-color: var(--danger);
+    text-align: center;
+    line-height: 1.2;
+}
+
 .cms-blog-info h4 {
     font-size: 14.5px;
     font-weight: 600;
@@ -2022,6 +2030,400 @@ body.cms-editing .cms-content {
 /* ========================================================
    RESPONSIVE
    ======================================================== */
+/* ========================================================
+   Media library (admin-media.js)
+   ======================================================== */
+.cms-media-storage {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.cms-media-storage.is-warning {
+    color: var(--warning);
+}
+
+.cms-media-storage code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+.cms-media-missing strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.cms-media-missing-list {
+    margin: 8px 0 0;
+    padding-left: 18px;
+}
+
+.cms-media-missing-list li {
+    margin: 4px 0;
+}
+
+.cms-media-missing-list .cms-link-btn {
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.cms-media-missing-list span {
+    margin-left: 6px;
+    color: var(--text-muted);
+}
+
+.cms-media-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+/* Folders */
+.cms-media-folders {
+    position: sticky;
+    top: calc(var(--header-h) + 20px);
+    padding: 14px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+}
+
+.cms-media-folders-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 6px 10px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cms-media-folders-head .cms-btn-sm {
+    padding: 4px 10px;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.cms-media-folder-list {
+    list-style: none;
+}
+
+.cms-media-folder {
+    display: flex;
+    align-items: center;
+    border-radius: var(--radius-sm);
+}
+
+.cms-media-folder:hover,
+.cms-media-folder.is-active {
+    background: var(--bg-raised);
+}
+
+.cms-media-folder-btn {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 8px;
+    color: var(--text-secondary);
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.cms-media-folder.is-active .cms-media-folder-btn {
+    color: var(--text-primary);
+}
+
+.cms-media-folder-btn svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    stroke-width: 2;
+}
+
+.cms-media-folder.is-active .cms-media-folder-btn svg {
+    color: var(--accent);
+}
+
+.cms-media-folder-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cms-media-folder-count {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.cms-media-folder-tool {
+    width: 26px;
+    height: 26px;
+    opacity: 0;
+}
+
+.cms-media-folder:hover .cms-media-folder-tool,
+.cms-media-folder-tool:focus-visible {
+    opacity: 1;
+}
+
+@media (hover: none) {
+    .cms-media-folder-tool {
+        opacity: 1;
+    }
+}
+
+.cms-media-folder-tool svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Grid */
+.cms-media-main {
+    position: relative;
+    overflow: visible;
+}
+
+.cms-media-main.is-dragover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.cms-media-bulk {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--accent-soft);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cms-media-bulk .cms-select {
+    width: auto;
+    min-width: 180px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 13px;
+}
+
+.cms-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    transition: opacity 0.2s ease;
+}
+
+.cms-media-grid.is-busy {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.cms-media-empty {
+    grid-column: 1 / -1;
+    padding: 40px 0;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.cms-media-drop-hint {
+    padding: 0 20px 18px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.cms-media-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    transition: var(--transition);
+}
+
+.cms-media-card:hover {
+    border-color: var(--border-strong);
+}
+
+.cms-media-card.is-selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+}
+
+.cms-media-check {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: rgba(14, 16, 15, 0.8);
+    cursor: pointer;
+}
+
+.cms-media-check input {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.cms-media-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background:
+        repeating-conic-gradient(#1a1d1b 0% 25%, #141716 0% 50%) 50% / 16px 16px;
+}
+
+.cms-media-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cms-media-thumb.is-broken {
+    display: grid;
+    place-items: center;
+}
+
+.cms-media-thumb.is-broken img {
+    display: none;
+}
+
+.cms-media-thumb.is-broken::after {
+    content: "Image file missing";
+    color: var(--danger);
+    font-size: 12px;
+}
+
+.cms-media-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px 12px;
+    min-width: 0;
+}
+
+.cms-media-name {
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cms-media-sub {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.cms-media-pill {
+    align-self: flex-start;
+    margin-top: 2px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.cms-media-pill.is-used {
+    background: rgba(91, 203, 138, 0.12);
+    color: var(--success);
+}
+
+.cms-media-pill.is-unused {
+    background: rgba(242, 178, 58, 0.12);
+    color: var(--warning);
+}
+
+/* Details dialog */
+.cms-media-detail-card {
+    max-width: 620px;
+}
+
+.cms-media-detail-preview {
+    display: grid;
+    place-items: center;
+    margin: -8px -8px 18px;
+    max-height: 340px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background:
+        repeating-conic-gradient(#1a1d1b 0% 25%, #141716 0% 50%) 50% / 16px 16px;
+}
+
+.cms-media-detail-preview img {
+    display: block;
+    max-width: 100%;
+    max-height: 340px;
+    object-fit: contain;
+}
+
+#media-detail-name {
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.cms-media-link-row {
+    display: flex;
+    gap: 8px;
+}
+
+.cms-media-link-row .cms-input {
+    flex: 1;
+    min-width: 0;
+    font-size: 12.5px;
+}
+
+.cms-media-usage {
+    list-style: none;
+}
+
+.cms-media-usage li {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13.5px;
+}
+
+.cms-media-usage li:last-child {
+    border-bottom: 0;
+}
+
+.cms-media-usage .cms-link-btn {
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.cms-media-usage-where,
+.cms-media-usage-none {
+    color: var(--text-muted);
+    font-size: 12.5px;
+}
+
 @media (max-width: 1180px) {
     .cms-editor-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -2164,5 +2566,23 @@ body.cms-editing .cms-content {
 
     .cms-auth-card {
         padding: 32px 22px 26px;
+    }
+
+    .cms-media-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cms-media-folders {
+        position: static;
+    }
+
+    .cms-media-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .cms-media-link-row {
+        flex-direction: column;
     }
 }
