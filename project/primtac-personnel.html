@@ -2840,43 +2840,35 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: grid; grid-template-columns: 1fr; gap: 48px;">
                             <div class="split_layout"
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; align-items: center;">
                                 <div
                                     style="border: 2px solid #2A2B25; aspect-ratio: 9/16; width: 100%; max-width: 340px; margin: 0 auto; overflow: hidden; background: #131615; position: relative;">
-                                    <video preload="metadata" muted="" loop="" playsinline="" autoplay=""
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"
-                                            type="application/x-mpegURL">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"
-                                            type="video/mp4">
-                                    </video>
+                                    <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"
+                                        poster="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/thumbnail.jpg"
+                                        controls preload="none" playsinline
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
-                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
-                                        Client testimonial</p>
-
-                                    <!-- <span
-                                        style="display: inline-block; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #0E100F; margin-bottom: 18px;">Placeholder
-                                        — real quote needed</span> -->
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        Client testimonial
+                                    </p>
                                     <blockquote
-                                        style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px;">
-                                        <p style="margin: 0; font-style: italic;">"Bharath and BW Digital Marketing
-                                            recently helped Primtac Personnel to design and develop a new website which
-                                            has now gone live.
-                                            The team in BW were fantastic throughout the entire process. Regular catch
-                                            up meetings to track and monitor progress, consistent communication over the
-                                            course of the development and launch, and regular follow up calls and emails
-                                            to make sure we were happy with the final product. I can't recommend Bharath
-                                            and the team in BW enough. We are delighted with the outcome and have seen a
-                                            massive lift in online engagement.
-                                            Thanks again guys!"</p>
+                                        style="margin: 0; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px;">
+                                        <p style="margin: 0; font-style: italic;">“Bharath and BW Digital Marketing
+                                            recently helped Primtac Personnel to design and develop a new website
+                                            which has now gone live. The team in BW were fantastic throughout the
+                                            entire process. Regular catch up meetings to track and monitor progress,
+                                            consistent communication over the course of the development and launch,
+                                            and regular follow up calls and emails to make sure we were happy with the
+                                            final product. I can't recommend Bharath and the team in BW enough. We are
+                                            delighted with the outcome and have seen a massive lift in online
+                                            engagement. Thanks again guys!”</p>
                                     </blockquote>
                                     <cite
-                                        style="display: block; font-family: 'Inter', sans-serif; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">Conor
-                                        Parkinson, Primtac Personnel</cite>
+                                        style="display: block; font-family: 'Inter', sans-serif; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">
+                                        Conor Parkinson, Primtac Personnel
+                                    </cite>
                                 </div>
                             </div>
                         </div>
@@ -3727,6 +3719,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js?v=5"></script>
+    <script src="/assets/js/testimonial-video.js?v=1"></script>
 
 
 

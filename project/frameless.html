@@ -3102,18 +3102,13 @@
                         <div class="content_wrap u-column-span-12"
                             style="display: grid; grid-template-columns: 1fr; gap: 48px;">
                             <div class="split_layout"
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: center;">
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; align-items: center;">
                                 <div
-                                    style="border: 2px solid #2A2B25; border-radius: 20px; aspect-ratio: 9/16; width: 100%; max-width: 340px; margin: 0 auto; overflow: hidden; background: #131615; position: relative;">
-                                    <video controls preload="metadata" playsinline
-                                        style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                            type="application/x-mpegURL">
-                                        <source
-                                            src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
-                                            type="video/mp4">
-                                    </video>
+                                    style="border: 2px solid #2A2B25; aspect-ratio: 9/16; width: 100%; max-width: 340px; margin: 0 auto; overflow: hidden; background: #131615; position: relative;">
+                                    <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
+                                        poster="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/thumbnail.jpg"
+                                        controls preload="none" playsinline
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
                                 </div>
                                 <div style="display: flex; flex-direction: column; gap: 20px;">
                                     <p class="sec_label u-text-style-small"
@@ -3121,28 +3116,17 @@
                                         Client testimonial
                                     </p>
                                     <blockquote
-                                        style="margin: 0; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.45; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px; font-family: 'Inter', sans-serif ;">
+                                        style="margin: 0; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px;">
                                         <p style="margin: 0; font-style: italic;">“BW Digital was more than happy to
                                             help. Bharath patiently reviewed the site, made all the necessary
                                             adjustments, removed a pile of unnecessary add-on costs, and completed the
-                                            project to far more than our satisfaction. Throughout the entire process, he
-                                            remained positive, smiling, and incredibly effective.”</p>
+                                            project to far more than our satisfaction. Throughout the entire process,
+                                            he remained positive, smiling, and incredibly effective.”</p>
                                     </blockquote>
-                                    <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
-                                        <div
-                                            style="width: 44px; height: 44px; border-radius: 50%; background: #0E100F; color: #FFFCE1; display: grid; place-items: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16px; line-height: 1.6;">
-                                            VB</div>
-                                        <div>
-                                            <cite
-                                                style="display: block; font-family: 'Inter', sans-serif; font-size: 14px; color: #0E100F; font-weight: 700; font-style: normal;">
-                                                VJ Bronk
-                                            </cite>
-                                            <span
-                                                style="font-family: 'Inter', sans-serif; font-size: 12px; color: #7C7C70; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
-                                                Frameless
-                                            </span>
-                                        </div>
-                                    </div>
+                                    <cite
+                                        style="display: block; font-family: 'Inter', sans-serif; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">
+                                        VJ Bronk, Frameless
+                                    </cite>
                                 </div>
                             </div>
                         </div>
@@ -3707,6 +3691,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="/assets/js/custom-interactions.js?v=5"></script>
+    <script src="/assets/js/testimonial-video.js?v=1"></script>
 
 
 

@@ -3090,37 +3090,45 @@
                 </div>
             </section>
 
-            <!-- SECTION 06: Client Quote -->
-            <section class="main-section_wrap u-section"
-                style="display: none; background-color: #0E100F; padding-block: 80px; color: #FFFCE1; border-top: 1px solid #2A2B25;">
+            <!-- SECTION 06: Client Testimonial -->
+            <section class="main-section_wrap u-section" style="padding-block: 80px; background-color: #FFFCE1;">
                 <div class="main-section_contain u-container">
                     <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-12">
-                            <div
-                                style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px;">
-                                <p class="sec_label u-text-style-small"
-                                    style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
-                                    Client testimonial
-                                </p>
-                                <blockquote
-                                    style="margin: 0; font-family: 'Inter', sans-serif ; font-weight: 500; font-size: clamp(24px, 3.2vw, 36px); line-height: 1.25; letter-spacing: -0.025em; color: #FFFCE1;">
-                                    “Waiting on the client's quote. We'll add it here once it's approved.”</blockquote>
-                                <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px;">
-                                    <div
-                                        style="width: 48px; height: 48px; border-radius: 50%; background: #2A2B25; border: 1px solid #3E4038; display: grid; place-items: center; font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 16px; color: #FFE32A;">
-                                        ER</div>
-                                    <div>
-                                        <div
-                                            style="font-family: 'Inter', sans-serif ; font-weight: 600; font-size: 17px; color: #FFFCE1;">
-                                            E.R. Design Architects</div>
-                                        <div style="font-family: 'Inter', sans-serif; font-size: 13px; color: #7C7C70;">
-                                            Architecture &amp; Planning</div>
-                                    </div>
+                        <div class="content_wrap u-column-span-12"
+                            style="display: grid; grid-template-columns: 1fr; gap: 48px;">
+                            <div class="split_layout"
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; align-items: center;">
+                                <div
+                                    style="border: 2px solid #2A2B25; aspect-ratio: 9/16; width: 100%; max-width: 340px; margin: 0 auto; overflow: hidden; background: #131615; position: relative;">
+                                    <video data-testimonial-src="https://blackwatercdn.b-cdn.net/ER%20Arch%20Testimonial/Edel%20ER%20Arch.mov"
+                                        poster="/assets/images/case-studies/er-design-architects/edel-regan-testimonial.jpg"
+                                        controls preload="none" playsinline
+                                        style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 20px;">
+                                    <p class="sec_label u-text-style-small"
+                                        style="font-family: 'Inter', sans-serif; color: #7C7C70; text-transform: uppercase; letter-spacing: 1.5px; margin: 0; font-weight: 600;">
+                                        Client testimonial
+                                    </p>
+                                    <blockquote
+                                        style="margin: 0; font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; color: #0E100F; line-height: 1.4; border-left: 3px solid var(--swatch--orange, #F17752); padding-left: 20px;">
+                                        <p style="margin: 0; font-style: italic;">“I engaged Bharath from Blackwater
+                                            Digital Marketing, and I found him and his team to be extremely responsive
+                                            to any of the requirements that we had. They listened as a group and
+                                            brought great energy to the job at hand, so I'm very happy to recommend
+                                            Bharath to anyone who's looking for a website or getting their SEO
+                                            rankings up.”</p>
+                                    </blockquote>
+                                    <cite
+                                        style="display: block; font-family: 'Inter', sans-serif; font-size: 13px; color: #0E100F; text-transform: uppercase; letter-spacing: 1px; font-style: normal; margin-top: 8px;">
+                                        Edel Regan, E.R. Design Architects
+                                    </cite>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div data-wf--spacer--variant="small" class="u-section-spacer u-ignore-trim"></div>
             </section>
 
             <!-- SECTION 07: CTA Contact (NO NEXT PROJECT BUTTON!) -->
@@ -3709,6 +3717,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="/assets/js/custom-interactions.js?v=5"></script>
+    <script src="/assets/js/testimonial-video.js?v=1"></script>
 
 
 
