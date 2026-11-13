@@ -1,5 +1,5 @@
 const fs = require('fs');
-const css = fs.readFileSync('assets/css/webflow.css', 'utf8');
+const css = fs.readFileSync('assets/css/blackwater-digital.css', 'utf8');
 
 let index = 0;
 while (true) {

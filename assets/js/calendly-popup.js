@@ -1,7 +1,7 @@
 // -----------------------------------------
 // CALENDLY "BOOK A FREE CONSULTATION" HEADER BUTTON + POPUP
 // The popup markup (with the Calendly inline widget) sits at the end of every page
-// and preloads invisibly; styles are in webflow.css. This adds the header button and
+// and preloads invisibly; styles are in blackwater-digital.css. This adds the header button and
 // the open/close behaviour.
 // -----------------------------------------
 (function () {
