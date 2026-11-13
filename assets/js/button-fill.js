@@ -2,7 +2,7 @@
 // SHARED BUTTON HOVER: circle fill from the cursor
 // Gives every call-to-action the same hover as the hero "Let's Talk" button (.btn):
 // a circle grows from where the cursor enters and shrinks back toward where it leaves.
-// Colours per button live in webflow.css (.bw-fx / --bw-fill). Uses event delegation,
+// Colours per button live in blackwater-digital.css (.bw-fx / --bw-fill). Uses event delegation,
 // so buttons added later (header booking button, slider component) work too.
 // -----------------------------------------
 (function () {

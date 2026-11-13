@@ -2,7 +2,7 @@
 
 
 // -----------------------------------------
-// OSMO PAGE TRANSITION BOILERPLATE
+// BLACKWATERDIGITAL PAGE TRANSITION
 // -----------------------------------------
 
 gsap.registerPlugin(CustomEase);
@@ -2177,7 +2177,7 @@ function initServicesBenefitsScroll() {
 
     if (!pinHeight || !container || !benefitsContent) return;
 
-    // Phones and tablets hold the text and the icon ring in a CSS sticky frame (webflow.css).
+    // Phones and tablets hold the text and the icon ring in a CSS sticky frame (blackwater-digital.css).
     // Pinning with fixed positioning jumps at the start and end of the pin there.
     const useSticky = window.matchMedia('(max-width: 991px), (hover: none)').matches &&
       CSS.supports('overflow', 'clip');
