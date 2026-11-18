@@ -1,6 +1,9 @@
-<section id="" slider-wrap="testimonials" class="main-section_wrap u-section testimonials">
+<section slider-wrap="testimonials" class="main-section_wrap u-section testimonials">
     <div class="u-embed-css w-embed">
         <style>
+            /* Client testimonial slider: a stack of cards, one client video each.
+               The video play cover comes from assets/js/testimonial-video.js and assets/css/testimonial-video.css;
+               the stack and the arrows from components/testimonials-slider.js. */
             testimonials-slider {
                 display: block;
             }
@@ -10,11 +13,21 @@
                 font-size: clamp(34px, 5vw, 72px) !important;
                 line-height: 1.1 !important;
                 letter-spacing: -1.5px !important;
-                margin-bottom: clamp(24px, 3vw, 40px) !important;
+                margin-bottom: 0 !important;
                 max-width: 100% !important;
                 width: 100% !important;
                 text-align: center !important;
                 white-space: nowrap;
+            }
+
+            /* Pulled up into the wrapper's gap so it sits close under the heading */
+            testimonials-slider .tslider__intro {
+                max-width: 560px;
+                margin: -14px auto clamp(32px, 4vw, 56px);
+                font-size: 17px;
+                line-height: 1.5;
+                text-align: center;
+                color: var(--swatch--body-text, #9A9A8C);
             }
 
             @media (max-width: 767px) {
@@ -25,47 +38,12 @@
                 }
             }
 
-            .testimonials_collection_item:nth-child(1) {
-                z-index: 60;
-                transform: scale(1) translateY(0);
-            }
-
-            .testimonials_collection_item:nth-child(2) {
-                z-index: 50;
-                transform: scale(0.95) translateY(-2%);
-            }
-
-            .testimonials_collection_item:nth-child(2) .testimonials_card_wrap {
-                background-color: var(--swatch--pink);
-            }
-
-            .testimonials_collection_item:nth-child(3) {
-                z-index: 40;
-                transform: scale(0.90) translateY(-4%);
-            }
-
-            .testimonials_collection_item:nth-child(3) .testimonials_card_wrap {
-                background-color: var(--swatch--orange);
-            }
-
-            .testimonials_collection_item:nth-child(4) {
-                z-index: 30;
-                transform: scale(0.85) translateY(-6%);
-            }
-
-            .testimonials_collection_item:nth-child(4) .testimonials_card_wrap {
-                background-color: var(--swatch--yellow);
-            }
-
-            /* Falling animation for the active card going out */
-
+            /* Falling animation for the card going out */
             .testimonials_collection_item.is-falling {
                 z-index: 100 !important;
                 transition: transform 0.8s cubic-bezier(0.6, 0.04, 0.98, 0.34) !important;
                 transform: translateY(150vh) scale(0.8) !important;
             }
-
-            /* Moving to back animation (for previous button) */
 
             .testimonials_collection_item.is-rising {
                 z-index: 0 !important;
@@ -73,38 +51,331 @@
                 transform: translateY(150vh) scale(0.8) !important;
             }
 
-            /* Navigation buttons cursor */
+            /* ---------- Card ---------- */
+            /* [data-tone] beats the site stylesheet's per-position card colours */
+            testimonials-slider .testimonials_collection_item[data-tone] .testimonials_card_wrap {
+                --t-bg: #FFFCE1;
+                --t-text: #0E100F;
+                --t-muted: #4A4B42;
+                --t-line: rgba(14, 16, 15, 0.14);
+                --t-accent: #0E100F;
+                --t-avatar-bg: #0E100F;
+                --t-avatar-text: #FFE32A;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+                align-items: stretch;
+                gap: clamp(28px, 4vw, 64px);
+                width: min(100%, 1040px);
+                aspect-ratio: auto;
+                padding: clamp(24px, 3.5vw, 48px);
+                background-color: var(--t-bg) !important;
+                color: var(--t-text);
+                border: 1.5px solid var(--t-line);
+                border-radius: 28px;
+                box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.65);
+                box-sizing: border-box;
+            }
 
-            [data-slider-prev],
-            [data-slider-next] {
+            testimonials-slider .testimonials_collection_item[data-tone="yellow"] .testimonials_card_wrap {
+                --t-bg: #FFE32A;
+                --t-muted: #3A3B33;
+                --t-line: rgba(14, 16, 15, 0.18);
+            }
+
+            testimonials-slider .testimonials_collection_item[data-tone="dark"] .testimonials_card_wrap {
+                --t-bg: #1A1D1B;
+                --t-text: #FFFCE1;
+                --t-muted: #B4B3A2;
+                --t-line: #2A2B25;
+                --t-accent: #FFE32A;
+                --t-avatar-bg: #FFE32A;
+                --t-avatar-text: #0E100F;
+            }
+
+            testimonials-slider .tslide__text {
+                display: flex;
+                flex-direction: column;
+                gap: 22px;
+                min-width: 0;
+            }
+
+            testimonials-slider .tslide__top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            testimonials-slider .tslide__stars {
+                display: flex;
+                gap: 4px;
+                color: var(--t-accent);
+            }
+
+            testimonials-slider .tslide__stars svg {
+                display: block;
+                width: 18px;
+                height: 18px;
+            }
+
+            testimonials-slider .tslide__mark {
+                display: block;
+                width: 40px;
+                height: 40px;
+                color: var(--t-accent);
+                opacity: 0.9;
+            }
+
+            testimonials-slider .tslide__quote {
+                flex: 1;
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+            testimonials-slider .tslide__quote p {
+                margin: 0;
+                font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+                font-size: clamp(20px, 2vw, 27px);
+                font-weight: 500;
+                line-height: 1.38;
+                letter-spacing: -0.01em;
+                color: var(--t-text);
+                text-wrap: pretty;
+            }
+
+            testimonials-slider .tslide__foot {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 14px 16px;
+                padding-top: 20px;
+                border-top: 1px solid var(--t-line);
+            }
+
+            testimonials-slider .tslide__avatar {
+                display: grid;
+                place-items: center;
+                flex-shrink: 0;
+                width: 46px;
+                height: 46px;
+                border-radius: 999px;
+                background: var(--t-avatar-bg);
+                color: var(--t-avatar-text);
+                font-size: 15px;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+            }
+
+            testimonials-slider .tslide__who {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                min-width: 0;
+                margin-right: auto;
+            }
+
+            testimonials-slider .tslide__name {
+                margin: 0;
+                font-size: 17px;
+                font-weight: 600;
+                line-height: 1.3;
+                letter-spacing: 0;
+                color: var(--t-text);
+            }
+
+            testimonials-slider .tslide__company {
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.35;
+                color: var(--t-muted);
+            }
+
+            testimonials-slider a.tslide__link {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 12px 10px 18px;
+                border: 1.5px solid var(--t-line);
+                border-radius: 999px;
+                color: var(--t-text);
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            }
+
+            testimonials-slider a.tslide__link svg {
+                transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+            }
+
+            testimonials-slider a.tslide__link:hover,
+            testimonials-slider a.tslide__link:focus-visible {
+                background: var(--t-text);
+                border-color: var(--t-text);
+                color: var(--t-bg);
+            }
+
+            testimonials-slider a.tslide__link:hover svg {
+                transform: translateX(4px);
+            }
+
+            testimonials-slider .testimonials_card_wrap :focus-visible {
+                outline: 2px solid var(--t-text);
+                outline-offset: 3px;
+            }
+
+            /* Video: fills its column at 9:16 */
+            testimonials-slider .tslide__video.testimonial_video_wrap {
+                max-width: none;
+                width: 100%;
+                margin: 0;
+                align-self: center;
+                border-color: var(--t-line);
+                border-radius: 20px;
+            }
+
+            /* ---------- Arrows and progress ---------- */
+            testimonials-slider .tslider__nav {
+                margin-top: clamp(28px, 3vw, 40px);
+                gap: 20px;
+            }
+
+            testimonials-slider .tslider__btn {
+                display: grid;
+                place-items: center;
+                width: 56px;
+                height: 56px;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                border-radius: 999px;
+                background: var(--_theme---text, #FFFCE1);
+                color: var(--_theme---background, #0E100F);
                 cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
             }
 
-            @container (width < 60em) {
-                .testimonials_card_text_wrap {
-                    justify-content: start;
-                }
+            testimonials-slider .tslider__btn:hover,
+            testimonials-slider .tslider__btn:focus-visible {
+                background: #FFE32A;
+                color: #0E100F;
+                transform: scale(1.06);
+            }
 
-                .testimonials_card_wrap {
-                    justify-content: space-between;
-                }
+            testimonials-slider .tslider__btn:active {
+                transform: scale(0.94);
+            }
 
-                .testimonials_card_img.is-1-1 {
-                    aspect-ratio: 16 / 9;
-                }
+            testimonials-slider .tslider__btn:focus-visible {
+                outline: 2px solid #FFE32A;
+                outline-offset: 4px;
+            }
 
-                .testimonials_card_img.is-4-5 {
-                    aspect-ratio: 1 / 1;
-                }
+            testimonials-slider .tslider__btn svg {
+                width: 22px;
+                height: 22px;
+            }
 
-                .testimonials_card_wrap {
-                    aspect-ratio: 1 / 1;
+            testimonials-slider .tslider__progress {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 14px;
+                font-weight: 600;
+                font-variant-numeric: tabular-nums;
+                color: var(--_theme---text, #FFFCE1);
+            }
+
+            testimonials-slider .tslider__bar {
+                position: relative;
+                width: clamp(72px, 12vw, 140px);
+                height: 3px;
+                overflow: hidden;
+                border-radius: 999px;
+                background: rgba(255, 252, 225, 0.18);
+            }
+
+            testimonials-slider .tslider__fill {
+                position: absolute;
+                inset: 0 auto 0 0;
+                width: 25%;
+                border-radius: inherit;
+                background: #FFE32A;
+                transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+            }
+
+            testimonials-slider .tslider__total {
+                color: var(--swatch--body-text, #9A9A8C);
+            }
+
+            testimonials-slider .tslider__status {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            /* ---------- Tablets and phones ---------- */
+            @media (max-width: 991px) {
+                testimonials-slider .testimonials_collection_item[data-tone] .testimonials_card_wrap {
+                    grid-template-columns: minmax(0, 1fr) minmax(200px, 240px);
+                    gap: 32px;
                 }
             }
 
-            @container (width < 40em) {
-                .testimonials_card_wrap {
-                    aspect-ratio: 4 / 5;
+            @media (max-width: 767px) {
+                testimonials-slider .testimonials_collection_item[data-tone] .testimonials_card_wrap {
+                    grid-template-columns: minmax(0, 1fr);
+                    gap: 22px;
+                    padding: 16px 16px 22px;
+                    border-radius: 22px;
+                }
+
+                testimonials-slider .tslide__video.testimonial_video_wrap {
+                    order: -1;
+                    max-width: 250px;
+                    margin: 0 auto;
+                }
+
+                testimonials-slider .tslide__text {
+                    gap: 16px;
+                    padding: 0 6px;
+                }
+
+                testimonials-slider .tslide__mark {
+                    display: none;
+                }
+
+                testimonials-slider .tslide__quote p {
+                    font-size: 18px;
+                }
+
+                testimonials-slider .tslider__btn {
+                    width: 52px;
+                    height: 52px;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                testimonials-slider .tslider__btn,
+                testimonials-slider a.tslide__link,
+                testimonials-slider a.tslide__link svg,
+                testimonials-slider .tslider__fill {
+                    transition: none;
+                }
+
+                testimonials-slider .tslider__btn:hover,
+                testimonials-slider .tslider__btn:focus-visible,
+                testimonials-slider a.tslide__link:hover svg {
+                    transform: none;
                 }
             }
         </style>
@@ -116,326 +387,157 @@
             <div class="content_wrap u-column-span-10 testimonials_wrap"
                 style="grid-column: 1 / -1; width: 100%; max-width: 100%;">
                 <h2 class="testimonials_heading u-text-style-h1">How our clients feel</h2>
+                <p class="tslider__intro">Irish business owners on what it's like to work with us. Press play to hear it from them.</p>
                 <div class="testimonials_cards_wrap">
-                    <div class="testimonials_collection_wrapper w-dyn-list">
-                        <div data-slider="testimonials" role="list"
-                            class="testimonials_collection_list w-dyn-items">
-                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                    <div class="testimonials_collection_wrapper">
+                        <div data-slider="testimonials" role="list" class="testimonials_collection_list">
+
+                            <!-- 1. Edel Regan -->
+                            <div role="listitem" class="testimonials_collection_item" data-tone="cream" aria-label="Edel Regan, E.R. Design Architects">
                                 <div class="testimonials_card_wrap">
-                                    <div class="testimonials_card_text_wrap">
-                                        <div class="testimonials_card_client_wrap">
-                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                Audrey Philpott— Clarity Investigations</h3>
-                                            <div class="testimonials_card_rating_wrap">
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                            </div>
+                                    <div class="tslide__text">
+                                        <div class="tslide__top">
+                                            <span class="tslide__stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg></span>
                                         </div>
-                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                            "Blackwater Digital understood my vision and transformed it into
-                                            a website that exceeded my expectations. His team were
-                                            professional, responsive and friendly, and the support since
-                                            launch has been exceptional." <a
-                                                href="https://www.google.com/search?q=blackwater%20digital%20marketing%20cork%20reviews&shem=aimgspe,#lrd="
-                                                target="_blank" rel="noopener noreferrer"
-                                                style="color: #FFE32A;">
-                                                Read more
-                                            </a>
-                                        </p>
+                                        <svg class="tslide__mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
+                                        <blockquote class="tslide__quote">
+                                            <p>“I engaged Bharath from Blackwater Digital Marketing, and I found him and his team to be extremely responsive to any of the requirements that we had. They listened as a group and brought great energy to the job at hand, so I'm very happy to recommend Bharath to anyone who's looking for a website or getting their SEO rankings up.”</p>
+                                        </blockquote>
+                                        <div class="tslide__foot">
+                                            <span class="tslide__avatar" aria-hidden="true">ER</span>
+                                            <span class="tslide__who"><h3 class="tslide__name">Edel Regan</h3><span class="tslide__company">E.R. Design Architects</span></span>
+                                            <a class="tslide__link" href="/project/er-design-architects">See the project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                                        </div>
                                     </div>
-                                    <div class="testimonials_card_img_wrap"
-                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                        <div data-bunny-background-init=""
-                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/playlist.m3u8"
-                                            data-player-status="idle" data-player-lazy="false"
-                                            data-player-autoplay="false" data-player-activated="false"
-                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                            <video controls preload="metadata" playsinline
-                                                style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/playlist.m3u8"></video>
-                                        </div>
+                                    <div class="testimonial_video_wrap tslide__video">
+                                        <video data-testimonial-src="https://blackwatercdn.b-cdn.net/ER%20Arch%20Testimonial/Edel%20ER%20Arch.mov"
+                                            poster="/assets/images/case-studies/er-design-architects/edel-regan-testimonial.jpg"
+                                            data-testimonial-name="Edel Regan" data-testimonial-company="E.R. Design Architects"
+                                            data-testimonial-duration="0:34" controls preload="none" playsinline></video>
                                     </div>
                                 </div>
                             </div>
 
-                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                            <!-- 2. Audrey Philpott -->
+                            <div role="listitem" class="testimonials_collection_item" data-tone="yellow" aria-label="Audrey Philpott, Clarity Investigations">
                                 <div class="testimonials_card_wrap">
-                                    <div class="testimonials_card_text_wrap">
-                                        <div class="testimonials_card_client_wrap">
-                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                Conor Parkinson — Primtac Personnel</h3>
-                                            <div class="testimonials_card_rating_wrap">
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                            </div>
+                                    <div class="tslide__text">
+                                        <div class="tslide__top">
+                                            <span class="tslide__stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg></span>
                                         </div>
-                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                            "I would highly recommend BW to anyone
-                                            looking to upscale their marketing to improve their website
-                                            and give their company a whole revamp online - the revamp that Primtac went
-                                            through with BW has been a massive success."</p>
+                                        <svg class="tslide__mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
+                                        <blockquote class="tslide__quote">
+                                            <p>“Blackwater Digital understood my vision and transformed it into a website that exceeded my expectations. His team were professional, responsive and friendly, and the support since launch has been exceptional.”</p>
+                                        </blockquote>
+                                        <div class="tslide__foot">
+                                            <span class="tslide__avatar" aria-hidden="true">AP</span>
+                                            <span class="tslide__who"><h3 class="tslide__name">Audrey Philpott</h3><span class="tslide__company">Clarity Investigations</span></span>
+                                            <a class="tslide__link" href="/project/clarity-investigations">See the project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                                        </div>
                                     </div>
-                                    <div class="testimonials_card_img_wrap"
-                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                        <div data-bunny-background-init=""
-                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"
-                                            data-player-status="idle" data-player-lazy="false"
-                                            data-player-autoplay="false" data-player-activated="false"
-                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                            <video controls preload="metadata" playsinline
-                                                style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"></video>
-                                        </div>
+                                    <div class="testimonial_video_wrap tslide__video">
+                                        <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/playlist.m3u8"
+                                            poster="https://vz-5d3a8c6b-e14.b-cdn.net/6e5dd2aa-1188-4907-96f0-9f9609e215e5/thumbnail.jpg"
+                                            data-testimonial-name="Audrey Philpott" data-testimonial-company="Clarity Investigations"
+                                            data-testimonial-duration="0:58" controls preload="none" playsinline></video>
                                     </div>
                                 </div>
                             </div>
 
-                            <div role="listitem" class="testimonials_collection_item w-dyn-item">
+                            <!-- 3. Conor Parkinson -->
+                            <div role="listitem" class="testimonials_collection_item" data-tone="dark" aria-label="Conor Parkinson, Primtac Personnel">
                                 <div class="testimonials_card_wrap">
-                                    <div class="testimonials_card_text_wrap">
-                                        <div class="testimonials_card_client_wrap">
-                                            <h3 class="testimonials_card_client_name u-text-style-main">
-                                                Kevin O'Keeffe</h3>
-                                            <div class="testimonials_card_rating_wrap">
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                                <div class="testimonials_card_rating_icon">
-                                                    <!--$--><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="100%" viewBox="0 0 20 20" fill="none"
-                                                        class="u-svg"><!--$-->
-                                                        <path
-                                                            d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z"
-                                                            fill="currentColor"></path><!--/$-->
-                                                    </svg>
-                                                    <!--/$-->
-                                                </div>
-                                            </div>
+                                    <div class="tslide__text">
+                                        <div class="tslide__top">
+                                            <span class="tslide__stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg></span>
                                         </div>
-                                        <p class="testimonials_card_paragraph u-text-style-large">
-                                            "Bharath and his team are technically very knowledgeable and
-                                            very easy to deal with. Bharath takes time to understand your
-                                            business. He builds websites from a commercial point of view.
-                                            This gives you leads for your business."</p>
+                                        <svg class="tslide__mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
+                                        <blockquote class="tslide__quote">
+                                            <p>“I would highly recommend BW to anyone looking to upscale their marketing to improve their website and give their company a whole revamp online — the revamp that Primtac went through with BW has been a massive success.”</p>
+                                        </blockquote>
+                                        <div class="tslide__foot">
+                                            <span class="tslide__avatar" aria-hidden="true">CP</span>
+                                            <span class="tslide__who"><h3 class="tslide__name">Conor Parkinson</h3><span class="tslide__company">Primtac Personnel</span></span>
+                                            <a class="tslide__link" href="/project/primtac-personnel">See the project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                                        </div>
                                     </div>
-                                    <div class="testimonials_card_img_wrap"
-                                        style="align-self: stretch; position: relative; width: 100%; border-radius: 8px; overflow: hidden;">
-                                        <div data-bunny-background-init=""
-                                            data-player-src="https://vz-5d3a8c6b-e14.b-cdn.net/a9784cd3-561a-482a-804a-6c4c6a677f90/playlist.m3u8"
-                                            data-player-status="idle" data-player-lazy="false"
-                                            data-player-autoplay="false" data-player-activated="false"
-                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 8px; overflow: hidden;">
-                                            <video controls preload="metadata" playsinline
-                                                style="width: 100%; height: 100%; object-fit: contain; display: block;"
-                                                src="https://vz-5d3a8c6b-e14.b-cdn.net/a9784cd3-561a-482a-804a-6c4c6a677f90/playlist.m3u8"></video>
-                                        </div>
+                                    <div class="testimonial_video_wrap tslide__video">
+                                        <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/playlist.m3u8"
+                                            poster="https://vz-5d3a8c6b-e14.b-cdn.net/b6a854e2-d009-44ca-b1ee-d39fb20cd155/thumbnail.jpg"
+                                            data-testimonial-name="Conor Parkinson" data-testimonial-company="Primtac Personnel"
+                                            data-testimonial-duration="1:00" controls preload="none" playsinline></video>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- 4. Kevin O'Keeffe -->
+                            <div role="listitem" class="testimonials_collection_item" data-tone="cream" aria-label="Kevin O'Keeffe">
+                                <div class="testimonials_card_wrap">
+                                    <div class="tslide__text">
+                                        <div class="tslide__top">
+                                            <span class="tslide__stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg></span>
+                                        </div>
+                                        <svg class="tslide__mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
+                                        <blockquote class="tslide__quote">
+                                            <p>“Bharath and his team are technically very knowledgeable and very easy to deal with. Bharath takes time to understand your business. He builds websites from a commercial point of view. This gives you leads for your business.”</p>
+                                        </blockquote>
+                                        <div class="tslide__foot">
+                                            <span class="tslide__avatar" aria-hidden="true">KO</span>
+                                            <span class="tslide__who"><h3 class="tslide__name">Kevin O'Keeffe</h3><span class="tslide__company">Website, SEO and ads</span></span>
+                                            <a class="tslide__link" href="/project/kevin-okeeffe">See the project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial_video_wrap tslide__video">
+                                        <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/a9784cd3-561a-482a-804a-6c4c6a677f90/playlist.m3u8"
+                                            poster="https://vz-5d3a8c6b-e14.b-cdn.net/a9784cd3-561a-482a-804a-6c4c6a677f90/thumbnail.jpg"
+                                            data-testimonial-name="Kevin O'Keeffe"
+                                            data-testimonial-duration="0:42" controls preload="none" playsinline></video>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. VJ Bronk: hidden for now. Delete style="display: none" to show it again
+                                 (the slider skips hidden cards and counts the rest). -->
+                            <div role="listitem" class="testimonials_collection_item" data-tone="dark" aria-label="VJ Bronk, Frameless" style="display: none">
+                                <div class="testimonials_card_wrap">
+                                    <div class="tslide__text">
+                                        <div class="tslide__top">
+                                            <span class="tslide__stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0L13.0567 6.30667L20 7.26583L14.9467 12.1225L16.18 19.0217L10 15.7158L3.81917 19.0217L5.05333 12.1225L0 7.26583L6.94333 6.30667L10 0Z" fill="currentColor"></path></svg></span>
+                                        </div>
+                                        <svg class="tslide__mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /><path fill="currentColor" d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z" /></svg>
+                                        <blockquote class="tslide__quote">
+                                            <p>“Bharath patiently reviewed the site, made all the necessary adjustments, removed a pile of unnecessary add-on costs, and completed the project to far more than our satisfaction.”</p>
+                                        </blockquote>
+                                        <div class="tslide__foot">
+                                            <span class="tslide__avatar" aria-hidden="true">VB</span>
+                                            <span class="tslide__who"><h3 class="tslide__name">VJ Bronk</h3><span class="tslide__company">Frameless</span></span>
+                                            <a class="tslide__link" href="/project/frameless">See the project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                                        </div>
+                                    </div>
+                                    <div class="testimonial_video_wrap tslide__video">
+                                        <video data-testimonial-src="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/playlist.m3u8"
+                                            poster="https://vz-5d3a8c6b-e14.b-cdn.net/2d099a7e-519e-480d-bdf2-91c8f4ae25d4/thumbnail.jpg"
+                                            data-testimonial-name="VJ Bronk" data-testimonial-company="Frameless"
+                                            data-testimonial-duration="0:10" controls preload="none" playsinline></video>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="testimonials_cards_navigation_wrap">
-                        <!--$-->
-                        <div data-wf--button-arrow--variant="primary-left" data-slider-prev="testimonials"
-                            data-button=" " class="button_arrow_wrap">
-                            <div class="button_arrow_element">
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-                                    fill="none" class="u-svg is-arrow"><!--$-->
-                                    <path
-                                        d="M18.4333 25.3335L25.9 32.8002L24 34.6668L13.3333 24.0002L24 13.3335L25.9 15.2002L18.4333 22.6668H34.6667V25.3335H18.4333Z"
-                                        fill="currentColor"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="none" class="u-svg team_slider"><!--$-->
-                                    <path d="M8.5 6L12.5 10L8.5 14" stroke="#191919" stroke-opacity="0.75"
-                                        stroke-width="1.5"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="none" class="u-svg team_slider is-left"><!--$-->
-                                    <path d="M11.5 6L7.5 10L11.5 14" stroke="#191919" stroke-opacity="0.75"
-                                        stroke-width="1.5"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                            </div>
-                            <!--$-->
-                            <div class="clickable_wrap u-cover-absolute">
-                                <!--$--><button type="button" aria-label="Previous"
-                                    class="clickable_btn"></button>
-                                <!--/$-->
-                            </div>
-                            <!--/$-->
+                    <div class="testimonials_cards_navigation_wrap tslider__nav">
+                        <button type="button" class="tslider__btn" data-slider-prev="testimonials" aria-label="Previous testimonial">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+                        </button>
+                        <div class="tslider__progress" aria-hidden="true">
+                            <span data-slider-current>01</span>
+                            <span class="tslider__bar"><span class="tslider__fill" data-slider-fill></span></span>
+                            <span class="tslider__total" data-slider-total>04</span>
                         </div>
-                        <!--/$-->
-                        <!--$-->
-                        <div data-wf--button-arrow--variant="primary-right" data-slider-next="testimonials"
-                            data-button=" " class="button_arrow_wrap">
-                            <div
-                                class="button_arrow_element w-variant-bb0688d1-65b6-14b6-81e5-21e2cd39bbda">
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-                                    fill="none"
-                                    class="u-svg is-arrow w-variant-bb0688d1-65b6-14b6-81e5-21e2cd39bbda"><!--$-->
-                                    <path
-                                        d="M18.4333 25.3335L25.9 32.8002L24 34.6668L13.3333 24.0002L24 13.3335L25.9 15.2002L18.4333 22.6668H34.6667V25.3335H18.4333Z"
-                                        fill="currentColor"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="none" class="u-svg team_slider"><!--$-->
-                                    <path d="M8.5 6L12.5 10L8.5 14" stroke="#191919" stroke-opacity="0.75"
-                                        stroke-width="1.5"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                                <!--$--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="none" class="u-svg team_slider is-left"><!--$-->
-                                    <path d="M11.5 6L7.5 10L11.5 14" stroke="#191919" stroke-opacity="0.75"
-                                        stroke-width="1.5"></path><!--/$-->
-                                </svg>
-                                <!--/$-->
-                            </div>
-                            <!--$-->
-                            <div class="clickable_wrap u-cover-absolute">
-                                <!--$--><button type="button" aria-label="Next"
-                                    class="clickable_btn"></button>
-                                <!--/$-->
-                            </div>
-                            <!--/$-->
-                        </div>
-                        <!--/$-->
+                        <button type="button" class="tslider__btn" data-slider-next="testimonials" aria-label="Next testimonial">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                        </button>
+                        <p class="tslider__status" data-slider-status aria-live="polite"></p>
                     </div>
                 </div>
             </div>
