@@ -8,7 +8,7 @@
 // - Sends the claim form to /api/send, which emails it to the team
 // -----------------------------------------
 (function () {
-  var DEFAULTS = { claimed: 0, places: 30, closesAt: '2026-12-01T00:00:00Z' };
+  var DEFAULTS = { claimed: 0, places: 25, closesAt: '2026-12-01T00:00:00Z' };
   var PHONE = '021 203 2041';
 
   function readOffer(page) {
@@ -351,7 +351,7 @@
     var YELLOW = '#FFE32A';
     var CREAM = '#FFFCE1';
     var INK = '#0E100F';
-    var LABELS = ['-50%', '50% OFF', 'SALE', 'HALF PRICE', '€750', 'BLACK FRIDAY', '30 ONLY', '-50%', 'DEAL'];
+    var LABELS = ['-50%', '50% OFF', 'SALE', 'HALF PRICE', '€750', 'BLACK FRIDAY', '25 ONLY', '-50%', 'DEAL'];
     var W = 0, H = 0, dpr = 1;
     var items = [], bursts = [], burstSprites = [];
     var pointer = { x: 0, y: 0, tx: 0, ty: 0, inside: false, glow: 0 };

@@ -22,17 +22,17 @@
     <!--/$-->
     <title>Black Friday Website Sale: 50% Off Website Design | Blackwater Digital</title>
     <meta
-        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 30 places only, until Monday 30 November 2026."
+        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 25 places only, until Monday 30 November 2026."
         name="description" />
     <meta content="Black Friday Website Sale: 50% Off Website Design | Blackwater Digital" property="og:title" />
     <meta
-        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 30 places only, until Monday 30 November 2026."
+        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 25 places only, until Monday 30 November 2026."
         property="og:description" />
     <meta content="https://blackwaterdigital.ie/assets/images/og-preview.png"
         property="og:image" />
     <meta content="Black Friday Website Sale: 50% Off Website Design | Blackwater Digital" name="twitter:title" />
     <meta
-        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 30 places only, until Monday 30 November 2026."
+        content="Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 25 places only, until Monday 30 November 2026."
         name="twitter:description" />
     <meta content="https://blackwaterdigital.ie/assets/images/og-preview.png"
         name="twitter:image" />
@@ -42,6 +42,7 @@
 
     <!--$-->
     <link href="/assets/css/blackwater-digital.css?v=102" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/testimonial-video.css?v=1" rel="stylesheet" type="text/css">
     <link href="https://blackwaterdigital.ie/black-friday" rel="canonical" />
     <!--/$-->
     <script type="text/javascript">
@@ -65,7 +66,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Black Friday Website Sale",
-    "description": "Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 30 places only, until Monday 30 November 2026.",
+    "description": "Half-price website design for Irish businesses. Websites from €750 ex VAT, live in as little as 5 working days. 25 places only, until Monday 30 November 2026.",
     "url": "https://blackwaterdigital.ie/black-friday",
     "inLanguage": "en",
     "publisher": {
@@ -1116,29 +1117,28 @@
                   color: var(--bf-soft);
                 }
 
-                /* The original price: large, clear and struck through in yellow */
+                /* The original price: large and clear, with a faint strike line so the number still reads */
                 .bf-plan__was s {
                   font-family: var(--bf-display);
                   font-size: 24px;
                   font-weight: 600;
                   line-height: 1;
                   color: var(--bf-cream);
-                  opacity: 0.75;
                   text-decoration-line: line-through;
-                  text-decoration-color: var(--bf-yellow);
-                  text-decoration-thickness: 3px;
+                  text-decoration-color: rgba(255, 227, 42, 0.35);
+                  text-decoration-thickness: 2px;
                 }
 
                 .bf-was-inline s {
                   color: var(--bf-cream);
-                  text-decoration-color: var(--bf-yellow);
+                  text-decoration-color: rgba(255, 227, 42, 0.35);
                   text-decoration-thickness: 2px;
                 }
 
                 .bf-choice__price s {
-                  margin-left: 6px;
+                  margin-left: 4px;
                   color: var(--bf-field-hint);
-                  text-decoration-color: var(--bf-ink);
+                  text-decoration-color: rgba(14, 16, 15, 0.3);
                   text-decoration-thickness: 1.5px;
                 }
 
@@ -1699,6 +1699,17 @@
                   color: var(--bf-ink);
                 }
 
+                /* WhatsApp keeps its own green */
+                .bf-contact--wa .bf-contact__icon {
+                  background: rgba(37, 211, 102, 0.12);
+                  color: #25D366;
+                }
+
+                .bf .bf-contact--wa:hover .bf-contact__icon {
+                  background: #25D366;
+                  color: var(--bf-ink);
+                }
+
                 .bf-contact__text {
                   display: flex;
                   flex-direction: column;
@@ -1851,20 +1862,37 @@
                 }
 
                 .bf-claim__box {
-                  padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 72px);
+                  position: relative;
+                  isolation: isolate;
+                  overflow: hidden;
+                  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 64px);
                   background: var(--bf-cream);
+                  border-radius: 28px;
                   color: var(--bf-ink);
                   display: flex;
                   flex-wrap: wrap;
                   align-items: flex-start;
-                  gap: 40px 64px;
+                  gap: 40px 56px;
+                }
+
+                /* Soft yellow glow in the top corner */
+                .bf-claim__box::before {
+                  content: '';
+                  position: absolute;
+                  z-index: -1;
+                  top: -260px;
+                  left: -200px;
+                  width: 720px;
+                  height: 720px;
+                  background: radial-gradient(closest-side, rgba(255, 227, 42, 0.55), rgba(255, 227, 42, 0));
+                  pointer-events: none;
                 }
 
                 .bf-claim__intro {
-                  flex: 1 1 380px;
+                  flex: 1 1 360px;
                   display: flex;
                   flex-direction: column;
-                  gap: 20px;
+                  gap: 24px;
                 }
 
                 .bf-claim__h2 {
@@ -1883,9 +1911,128 @@
                   color: var(--bf-cream-text);
                 }
 
-                .bf-claim__talk {
-                  font-size: 16px;
+                /* What happens after you claim: a small numbered timeline */
+                .bf-next {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                  padding-top: 24px;
+                  border-top: 1px solid rgba(14, 16, 15, 0.12);
+                }
+
+                .bf-next__title,
+                .bf-talk__title {
+                  font-size: 13px;
+                  font-weight: 600;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
                   color: var(--bf-cream-text);
+                }
+
+                .bf .bf-next__list {
+                  position: relative;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 14px;
+                }
+
+                /* The line joining the numbers */
+                .bf-next__list::before {
+                  content: '';
+                  position: absolute;
+                  top: 14px;
+                  bottom: 14px;
+                  left: 13px;
+                  width: 2px;
+                  background: rgba(14, 16, 15, 0.14);
+                }
+
+                .bf-next__list li {
+                  position: relative;
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 14px;
+                  font-size: 16px;
+                  line-height: 1.5;
+                  color: var(--bf-cream-text);
+                }
+
+                .bf-next__list strong {
+                  color: var(--bf-ink);
+                }
+
+                .bf-next__num {
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                  width: 28px;
+                  height: 28px;
+                  border-radius: 999px;
+                  background: var(--bf-ink);
+                  color: var(--bf-yellow);
+                  font-size: 13px;
+                  font-weight: 700;
+                  line-height: 1;
+                }
+
+                .bf-next__list li > span:last-child {
+                  padding-top: 2px;
+                }
+
+                /* Prefer to talk first: call, WhatsApp, email */
+                .bf-talk {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 12px;
+                }
+
+                .bf-talk__links {
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 10px;
+                }
+
+                .bf .bf-claim a.bf-talk__link {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  min-height: 48px;
+                  padding: 6px 18px 6px 6px;
+                  background: #FFFFFF;
+                  border: 1.5px solid rgba(14, 16, 15, 0.16);
+                  border-radius: 999px;
+                  color: var(--bf-ink);
+                  font-size: 15px;
+                  font-weight: 600;
+                  text-decoration: none;
+                  white-space: nowrap;
+                  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, translate 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease;
+                }
+
+                .bf-talk__icon {
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                  width: 34px;
+                  height: 34px;
+                  border-radius: 999px;
+                  background: var(--bf-yellow);
+                  color: var(--bf-ink);
+                  transition: background-color 0.3s ease, color 0.3s ease;
+                }
+
+                .bf-talk__link--wa .bf-talk__icon {
+                  background: #25D366;
+                  color: #FFFFFF;
+                }
+
+                .bf .bf-claim a.bf-talk__link:hover,
+                .bf .bf-claim a.bf-talk__link:focus-visible {
+                  translate: 0 -2px;
+                  background: var(--bf-ink);
+                  border-color: var(--bf-ink);
+                  color: var(--bf-cream);
+                  box-shadow: 0 14px 28px -14px rgba(14, 16, 15, 0.55);
                 }
 
                 .bf .bf-claim a {
@@ -1902,9 +2049,15 @@
                   outline-color: var(--bf-ink);
                 }
 
+                /* The form sits on a raised white card */
                 .bf-claim__panel {
                   flex: 1.3 1 440px;
                   min-width: 0;
+                  padding: clamp(22px, 3vw, 36px);
+                  background: #FFFFFF;
+                  border: 1px solid rgba(14, 16, 15, 0.08);
+                  border-radius: 22px;
+                  box-shadow: 0 2px 4px rgba(14, 16, 15, 0.04), 0 40px 80px -40px rgba(14, 16, 15, 0.35);
                 }
 
                 /* On the cream box the yellow button fills dark, and its arrow circle turns yellow */
@@ -1937,9 +2090,9 @@
                 }
 
                 .bf-form legend {
-                  margin-bottom: 10px;
+                  margin-bottom: 12px;
                   padding: 0;
-                  font-size: 15px;
+                  font-size: 17px;
                   font-weight: 600;
                   color: var(--bf-ink);
                 }
@@ -1955,13 +2108,20 @@
                   align-items: flex-start;
                   gap: 10px;
                   margin: 0;
-                  padding: 14px;
+                  padding: 16px 14px;
                   background: #FFFFFF;
                   border: 1.5px solid var(--bf-field-line);
-                  border-radius: 8px;
+                  border-radius: 14px;
                   font-weight: 400;
                   line-height: 1.35;
                   cursor: pointer;
+                  transition: border-color 0.25s ease, background-color 0.25s ease, translate 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+                }
+
+                .bf .bf-choice:hover {
+                  translate: 0 -2px;
+                  border-color: var(--bf-ink);
+                  box-shadow: 0 12px 24px -16px rgba(14, 16, 15, 0.45);
                 }
 
                 .bf-choice input {
@@ -1975,7 +2135,7 @@
                 .bf .bf-choice:has(input:checked) {
                   background: var(--bf-yellow);
                   border-color: var(--bf-ink);
-                  box-shadow: inset 0 0 0 1px var(--bf-ink);
+                  box-shadow: inset 0 0 0 1px var(--bf-ink), 0 14px 28px -16px rgba(14, 16, 15, 0.5);
                 }
 
                 .bf .bf-choice:has(input:focus-visible) {
@@ -1989,17 +2149,36 @@
                   display: block;
                 }
 
+                .bf-choice__tag {
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  color: var(--bf-field-hint);
+                }
+
                 .bf-choice__name {
-                  font-size: 15px;
+                  margin-top: 2px;
+                  font-size: 16px;
                   font-weight: 600;
                 }
 
                 .bf-choice__price {
-                  font-size: 15px;
+                  margin-top: 8px;
+                  font-size: 14px;
+                  color: var(--bf-field-hint);
+                }
+
+                .bf-choice__now {
+                  font-family: var(--bf-display);
+                  font-size: 22px;
+                  font-weight: 600;
+                  line-height: 1;
+                  color: var(--bf-ink);
                 }
 
                 .bf-choice__meta {
-                  margin-top: 2px;
+                  margin-top: 8px;
                   font-size: 13px;
                   color: var(--bf-field-hint);
                 }
@@ -2042,11 +2221,22 @@
                   font-size: 16px;
                   line-height: 1.4;
                   color: var(--bf-ink);
-                  background: #FFFFFF;
+                  background: #FDFCF4;
                   border: 1.5px solid var(--bf-field-line);
-                  border-radius: 8px;
+                  border-radius: 12px;
                   -webkit-appearance: none;
                   appearance: none;
+                  transition: border-color 0.2s ease, background-color 0.2s ease;
+                }
+
+                .bf-field input:hover,
+                .bf-field textarea:hover {
+                  border-color: var(--bf-ink);
+                }
+
+                .bf-field input:focus,
+                .bf-field textarea:focus {
+                  background: #FFFFFF;
                 }
 
                 .bf-field textarea {
@@ -2096,10 +2286,7 @@
                   display: flex;
                   flex-direction: column;
                   gap: 14px;
-                  padding: 32px;
-                  background: #FFFFFF;
-                  border: 1.5px solid var(--bf-ink);
-                  border-radius: 8px;
+                  padding: 8px 0;
                 }
 
                 .bf-note:focus {
@@ -2244,6 +2431,21 @@
                     padding: 0 0 72px;
                   }
 
+                  .bf-claim__box {
+                    padding: 40px 12px 12px;
+                    border-radius: 22px;
+                    gap: 32px;
+                  }
+
+                  .bf-claim__intro {
+                    padding: 0 8px;
+                  }
+
+                  .bf-claim__panel {
+                    padding: 22px 16px;
+                    border-radius: 16px;
+                  }
+
                   .bf-terms {
                     padding: 0 0 56px;
                   }
@@ -2312,8 +2514,16 @@
                   .bf-work__arrow,
                   .bf .bf-contact,
                   .bf-faq__toggle::before,
-                  .bf-faq__toggle::after {
+                  .bf-faq__toggle::after,
+                  .bf .bf-choice,
+                  .bf .bf-claim a.bf-talk__link {
                     transition: none;
+                  }
+
+                  .bf .bf-choice:hover,
+                  .bf .bf-claim a.bf-talk__link:hover,
+                  .bf .bf-claim a.bf-talk__link:focus-visible {
+                    translate: none;
                   }
 
                   .bf-plan:hover,
@@ -2354,7 +2564,7 @@
                 data-bf-places the claim form closes by itself. The form also closes at data-bf-closes (11:59pm Monday 30 November 2026,
                 Irish time); the server checks the same time in lib/black-friday.js.
             -->
-            <div class="bf" data-bf-page data-bf-claimed="5" data-bf-places="30" data-bf-closes="2026-12-01T00:00:00Z">
+            <div class="bf" data-bf-page data-bf-claimed="5" data-bf-places="25" data-bf-closes="2026-12-01T00:00:00Z">
 
                 <!-- Offer bar: sticks just under the navbar -->
                 <div class="bf-bar" role="region" aria-label="Black Friday offer">
@@ -2363,7 +2573,7 @@
                         <span class="bf-bar__extra" aria-hidden="true">·</span>
                         <span class="bf-bar__extra">Ends Mon 30 Nov</span>
                         <span aria-hidden="true">·</span>
-                        <span><span data-bf="left">25</span><span class="bf-bar__long"> of <span data-bf="places">30</span> places</span> left</span>
+                        <span><span data-bf="left">20</span><span class="bf-bar__long"> of <span data-bf="places">25</span> places</span> left</span>
                         <a href="#claim">Claim yours <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
                     </div>
                     <div class="bf-bar__group" data-bf-closed hidden>
@@ -2377,16 +2587,16 @@
                     <canvas class="bf-fx" data-bf-fx aria-hidden="true"></canvas>
                     <div class="bf-hero__veil" aria-hidden="true"></div>
                     <div class="bf-hero__inner">
-                        <p class="bf-badge">Black Friday 2026 · 30 websites only</p>
+                        <p class="bf-badge">Black Friday 2026 · 25 websites only</p>
                         <h1 class="bf-h1" id="bf-title">Half-price website design for Irish businesses</h1>
-                        <p class="bf-hero__lede">A professionally built website from <strong>€750 ex VAT</strong> <span class="bf-was-inline">(normally <s>€1,500</s>)</span>, live in as little as 5 working days. Every package is 50% off for the first 30 businesses, until Monday 30 November. When they're gone, they're gone.</p>
+                        <p class="bf-hero__lede">A professionally built website from <strong>€750 ex VAT</strong> <span class="bf-was-inline">(normally <s>€1,500</s>)</span>, live in as little as 5 working days. Every package is 50% off for the first 25 businesses, until Monday 30 November. When they're gone, they're gone.</p>
 
                         <div class="bf-counter">
                             <div class="bf-counter__row">
-                                <span><span data-bf="claimed">5</span> of <span data-bf="places">30</span> claimed</span>
-                                <span class="bf-counter__left" data-bf-left-label>Only <span data-bf="left">25</span> left</span>
+                                <span><span data-bf="claimed">5</span> of <span data-bf="places">25</span> claimed</span>
+                                <span class="bf-counter__left" data-bf-left-label>Only <span data-bf="left">20</span> left</span>
                             </div>
-                            <div class="bf-cells" data-bf-cells role="img" aria-label="5 of 30 places claimed"><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                            <div class="bf-cells" data-bf-cells role="img" aria-label="5 of 25 places claimed"><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
                         </div>
 
                         <div class="bf-actions">
@@ -2500,7 +2710,7 @@
                                 </a>
                             </article>
                         </div>
-                        <p class="bf-footnote">All prices exclude VAT. Offer limited to the first 30 websites, until 11:59pm on Monday 30 November. <span data-bf="claimed">5</span> of <span data-bf="places">30</span> already claimed.</p>
+                        <p class="bf-footnote">All prices exclude VAT. Offer limited to the first 25 websites, until 11:59pm on Monday 30 November. <span data-bf="claimed">5</span> of <span data-bf="places">25</span> already claimed.</p>
                     </div>
                 </section>
 
@@ -2566,7 +2776,7 @@
                             <li class="bf-step bf-reveal">
                                 <span class="bf-step__num" aria-hidden="true">01</span>
                                 <h3 class="bf-h3">Claim your place.</h3>
-                                <p>Choose your option and send the claim form. We email you an invoice, and paying it in full locks in one of the 30 half-price places.</p>
+                                <p>Choose your option and send the claim form. We email you an invoice, and paying it in full locks in one of the 25 half-price places.</p>
                             </li>
                             <li class="bf-step bf-reveal">
                                 <span class="bf-step__num" aria-hidden="true">02</span>
@@ -2682,8 +2892,11 @@
                     </div>
                 </section>
 
+                <!-- Testimonials: the site's client video slider (components/testimonials-slider.html and .js) -->
+                <testimonials-slider></testimonials-slider>
+
                 <!-- FAQ: the left column stays in view while the questions scroll -->
-                <section class="bf-section" aria-labelledby="bf-faq-title">
+                <section class="bf-section bf-section--rule" aria-labelledby="bf-faq-title">
                     <div class="bf-wrap bf-faq">
                         <div class="bf-faq__intro">
                             <p class="bf-eyebrow">FAQ</p>
@@ -2694,6 +2907,11 @@
                                     <span class="bf-contact__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
                                     <span class="bf-contact__text"><span class="bf-contact__label">Call us</span><span class="bf-contact__value">021 203 2041</span></span>
                                 <span class="bf-contact__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+                                </a>
+                                <a class="bf-contact bf-contact--wa" href="https://wa.me/353899858730?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Friday%20website%20offer." target="_blank" rel="noopener noreferrer" data-barba-prevent>
+                                    <span class="bf-contact__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>
+                                    <span class="bf-contact__text"><span class="bf-contact__label">WhatsApp us</span><span class="bf-contact__value">089 985 8730</span></span>
+                                    <span class="bf-contact__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
                                 </a>
                                 <a class="bf-contact" href="mailto:info@bwdigitalmarketing.ie">
                                     <span class="bf-contact__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
@@ -2711,14 +2929,14 @@
                         <div class="bf-faq__list">
                             <details class="bf-faq__item" open>
                                 <summary><span class="bf-faq__num">01</span><span class="bf-faq__q">Is this really 50% off, or is there a catch?</span><span class="bf-faq__toggle" aria-hidden="true"></span></summary>
-                                <div class="bf-faq__answer"><p>It's a straight 50% off our normal prices: €1,500 becomes €750, €2,500 becomes €1,250 and €5,000 becomes €2,500, all ex VAT. The only limit is the number: 30 websites, first come, first served.</p></div>
+                                <div class="bf-faq__answer"><p>It's a straight 50% off our normal prices: €1,500 becomes €750, €2,500 becomes €1,250 and €5,000 becomes €2,500, all ex VAT. The only limit is the number: 25 websites, first come, first served.</p></div>
                             </details>
                             <details class="bf-faq__item">
-                                <summary><span class="bf-faq__num">02</span><span class="bf-faq__q">Why only 30?</span><span class="bf-faq__toggle" aria-hidden="true"></span></summary>
-                                <div class="bf-faq__answer"><p>Because every site is built by our own team, and 30 is what we can build properly and on time. We'd rather cap the offer than rush the work.</p></div>
+                                <summary><span class="bf-faq__num">02</span><span class="bf-faq__q">Why only 25?</span><span class="bf-faq__toggle" aria-hidden="true"></span></summary>
+                                <div class="bf-faq__answer"><p>Because every site is built by our own team, and 25 is what we can build properly and on time. We'd rather cap the offer than rush the work.</p></div>
                             </details>
                             <details class="bf-faq__item">
-                                <summary><span class="bf-faq__num">03</span><span class="bf-faq__q">What happens when the 30 are gone?</span><span class="bf-faq__toggle" aria-hidden="true"></span></summary>
+                                <summary><span class="bf-faq__num">03</span><span class="bf-faq__q">What happens when the 25 are gone?</span><span class="bf-faq__toggle" aria-hidden="true"></span></summary>
                                 <div class="bf-faq__answer"><p>The offer closes when the 30th place is claimed or at 11:59pm on Monday 30 November, whichever comes first, and prices go back to normal. The counter on this page shows how many places are left.</p></div>
                             </details>
                             <details class="bf-faq__item">
@@ -2765,16 +2983,41 @@
                 <section class="bf-claim" id="claim" aria-labelledby="bf-claim-title">
                     <div class="bf-claim__box bf-reveal">
                         <div class="bf-claim__intro">
-                            <h2 class="bf-claim__h2" id="bf-claim-title">30 websites. Half price. Then it's over.</h2>
+                            <h2 class="bf-claim__h2" id="bf-claim-title">25 websites. Half price. Then it's over.</h2>
                             <p class="bf-claim__lede"><span data-bf="gone">5 places are already gone.</span> If you've been putting off a new website, this is the cheapest it will be. Claim your place before 11:59pm on Monday 30 November and you could be live in as little as 5 working days.</p>
                             <div class="bf-counter bf-counter--light">
                                 <div class="bf-counter__row">
-                                    <span><span data-bf="claimed">5</span> of <span data-bf="places">30</span> claimed</span>
-                                    <span class="bf-counter__left" data-bf-left-label>Only <span data-bf="left">25</span> left</span>
+                                    <span><span data-bf="claimed">5</span> of <span data-bf="places">25</span> claimed</span>
+                                    <span class="bf-counter__left" data-bf-left-label>Only <span data-bf="left">20</span> left</span>
                                 </div>
-                                <div class="bf-cells" data-bf-cells role="img" aria-label="5 of 30 places claimed"><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                                <div class="bf-cells" data-bf-cells role="img" aria-label="5 of 25 places claimed"><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span class="is-filled"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
                             </div>
-                            <p class="bf-claim__talk">Prefer to talk first? Call <a href="tel:+353212032041">021 203 2041</a> or email <a href="mailto:info@bwdigitalmarketing.ie">info@bwdigitalmarketing.ie</a>.</p>
+                            <div class="bf-next" data-bf-open>
+                                <p class="bf-next__title">What happens after you claim</p>
+                                <ol class="bf-next__list">
+                                    <li><span class="bf-next__num" aria-hidden="true">1</span><span><strong>Send this form.</strong> It takes about a minute, and there's nothing to pay today.</span></li>
+                                    <li><span class="bf-next__num" aria-hidden="true">2</span><span><strong>We email your invoice</strong> with our bank details.</span></li>
+                                    <li><span class="bf-next__num" aria-hidden="true">3</span><span><strong>Pay to lock in your place.</strong> Places go in the order payments arrive.</span></li>
+                                    <li><span class="bf-next__num" aria-hidden="true">4</span><span><strong>We start building</strong> the day your payment lands.</span></li>
+                                </ol>
+                            </div>
+                            <div class="bf-talk">
+                                <p class="bf-talk__title">Prefer to talk first?</p>
+                                <div class="bf-talk__links">
+                                    <a class="bf-talk__link" href="tel:+353212032041" aria-label="Call us on 021 203 2041">
+                                        <span class="bf-talk__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+                                        021 203 2041
+                                    </a>
+                                    <a class="bf-talk__link bf-talk__link--wa" href="https://wa.me/353899858730?text=Hi%2C%20I%27m%20interested%20in%20the%20Black%20Friday%20website%20offer." target="_blank" rel="noopener noreferrer" data-barba-prevent aria-label="WhatsApp us on 089 985 8730 (opens WhatsApp)">
+                                        <span class="bf-talk__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></span>
+                                        WhatsApp
+                                    </a>
+                                    <a class="bf-talk__link" href="mailto:info@bwdigitalmarketing.ie" aria-label="Email us at info@bwdigitalmarketing.ie" title="info@bwdigitalmarketing.ie">
+                                        <span class="bf-talk__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
+                                        Email us
+                                    </a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="bf-claim__panel">
@@ -2785,24 +3028,27 @@
                                         <label class="bf-choice">
                                             <input type="radio" name="option" value="1" data-name="Starter Website" data-price="750" required>
                                             <span>
-                                                <span class="bf-choice__name">Option 1: Starter</span>
-                                                <span class="bf-choice__price">€750 ex VAT <s>€1,500</s></span>
+                                                <span class="bf-choice__tag">Option 1</span>
+                                                <span class="bf-choice__name">Starter</span>
+                                                <span class="bf-choice__price"><span class="bf-choice__now">€750</span> <span class="bf-choice__vat">ex VAT</span> <s>€1,500</s></span>
                                                 <span class="bf-choice__meta">Up to 5 pages, live in 5 working days</span>
                                             </span>
                                         </label>
                                         <label class="bf-choice">
                                             <input type="radio" name="option" value="2" data-name="Business Website" data-price="1250">
                                             <span>
-                                                <span class="bf-choice__name">Option 2: Business</span>
-                                                <span class="bf-choice__price">€1,250 ex VAT <s>€2,500</s></span>
+                                                <span class="bf-choice__tag">Option 2</span>
+                                                <span class="bf-choice__name">Business</span>
+                                                <span class="bf-choice__price"><span class="bf-choice__now">€1,250</span> <span class="bf-choice__vat">ex VAT</span> <s>€2,500</s></span>
                                                 <span class="bf-choice__meta">Up to 10 pages, live in 7 working days</span>
                                             </span>
                                         </label>
                                         <label class="bf-choice">
                                             <input type="radio" name="option" value="3" data-name="Online Store" data-price="2500">
                                             <span>
-                                                <span class="bf-choice__name">Option 3: Online Store</span>
-                                                <span class="bf-choice__price">€2,500 ex VAT <s>€5,000</s></span>
+                                                <span class="bf-choice__tag">Option 3</span>
+                                                <span class="bf-choice__name">Online Store</span>
+                                                <span class="bf-choice__price"><span class="bf-choice__now">€2,500</span> <span class="bf-choice__vat">ex VAT</span> <s>€5,000</s></span>
                                                 <span class="bf-choice__meta">E-commerce, live in 15–20 working days</span>
                                             </span>
                                         </label>
@@ -2852,13 +3098,13 @@
                                 <span class="bf-note__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
                                 <h3 class="bf-h3">Thanks, <span data-bf="done-name"></span>. Your claim is in.</h3>
                                 <p>We've got your claim for <strong data-bf="done-option"></strong>. We'll email the invoice and our bank details to <strong data-bf="done-email"></strong>.</p>
-                                <p>Your place is confirmed the day your payment reaches our bank account. Questions in the meantime? Call <a href="tel:+353212032041">021 203 2041</a>.</p>
+                                <p>Your place is confirmed the day your payment reaches our bank account. Questions in the meantime? Call <a href="tel:+353212032041">021 203 2041</a> or <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" data-barba-prevent>WhatsApp us</a>.</p>
                             </div>
 
                             <div class="bf-note" data-bf-closed hidden>
                                 <h3 class="bf-h3">The Black Friday offer has closed.</h3>
-                                <p data-bf="closed-reason">All 30 half-price places have been claimed.</p>
-                                <p>We still build websites at our normal prices. Call <a href="tel:+353212032041">021 203 2041</a>, email <a href="mailto:info@bwdigitalmarketing.ie">info@bwdigitalmarketing.ie</a> or see our <a href="/services-detailed/web-design">web design service</a>.</p>
+                                <p data-bf="closed-reason">All 25 half-price places have been claimed.</p>
+                                <p>We still build websites at our normal prices. Call <a href="tel:+353212032041">021 203 2041</a>, <a href="https://wa.me/353899858730" target="_blank" rel="noopener noreferrer" data-barba-prevent>WhatsApp</a>, email <a href="mailto:info@bwdigitalmarketing.ie">info@bwdigitalmarketing.ie</a> or see our <a href="/services-detailed/web-design">web design service</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -2870,7 +3116,7 @@
                         <h2 id="bf-terms-title">Offer terms</h2>
                         <ul>
                             <li>50% off the normal price of Options 1, 2 and 3: €750, €1,250 and €2,500 ex VAT.</li>
-                            <li>Limited to the first 30 websites, in the order full payments are received. A place is confirmed when payment in full reaches our bank account.</li>
+                            <li>Limited to the first 25 websites, in the order full payments are received. A place is confirmed when payment in full reaches our bank account.</li>
                             <li>The offer ends at 11:59pm on Monday 30 November 2026, or when the 30th place is claimed, whichever comes first.</li>
                             <li>Timelines are in working days, counted from the day full payment reaches our bank account. E-commerce timelines depend on the number of products.</li>
                             <li>VAT is charged at 23% on all prices.</li>
@@ -3462,7 +3708,9 @@
     <script src="/assets/js/button-fill.js?v=4"></script>
     <script src="/assets/js/hero-fx.js?v=1"></script>
     <script src="/assets/js/turnstile.js?v=1"></script>
-    <script src="/assets/js/black-friday.js?v=1"></script>
+    <script src="/components/testimonials-slider.js?v=3"></script>
+    <script src="/assets/js/testimonial-video.js?v=4"></script>
+    <script src="/assets/js/black-friday.js?v=2"></script>
 
 </body>
 

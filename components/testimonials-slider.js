@@ -1,10 +1,23 @@
 /**
  * Testimonials Slider Component
  * Custom Element: <testimonials-slider></testimonials-slider>
- * Loads HTML & CSS from /components/testimonials-slider.html and initializes card stack slider interactions.
+ * Loads HTML & CSS from /components/testimonials-slider.html and runs the card stack:
+ * arrows, left/right keys, swipe on touch screens, and a 01 / 05 progress line.
+ * Loaded on every page, so it also works when a page arrives through a page transition.
  */
 (function () {
   let cachedHtml = null;
+
+  const reducedMotion = () =>
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const pad = n => String(n).padStart(2, '0');
+
+  // Hand the new videos to the shared testimonial player (assets/js/testimonial-video.js).
+  // If that script hasn't run yet, it picks them up itself once the page has loaded.
+  function setUpVideos(root) {
+    if (window.bwTestimonialVideos) window.bwTestimonialVideos.init(root);
+  }
 
   class TestimonialsSlider extends HTMLElement {
     async connectedCallback() {
@@ -18,10 +31,15 @@
           cachedHtml = await res.text();
         }
         this.innerHTML = cachedHtml;
+        setUpVideos(this);
         this.initSlider();
       } catch (err) {
         console.error('[TestimonialsSlider] Failed to load component HTML:', err);
       }
+    }
+
+    disconnectedCallback() {
+      if (this._cleanup) this._cleanup();
     }
 
     initSlider() {
@@ -29,6 +47,10 @@
       const prevBtn = this.querySelector('[data-slider-prev="testimonials"]');
       const nextBtn = this.querySelector('[data-slider-next="testimonials"]');
       const section = this.querySelector('.testimonials') || this;
+      const currentEl = this.querySelector('[data-slider-current]');
+      const totalEl = this.querySelector('[data-slider-total]');
+      const fillEl = this.querySelector('[data-slider-fill]');
+      const statusEl = this.querySelector('[data-slider-status]');
 
       if (!sliderList || !prevBtn || !nextBtn) return;
       if (sliderList._hasHandler) return;
@@ -40,24 +62,37 @@
       let currentIndex = 0;
       let isAnimating = false;
 
-      // Update height dynamically
+      // Every card gets the height of the tallest one, so the stack lines up
       function updateListHeight() {
-        const firstItem = sliderList.querySelector('.testimonials_collection_item');
-        if (firstItem) {
-          sliderList.style.height = firstItem.offsetHeight + 'px';
-        }
+        const cards = items.map(item => item.querySelector('.testimonials_card_wrap')).filter(Boolean);
+        cards.forEach(card => { card.style.minHeight = ''; });
+        const tallestCard = Math.max(0, ...cards.map(card => card.offsetHeight));
+        cards.forEach(card => { card.style.minHeight = tallestCard + 'px'; });
+        const tallestItem = Math.max(0, ...items.map(item => item.offsetHeight));
+        if (tallestItem) sliderList.style.height = tallestItem + 'px';
       }
 
       setTimeout(updateListHeight, 100);
       // Width only: phones fire resize when the address bar moves
       let lastWidth = window.innerWidth;
-      window.addEventListener('resize', () => {
+      const onResize = () => {
         if (window.innerWidth === lastWidth) return;
         lastWidth = window.innerWidth;
         updateListHeight();
-      });
+      };
+      window.addEventListener('resize', onResize);
       if (document.fonts) {
         document.fonts.ready.then(() => setTimeout(updateListHeight, 100));
+      }
+
+      function updateProgress() {
+        if (currentEl) currentEl.textContent = pad(currentIndex + 1);
+        if (totalEl) totalEl.textContent = pad(items.length);
+        if (fillEl) fillEl.style.width = ((currentIndex + 1) / items.length) * 100 + '%';
+        if (statusEl) {
+          const label = items[currentIndex].getAttribute('aria-label') || '';
+          statusEl.textContent = `Testimonial ${currentIndex + 1} of ${items.length}${label ? ': ' + label : ''}`;
+        }
       }
 
       function updateStack() {
@@ -69,6 +104,13 @@
           item.style.transform = '';
           item.style.opacity = '';
           item.style.transition = '';
+          item.style.pointerEvents = '';
+
+          // Only the front card can be reached by keyboard or screen reader
+          const isFront = relativeIndex === 0;
+          item.inert = !isFront;
+          if (isFront) item.removeAttribute('aria-hidden');
+          else item.setAttribute('aria-hidden', 'true');
 
           if (relativeIndex === 0) {
             item.style.zIndex = '60';
@@ -88,18 +130,22 @@
             item.style.pointerEvents = 'none';
           }
         });
+        updateProgress();
+      }
+
+      function pauseCurrent() {
+        const video = items[currentIndex].querySelector('video');
+        if (video && !video.paused) video.pause();
       }
 
       function goNext() {
         if (isAnimating) return;
         isAnimating = true;
+        pauseCurrent();
 
-        const currentItem = items[currentIndex];
-        const currentVideo = currentItem.querySelector('video');
-        if (currentVideo && !currentVideo.paused) currentVideo.pause();
-
-        currentItem.classList.add('is-falling');
+        items[currentIndex].classList.add('is-falling');
         currentIndex = (currentIndex + 1) % items.length;
+        updateProgress();
 
         setTimeout(() => {
           updateStack();
@@ -110,12 +156,10 @@
       function goPrev() {
         if (isAnimating) return;
         isAnimating = true;
-
-        const currentItem = items[currentIndex];
-        const currentVideo = currentItem.querySelector('video');
-        if (currentVideo && !currentVideo.paused) currentVideo.pause();
+        pauseCurrent();
 
         currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateProgress();
 
         const newFrontCard = items[currentIndex];
         newFrontCard.style.transition = 'none';
@@ -138,18 +182,41 @@
       nextBtn.addEventListener('click', goNext);
       prevBtn.addEventListener('click', goPrev);
 
-      // Keyboard navigation
+      // Left/right keys while the slider is on screen, except when typing or using a video's own controls
       const keyHandler = (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        const t = e.target;
+        if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT|VIDEO)$/.test(t.tagName))) return;
         const rect = section.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
           if (e.key === 'ArrowRight') goNext();
-          if (e.key === 'ArrowLeft') goPrev();
+          else goPrev();
         }
       };
       document.addEventListener('keydown', keyHandler);
 
+      // Swipe left/right on touch screens
+      let touchX = null;
+      let touchY = null;
+      sliderList.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+      }, { passive: true });
+      sliderList.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        touchX = touchY = null;
+        if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+        if (dx < 0) goNext();
+        else goPrev();
+      }, { passive: true });
+
       // Mousemove 3D depth parallax
-      section.addEventListener('mousemove', (e) => {
+      const onMouseMove = (e) => {
+        if (reducedMotion()) return;
         const rect = section.getBoundingClientRect();
         const mouseX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
         const mouseY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
@@ -169,7 +236,8 @@
           item.style.transition = 'transform 0.15s ease-out';
           item.style.transform = `scale(${scale}) translateY(${translateY}) translate(${moveX}px, ${moveY}px)`;
         });
-      });
+      };
+      section.addEventListener('mousemove', onMouseMove);
 
       section.addEventListener('mouseleave', () => {
         items.forEach((item) => {
@@ -183,6 +251,12 @@
           item.style.transform = `scale(${scale}) translateY(${translateY}) translate(0px, 0px)`;
         });
       });
+
+      // Stop listening on the document once the page changes
+      this._cleanup = () => {
+        document.removeEventListener('keydown', keyHandler);
+        window.removeEventListener('resize', onResize);
+      };
 
       updateStack();
     }

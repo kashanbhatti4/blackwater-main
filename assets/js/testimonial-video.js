@@ -1,4 +1,4 @@
-// Client testimonial videos on the project pages:
+// Client testimonial videos (project pages and the Black Friday page):
 //   <div class="testimonial_video_wrap">
 //     <video data-testimonial-src="<Bunny Stream playlist.m3u8 or an .mp4/.mov link>" poster="..."
 //       data-testimonial-name="..." data-testimonial-company="..." data-testimonial-duration="0:34"
@@ -9,6 +9,8 @@
 // The video itself only downloads once the visitor presses play. Bunny Stream links play through hls.js so every
 // browser gets a sharp adaptive stream (Firefox has no built-in HLS, and Chrome's built-in HLS sticks
 // to the lowest quality); Safari and iPhone keep their own player.
+// Only one testimonial plays at a time. Loaded on every page and set up again after each page
+// transition, because the page transitions only swap the page content (not the scripts or the <head>).
 (function () {
   var HLS_SCRIPT = 'https://cdn.jsdelivr.net/npm/hls.js@1';
   var PLAY_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
@@ -111,6 +113,13 @@
       else ready.then(play);
     });
 
+    // Starting one video pauses any other testimonial that is playing
+    video.addEventListener('play', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('video[data-testimonial-src]'), function (other) {
+        if (other !== video && !other.paused) other.pause();
+      });
+    });
+
     video.addEventListener('playing', function () {
       wrap.classList.remove('is-loading');
       wrap.classList.add('is-playing');
@@ -127,14 +136,20 @@
     });
   }
 
-  function init() {
-    var videos = document.querySelectorAll('video[data-testimonial-src]');
+  function init(root) {
+    var videos = Array.prototype.filter.call(
+      (root || document).querySelectorAll('video[data-testimonial-src]'),
+      function (video) { return !video.hasAttribute('data-testimonial-ready'); }
+    );
     if (!videos.length) return;
 
-    Array.prototype.forEach.call(videos, addCover);
+    videos.forEach(function (video) {
+      video.setAttribute('data-testimonial-ready', '');
+      addCover(video);
+    });
 
     if (!('IntersectionObserver' in window)) {
-      Array.prototype.forEach.call(videos, setup);
+      videos.forEach(setup);
       return;
     }
 
@@ -146,13 +161,23 @@
       });
     }, { rootMargin: '600px 0px' });
 
-    Array.prototype.forEach.call(videos, function (video) { observer.observe(video); });
+    videos.forEach(function (video) { observer.observe(video); });
+  }
+
+  // Components that add videos later (the testimonial slider) call this once their HTML is in
+  window.bwTestimonialVideos = { init: init };
+
+  // After a page transition, set up the videos on the page that is coming in
+  if (window.barba && window.barba.hooks) {
+    window.barba.hooks.beforeEnter(function (data) {
+      if (data && data.next && data.next.container) init(data.next.container);
+    });
   }
 
   // Wait for DOMContentLoaded so the pages' own inline HLS scripts (which pick up every
   // <video> with an .m3u8 source) have already run and skipped these source-less videos.
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function () { init(); });
   } else {
     init();
   }
