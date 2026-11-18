@@ -16,7 +16,8 @@
     { hover: '.button_main_wrap', target: '.button_main_element.w-variant-e85564cd-af30-a478-692b-71732aefb3ab' },
     { hover: '.form_submit_button' },
     { hover: '.contact_modal_action_btn' },
-    { hover: '.tp_ghost' }
+    { hover: '.tp_ghost' },
+    { hover: '.bf-btn' }
   ];
   var HOVER_SELECTOR = BUTTONS.map(function (b) { return b.hover; }).join(',');
 

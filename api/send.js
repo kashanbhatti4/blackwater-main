@@ -1,4 +1,5 @@
 import { verifyTurnstile } from '../lib/turnstile.js';
+import { buildBlackFridayEmail } from '../lib/black-friday.js';
 
 export default async function handler(req, res) {
     // Enable CORS
@@ -25,7 +26,8 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Please complete the security check and try again.' });
     }
     
-    const isAudit = req.body.type === 'audit' || Boolean(req.body.company && req.body.website);
+    const isBlackFriday = req.body.type === 'black-friday';
+    const isAudit = !isBlackFriday && (req.body.type === 'audit' || Boolean(req.body.company && req.body.website));
 
     const resendApiKey = process.env.RESEND_API_KEY ? process.env.RESEND_API_KEY.replace(/^['"]|['"]$/g, '') : null;
     if (!resendApiKey) {
@@ -44,7 +46,15 @@ export default async function handler(req, res) {
     let emailHtml = '';
     let replyToEmail = '';
 
-    if (isAudit) {
+    if (isBlackFriday) {
+        const claim = buildBlackFridayEmail(req.body);
+        if (claim.error) {
+            return res.status(claim.status).json({ error: claim.error });
+        }
+        replyToEmail = claim.replyTo;
+        emailSubject = claim.subject;
+        emailHtml = claim.html;
+    } else if (isAudit) {
         const company = (req.body.company || req.body.company_name || req.body.name || '').trim();
         const email = (req.body.email || '').trim();
         const website = (req.body.website || req.body.website_url || req.body.url || '').trim();

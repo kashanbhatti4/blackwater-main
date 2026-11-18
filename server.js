@@ -265,11 +265,28 @@ const server = http.createServer(async (req, res) => {
     serveStaticFile(filePath, res);
 });
 
+const NOT_FOUND_PAGE = path.join(__dirname, '404.html');
+
+// Missing pages get the designed 404 page (with a 404 status); missing images, scripts and
+// other files get a short reply so a broken asset link doesn't download a whole page.
+function serveNotFound(filePath, res) {
+    const ext = path.extname(filePath).toLowerCase();
+    if ((ext === '' || ext === '.html') && fs.existsSync(NOT_FOUND_PAGE)) {
+        res.writeHead(404, {
+            'Content-Type': 'text/html; charset=utf-8',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+        });
+        fs.createReadStream(NOT_FOUND_PAGE).pipe(res);
+        return;
+    }
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end('<h1>404 Not Found</h1><p>The requested page could not be found.</p>');
+}
+
 function serveStaticFile(filePath, res) {
     fs.stat(filePath, (err, stats) => {
         if (err || !stats.isFile()) {
-            res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-            res.end('<h1>404 Not Found</h1><p>The requested page could not be found.</p>');
+            serveNotFound(filePath, res);
             return;
         }
 

@@ -1086,10 +1086,12 @@ p, .paragraph, .body-text {
   display: block;
 }
 
-/* Wide screens: room for Calendly's two-column card (grows from 800px up to the full 1060px) */
-@media screen and (min-width: 1100px) {
+/* Wide screens: room for Calendly's two-column card. Calendly only switches to two columns
+   once its frame is about 1,120px wide (checked Nov 2026; it used to fit in 1,060px), so the
+   popup grows to 1,140px wherever the screen has room for it. */
+@media screen and (min-width: 1180px) {
   .bw-calendly-popup__panel {
-    max-width: 1060px;
+    max-width: 1140px;
   }
 }
 
@@ -3073,4 +3075,24 @@ footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
   height: 100vh;
   /* Keeps the ring's top margin inside the frame */
   display: flow-root;
+}
+
+/* Navbar menu with five links (Black Friday added). The text shrinks on short screens so all
+   five fit (each link is 1.3x its font size, plus 2rem gaps), keeps the longest link on one line
+   on small phones, and the floating WhatsApp button hides while the menu is open so it can't
+   sit on top of the last link. Tall screens keep the original 5rem / 3rem. */
+.simple-navbar .simple-navbar__link {
+  font-size: min(5rem, calc(15.4vh - 1.75rem));
+}
+
+@media screen and (max-width: 48em) {
+  .simple-navbar .simple-navbar__link {
+    font-size: min(3rem, 11vw, calc(15.4vh - 1.75rem));
+  }
+}
+
+.simple-navbar.is-open ~ #whatsapp-button {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
