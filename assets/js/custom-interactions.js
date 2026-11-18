@@ -173,7 +173,8 @@ function runPageLeaveAnimation(current, next) {
     return tl.set(current, { autoAlpha: 0 });
   }
 
-  tl.to(current, { autoAlpha: 0, duration: 0.4 });
+  // The old page fades out with a slight lift; GPU-only properties so it stays smooth
+  tl.to(current, { autoAlpha: 0, y: -16, duration: 0.45, ease: "power2.in", force3D: true });
 
   return tl;
 }
@@ -189,12 +190,19 @@ function runPageEnterAnimation(next) {
     return new Promise(resolve => tl.call(resolve, null, "pageReady"));
   }
 
-  tl.add("startEnter", 0.6);
+  // Starts while the old page is still fading out, so there's no blank moment between pages,
+  // and rises into place with a long, soft finish
+  tl.add("startEnter", 0.35);
 
   tl.fromTo(next, {
     autoAlpha: 0,
+    y: 28,
   }, {
     autoAlpha: 1,
+    y: 0,
+    duration: 0.85,
+    ease: "expo.out",
+    force3D: true,
   }, "startEnter");
 
   tl.add("pageReady");
@@ -369,7 +377,9 @@ function initLenis() {
 
 function resetPage(container) {
   window.scrollTo(0, 0);
-  gsap.set(container, { clearProps: "position,top,left,right" });
+  // Clear the transition's transform too: a leftover transform would turn the page container
+  // into the frame for position: fixed / sticky elements inside it (popups, sticky bars)
+  gsap.set(container, { clearProps: "position,top,left,right,transform" });
 
   if (hasLenis) {
     lenis.resize();
@@ -538,13 +548,12 @@ function updateActiveNavLink() {
     }
     if (!href) href = '/';
 
-    if (href === '/' && currentPath === '/') {
-      link.classList.add('is-active');
-    } else if (href !== '/' && (currentPath === href || currentPath.startsWith(href + '/'))) {
-      link.classList.add('is-active');
-    } else {
-      link.classList.remove('is-active');
-    }
+    const active = (href === '/' && currentPath === '/') ||
+      (href !== '/' && (currentPath === href || currentPath.startsWith(href + '/')));
+    link.classList.toggle('is-active', active);
+    // Screen readers hear which menu link is the page they're on
+    if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
 }
 
