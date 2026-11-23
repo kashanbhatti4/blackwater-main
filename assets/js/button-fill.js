@@ -17,7 +17,11 @@
     { hover: '.form_submit_button' },
     { hover: '.contact_modal_action_btn' },
     { hover: '.tp_ghost' },
-    { hover: '.bf-btn' }
+    { hover: '.bf-btn' },
+    { hover: '.home_btn' },
+    { hover: '.home_intro_band__chip' },
+    { hover: '.csl_btn' },
+    { hover: '.tslide__link' }
   ];
   var HOVER_SELECTOR = BUTTONS.map(function (b) { return b.hover; }).join(',');
 

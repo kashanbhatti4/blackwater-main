@@ -204,22 +204,31 @@
                 line-height: 1;
                 text-decoration: none;
                 white-space: nowrap;
-                transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+                transition: border-color 0.5s cubic-bezier(0.625, 0.05, 0, 1), color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
             }
 
             testimonials-slider a.tslide__link svg {
-                transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+                transition: transform 0.5s cubic-bezier(0.625, 0.05, 0, 1);
             }
 
-            testimonials-slider a.tslide__link:hover,
+            /* Hover: the site's shared circle fill from the cursor (assets/js/button-fill.js), in the card's
+               text colour so it inverts the pill; the arrow turns to ↗ */
+            testimonials-slider a.tslide__link.bw-fx {
+                --bw-fill: var(--t-text);
+            }
+
+            testimonials-slider a.tslide__link.is-hovered,
             testimonials-slider a.tslide__link:focus-visible {
-                background: var(--t-text);
                 border-color: var(--t-text);
                 color: var(--t-bg);
             }
 
-            testimonials-slider a.tslide__link:hover svg {
-                transform: translateX(4px);
+            testimonials-slider a.tslide__link:focus-visible {
+                background: var(--t-text);
+            }
+
+            testimonials-slider a.tslide__link.is-hovered svg {
+                transform: rotate(-45deg);
             }
 
             testimonials-slider .testimonials_card_wrap :focus-visible {
@@ -374,7 +383,7 @@
 
                 testimonials-slider .tslider__btn:hover,
                 testimonials-slider .tslider__btn:focus-visible,
-                testimonials-slider a.tslide__link:hover svg {
+                testimonials-slider a.tslide__link.is-hovered svg {
                     transform: none;
                 }
             }
