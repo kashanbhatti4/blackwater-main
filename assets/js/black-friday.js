@@ -797,7 +797,11 @@
   }
 
   function build() {
-    if (Date.now() >= CLOSES_AT || dismissed() || document.querySelector('.bf-top')) return;
+    if (Date.now() >= CLOSES_AT || dismissed()) {
+      root.classList.remove('has-bf-top'); // in case the <head> script reserved space
+      return;
+    }
+    if (document.querySelector('.bf-top')) return;
 
     var style = document.createElement('style');
     style.id = 'bf-top-css';
@@ -818,6 +822,7 @@
       '</a>' +
       '<button type="button" class="bf-top__close" aria-label="Close the Black Friday banner">' + CROSS + '</button>';
     document.body.insertBefore(bar, document.body.firstChild);
+    root.classList.add('bf-top-ready');
 
     bar.querySelector('.bf-top__close').addEventListener('click', function () {
       try { window.localStorage.setItem(STORE_KEY, '1'); } catch (e) {}

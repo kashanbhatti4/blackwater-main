@@ -39,7 +39,9 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!--$-->
-    <link href="/assets/css/blackwater-digital.css?v=102" rel="stylesheet" type="text/css" />
+    <!-- Black Friday bar: reserve its space before the first paint (remove after the sale) -->
+    <script>try{if(Date.now()<Date.parse("2026-12-01T00:00:00Z")&&localStorage.getItem("bwd_bf_top_closed")!=="1"&&!/^\/black-friday(\.html)?\/?$/.test(location.pathname))document.documentElement.classList.add("has-bf-top")}catch(e){}</script>
+    <link href="/assets/css/blackwater-digital.css?v=103" rel="stylesheet" type="text/css" />
     <link href="/assets/css/testimonial-video.css?v=1" rel="stylesheet" type="text/css">
     <!--/$-->
     <script type="text/javascript">
@@ -3116,11 +3118,53 @@
                             max-width: none !important;
                         }
 
-                        /* While the Black Friday bar is showing above the menu (assets/js/black-friday.js), the hero
-                           slides up into its own empty top space, so the first screen and its buttons stay as they are */
-                        @media (min-width: 1025px) {
-                            html.has-bf-top .page_main > section.home_hero_new {
-                                margin-top: -40px;
+                        /* Short laptop screens (800px tall or less, e.g. 1366x768): a slightly smaller big line and
+                           tighter gaps, so the hero's buttons fit on the first screen. With the Black Friday bar
+                           showing (assets/js/black-friday.js) the H1 sits a touch closer too. */
+                        @media (min-width: 1025px) and (max-height: 800px) {
+                            html section.home_hero_new .home_hero_heading {
+                                font-size: clamp(2rem, 3.8vw, 52px) !important;
+                            }
+
+                            html section.home_hero_new .home_hero_heading_wrap {
+                                margin-bottom: 1.75rem !important;
+                            }
+
+                            html section.home_hero_new .home_hero_paragraph_wrap {
+                                margin-bottom: 1.5rem !important;
+                            }
+
+                            html section.home_hero_new .home_hero_content_under {
+                                margin-top: 0;
+                            }
+
+                            html.has-bf-top section.home_hero_new .home_hero_h1 {
+                                margin-bottom: 0.7em;
+                            }
+
+                            /* The rotating word (and everything under it) starts higher, using the empty band above
+                               it. Only the settled layout moves; the opening animation's words stay where they are. */
+                            html section.home_hero_new .home_hero_title_new_layout {
+                                margin-top: -44px;
+                            }
+                        }
+
+                        /* A little taller (801-860px) with the bar showing: a lighter version of the same */
+                        @media (min-width: 1025px) and (min-height: 801px) and (max-height: 860px) {
+                            html.has-bf-top section.home_hero_new .home_hero_heading {
+                                font-size: clamp(2rem, 4vw, 58px) !important;
+                            }
+
+                            html.has-bf-top section.home_hero_new .home_hero_heading_wrap {
+                                margin-bottom: 1.9rem !important;
+                            }
+
+                            html.has-bf-top section.home_hero_new .home_hero_paragraph_wrap {
+                                margin-bottom: 1.6rem !important;
+                            }
+
+                            html.has-bf-top section.home_hero_new .home_hero_content_under {
+                                margin-top: 0;
                             }
                         }
 
@@ -10462,7 +10506,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js?v=6"></script>
+    <script src="/assets/js/custom-interactions.js?v=8"></script>
     <script src="/components/case-study-slider.js?v=4"></script>
     <script src="/animations/service-cards.js?v=6"></script>
     <script src="/components/cta-logo-grid.js?v=3"></script>
@@ -10542,7 +10586,7 @@
     <script src="/assets/js/turnstile.js?v=1"></script>
     <script src="/components/testimonials-slider.js?v=3"></script>
     <script src="/assets/js/testimonial-video.js?v=4"></script>
-    <script src="/assets/js/black-friday.js?v=3"></script>
+    <script src="/assets/js/black-friday.js?v=4"></script>
 
 </body>
 

@@ -496,7 +496,9 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <!--$-->
-    <link href="/assets/css/blackwater-digital.css?v=102" rel="stylesheet" type="text/css">
+    <!-- Black Friday bar: reserve its space before the first paint (remove after the sale) -->
+    <script>try{if(Date.now()<Date.parse("2026-12-01T00:00:00Z")&&localStorage.getItem("bwd_bf_top_closed")!=="1"&&!/^\/black-friday(\.html)?\/?$/.test(location.pathname))document.documentElement.classList.add("has-bf-top")}catch(e){}</script>
+    <link href="/assets/css/blackwater-digital.css?v=103" rel="stylesheet" type="text/css">
     <link href="/assets/css/testimonial-video.css?v=1" rel="stylesheet" type="text/css">
     <!--/$-->
     <script type="text/javascript">
@@ -3769,7 +3771,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
-    <script src="/assets/js/custom-interactions.js?v=6"></script>
+    <script src="/assets/js/custom-interactions.js?v=8"></script>
 
 
 
@@ -3849,7 +3851,7 @@
     <script src="/assets/js/turnstile.js?v=1"></script>
     <script src="/components/testimonials-slider.js?v=3"></script>
     <script src="/assets/js/testimonial-video.js?v=4"></script>
-    <script src="/assets/js/black-friday.js?v=3"></script>
+    <script src="/assets/js/black-friday.js?v=4"></script>
 
     <script src="/components/cta-logo-grid.js?v=3"></script>
 </body>

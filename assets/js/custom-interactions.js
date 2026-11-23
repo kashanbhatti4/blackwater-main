@@ -5,6 +5,18 @@
 // BLACKWATERDIGITAL PAGE TRANSITION
 // -----------------------------------------
 
+// A refresh starts at the top, where the opening animation plays. Without this the browser puts the
+// visitor back where they were, the page then jumps to the top, and a moment later the browser jumps
+// back down again, so refreshing looked messy.
+// ScrollTrigger remembers the setting it found when it loaded and puts it back on every refresh,
+// so it has to be told through its own call as well.
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+if (window.ScrollTrigger && typeof ScrollTrigger.clearScrollMemory === 'function') {
+  ScrollTrigger.clearScrollMemory('manual');
+}
+
 gsap.registerPlugin(CustomEase);
 
 history.scrollRestoration = "manual";

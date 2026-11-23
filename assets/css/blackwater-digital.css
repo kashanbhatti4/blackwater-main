@@ -3096,3 +3096,27 @@ footer.footer_wrap .footer_ref_grid > div:first-child > a:first-child img {
   visibility: hidden;
   pointer-events: none;
 }
+
+/* =========================================================
+   Black Friday bar (assets/js/black-friday.js). A tiny script in each page's <head> adds
+   .has-bf-top before the first paint, so the space (and a yellow placeholder) is there from
+   the start and nothing jumps when the bar itself appears. Remove after the sale.
+   ========================================================= */
+html.has-bf-top body {
+  margin-top: 40px;
+}
+
+html.has-bf-top .simple-navbar {
+  top: var(--bf-top-offset, 40px);
+}
+
+html.has-bf-top:not(.bf-top-ready) body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  height: 40px;
+  background: #FFE32A;
+}
