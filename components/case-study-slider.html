@@ -1,3 +1,117 @@
+<style>
+    /* Heading, line and button beside the case study slider (same sizes as the other section headings) */
+    case-study-slider .csl_title {
+        margin: 0 0 1rem;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: clamp(2rem, 3.6vw, 3.25rem);
+        font-weight: 600;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: #FFFCE1;
+        text-wrap: balance;
+    }
+
+    case-study-slider .csl_sub {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin: 0;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.5;
+        color: #9A9A8C;
+    }
+
+    case-study-slider .csl_dot {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #FFE32A;
+        box-shadow: 0 0 0 4px rgba(255, 227, 42, 0.15);
+    }
+
+    case-study-slider .csl_btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-height: 52px;
+        margin-top: 1.75rem;
+        padding: 0.5rem 0.5rem 0.5rem 1.4rem;
+        border: 1.5px solid rgba(255, 252, 225, 0.85);
+        border-radius: 999px;
+        color: #FFFCE1;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: border-color 0.5s cubic-bezier(0.625, 0.05, 0, 1), color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+    }
+
+    case-study-slider .csl_btn__icon {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: #FFE32A;
+        color: #0E100F;
+        transition: background-color 0.5s cubic-bezier(0.625, 0.05, 0, 1), color 0.5s cubic-bezier(0.625, 0.05, 0, 1), transform 0.5s cubic-bezier(0.625, 0.05, 0, 1);
+    }
+
+    /* Hover: the site's shared circle fill from the cursor (assets/js/button-fill.js), filling yellow like
+       every other outline button; the arrow badge turns dark and points ↗ */
+    case-study-slider .csl_btn.bw-fx {
+        --bw-fill: #FFE32A;
+    }
+
+    case-study-slider .csl_btn.is-hovered,
+    case-study-slider .csl_btn:focus-visible {
+        border-color: #FFE32A;
+        color: #0E100F;
+    }
+
+    case-study-slider .csl_btn:focus-visible {
+        background: #FFE32A;
+    }
+
+    case-study-slider .csl_btn.is-hovered .csl_btn__icon,
+    case-study-slider .csl_btn:focus-visible .csl_btn__icon {
+        background: #0E100F;
+        color: #FFE32A;
+        transform: rotate(-45deg);
+    }
+
+    case-study-slider .csl_btn:focus-visible {
+        outline: 2px solid #FFE32A;
+        outline-offset: 3px;
+    }
+
+    /* Round arrows, matching the button above */
+    case-study-slider .slider__btn {
+        border-radius: 999px;
+        transition: background-color 0.3s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    case-study-slider .slider__btn:hover {
+        background-color: #FFE32A;
+        transform: scale(1.06);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        case-study-slider .slider__btn,
+        case-study-slider .csl_btn,
+        case-study-slider .csl_btn__icon {
+            transition: none;
+        }
+
+        case-study-slider .csl_btn.is-hovered .csl_btn__icon {
+            transform: none;
+        }
+    }
+</style>
                     <div class="content_layout u-grid-custom featured_work">
                         <div class="content_wrap u-column-span-10 featured_work"
                             style="grid-column: 1 / -1; width: 100%; max-width: 100%;">
@@ -37,26 +151,9 @@
                                 </div>
                                 <div class="place_holder u-display-none-medium"></div>
                                 <div class="featured_content_text">
-                                    <h2 class="featured_content_heading u-text-style-h3">See <span
-                                            class="hide_word u-display-none-small"> our </span> results </h2>
-                                    <p class="featured_content_subheading u-text-style-large">(<span
-                                            class="hide_word u-display-none-small">Real clients</span> Real growth.)
-                                    </p>
-                                    <!--$-->
-                                    <div data-wf--button-main--variant="secondary" data-button=" "
-                                        data-trigger="hover focus" class="button_main_wrap u-margin-top-6">
-                                        <!--$-->
-                                        <div class="clickable_wrap u-cover-absolute"><a aria-label="Our work" target=""
-                                                href="/work" class="clickable_link w-inline-block"></a></div>
-                                        <!--/$-->
-                                        <div class="button_main_element w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
-                                            <div aria-hidden="true"
-                                                class="button_main_text u-text-style-main-medium w-variant-e85564cd-af30-a478-692b-71732aefb3ab">
-                                                Case Studies</div>
-                                            <div class="button_main_icon u-hide-if-empty"></div>
-                                            <div class="button_main_line"></div>
-                                        </div>
-                                    </div>
+                                    <h2 class="featured_content_heading csl_title">See our results</h2>
+                                    <p class="featured_content_subheading csl_sub"><span class="csl_dot" aria-hidden="true"></span>Real clients. Real growth.</p>
+                                    <a class="csl_btn" href="/work">View case studies <span class="csl_btn__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
                                     <!--/$-->
                                 </div>
                             </div>

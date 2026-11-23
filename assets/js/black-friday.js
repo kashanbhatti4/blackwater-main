@@ -705,3 +705,141 @@
     init(document);
   }
 })();
+
+// -----------------------------------------
+// TOP BAR: a slim Black Friday bar above the menu on every page except /black-friday.
+// "×" hides it (remembered on this device), and it removes itself when the offer closes.
+// It slides away over the first 40px of scrolling, after which the menu sits at the top as usual,
+// so the pages' sticky parts keep their normal offsets. Delete this block after the sale.
+// -----------------------------------------
+(function () {
+  var CLOSES_AT = Date.parse('2026-12-01T00:00:00Z'); // 11:59pm Mon 30 Nov 2026, Irish time
+  var STORE_KEY = 'bwd_bf_top_closed';
+  var HEIGHT = 40;
+  var root = document.documentElement;
+  var bar = null;
+
+  function dismissed() {
+    try { return window.localStorage.getItem(STORE_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function isOfferPage(path) {
+    return /^\/black-friday(\.html)?\/?$/.test(path || window.location.pathname);
+  }
+
+  var CSS =
+    '.bf-top{position:fixed;top:0;left:0;right:0;z-index:9998;display:flex;align-items:center;justify-content:center;' +
+    'height:' + HEIGHT + 'px;padding:0 52px;background:#FFE32A;color:#0E100F;font-family:"Inter",Arial,sans-serif;' +
+    'overflow:hidden;will-change:transform}' +
+    '.bf-top::after{content:"";position:absolute;inset:0;pointer-events:none;' +
+    'background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);' +
+    'transform:translateX(-100%);animation:bf-top-shine 5s ease-in-out 1.5s infinite}' +
+    '@keyframes bf-top-shine{0%{transform:translateX(-100%)}28%,100%{transform:translateX(100%)}}' +
+    '.bf-top__link{display:flex;align-items:center;gap:.85rem;height:100%;color:#0E100F;font-size:.875rem;font-weight:700;' +
+    'line-height:1.2;text-decoration:none;white-space:nowrap}' +
+    '.bf-top__link:hover,.bf-top__link:focus-visible{color:#0E100F}' +
+    '.bf-top__link:focus-visible,.bf-top__close:focus-visible{outline:2px solid #0E100F;outline-offset:2px;border-radius:6px}' +
+    '.bf-top__tag{display:inline-flex;align-items:center;gap:.4rem;padding:.28rem .65rem;border-radius:999px;background:#0E100F;' +
+    'color:#FFE32A;font-size:.6875rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}' +
+    '.bf-top__tag::before{content:"";width:6px;height:6px;border-radius:999px;background:#FFE32A;animation:bf-top-pulse 1.6s ease-in-out infinite}' +
+    '@keyframes bf-top-pulse{50%{opacity:.25}}' +
+    '.bf-top__ends::before,.bf-top__places::before{content:"·";margin-right:.85rem;opacity:.4}' +
+    '.bf-top__cta{display:inline-flex;align-items:center;gap:.35rem;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}' +
+    '.bf-top__cta svg{transition:transform .5s cubic-bezier(.625,.05,0,1)}' +
+    '.bf-top__link:hover .bf-top__cta svg{transform:translateX(3px)}' +
+    '.bf-top__close{position:absolute;top:50%;right:max(10px,calc(var(--site--margin,16px) - 6px));z-index:1;display:grid;place-items:center;' +
+    'width:28px;height:28px;margin:-14px 0 0;padding:0;border:0;border-radius:999px;background:rgba(14,16,15,.1);color:#0E100F;cursor:pointer;' +
+    'transition:background-color .3s ease,color .3s ease,transform .5s cubic-bezier(.625,.05,0,1)}' +
+    '.bf-top__close:hover{background:#0E100F;color:#FFE32A;transform:rotate(90deg)}' +
+    '.bf-top__short{display:none}' +
+    // Make room: the menu moves down by what is left of the bar, the page by its full height
+    'html.has-bf-top body{margin-top:' + HEIGHT + 'px}' +
+    'html.has-bf-top .simple-navbar{top:var(--bf-top-offset,' + HEIGHT + 'px)}' +
+    // With the menu open the bar steps aside so the menu fills the screen as usual
+    'html.has-bf-top:has(.simple-navbar.is-open) .bf-top{visibility:hidden}' +
+    'html.has-bf-top:has(.simple-navbar.is-open) .simple-navbar{top:0}' +
+    '@media (max-width:991px){.bf-top__places{display:none}}' +
+    '@media (max-width:599px){.bf-top{padding:0 44px 0 12px;justify-content:flex-start}.bf-top__link{gap:.6rem;font-size:.8125rem}' +
+    '.bf-top__ends,.bf-top__long{display:none}.bf-top__short{display:inline}}' +
+    '@media (max-width:359px){.bf-top__tag{display:none}}' +
+    '@media (prefers-reduced-motion:reduce){.bf-top::after,.bf-top__tag::before{animation:none}.bf-top__cta svg,.bf-top__close{transition:none}}';
+
+  var ARROW = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var CROSS = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+
+  function onScroll() {
+    if (!bar) return;
+    var left = Math.max(0, HEIGHT - Math.max(0, window.scrollY || window.pageYOffset || 0));
+    bar.style.transform = left === HEIGHT ? '' : 'translateY(' + (left - HEIGHT) + 'px)';
+    root.style.setProperty('--bf-top-offset', left + 'px');
+  }
+
+  var queued = false;
+  function queueScroll() {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(function () { queued = false; onScroll(); });
+  }
+
+  function show(on) {
+    if (!bar) return;
+    bar.hidden = !on;
+    root.classList.toggle('has-bf-top', on);
+    if (on) onScroll(); else root.style.removeProperty('--bf-top-offset');
+  }
+
+  function remove() {
+    if (bar) bar.remove();
+    bar = null;
+    root.classList.remove('has-bf-top');
+    root.style.removeProperty('--bf-top-offset');
+    window.removeEventListener('scroll', queueScroll);
+  }
+
+  function build() {
+    if (Date.now() >= CLOSES_AT || dismissed() || document.querySelector('.bf-top')) return;
+
+    var style = document.createElement('style');
+    style.id = 'bf-top-css';
+    style.textContent = CSS;
+    document.head.appendChild(style);
+
+    bar = document.createElement('div');
+    bar.className = 'bf-top';
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', 'Black Friday offer');
+    bar.innerHTML =
+      '<a class="bf-top__link" href="/black-friday">' +
+        '<span class="bf-top__tag">Black Friday</span>' +
+        '<span>50% off <span class="bf-top__long">website design</span><span class="bf-top__short">websites</span></span>' +
+        '<span class="bf-top__ends">Ends Mon 30 Nov</span>' +
+        '<span class="bf-top__places">Only 25 places</span>' +
+        '<span class="bf-top__cta">Claim yours ' + ARROW + '</span>' +
+      '</a>' +
+      '<button type="button" class="bf-top__close" aria-label="Close the Black Friday banner">' + CROSS + '</button>';
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    bar.querySelector('.bf-top__close').addEventListener('click', function () {
+      try { window.localStorage.setItem(STORE_KEY, '1'); } catch (e) {}
+      remove();
+    });
+
+    window.addEventListener('scroll', queueScroll, { passive: true });
+    show(!isOfferPage());
+
+    // Close on time even if the page is left open (only worth a timer when the end is close)
+    var left = CLOSES_AT - Date.now();
+    if (left < 2 * 24 * 60 * 60 * 1000) setTimeout(remove, left);
+
+    // Page transitions keep the bar (it sits outside the page content); hide it on the offer page
+    if (window.barba && window.barba.hooks) {
+      window.barba.hooks.beforeEnter(function (data) {
+        var path = data && data.next && data.next.url ? data.next.url.path : window.location.pathname;
+        show(!isOfferPage(path));
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
+  else build();
+})();
