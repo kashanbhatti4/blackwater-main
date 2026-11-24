@@ -1893,11 +1893,13 @@
                     --bw-band-pad: clamp(3.5rem, 6vw, 5.25rem);
                 }
 
-                /* Four jobs (logo grid): one full-width cream band; the cream card that used to sit
+                /* Four jobs (logo grid): one full-width sand band; the cream card that used to sit
                    inside a black band is flattened into it, so the text lines up with the page grid */
                 section.home_jobs {
                     padding-block: var(--bw-band-pad) !important;
-                    background-color: #FFFCE1;
+                    /* A sand tone, one step deeper than cream: the first service card below is cream,
+                       so this keeps the intro and the cards as two bands */
+                    background-color: #F6F1D3;
                 }
 
                 section.home_jobs > .u-section-spacer {
@@ -4318,98 +4320,6 @@
                 <div data-wf--spacer--variant="small"
                     class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
             </div>
-            <!--$CTA section  -->
-            <section id="" class="main-section_wrap u-section home_jobs">
-
-                <div data-wf--spacer--variant="small"
-                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
-                <div class="main-section_contain u-container">
-                    <div class="content_layout u-grid-custom">
-                        <div class="content_wrap u-column-span-10 cta_content_wrap"
-                            style="grid-column-end: span 12; display: flex; justify-content: center; align-items: center; gap: 6vw;">
-                            <div class="cta_text_wrap">
-                                <h2 class="cta_heading u-text-style-h3">Our Core Digital Marketing Services</h2>
-                                <p class="cta_paragraph u-text-style-main">
-                                    We provide a full range of digital marketing services in Ireland, designed to help
-                                    businesses reach their target audiences and establish a stronger online presence.
-                                    From <span class="cta_highlight">SEO</span> and
-                                    <span class="cta_highlight">AI-driven search</span> to comprehensive
-                                    <span class="cta_highlight">web design</span>,
-                                    <span class="cta_highlight">paid advertising</span>, and
-                                    <span class="cta_highlight">social media marketing</span>, we develop strategic
-                                    plans and execute them to achieve sustainable, long-term results.
-                                </p>
-                                <!--$-->
-                                <div class="u-button-wrapper">
-                                    <div class="u-display-contents">
-                                        <div class="btn-wrap">
-                                            <div class="u-embed-css w-embed">
-                                                <style>
-                                                    .btn .btn__text {
-                                                        transition: color 0.7s cubic-bezier(0.625, 0.05, 0, 1);
-                                                    }
-
-                                                    .btn .btn__circle {
-                                                        transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
-                                                        transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
-                                                        background-color: #FFFCE1;
-                                                    }
-
-                                                    .btn:hover .btn__circle {
-                                                        transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
-                                                    }
-
-                                                    .btn[data-theme="dark"] .btn__circle {
-                                                        background-color: var(--_theme---text);
-                                                    }
-
-                                                    .btn[data-theme="dark"]:hover .btn__text {
-                                                        color: var(--_theme---background);
-                                                    }
-                                                </style>
-                                            </div>
-                                            <a href="/contact" data-theme="dark" data-btn-hover=""
-                                                class="btn w-inline-block">
-                                                <div class="btn__bg"></div>
-                                                <div class="btn__circle-wrap">
-                                                    <div class="btn__circle">
-                                                        <div class="before__100"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="btn__text u-text-style-main-medium">
-                                                    <p class="btn-text-p">Let&#x27;s Talk</p>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/$-->
-                            </div>
-                            <style>
-                                @media screen and (max-width: 767px) {
-                                    .cta_content_wrap {
-                                        flex-direction: column !important;
-                                        align-items: center !important;
-                                        gap: 3rem !important;
-                                        text-align: center;
-                                    }
-
-                                    .cta_text_wrap {
-                                        display: flex;
-                                        flex-direction: column;
-                                        align-items: center;
-                                    }
-                                }
-                            </style>
-                            <cta-logo-grid></cta-logo-grid>
-                        </div>
-                    </div>
-                </div>
-                <div data-wf--spacer--variant="small"
-                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim">
-                </div>
-            </section>
-
 
             <!-- Home page sections from the SEO copy: "What you get", "Why choose Blackwater" and the FAQ.
                  Styles live here (inside the page container) so they also apply after a page transition. -->
@@ -5796,6 +5706,97 @@
                         observer.observe(grid);
                     })();
                 </script>
+            </section>
+            <!--$CTA section  -->
+            <section id="" class="main-section_wrap u-section home_jobs">
+
+                <div data-wf--spacer--variant="small"
+                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim"></div>
+                <div class="main-section_contain u-container">
+                    <div class="content_layout u-grid-custom">
+                        <div class="content_wrap u-column-span-10 cta_content_wrap"
+                            style="grid-column-end: span 12; display: flex; justify-content: center; align-items: center; gap: 6vw;">
+                            <div class="cta_text_wrap">
+                                <h2 class="cta_heading u-text-style-h3">Our Core Digital Marketing Services</h2>
+                                <p class="cta_paragraph u-text-style-main">
+                                    We provide a full range of digital marketing services in Ireland, designed to help
+                                    businesses reach their target audiences and establish a stronger online presence.
+                                    From <span class="cta_highlight">SEO</span> and
+                                    <span class="cta_highlight">AI-driven search</span> to comprehensive
+                                    <span class="cta_highlight">web design</span>,
+                                    <span class="cta_highlight">paid advertising</span>, and
+                                    <span class="cta_highlight">social media marketing</span>, we develop strategic
+                                    plans and execute them to achieve sustainable, long-term results.
+                                </p>
+                                <!--$-->
+                                <div class="u-button-wrapper">
+                                    <div class="u-display-contents">
+                                        <div class="btn-wrap">
+                                            <div class="u-embed-css w-embed">
+                                                <style>
+                                                    .btn .btn__text {
+                                                        transition: color 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+                                                    }
+
+                                                    .btn .btn__circle {
+                                                        transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1), background-color 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+                                                        transform: translate(-50%, -50%) scale(0) rotate(0.001deg);
+                                                        background-color: #FFFCE1;
+                                                    }
+
+                                                    .btn:hover .btn__circle {
+                                                        transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+                                                    }
+
+                                                    .btn[data-theme="dark"] .btn__circle {
+                                                        background-color: var(--_theme---text);
+                                                    }
+
+                                                    .btn[data-theme="dark"]:hover .btn__text {
+                                                        color: var(--_theme---background);
+                                                    }
+                                                </style>
+                                            </div>
+                                            <a href="/contact" data-theme="dark" data-btn-hover=""
+                                                class="btn w-inline-block">
+                                                <div class="btn__bg"></div>
+                                                <div class="btn__circle-wrap">
+                                                    <div class="btn__circle">
+                                                        <div class="before__100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="btn__text u-text-style-main-medium">
+                                                    <p class="btn-text-p">Let&#x27;s Talk</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/$-->
+                            </div>
+                            <style>
+                                @media screen and (max-width: 767px) {
+                                    .cta_content_wrap {
+                                        flex-direction: column !important;
+                                        align-items: center !important;
+                                        gap: 3rem !important;
+                                        text-align: center;
+                                    }
+
+                                    .cta_text_wrap {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                    }
+                                }
+                            </style>
+                            <cta-logo-grid></cta-logo-grid>
+                        </div>
+                    </div>
+                </div>
+                <div data-wf--spacer--variant="small"
+                    class="u-section-spacer w-variant-d422cbd0-f212-c815-68df-63414354c21d u-ignore-trim">
+                </div>
             </section>
             <!--/$ Services -->
             <div class="services_service_wrap">
@@ -10507,7 +10508,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
     <script src="/assets/js/custom-interactions.js?v=8"></script>
-    <script src="/components/case-study-slider.js?v=4"></script>
+    <script src="/components/case-study-slider.js?v=7"></script>
     <script src="/animations/service-cards.js?v=6"></script>
     <script src="/components/cta-logo-grid.js?v=3"></script>
 

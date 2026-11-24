@@ -100,6 +100,26 @@
         transform: scale(1.06);
     }
 
+    /* The cards sit straight on the section's dark band (no cream strip behind them) */
+    case-study-slider .slider_film_strip {
+        padding: 0;
+        background-color: transparent;
+    }
+
+    case-study-slider .holes_wrap {
+        display: none;
+    }
+
+    /* Cards take the shape of the case study images (3:4), so each one shows in full */
+    case-study-slider .slider__slide {
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    case-study-slider .project_reel_wrap {
+        aspect-ratio: 3 / 4;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         case-study-slider .slider__btn,
         case-study-slider .csl_btn,
