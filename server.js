@@ -192,6 +192,18 @@ const server = http.createServer(async (req, res) => {
     // =========================================================
     const searchString = parsedUrl.search || '';
 
+    // Old addresses that search engines reported as 404s, sent to the page that replaced them
+    const oldPath = safeDecode(pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname);
+    if (Object.prototype.hasOwnProperty.call(OLD_URL_REDIRECTS, oldPath)) {
+        const host = String(req.headers.host || '');
+        const target = OLD_URL_REDIRECTS[oldPath] + searchString;
+        // A www address goes to the main domain, as the redirect list asks
+        const location = /^www\./i.test(host) ? `https://${host.replace(/^www\./i, '')}${target}` : target;
+        res.writeHead(301, { 'Location': location });
+        res.end();
+        return;
+    }
+
     // Redirect /index.html, /index, or /index/ -> /
     if (pathname === '/index.html' || pathname === '/index' || pathname === '/index/') {
         res.writeHead(301, { 'Location': `/${searchString}` });
@@ -264,6 +276,29 @@ const server = http.createServer(async (req, res) => {
 
     serveStaticFile(filePath, res);
 });
+
+// Old URL -> new URL (301). Paths are matched decoded and without a trailing slash.
+// Add a line here when a page or blog post moves.
+const OLD_URL_REDIRECTS = {
+    // Blog posts whose slugs were shortened
+    '/blog/why-irish-smes-waste-40-of-their-google-ads-budget': '/blog/irish-smes-google-ads-budget-waste',
+    '/blog/local-seo-ireland-2026-what-moves-the-map-pack': '/blog/local-seo-ireland-map-pack-2026',
+    '/blog/why-your-fast-website-still-needs-a-better-landing-page': '/blog/fast-website-landing-page-not-converting',
+    '/blog/ai-overview-how-search-changes-before-people-buy': '/blog/ai-overview-search-before-buying',
+    // The blog list lives at /blogs
+    '/blog': '/blogs',
+    // Crawlers read these out of page scripts (a link template and the "€500/mo" budget text)
+    '/blog/${blog.slug}': '/contact',
+    '/mo': '/',
+};
+
+function safeDecode(value) {
+    try {
+        return decodeURIComponent(value);
+    } catch (e) {
+        return value;
+    }
+}
 
 const NOT_FOUND_PAGE = path.join(__dirname, '404.html');
 
