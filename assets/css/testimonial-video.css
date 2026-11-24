@@ -49,40 +49,100 @@
   pointer-events: none;
 }
 
+/* Play button: a light frosted glass ring around a glossy yellow disc with a rounded play icon.
+   The bright edge and soft shadow keep it readable on light and dark video frames. */
 .testimonial_video_play {
   position: absolute;
   top: 50%;
   left: 50%;
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 76px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
-  background: #FFE32A;
+  background: rgba(255, 252, 225, 0.22);
+  -webkit-backdrop-filter: blur(14px) brightness(1.08);
+  backdrop-filter: blur(14px) brightness(1.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 252, 225, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 16px 36px -12px rgba(14, 16, 15, 0.55);
   color: #0E100F;
-  box-shadow: 0 12px 32px rgba(14, 16, 15, 0.4);
   transform: translate(-50%, -50%);
-  transition: transform 0.7s cubic-bezier(0.625, 0.05, 0, 1);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.4s ease;
 }
 
+.testimonial_video_play_core {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 26%, #FFF59A 0%, #FFE32A 52%, #F2CF00 100%);
+  box-shadow:
+    0 8px 22px -4px rgba(255, 227, 42, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -3px 6px rgba(14, 16, 15, 0.08);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s ease;
+}
+
+/* A soft yellow glow that breathes outward, inviting the click */
 .testimonial_video_play::before {
   content: '';
   position: absolute;
   inset: 0;
-  border: 2px solid #FFE32A;
   border-radius: 50%;
-  animation: testimonialVideoPulse 2.4s cubic-bezier(0.25, 0.6, 0.3, 1) infinite;
+  box-shadow: 0 0 0 1.5px rgba(255, 227, 42, 0.6), 0 0 24px rgba(255, 227, 42, 0.35);
+  pointer-events: none;
+  animation: testimonialVideoPulse 2.6s cubic-bezier(0.25, 0.6, 0.3, 1) infinite;
 }
 
 .testimonial_video_play svg {
-  width: 28px;
-  height: 28px;
-  margin-left: 4px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.testimonial_video_cover:hover .testimonial_video_play,
+@media (hover: hover) {
+  .testimonial_video_cover:hover .testimonial_video_play {
+    transform: translate(-50%, -50%) scale(1.06);
+    background-color: rgba(255, 252, 225, 0.32);
+  }
+
+  .testimonial_video_cover:hover .testimonial_video_play_core {
+    transform: scale(1.05);
+    box-shadow:
+      0 10px 30px -4px rgba(255, 227, 42, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -3px 6px rgba(14, 16, 15, 0.08);
+  }
+
+  .testimonial_video_cover:hover .testimonial_video_play svg {
+    transform: translateX(1px) scale(1.06);
+  }
+}
+
 .testimonial_video_cover:focus-visible .testimonial_video_play {
-  transform: translate(-50%, -50%) scale(1.08);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* Smaller screens: a slightly smaller button */
+@media (max-width: 479px) {
+  .testimonial_video_play {
+    width: 72px;
+    height: 72px;
+  }
+
+  .testimonial_video_play_core {
+    width: 54px;
+    height: 54px;
+  }
+
+  .testimonial_video_play svg {
+    width: 21px;
+    height: 21px;
+  }
 }
 
 .testimonial_video_meta {
@@ -149,11 +209,11 @@
 @keyframes testimonialVideoPulse {
   0% {
     transform: scale(1);
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   100% {
-    transform: scale(1.55);
+    transform: scale(1.42);
     opacity: 0;
   }
 }
@@ -168,5 +228,11 @@
   .testimonial_video_play::before {
     animation: none;
     opacity: 0;
+  }
+
+  .testimonial_video_play,
+  .testimonial_video_play_core,
+  .testimonial_video_play svg {
+    transition: none;
   }
 }

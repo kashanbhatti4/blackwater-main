@@ -13,8 +13,9 @@
 // transition, because the page transitions only swap the page content (not the scripts or the <head>).
 (function () {
   var HLS_SCRIPT = 'https://cdn.jsdelivr.net/npm/hls.js@1';
-  var PLAY_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">' +
-    '<path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z" fill="currentColor"/></svg>';
+  // A play triangle with soft, rounded corners (the round stroke rounds them)
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">' +
+    '<path d="M8.5 6.6v10.8L17.4 12z" fill="currentColor" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg>';
   var hlsReady = null;
 
   var ua = navigator.userAgent;
@@ -74,7 +75,7 @@
     cover.type = 'button';
     cover.className = 'testimonial_video_cover';
     cover.setAttribute('aria-label', name ? 'Play ' + name + '’s video testimonial' : 'Play video testimonial');
-    cover.innerHTML = '<span class="testimonial_video_play">' + PLAY_ICON + '</span>' +
+    cover.innerHTML = '<span class="testimonial_video_play"><span class="testimonial_video_play_core">' + PLAY_ICON + '</span></span>' +
       '<span class="testimonial_video_meta" aria-hidden="true"></span>';
 
     var meta = cover.querySelector('.testimonial_video_meta');
