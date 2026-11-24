@@ -2040,6 +2040,11 @@
                     display: none !important;
                 }
 
+                /* Testimonials: base black like the free audit above it, so a hairline marks where it starts */
+                #main testimonials-slider > section.testimonials {
+                    border-top: 1px solid var(--swatch--border);
+                }
+
                 /* Journal: raised */
                 section#journal {
                     padding-block: var(--bw-band-pad) !important;
@@ -9198,6 +9203,9 @@
                     });
                 </script>
             </section>
+
+            <!-- Testimonials: the site's client video slider (components/testimonials-slider.html and .js) -->
+            <testimonials-slider></testimonials-slider>
 
             <!-- JOURNAL SECTION -->
             <section id="journal" class="main-section_wrap u-section" data-journal-state="loading"
